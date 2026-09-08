@@ -1,0 +1,1279 @@
+Your computational hypotheses should be:
+
+$$ H_1:\quad \text{increasing FLS causes increasing geometric deformation.} $$ $$ H_2:\quad \text{geometric deformation can occur while the representation remains injective.} $$ $$ H_3:\quad \text{at sufficiently strong feature learning, some settings may show} $$ $$ \text{injectivity-margin collapse / latent-factor destruction.} $$
+
+And the most important:
+
+$$ H_4:\quad \boxed{ \text{geometric untangling and actual information destruction are distinct phenomena.} } $$
+
+You are not assuming \(H_3\) is true.
+
+If ultra-rich learning remains injective, that is a real result.
+
+1. Create the repository
+
+Something like:
+
+feature-topology/
+│
+├── configs/
+│   ├── synthetic/
+│   ├── dsprites/
+│   ├── cifar/
+│   └── sweeps/
+│
+├── src/
+│   ├── data/
+│   │   ├── torus.py
+│   │   ├── circle.py
+│   │   ├── dsprites.py
+│   │   └── augmentations.py
+│   │
+│   ├── models/
+│   │   ├── mlp.py
+│   │   ├── cnn.py
+│   │   └── resnet.py
+│   │
+│   ├── training/
+│   │   ├── fls.py
+│   │   ├── train.py
+│   │   └── checkpoints.py
+│   │
+│   ├── metrics/
+│   │   ├── geometry.py
+│   │   ├── jacobian.py
+│   │   ├── injectivity.py
+│   │   ├── probes.py
+│   │   ├── persistence.py
+│   │   ├── ntk.py
+│   │   └── quotient.py
+│   │
+│   ├── analysis/
+│   └── plotting/
+│
+├── scripts/
+│   ├── run_pilot.py
+│   ├── run_main_sweep.py
+│   ├── extract_representations.py
+│   └── compute_metrics.py
+│
+├── tests/
+│
+└── results/
+
+Use:
+
+PyTorch
+numpy
+scipy
+scikit-learn
+ripser
+persim
+gudhi
+pandas
+matplotlib
+
+Ripser is specifically designed for fast persistence computations and directly supports point clouds or distance matrices. GUDHI is useful when you need more control over Rips/sparse complexes.
+
+2. Implement feature-learning strength correctly
+
+This part is extremely important.
+
+Do not call ordinary learning-rate changes "feature-learning strength."
+
+Atanasov et al. use a parameter \(\gamma\) that scales the network output:
+
+$$ \mathcal L = \ell\left( \frac{1}{\gamma}f(x;\theta), y \right). $$
+
+Higher
+
+$$ \gamma $$
+
+corresponds to stronger feature learning.
+
+They show the transition:
+
+$$ \gamma\ll1 \rightarrow \text{lazy/kernel} $$ $$ \gamma\sim1 \rightarrow \text{rich} $$ $$ \gamma\gg1 \rightarrow \text{ultra-rich}. $$
+
+Start with:
+
+γ =
+2^-5
+2^-4
+2^-3
+2^-2
+2^-1
+2^0
+2^1
+2^2
+2^3
+2^4
+2^5
+2^6
+2^7
+
+or numerically:
+
+0.03125
+0.0625
+0.125
+0.25
+0.5
+1
+2
+4
+8
+16
+32
+64
+128
+
+Don't immediately assume all 13 will be necessary.
+
+3. Learning rate must be treated as a second axis
+
+You cannot compare networks at fixed learning rate and say differences came from FLS.
+
+Atanasov et al. show that the optimal learning rate itself changes with \(\gamma\):
+
+for small \(\gamma\),
+
+$$ \eta^*\propto\gamma^2, $$
+
+while for large \(\gamma\) in a depth-\(L\) feed-forward network,
+
+$$ \eta^*\propto\gamma^{2/L}. $$
+
+So first run a learning-rate calibration sweep.
+
+For each \(\gamma\), test something like:
+
+η relative multiplier:
+
+1/8
+1/4
+1/2
+1
+2
+4
+8
+
+Do this with one or two seeds first.
+
+Pick \(\eta^*(\gamma)\) according to:
+
+stable optimization;
+reaches target training loss;
+shortest reasonable convergence time;
+does not diverge.
+
+Save:
+
+gamma_to_lr.json
+
+Once that map is frozen, never retune it during the main experiment.
+
+4. First dataset: an exact known manifold
+
+This should be the heart of the study.
+
+Use
+
+$$ \boxed{ \mathcal M=S^1_{\text{task}}\times S^1_{\text{nuisance}} } $$
+
+which is a torus.
+
+Generate two latent variables:
+
+$$ \theta,\phi\sim U[0,2\pi). $$
+
+Interpret:
+
+$$ \theta=\text{task variable} $$
+
+and
+
+$$ \phi=\text{nuisance variable}. $$
+
+Initial representation:
+
+$$ z= (\cos\theta,\sin\theta,\cos\phi,\sin\phi). $$
+
+Then optionally embed it into higher dimension:
+
+$$ x=Qz $$
+
+where
+
+$$ Q\in\mathbb R^{d\times4} $$
+
+has orthonormal columns.
+
+Use:
+
+d = 16
+
+initially.
+
+Why an orthogonal embedding?
+
+Because the topology remains exactly known while the network doesn't simply receive two obvious coordinate pairs.
+
+5. Make the task depend only on one factor
+
+For example:
+
+θ ∈ [0, π/2)       → class 0
+θ ∈ [π/2, π)       → class 1
+θ ∈ [π, 3π/2)      → class 2
+θ ∈ [3π/2, 2π)     → class 3
+
+Thus:
+
+$$ y=f(\theta) $$
+
+and
+
+$$ y\perp\phi. $$
+
+The network benefits from learning \(\theta\).
+
+It has absolutely no classification incentive to retain \(\phi\).
+
+This is precisely what you want.
+
+6. Generate three data sets from the same manifold
+
+Use:
+
+train = 20,000
+validation = 5,000
+analysis grid = 10,000
+
+The analysis grid should not be random.
+
+Make it approximately uniform:
+
+100 values θ
+×
+100 values φ
+=
+10,000 points
+
+This gives you dense coverage of the actual manifold.
+
+That matters enormously for collision/injectivity analysis.
+
+7. Network #1 should be deliberately simple
+
+Start with:
+
+input = 16
+hidden = 256
+hidden = 256
+hidden = 256
+hidden = 256
+output = 4
+
+ReLU throughout.
+
+No:
+
+batch norm
+dropout
+residual connections
+augmentation
+weight decay
+
+yet.
+
+You want the cleanest possible representation map.
+
+Train using vanilla SGD.
+
+Atanasov's primary FLS analysis also concentrates on vanilla SGD precisely because \(\gamma\) already introduces rich optimization structure.
+
+8. Save every hidden representation
+
+For each checkpoint, save:
+
+$$ h_1(x),h_2(x),h_3(x),h_4(x) $$
+
+for the same fixed analysis set.
+
+Checkpoint approximately logarithmically:
+
+step 0
+1
+2
+4
+8
+16
+32
+64
+128
+256
+512
+...
+final
+
+Plus checkpoints when training accuracy crosses:
+
+25%
+50%
+75%
+90%
+95%
+99%
+
+This lets you compare networks by both:
+
+$$ \text{optimization time} $$
+
+and
+
+$$ \text{matched training performance}. $$
+
+The second is much more scientifically meaningful.
+
+Yeom et al. also stress matched-training-risk comparisons when studying FLS.
+
+9. Your primary metrics
+
+You need four different classes of measurement.
+
+Do not collapse them into one score.
+
+A. Geometric deformation
+1. CKA
+
+Compute:
+
+$$ CKA(H_0,H_t). $$
+
+CKA is a standard representation-similarity measure and is invariant to orthogonal transformations and isotropic rescaling.
+
+Define:
+
+$$ G_{\rm CKA}=1-CKA. $$
+2. Pairwise distance distortion
+
+For sampled pairs:
+
+$$ r_{ij} = \frac{ \|h(x_i)-h(x_j)\| }{ \|h_0(x_i)-h_0(x_j)\| }. $$
+
+Record:
+
+median
+5th percentile
+95th percentile
+variance
+3. Effective rank
+
+Given covariance eigenvalues:
+
+$$ p_i=\frac{\lambda_i}{\sum_j\lambda_j}, $$
+
+compute:
+
+$$ r_{\rm eff} = \exp\left( -\sum_i p_i\log p_i \right). $$
+
+This detects representation compression.
+
+10. Local injectivity: probably your most important metric
+
+Because you generated the manifold yourself, you know the latent coordinates.
+
+Define
+
+$$ F_\ell(\theta,\phi) = h_\ell(g(\theta,\phi)). $$
+
+Compute its Jacobian:
+
+$$ J_\ell= \frac{\partial F_\ell}{\partial(\theta,\phi)}. $$
+
+It's an
+
+$$ d_\ell\times2 $$
+
+matrix.
+
+Then calculate singular values:
+
+$$ \sigma_1\geq\sigma_2. $$
+
+The crucial one is:
+
+$$ \boxed{\sigma_{\min}=\sigma_2}. $$
+
+If
+
+$$ \sigma_{\min}>0, $$
+
+the representation is locally rank-preserving.
+
+If
+
+$$ \sigma_{\min}\rightarrow0, $$
+
+one latent direction is being crushed.
+
+Calculate across the manifold:
+
+min σ_min
+0.1 percentile
+1st percentile
+5th percentile
+median
+fraction < 1e-4
+fraction < 1e-3
+fraction < 1e-2
+
+Don't rely only on the literal minimum because one bad sample can dominate it.
+
+PyTorch's torch.func.jacrev and vmap are designed for batched Jacobian computation.
+
+11. Determine which factor is being crushed
+
+Because there are exactly two latent directions, calculate:
+
+$$ \left\| \frac{\partial h}{\partial\theta} \right\| $$
+
+and
+
+$$ \left\| \frac{\partial h}{\partial\phi} \right\|. $$
+
+The ideal phenomenon would look something like:
+
+$$ \left\| \frac{\partial h}{\partial\theta} \right\| \text{ remains large} $$
+
+while
+
+$$ \left\| \frac{\partial h}{\partial\phi} \right\| \rightarrow0. $$
+
+That is direct evidence of selective nuisance-factor forgetting.
+
+It is much more interpretable than a Betti-number plot.
+
+12. Global injectivity metric
+
+Local rank doesn't detect two distant regions becoming mapped together.
+
+So define:
+
+$$ m_{\rm global} = \min_{i,j:\,d_M(z_i,z_j)>\delta} \frac{ \|h(x_i)-h(x_j)\| }{ d_M(z_i,z_j) }. $$
+
+Here
+
+$$ d_M $$
+
+is the geodesic distance on the torus:
+
+$$ d_M^2 = d_{S^1}(\theta_i,\theta_j)^2+ d_{S^1}(\phi_i,\phi_j)^2, $$
+
+with
+
+$$ d_{S^1}(a,b) = \min(|a-b|,2\pi-|a-b|). $$
+
+This asks:
+
+Are two points that are actually far apart on the latent manifold becoming almost identical in representation space?
+
+Also report robust versions:
+
+$$ q_{0.1\%}, q_{1\%}, q_{5\%} $$
+
+instead of only the absolute minimum.
+
+13. Better scalable collision detector
+
+For each point \(h_i\):
+
+find its 20 nearest neighbors in representation space;
+calculate their latent distances;
+look for representation-near but latent-far points.
+
+Define:
+
+$$ C_i = \max_{j\in kNN_h(i)} d_M(z_i,z_j). $$
+
+Then:
+
+$$ C= E_i[C_i]. $$
+
+If \(C\) rises dramatically, distant latent states are becoming identified.
+
+This is computationally much cheaper than all-pairs analysis.
+
+14. Explicit nuisance-information probes
+
+Train probes after freezing the neural network.
+
+Task probe:
+
+$$ h_\ell(x)\rightarrow\theta\text{-class}. $$
+
+Nuisance probe:
+
+$$ h_\ell(x)\rightarrow\phi. $$
+
+For continuous \(\phi\), predict:
+
+$$ (\cos\phi,\sin\phi). $$
+
+Then obtain angular prediction.
+
+Use two probes:
+
+linear probe
+2-layer MLP probe
+
+Why both?
+
+If linear probe fails but MLP succeeds, information still exists but became nonlinear.
+
+If both fail, stronger evidence exists that information disappeared.
+
+The expected pattern might be:
+
+$$ Acc_{\theta}\uparrow $$
+
+while
+
+$$ Acc_{\phi}\downarrow. $$
+15. Persistent homology
+
+Now do topology.
+
+For a torus:
+
+$$ \beta_0=1, $$ $$ \beta_1=2, $$ $$ \beta_2=1. $$
+
+If the nuisance loop collapses:
+
+$$ S^1\times S^1 \rightarrow S^1, $$
+
+you expect approximately:
+
+$$ \beta_1:2\rightarrow1 $$
+
+and
+
+$$ \beta_2:1\rightarrow0. $$
+
+But don't interpret raw PH alone as exact topology.
+
+Beshkov's work specifically shows that metric PH can respond to geometric changes without genuine topological quotienting.
+
+So use PH as a diagnostic, not ground truth.
+
+16. PH computation details
+
+Do not run Rips on 10,000 points.
+
+Subsample:
+
+500
+750
+1000
+
+points.
+
+Repeat 20 independent subsamples.
+
+Compute:
+
+ripser(
+    H,
+    maxdim=2,
+    coeff=2
+)
+
+Ripser supports \(H_0,H_1,H_2\) through the maxdim parameter.
+
+Primary PH statistics:
+
+$$ \text{total persistence}_{H_1} $$ $$ \text{top-1 lifetime} $$ $$ \text{top-2 lifetime} $$ $$ \text{persistence entropy}. $$
+
+For the torus, particularly track the two longest \(H_1\) bars.
+
+If one consistently disappears across seeds/subsamples, that's interesting.
+
+17. Null controls are essential
+
+Suppose the representation simply shrinks:
+
+$$ h(x)\rightarrow0.1h(x). $$
+
+A naive persistence analysis could look dramatically different depending on scale choices even though nothing topological happened.
+
+Therefore run three nulls.
+
+Null 1: isotropic scaling
+$$ h'(x)=ah(x). $$
+Null 2: random rotation
+$$ h'(x)=Qh(x). $$
+Null 3: geometry-matched random cloud
+
+Construct a randomized point cloud preserving approximately:
+
+mean
+covariance
+norm distribution
+pairwise distance histogram
+
+but destroying latent organization.
+
+Your proposed metrics should distinguish these.
+
+18. Main FLS sweep
+
+Once all metrics work:
+
+Primary architecture:
+
+MLP depth = 4
+width = 256
+
+Run:
+
+13 gamma values
+× 10 random seeds
+=
+130 networks
+
+For every network save:
+
+training loss
+accuracy
+test accuracy
+representations
+CKA
+distance distortion
+effective rank
+σ_min distribution
+task Jacobian norm
+nuisance Jacobian norm
+global injectivity margin
+collision score
+task probe
+nuisance probe
+PH
+
+This is your main experiment.
+
+19. Build the feature-learning phase diagram
+
+Make matrices where the axes are:
+
+$$ \gamma $$
+
+and
+
+$$ t $$
+
+or matched training loss.
+
+Maps:
+
+geometric deformation
+local injectivity
+global injectivity
+nuisance decodability
+β1 / PH
+generalization
+
+You are looking for whether these boundaries occur at the same place or different places.
+
+The exciting scenario would be:
+
+$$ \gamma_1: \text{geometry begins changing} $$
+
+then later
+
+$$ \gamma_2: \text{nuisance Jacobian collapses} $$
+
+then
+
+$$ \gamma_3: \text{global noninjectivity emerges}. $$
+
+with
+
+$$ \gamma_1<\gamma_2<\gamma_3. $$
+
+That would directly support:
+
+$$ \boxed{ \text{untangling precedes forgetting}. } $$
+20. Compare to generalization sweet spot
+
+Yeom et al. found that intermediate FLS can generalize better than either too-weak or too-strong FLS; their empirical setup uses output scaling and matched training criteria.
+
+Plot:
+
+$$ Acc_{test}(\gamma) $$
+
+against:
+
+$$ m_{\rm local}(\gamma), $$ $$ m_{\rm global}(\gamma), $$ $$ I_{\phi}(\gamma). $$
+
+Don't claim causality.
+
+Ask whether optimal generalization occurs:
+
+before information collapse;
+near it;
+after it.
+21. Width experiment
+
+Now ask whether the phenomenon survives model scale.
+
+Use:
+
+width =
+64
+128
+256
+512
+1024
+
+Do not use all 13 \(\gamma\).
+
+Pick representative values:
+
+γ =
+0.125
+0.5
+1
+4
+16
+64
+128
+
+Then:
+
+$$ 5\text{ widths} \times 7\gamma \times 5\text{ seeds} = 175 $$
+
+networks.
+
+Measure the same statistics.
+
+Question:
+
+Does the geometry→compression→noninjectivity sequence persist as width increases?
+
+22. Depth experiment
+
+Use:
+
+depth =
+2
+4
+6
+8
+
+with:
+
+width = 256
+
+and about 7 \(\gamma\) values.
+
+Five seeds:
+
+$$ 4\times7\times5=140 $$
+
+runs.
+
+This tells you whether deeper networks destroy nuisance information earlier.
+
+23. Exact quotient-topology validation
+
+This should be a smaller special experiment, not something you try to run on ResNet-50.
+
+Beshkov's TMLR framework exploits the fact that ReLU networks are piecewise affine. Non-injectivity comes from:
+
+a local rank-loss source;
+overlapping images from different activation regions.
+
+The overlap decomposition can then be computed using linear programming and union-find ideas.
+
+Implement this only on:
+
+2D synthetic manifolds
+small MLP
+width 8–32
+depth 2–4
+
+First reproduce:
+
+circle → circle
+circle → interval/collapse
+
+Then your own FLS experiments.
+
+The purpose is to validate:
+
+$$ \text{PH says topology changed} $$
+
+against:
+
+$$ \text{true quotient/noninjectivity says topology changed}. $$
+24. Very important computational distinction
+
+You want to classify each trained network into something like:
+
+Geometry	Injectivity	Interpretation
+little change	preserved	lazy
+large change	preserved	geometric feature learning
+large change	nearly singular	compression
+large change	broken	genuine information collapse
+
+That four-state picture is potentially the central computational result.
+
+25. Add a second controlled manifold
+
+Do not trust one torus.
+
+Use:
+
+Cylinder
+$$ S^1\times[0,1]. $$
+
+Task:
+
+$$ S^1. $$
+
+Nuisance:
+
+$$ [0,1]. $$
+
+And maybe:
+
+Product torus with swapped task
+
+Run once with:
+
+$$ \theta=\text{task}, \quad\phi=\text{nuisance} $$
+
+and once with:
+
+$$ \phi=\text{task}, \quad\theta=\text{nuisance}. $$
+
+The behavior should swap correspondingly.
+
+That is a powerful control.
+
+26. Add nuisance relevance continuously
+
+This is a particularly good experiment.
+
+Instead of nuisance being exactly irrelevant, define labels as depending on
+
+$$ \theta+\lambda\phi. $$
+
+Sweep:
+
+$$ \lambda= 0, 0.05, 0.1, 0.25, 0.5, 1. $$
+
+When
+
+$$ \lambda=0, $$
+
+\(\phi\) is pure nuisance.
+
+At
+
+$$ \lambda=1, $$
+
+it is strongly task-relevant.
+
+Ask:
+
+Does stronger feature learning preferentially destroy factors according to their task relevance?
+
+This would be a beautiful result.
+
+27. Next dataset: dSprites or controlled image factors
+
+Only after synthetic results work.
+
+Use a dataset with known generative factors.
+
+A good setup:
+
+task = shape
+nuisance = orientation
+
+or
+
+task = shape
+nuisance = x/y position
+
+Train a CNN.
+
+Then ask whether representation information about the unused latent factor disappears as \(\gamma\) rises.
+
+You lose exact manifold guarantees but gain realism.
+
+28. Better image-control experiment
+
+I actually like this more than jumping directly to CIFAR.
+
+Take real images and create a known periodic latent variable.
+
+For each image:
+
+$$ x_{\phi}=\text{rotate}(x,\phi). $$
+
+Task:
+
+$$ \text{object class} $$
+
+Nuisance:
+
+$$ \phi. $$
+
+Generate:
+
+φ = 0°, 10°, 20°, ..., 350°
+
+Now nuisance topology is explicitly
+
+$$ S^1. $$
+
+Train object classification.
+
+Then test whether the network retains the rotation circle.
+
+That translates your torus result into real images extremely cleanly.
+
+29. Natural-image validation
+
+Only now run:
+
+CIFAR-10
+CIFAR-100
+
+Use perhaps:
+
+ResNet18
+
+and:
+
+γ =
+0.125
+0.5
+1
+4
+16
+64
+128
+
+five seeds if affordable.
+
+Do not claim latent topology here because you don't know CIFAR's ground-truth manifold.
+
+Only report:
+
+representation geometry
+Jacobian spectrum
+effective rank
+CKA
+PH
+generalization
+
+This is a robustness check.
+
+30. NTK drift baseline
+
+You also need to prove that your \(\gamma\) sweep actually crosses lazy/rich regimes.
+
+Calculate empirical NTK:
+
+$$ K_t(x,x') = J_{\theta}f_t(x) J_{\theta}f_t(x')^\top. $$
+
+Then measure:
+
+$$ D_{\rm NTK} = \frac{ \|K_t-K_0\|_F }{ \|K_0\|_F }. $$
+
+Small:
+
+$$ D_{\rm NTK}\approx0 $$
+
+means more lazy.
+
+Large drift means feature learning.
+
+PyTorch has an official implementation using jacrev, vmap, JVPs and VJPs.
+
+You don't need to compute this on all 20,000 data points.
+
+Use:
+
+128–256 fixed samples
+
+per checkpoint.
+
+31. Your baseline comparison table
+
+Every model should eventually have:
+
+FLS γ
+training loss
+test accuracy
+
+NTK drift
+weight displacement
+
+CKA drift
+effective rank
+distance distortion
+
+min / percentile tangent σ_min
+task Jacobian
+nuisance Jacobian
+
+global injectivity margin
+collision score
+
+linear nuisance probe
+MLP nuisance probe
+
+PH H1 bars
+PH H2 if computationally feasible
+
+exact overlap/quotient result
+(small networks only)
+
+That lets you answer whether topology adds anything beyond conventional metrics.
+
+32. Statistical design
+
+For the final experiments use at least:
+
+$$ 5 $$
+
+seeds.
+
+Use 10 seeds for your main synthetic result.
+
+For each \(\gamma\), report:
+
+$$ \bar x \pm 95\%\text{ bootstrap CI}. $$
+
+Test monotonic/change-point relationships rather than dozens of pairwise \(t\)-tests.
+
+For example estimate:
+
+$$ \gamma_{\rm geometry} $$ $$ \gamma_{\rm compression} $$ $$ \gamma_{\rm injectivity}. $$
+
+Bootstrap those transition locations across seeds.
+
+33. Detect transition points computationally
+
+Fit a segmented model to each metric:
+
+$$ M(\log\gamma)= \begin{cases} a_1+b_1\log\gamma & \gamma<\gamma_c\\ a_2+b_2\log\gamma & \gamma\ge\gamma_c. \end{cases} $$
+
+Compare against a smooth null.
+
+This is better than visually saying:
+
+"There seems to be a transition around 16."
+
+34. Failure conditions
+
+The project is still useful even if:
+
+Case A
+$$ \text{geometry changes} $$
+
+but
+
+$$ \text{injectivity never fails}. $$
+
+Conclusion:
+
+rich/ultra-rich representations are largely geometric rather than topology-destroying.
+
+Case B
+
+Injectivity collapses but PH doesn't detect it.
+
+Then:
+
+standard PH is insufficient for identifying representation information loss.
+
+Very interesting.
+
+Case C
+
+PH changes but injectivity doesn't.
+
+Even more interesting.
+
+This directly confirms the geometry-vs-topology warning from Beshkov.
+
+Case D
+
+Everything collapses together.
+
+Then perhaps ordinary PH works surprisingly well in this regime.
+
+Still publishable computationally if robust.
+
+35. Compute budget I would expect
+
+You do not need giant compute.
+
+Pilot
+
+~50 tiny MLP runs:
+
+$$ <2\text{ GPU-hours}. $$
+Main synthetic
+
+~130 primary runs + metric extraction:
+
+$$ 5-15\text{ GPU-hours}. $$
+Width/depth ablations
+
+~300–400 tiny MLPs:
+
+$$ 10-30\text{ GPU-hours}. $$
+Jacobians
+
+Likely:
+
+$$ 10-30\text{ GPU-hours} $$
+
+depending on representation size/grid density.
+
+Persistent homology
+
+Mostly CPU:
+
+$$ 20-100\text{ CPU-hours} $$
+
+depending on \(H_2\) and subsampling.
+
+Rips complexes can become memory-intensive rapidly, which is why GUDHI explicitly warns that large edge thresholds/complexes can consume substantial RAM.
+
+Image-factor validation
+
+CNN/dSprites/rotated-image:
+
+$$ 10-30\text{ GPU-hours}. $$
+CIFAR ResNet validation
+
+roughly:
+
+$$ 20-60\text{ GPU-hours} $$
+
+depending on GPU and epochs.
+
+Full project
+
+Something on the order of:
+
+$$ \boxed{50-150\text{ GPU-hours}} $$
+
+plus CPU topology analysis should be enough for a very substantial version.
+
+That's tiny compared with LLM research.
+
+36. Don't launch all that compute immediately
+
+The execution tree should be:
+
+STEP 1
+Implement torus + MLP + γ
+        ↓
+STEP 2
+Show γ actually changes NTK/representation drift
+        ↓
+STEP 3
+Implement Jacobian/injectivity metrics
+        ↓
+STEP 4
+Pilot 5 γ × 3 seeds
+        ↓
+Is there any meaningful separation?
+        ↓
+YES                     NO
+↓                       ↓
+13 γ main sweep         debug/change dataset
+↓
+10 seeds
+↓
+PH + probes
+↓
+width/depth
+↓
+exact quotient test
+↓
+second manifold
+↓
+image latent-factor data
+↓
+CIFAR robustness
+↓
+freeze results
+
+This saves a massive amount of wasted computation.
+
+37. What I would consider the minimum complete project
+
+You do not need every experiment above to call the computational side finished.
+
+I would require these six:
+
+Controlled torus experiment
+13-\(\gamma\) FLS sweep
+local + global injectivity metrics
+task/nuisance probes
+persistent-homology comparison
+one realistic latent-factor image validation
+
+That is the core.
+
+38. What makes it a very strong computational project
+
+Add:
+
+width scaling
+depth scaling
+exact quotient/overlap validation on small ReLU nets
+continuous nuisance relevance \(\lambda\)
+NTK baseline
+real-image rotation \(S^1\) experiment
+CIFAR validation
+extensive null controls
+39. The single master visualization I'd aim for
+
+Eventually each \(\gamma\) gives you:
+
+$$ \boxed{ \begin{array}{c} \text{feature-learning strength}\\ \downarrow\\ \text{NTK drift}\\ \downarrow\\ \text{geometric untangling}\\ \downarrow\\ \text{nuisance compression}\\ \downarrow\\ \text{injectivity-margin collapse}\\ \downarrow\\ \text{topological factor loss} \end{array} } $$
+
+The whole computational project asks whether those arrows represent one event or multiple distinct regimes.
+
+That is what makes this more interesting than just computing persistence diagrams.
+
+The exact order I would personally execute
+
+Week/phase 1: torus generator → MLP → FLS implementation → LR calibration → unit tests.
+
+Phase 2: 5-\(\gamma\) × 3-seed pilot → NTK + CKA + Jacobian + probes.
+
+Phase 3: if signal exists, 13-\(\gamma\) × 10-seed production sweep.
+
+Phase 4: PH + collision/injectivity analysis on the frozen checkpoints.
+
+Phase 5: width/depth ablations.
+
+Phase 6: small-network quotient/overlap computation based on Beshkov.
+
+Phase 7: dSprites/rotated-image latent-factor validation.
+
+Phase 8: ResNet/CIFAR robustness run.
+
+Phase 9: rerun only failed/missing seeds, lock every CSV/checkpoint/figure, and stop computing.**

@@ -1,0 +1,284 @@
+[
+  {
+    "run_id": "25b579b2abddc0f9",
+    "gamma": 0.03125,
+    "seed": 0,
+    "status": "converged"
+  },
+  {
+    "run_id": "64551e6adcfe8b61",
+    "gamma": 0.03125,
+    "seed": 1,
+    "status": "converged"
+  },
+  {
+    "run_id": "9eb9b205693b955a",
+    "gamma": 0.03125,
+    "seed": 2,
+    "status": "converged"
+  },
+  {
+    "run_id": "ac15d031f86b33bf",
+    "gamma": 0.03125,
+    "seed": 3,
+    "status": "converged"
+  },
+  {
+    "run_id": "40f3baf3b73d474d",
+    "gamma": 0.03125,
+    "seed": 4,
+    "status": "converged"
+  },
+  {
+    "run_id": "1bb5ed0f27b012d0",
+    "gamma": 0.03125,
+    "seed": 5,
+    "status": "converged"
+  },
+  {
+    "run_id": "e1f9ca7576a59eb1",
+    "gamma": 0.03125,
+    "seed": 6,
+    "status": "converged"
+  },
+  {
+    "run_id": "3eee6c43030e08dc",
+    "gamma": 0.03125,
+    "seed": 7,
+    "status": "converged"
+  },
+  {
+    "run_id": "26fcc572aad0c57c",
+    "gamma": 0.03125,
+    "seed": 8,
+    "status": "converged"
+  },
+  {
+    "run_id": "d4342ef1d0cdfffa",
+    "gamma": 0.03125,
+    "seed": 9,
+    "status": "converged"
+  },
+  {
+    "run_id": "961556700d1c4f55",
+    "gamma": 0.0625,
+    "seed": 0,
+    "status": "converged"
+  },
+  {
+    "run_id": "67d2d347184f129d",
+    "gamma": 0.0625,
+    "seed": 1,
+    "status": "converged"
+  },
+  {
+    "run_id": "09f09127289304d6",
+    "gamma": 0.0625,
+    "seed": 2,
+    "status": "converged"
+  },
+  {
+    "run_id": "f71a0c33e5dcd121",
+    "gamma": 0.0625,
+    "seed": 3,
+    "status": "converged"
+  },
+  {
+    "run_id": "badffd089aaff19f",
+    "gamma": 0.0625,
+    "seed": 4,
+    "status": "converged"
+  },
+  {
+    "run_id": "abba2740ff02594c",
+    "gamma": 0.0625,
+    "seed": 5,
+    "status": "converged"
+  },
+  {
+    "run_id": "9afa239c50fc8ae6",
+    "gamma": 0.0625,
+    "seed": 6,
+    "status": "converged"
+  },
+  {
+    "run_id": "137a26c5b6d0b26e",
+    "gamma": 0.0625,
+    "seed": 7,
+    "status": "converged"
+  },
+  {
+    "run_id": "81de0fae98e48076",
+    "gamma": 0.0625,
+    "seed": 8,
+    "status": "converged"
+  },
+  {
+    "run_id": "65de165a8d21b0ec",
+    "gamma": 0.0625,
+    "seed": 9,
+    "status": "converged"
+  },
+  {
+    "run_id": "cb6e463ae41e1f43",
+    "gamma": 0.125,
+    "seed": 0,
+    "status": "converged"
+  },
+  {
+    "run_id": "f5af1a36f024490f",
+    "gamma": 0.125,
+    "seed": 1,
+    "status": "converged"
+  },
+  {
+    "run_id": "08cf20ff7ed501ca",
+    "gamma": 0.125,
+    "seed": 2,
+    "status": "converged"
+  },
+  {
+    "run_id": "b0a0c357600c19ef",
+    "gamma": 0.125,
+    "seed": 3,
+    "status": "converged"
+  },
+  {
+    "run_id": "1930842ce1d7aef5",
+    "gamma": 0.125,
+    "seed": 4,
+    "status": "converged"
+  },
+  {
+    "run_id": "ee7fea86765a638f",
+    "gamma": 0.125,
+    "seed": 5,
+    "status": "converged"
+  },
+  {
+    "run_id": "8095fa26ddb37240",
+    "gamma": 0.125,
+    "seed": 6,
+    "status": "converged"
+  },
+  {
+    "run_id": "7c258fc31375e104",
+    "gamma": 0.125,
+    "seed": 7,
+    "status": "converged"
+  },
+  {
+    "run_id": "7d212bfe6d1ad0af",
+    "gamma": 0.125,
+    "seed": 8,
+    "status": "converged"
+  },
+  {
+    "run_id": "bf480bb8ab1826dd",
+    "gamma": 0.125,
+    "seed": 9,
+    "status": "converged"
+  },
+  {
+    "run_id": "cd3f5e7d231fb54c",
+    "gamma": 0.25,
+    "seed": 0,
+    "status": "converged"
+  },
+  {
+    "run_id": "a6518ea41c24dd1b",
+    "gamma": 0.25,
+    "seed": 1,
+    "status": "converged"
+  },
+  {
+    "run_id": "cc1f980a3afd1b2b",
+    "gamma": 0.25,
+    "seed": 2,
+    "status": "converged"
+  },
+  {
+    "run_id": "1bb2fd9adb594cf3",
+    "gamma": 0.25,
+    "seed": 3,
+    "status": "converged"
+  },
+  {
+    "run_id": "816f68ab7f31ca7a",
+    "gamma": 0.25,
+    "seed": 4,
+    "status": "converged"
+  },
+  {
+    "run_id": "1716adb0d6762ffd",
+    "gamma": 0.25,
+    "seed": 5,
+    "status": "converged"
+  },
+  {
+    "run_id": "85f1c3d41df3a90e",
+    "gamma": 0.25,
+    "seed": 6,
+    "status": "converged"
+  },
+  {
+    "run_id": "c987b77da670fe33",
+    "gamma": 0.25,
+    "seed": 7,
+    "status": "converged"
+  },
+  {
+    "run_id": "14084c311596e2ac",
+    "gamma": 0.25,
+    "seed": 8,
+    "status": "converged"
+  },
+  {
+    "run_id": "e1aa71cdb84337ed",
+    "gamma": 0.25,
+    "seed": 9,
+    "status": "converged"
+  },
+  {
+    "run_id": "8212b25d1f355922",
+    "gamma": 0.5,
+    "seed": 0,
+    "status": "converged"
+  },
+  {
+    "run_id": "8a6750bf26cfcb5c",
+    "gamma": 0.5,
+    "seed": 1,
+    "status": "converged"
+  },
+  {
+    "run_id": "4af1ea473ba49a67",
+    "gamma": 0.5,
+    "seed": 2,
+    "status": "converged"
+  },
+  {
+    "run_id": "d098a51a4bdade0c",
+    "gamma": 0.5,
+    "seed": 3,
+    "status": "converged"
+  },
+  {
+    "run_id": "aee06fabc0e9d2c9",
+    "gamma": 0.5,
+    "seed": 4,
+    "status": "converged"
+  },
+  {
+    "run_id": "b29113687367d5a6",
+    "gamma": 0.5,
+    "seed": 5,
+    "status": "converged"
+  },
+  {
+    "run_id": "f2c437318ee16bea",
+    "gamma": 0.5,
+    "seed": 6,
+    "status": "converged"
+  }
+]

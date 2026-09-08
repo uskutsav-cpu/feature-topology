@@ -1,0 +1,329 @@
+{
+  "calibration_id": "9181ac88afcbd5c9",
+  "config": {
+    "gammas": [
+      0.03125,
+      0.5,
+      1.0,
+      16.0,
+      128.0
+    ],
+    "calibration_seeds": [
+      900
+    ],
+    "lr_multipliers": [
+      0.125,
+      0.25,
+      0.5,
+      1,
+      2,
+      4,
+      8
+    ],
+    "base_lr": 0.05,
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2
+  },
+  "selection": {
+    "0.03125": {
+      "lr": 0.000390625,
+      "stable": true,
+      "reached": true,
+      "loss": 0.09690492248535157,
+      "step": 64.0,
+      "candidates": [
+        {
+          "lr": 6.103515625e-06,
+          "stable": true,
+          "reached": false,
+          "loss": 0.18138384704589844,
+          "step": 1024.0
+        },
+        {
+          "lr": 1.220703125e-05,
+          "stable": true,
+          "reached": false,
+          "loss": 0.130909521484375,
+          "step": 1024.0
+        },
+        {
+          "lr": 2.44140625e-05,
+          "stable": true,
+          "reached": true,
+          "loss": 0.0980121566772461,
+          "step": 1024.0
+        },
+        {
+          "lr": 4.8828125e-05,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09791006927490234,
+          "step": 512.0
+        },
+        {
+          "lr": 9.765625e-05,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09783378524780273,
+          "step": 256.0
+        },
+        {
+          "lr": 0.0001953125,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09830581588745117,
+          "step": 128.0
+        },
+        {
+          "lr": 0.000390625,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09690492248535157,
+          "step": 64.0
+        }
+      ]
+    },
+    "0.5": {
+      "lr": 0.1,
+      "stable": true,
+      "reached": true,
+      "loss": 0.09895573577880859,
+      "step": 32.0,
+      "candidates": [
+        {
+          "lr": 0.0015625,
+          "stable": true,
+          "reached": false,
+          "loss": 0.11228595275878907,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.003125,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09895129318237304,
+          "step": 640.0
+        },
+        {
+          "lr": 0.00625,
+          "stable": true,
+          "reached": true,
+          "loss": 0.08972295455932618,
+          "step": 384.0
+        },
+        {
+          "lr": 0.0125,
+          "stable": true,
+          "reached": true,
+          "loss": 0.0772456256866455,
+          "step": 256.0
+        },
+        {
+          "lr": 0.025,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07821065254211426,
+          "step": 128.0
+        },
+        {
+          "lr": 0.05,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07972867736816407,
+          "step": 64.0
+        },
+        {
+          "lr": 0.1,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09895573577880859,
+          "step": 32.0
+        }
+      ]
+    },
+    "1.0": {
+      "lr": 0.2,
+      "stable": true,
+      "reached": true,
+      "loss": 0.08213307952880859,
+      "step": 32.0,
+      "candidates": [
+        {
+          "lr": 0.00625,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09758998794555664,
+          "step": 640.0
+        },
+        {
+          "lr": 0.0125,
+          "stable": true,
+          "reached": true,
+          "loss": 0.087194140625,
+          "step": 384.0
+        },
+        {
+          "lr": 0.025,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07366605262756348,
+          "step": 256.0
+        },
+        {
+          "lr": 0.05,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07513780517578125,
+          "step": 128.0
+        },
+        {
+          "lr": 0.1,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07750367813110351,
+          "step": 64.0
+        },
+        {
+          "lr": 0.2,
+          "stable": true,
+          "reached": true,
+          "loss": 0.08213307952880859,
+          "step": 32.0
+        },
+        {
+          "lr": 0.4,
+          "stable": true,
+          "reached": true,
+          "loss": 0.051551903915405276,
+          "step": 64.0
+        }
+      ]
+    },
+    "16.0": {
+      "lr": 1.2125732532083187,
+      "stable": true,
+      "reached": true,
+      "loss": 0.07298374862670898,
+      "step": 64.0,
+      "candidates": [
+        {
+          "lr": 0.01894645708137998,
+          "stable": true,
+          "reached": false,
+          "loss": 0.31126768493652346,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.03789291416275996,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09196783905029297,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.07578582832551992,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09233092880249023,
+          "step": 512.0
+        },
+        {
+          "lr": 0.15157165665103983,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09303786392211914,
+          "step": 256.0
+        },
+        {
+          "lr": 0.30314331330207966,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09656598739624024,
+          "step": 128.0
+        },
+        {
+          "lr": 0.6062866266041593,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07187275543212891,
+          "step": 128.0
+        },
+        {
+          "lr": 1.2125732532083187,
+          "stable": true,
+          "reached": true,
+          "loss": 0.07298374862670898,
+          "step": 64.0
+        }
+      ]
+    },
+    "128.0": {
+      "lr": 2.7857618025475976,
+      "stable": true,
+      "reached": true,
+      "loss": 0.06577608833312988,
+      "step": 128.0,
+      "candidates": [
+        {
+          "lr": 0.04352752816480621,
+          "stable": true,
+          "reached": false,
+          "loss": 1.3781898681640625,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.08705505632961243,
+          "stable": true,
+          "reached": false,
+          "loss": 1.33546611328125,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.17411011265922485,
+          "stable": true,
+          "reached": false,
+          "loss": 0.11135021362304688,
+          "step": 1024.0
+        },
+        {
+          "lr": 0.3482202253184497,
+          "stable": true,
+          "reached": true,
+          "loss": 0.06943834419250489,
+          "step": 640.0
+        },
+        {
+          "lr": 0.6964404506368994,
+          "stable": true,
+          "reached": true,
+          "loss": 0.06850529556274414,
+          "step": 384.0
+        },
+        {
+          "lr": 1.3928809012737988,
+          "stable": true,
+          "reached": true,
+          "loss": 0.09145811767578126,
+          "step": 256.0
+        },
+        {
+          "lr": 2.7857618025475976,
+          "stable": true,
+          "reached": true,
+          "loss": 0.06577608833312988,
+          "step": 128.0
+        }
+      ]
+    }
+  },
+  "policy": "Stable target-reaching candidates ranked by steps, then loss; otherwise lowest training loss, flagged unreached"
+}

@@ -1,0 +1,27 @@
+{
+  "datasets": [
+    "CIFAR10",
+    "CIFAR100"
+  ],
+  "gammas": [
+    0.125,
+    0.5,
+    1.0,
+    4.0,
+    16.0,
+    64.0,
+    128.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "architecture": "ResNet18",
+  "batch_size": 128,
+  "epochs": 100,
+  "requires": "Completed controlled experiments and independent LR calibration",
+  "claims": "Geometry only; no known latent topology"
+}

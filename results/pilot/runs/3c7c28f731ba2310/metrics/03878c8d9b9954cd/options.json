@@ -1,0 +1,11 @@
+{
+  "jacobian_points": 1000,
+  "ntk_points": 32,
+  "ph_size": 150,
+  "ph_repeats": 3,
+  "ph_maxdim": 1,
+  "probe_train": 2000,
+  "probe_test": 1000,
+  "probe_iterations": 200,
+  "all_checkpoints": false
+}

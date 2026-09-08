@@ -1,0 +1,152 @@
+{
+  "run_id": "a5f05bdf0ff7f687",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 4.0,
+    "lr": 0.021763764082403103,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 0.2657659170217812,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.3835169311523436,
+      "training_accuracy": 0.71025,
+      "validation_loss": 1.38351787109375,
+      "validation_accuracy": 0.7172,
+      "seconds": 0.4405876250239089,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.3808024047851561,
+      "training_accuracy": 0.7927,
+      "validation_loss": 1.380798095703125,
+      "validation_accuracy": 0.7946,
+      "seconds": 0.8994130420032889,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.3752096557617188,
+      "training_accuracy": 0.81565,
+      "validation_loss": 1.3752474853515626,
+      "validation_accuracy": 0.8134,
+      "seconds": 1.1978281670017168,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.3640020629882812,
+      "training_accuracy": 0.81785,
+      "validation_loss": 1.3641578857421874,
+      "validation_accuracy": 0.8126,
+      "seconds": 1.5442404999630526,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 16,
+      "training_loss": 1.3410594360351562,
+      "training_accuracy": 0.76275,
+      "validation_loss": 1.341467431640625,
+      "validation_accuracy": 0.7552,
+      "seconds": 1.8662737499689683,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 1.293764434814453,
+      "training_accuracy": 0.8302,
+      "validation_loss": 1.29429140625,
+      "validation_accuracy": 0.8264,
+      "seconds": 2.382533625001088,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 64,
+      "training_loss": 1.177127130126953,
+      "training_accuracy": 0.87635,
+      "validation_loss": 1.1785180419921875,
+      "validation_accuracy": 0.8722,
+      "seconds": 2.849675292032771,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 128,
+      "training_loss": 0.8086567932128906,
+      "training_accuracy": 0.9289,
+      "validation_loss": 0.811992626953125,
+      "validation_accuracy": 0.9262,
+      "seconds": 4.1349086669506505,
+      "accuracy_crossings": [
+        0.9
+      ]
+    },
+    {
+      "step": 256,
+      "training_loss": 0.24425353698730468,
+      "training_accuracy": 0.98215,
+      "validation_loss": 0.24593210754394532,
+      "validation_accuracy": 0.982,
+      "seconds": 5.497036749962717,
+      "accuracy_crossings": [
+        0.95
+      ]
+    },
+    {
+      "step": 384,
+      "training_loss": 0.14350936584472657,
+      "training_accuracy": 0.9889,
+      "validation_loss": 0.14425570983886718,
+      "validation_accuracy": 0.991,
+      "seconds": 6.59463099995628,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 512,
+      "training_loss": 0.10918548126220703,
+      "training_accuracy": 0.991,
+      "validation_loss": 0.10966015472412109,
+      "validation_accuracy": 0.9908,
+      "seconds": 8.357220042031258,
+      "accuracy_crossings": [
+        0.99
+      ]
+    },
+    {
+      "step": 640,
+      "training_loss": 0.09099621276855469,
+      "training_accuracy": 0.99365,
+      "validation_loss": 0.09135933990478516,
+      "validation_accuracy": 0.9928,
+      "seconds": 9.278308999957517,
+      "accuracy_crossings": []
+    }
+  ],
+  "weight_displacement": 0.0731569016781245,
+  "elapsed_seconds": 9.280021624988876
+}

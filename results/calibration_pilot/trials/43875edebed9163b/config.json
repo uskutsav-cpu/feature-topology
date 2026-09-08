@@ -1,0 +1,16 @@
+{
+  "width": 256,
+  "depth": 4,
+  "centered": true,
+  "n_train": 20000,
+  "n_validation": 5000,
+  "n_grid": 10000,
+  "max_steps": 1024,
+  "eval_every": 128,
+  "batch_size": 256,
+  "target_loss": 0.1,
+  "threads": 2,
+  "gamma": 64.0,
+  "lr": 0.06597539553864472,
+  "seed": 900
+}

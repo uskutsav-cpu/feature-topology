@@ -1,0 +1,152 @@
+{
+  "run_id": "79cabdafdc7b3f4b",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 0.25,
+    "lr": 0.0015625,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 0.21234524995088577,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.336403955078125,
+      "training_accuracy": 0.71025,
+      "validation_loss": 1.336409423828125,
+      "validation_accuracy": 0.7174,
+      "seconds": 0.4399122910108417,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.2904573059082032,
+      "training_accuracy": 0.82765,
+      "validation_loss": 1.2903178466796874,
+      "validation_accuracy": 0.831,
+      "seconds": 0.6726982909021899,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.2046097106933593,
+      "training_accuracy": 0.8718,
+      "validation_loss": 1.2049191162109374,
+      "validation_accuracy": 0.8736,
+      "seconds": 0.884166874922812,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.0574375244140626,
+      "training_accuracy": 0.9116,
+      "validation_loss": 1.058675390625,
+      "validation_accuracy": 0.9082,
+      "seconds": 1.1190578329842538,
+      "accuracy_crossings": [
+        0.9
+      ]
+    },
+    {
+      "step": 16,
+      "training_loss": 0.8403354431152343,
+      "training_accuracy": 0.9305,
+      "validation_loss": 0.8416312622070312,
+      "validation_accuracy": 0.9282,
+      "seconds": 1.3530137499328703,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 0.5816029327392578,
+      "training_accuracy": 0.951,
+      "validation_loss": 0.5810953125,
+      "validation_accuracy": 0.9548,
+      "seconds": 1.9287992909085006,
+      "accuracy_crossings": [
+        0.95
+      ]
+    },
+    {
+      "step": 64,
+      "training_loss": 0.3609577606201172,
+      "training_accuracy": 0.96725,
+      "validation_loss": 0.36222935791015626,
+      "validation_accuracy": 0.9674,
+      "seconds": 2.490070707979612,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 128,
+      "training_loss": 0.2234619155883789,
+      "training_accuracy": 0.9778,
+      "validation_loss": 0.22529042053222656,
+      "validation_accuracy": 0.9758,
+      "seconds": 3.2770831249654293,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 256,
+      "training_loss": 0.14585500106811525,
+      "training_accuracy": 0.985,
+      "validation_loss": 0.1473431884765625,
+      "validation_accuracy": 0.9836,
+      "seconds": 4.6673797079129145,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 384,
+      "training_loss": 0.11726542205810547,
+      "training_accuracy": 0.988,
+      "validation_loss": 0.11828798217773437,
+      "validation_accuracy": 0.9874,
+      "seconds": 5.658151165931486,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 512,
+      "training_loss": 0.10164514083862304,
+      "training_accuracy": 0.9889,
+      "validation_loss": 0.10261500396728515,
+      "validation_accuracy": 0.9874,
+      "seconds": 6.634939332958311,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 640,
+      "training_loss": 0.0913635612487793,
+      "training_accuracy": 0.9907,
+      "validation_loss": 0.09239920806884766,
+      "validation_accuracy": 0.9892,
+      "seconds": 7.92195120791439,
+      "accuracy_crossings": [
+        0.99
+      ]
+    }
+  ],
+  "weight_displacement": 0.015096307724225173,
+  "elapsed_seconds": 7.923995665973052
+}

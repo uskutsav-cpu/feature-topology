@@ -1,0 +1,506 @@
+[
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "test_accuracy",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "ntk_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "cka_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "effective_rank",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "local_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "global_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "nuisance_jacobian",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "mlp_nuisance_cosine",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 1,
+    "metric": "ph_h1_top2",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "test_accuracy",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "ntk_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "cka_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "effective_rank",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "local_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "global_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "nuisance_jacobian",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "mlp_nuisance_cosine",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 2,
+    "metric": "ph_h1_top2",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "test_accuracy",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "ntk_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "cka_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "effective_rank",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "local_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "global_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "nuisance_jacobian",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "mlp_nuisance_cosine",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 3,
+    "metric": "ph_h1_top2",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "test_accuracy",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "ntk_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "cka_drift",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "effective_rank",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "local_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "global_normalized_q01",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "nuisance_jacobian",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "mlp_nuisance_cosine",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  },
+  {
+    "profile": "03878c8d9b9954cd",
+    "layer": 4,
+    "metric": "ph_h1_top2",
+    "estimable": false,
+    "reason": "At least six finite distinct gamma levels required",
+    "bootstrap": {
+      "n_seeds": 3,
+      "repeats": 0,
+      "lower": null,
+      "upper": null,
+      "reason": "At least six gamma levels required"
+    }
+  }
+]

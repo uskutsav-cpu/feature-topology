@@ -1,0 +1,10 @@
+{
+  "state": "paused_for_requested_commit_and_push",
+  "workers": {
+    "images": 31641,
+    "main_training": 34079,
+    "main_metrics": 35435
+  },
+  "resume_after": "Push to user-specified GitHub repository succeeds",
+  "note": "SIGSTOP preserves in-memory progress; completed artifacts and atomic recovery checkpoints are included in this snapshot."
+}

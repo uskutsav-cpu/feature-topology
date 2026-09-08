@@ -1,0 +1,1896 @@
+{
+  "name": "relevance",
+  "runs": [
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.05,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.1,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.25,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 0.5,
+      "relevance_mode": "periodic"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "relevance": 1,
+      "relevance_mode": "periodic"
+    }
+  ],
+  "requires": "Passed pilot; separately frozen per-architecture/per-task calibration; deduplicate shared main runs"
+}

@@ -1,0 +1,8 @@
+{
+  "gamma": 0.125,
+  "lr": 0.0001953125,
+  "seed": 900,
+  "max_steps": 1000,
+  "target_loss": 0.5,
+  "width": 16
+}

@@ -1,0 +1,483 @@
+{
+  "step": 128,
+  "gamma": 16.0,
+  "seed": 2,
+  "test_loss": 0.045555294036865236,
+  "test_accuracy": 0.986,
+  "ntk_drift": 154.9319305419922,
+  "ntk_points": 32,
+  "layers": [
+    {
+      "layer": 1,
+      "cka_drift": 0.04177978522222936,
+      "effective_rank": 7.484405562537175,
+      "scale": 4.7869038581848145,
+      "distortion": {
+        "valid_pairs": 50000,
+        "median": 1.0907490253448486,
+        "q05": 0.941156268119812,
+        "q95": 1.211609959602356,
+        "variance": 0.0066923703998327255
+      },
+      "jacobian": {
+        "min": 3.0112435817718506,
+        "q001": 3.042832612991333,
+        "q01": 3.1623101234436035,
+        "q05": 3.2522122859954834,
+        "median": 3.5274691581726074,
+        "task_norm": 4.784849643707275,
+        "nuisance_norm": 3.5327820777893066,
+        "fraction_below_0.0001": 0.0,
+        "fraction_below_0.001": 0.0,
+        "fraction_below_0.01": 0.0,
+        "normalized_q01": 0.6606169939041138
+      },
+      "global_margin": {
+        "sampled_min": 1.7424061298370361,
+        "q001": 1.8660229444503784,
+        "q01": 1.9847824573516846,
+        "q05": 2.130143165588379,
+        "eligible_pairs": 98038,
+        "delta": 0.5,
+        "normalized_q01": 0.4146275998332481
+      },
+      "collisions": {
+        "mean": 0.1663581281900406,
+        "q95": 0.18849563598632812,
+        "k": 20
+      },
+      "probes": {
+        "linear": {
+          "task_accuracy": 0.992,
+          "nuisance_r2": 0.9999735355377197,
+          "convergence_warnings": 0,
+          "angular_mae": 0.003506059292703867,
+          "angular_cosine": 0.9999903440475464
+        },
+        "mlp": {
+          "task_accuracy": 0.993,
+          "nuisance_r2": 0.9988923072814941,
+          "convergence_warnings": 0,
+          "angular_mae": 0.018686948344111443,
+          "angular_cosine": 0.99970543384552
+        }
+      },
+      "persistence": [
+        {
+          "repeat": 0,
+          "size": 150,
+          "normalized": true,
+          "scale": 4.7869038581848145,
+          "H0": {
+            "total_persistence": 42.0792601108551,
+            "top1": 0.6402208209037781,
+            "top2": 0.619106113910675,
+            "entropy": 4.915743548342784,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 6.363945096731186,
+            "top1": 0.9934439361095428,
+            "top2": 0.6222927868366241,
+            "entropy": 3.22880034850342,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 150,
+          "normalized": true,
+          "scale": 4.7869038581848145,
+          "H0": {
+            "total_persistence": 41.00357510522008,
+            "top1": 0.5042933821678162,
+            "top2": 0.4931107461452484,
+            "entropy": 4.909902875571925,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 6.380885511636734,
+            "top1": 0.9872128665447235,
+            "top2": 0.6254207491874695,
+            "entropy": 3.117822239132882,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 150,
+          "normalized": true,
+          "scale": 4.7869038581848145,
+          "H0": {
+            "total_persistence": 41.94866577163339,
+            "top1": 0.5202106833457947,
+            "top2": 0.5196587443351746,
+            "entropy": 4.908949536569614,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 6.430991351604462,
+            "top1": 0.9256229400634766,
+            "top2": 0.5822941064834595,
+            "entropy": 3.38875862196374,
+            "essential_bars": 0
+          }
+        }
+      ]
+    },
+    {
+      "layer": 2,
+      "cka_drift": 0.2326799157335232,
+      "effective_rank": 4.115310114009667,
+      "scale": 9.230487823486328,
+      "distortion": {
+        "valid_pairs": 50000,
+        "median": 2.464961528778076,
+        "q05": 0.9717810750007629,
+        "q95": 3.048783302307129,
+        "variance": 0.4060213565826416
+      },
+      "jacobian": {
+        "min": 2.2156126499176025,
+        "q001": 2.220623254776001,
+        "q01": 2.4023349285125732,
+        "q05": 2.658297061920166,
+        "median": 3.16880464553833,
+        "task_norm": 10.181571960449219,
+        "nuisance_norm": 3.1859130859375,
+        "fraction_below_0.0001": 0.0,
+        "fraction_below_0.001": 0.0,
+        "fraction_below_0.01": 0.0,
+        "normalized_q01": 0.2602608799934387
+      },
+      "global_margin": {
+        "sampled_min": 1.3255420923233032,
+        "q001": 1.4947173595428467,
+        "q01": 1.7528901100158691,
+        "q05": 2.304673910140991,
+        "eligible_pairs": 98038,
+        "delta": 0.5,
+        "normalized_q01": 0.18990221790399456
+      },
+      "collisions": {
+        "mean": 0.2761911153793335,
+        "q95": 0.37699079513549805,
+        "k": 20
+      },
+      "probes": {
+        "linear": {
+          "task_accuracy": 0.994,
+          "nuisance_r2": 0.9997382164001465,
+          "convergence_warnings": 0,
+          "angular_mae": 0.009625131264328957,
+          "angular_cosine": 0.9999263882637024
+        },
+        "mlp": {
+          "task_accuracy": 0.996,
+          "nuisance_r2": 0.998166561126709,
+          "convergence_warnings": 0,
+          "angular_mae": 0.024482857435941696,
+          "angular_cosine": 0.9994946122169495
+        }
+      },
+      "persistence": [
+        {
+          "repeat": 0,
+          "size": 150,
+          "normalized": true,
+          "scale": 9.230487823486328,
+          "H0": {
+            "total_persistence": 30.237963289022446,
+            "top1": 0.36601367592811584,
+            "top2": 0.36509865522384644,
+            "entropy": 4.929011416779842,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 3.551296591758728,
+            "top1": 1.1946881115436554,
+            "top2": 0.19625192880630493,
+            "entropy": 2.810230872059342,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 150,
+          "normalized": true,
+          "scale": 9.230487823486328,
+          "H0": {
+            "total_persistence": 29.827997617423534,
+            "top1": 0.392436683177948,
+            "top2": 0.38524335622787476,
+            "entropy": 4.912446728085069,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 4.036507338285446,
+            "top1": 1.178131103515625,
+            "top2": 0.1625770926475525,
+            "entropy": 3.0987233144498054,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 150,
+          "normalized": true,
+          "scale": 9.230487823486328,
+          "H0": {
+            "total_persistence": 30.337217012420297,
+            "top1": 0.4343222677707672,
+            "top2": 0.42508944869041443,
+            "entropy": 4.889538069838791,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 3.5122620463371277,
+            "top1": 1.1300708055496216,
+            "top2": 0.1815159022808075,
+            "entropy": 3.0057050829980287,
+            "essential_bars": 0
+          }
+        }
+      ]
+    },
+    {
+      "layer": 3,
+      "cka_drift": 0.3080985142564888,
+      "effective_rank": 3.131428837635202,
+      "scale": 20.869932174682617,
+      "distortion": {
+        "valid_pairs": 50000,
+        "median": 6.201737403869629,
+        "q05": 1.2758837938308716,
+        "q95": 8.07246208190918,
+        "variance": 4.3008952140808105
+      },
+      "jacobian": {
+        "min": 1.7894748449325562,
+        "q001": 1.8437516689300537,
+        "q01": 2.065098285675049,
+        "q05": 2.3132503032684326,
+        "median": 3.0936331748962402,
+        "task_norm": 20.27047348022461,
+        "nuisance_norm": 3.159740924835205,
+        "fraction_below_0.0001": 0.0,
+        "fraction_below_0.001": 0.0,
+        "fraction_below_0.01": 0.0,
+        "normalized_q01": 0.09895088523626328
+      },
+      "global_margin": {
+        "sampled_min": 1.1041902303695679,
+        "q001": 1.406790018081665,
+        "q01": 1.8230462074279785,
+        "q05": 2.9003376960754395,
+        "eligible_pairs": 98038,
+        "delta": 0.5,
+        "normalized_q01": 0.08735276148331339
+      },
+      "collisions": {
+        "mean": 0.4858601689338684,
+        "q95": 0.6911505460739136,
+        "k": 20
+      },
+      "probes": {
+        "linear": {
+          "task_accuracy": 0.996,
+          "nuisance_r2": 0.9985589385032654,
+          "convergence_warnings": 0,
+          "angular_mae": 0.02200363017618656,
+          "angular_cosine": 0.9995976090431213
+        },
+        "mlp": {
+          "task_accuracy": 0.99,
+          "nuisance_r2": 0.997114360332489,
+          "convergence_warnings": 0,
+          "angular_mae": 0.03069896809756756,
+          "angular_cosine": 0.9991449117660522
+        }
+      },
+      "persistence": [
+        {
+          "repeat": 0,
+          "size": 150,
+          "normalized": true,
+          "scale": 20.869932174682617,
+          "H0": {
+            "total_persistence": 19.003029776271433,
+            "top1": 0.3071058988571167,
+            "top2": 0.27398601174354553,
+            "entropy": 4.909169786729664,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.8550673127174377,
+            "top1": 1.1433069109916687,
+            "top2": 0.06831562519073486,
+            "entropy": 1.8919216972369686,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 150,
+          "normalized": true,
+          "scale": 20.869932174682617,
+          "H0": {
+            "total_persistence": 18.804415532387793,
+            "top1": 0.33886823058128357,
+            "top2": 0.30435630679130554,
+            "entropy": 4.896748455819118,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.7422498166561127,
+            "top1": 1.0852611660957336,
+            "top2": 0.06615553796291351,
+            "entropy": 1.9090948213957037,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 150,
+          "normalized": true,
+          "scale": 20.869932174682617,
+          "H0": {
+            "total_persistence": 18.250444947741926,
+            "top1": 0.4266918897628784,
+            "top2": 0.33224377036094666,
+            "entropy": 4.868865304702501,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4578134045004845,
+            "top1": 1.0550655722618103,
+            "top2": 0.04383549094200134,
+            "entropy": 1.3917207081185616,
+            "essential_bars": 0
+          }
+        }
+      ]
+    },
+    {
+      "layer": 4,
+      "cka_drift": 0.36068771987452153,
+      "effective_rank": 2.960401058568352,
+      "scale": 47.37483215332031,
+      "distortion": {
+        "valid_pairs": 50000,
+        "median": 15.952675819396973,
+        "q05": 2.269392490386963,
+        "q95": 21.291099548339844,
+        "variance": 34.65116882324219
+      },
+      "jacobian": {
+        "min": 1.6151527166366577,
+        "q001": 1.6640337705612183,
+        "q01": 2.026510238647461,
+        "q05": 2.2712972164154053,
+        "median": 3.152806282043457,
+        "task_norm": 40.34457778930664,
+        "nuisance_norm": 3.4429993629455566,
+        "fraction_below_0.0001": 0.0,
+        "fraction_below_0.001": 0.0,
+        "fraction_below_0.01": 0.0,
+        "normalized_q01": 0.042776092886924744
+      },
+      "global_margin": {
+        "sampled_min": 1.1676112413406372,
+        "q001": 1.5256707668304443,
+        "q01": 2.1799161434173584,
+        "q05": 4.574161052703857,
+        "eligible_pairs": 98038,
+        "delta": 0.5,
+        "normalized_q01": 0.04601422410030801
+      },
+      "collisions": {
+        "mean": 0.6472620368003845,
+        "q95": 0.8168141841888428,
+        "k": 20
+      },
+      "probes": {
+        "linear": {
+          "task_accuracy": 0.996,
+          "nuisance_r2": 0.9952249526977539,
+          "convergence_warnings": 0,
+          "angular_mae": 0.038278304040431976,
+          "angular_cosine": 0.9988026022911072
+        },
+        "mlp": {
+          "task_accuracy": 0.992,
+          "nuisance_r2": 0.9951435327529907,
+          "convergence_warnings": 0,
+          "angular_mae": 0.039230067282915115,
+          "angular_cosine": 0.9987397193908691
+        }
+      },
+      "persistence": [
+        {
+          "repeat": 0,
+          "size": 150,
+          "normalized": true,
+          "scale": 47.37483215332031,
+          "H0": {
+            "total_persistence": 12.456657510716468,
+            "top1": 0.28403738141059875,
+            "top2": 0.25210005044937134,
+            "entropy": 4.851549678606438,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.2015126161277294,
+            "top1": 1.0467057824134827,
+            "top2": 0.0198109969496727,
+            "entropy": 0.7205447125649116,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 150,
+          "normalized": true,
+          "scale": 47.37483215332031,
+          "H0": {
+            "total_persistence": 12.555134618189186,
+            "top1": 0.37962278723716736,
+            "top2": 0.3572571873664856,
+            "entropy": 4.813497081418996,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.1495741233229637,
+            "top1": 1.0166761875152588,
+            "top2": 0.020375370979309082,
+            "entropy": 0.6455972627933738,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 150,
+          "normalized": true,
+          "scale": 47.37483215332031,
+          "H0": {
+            "total_persistence": 11.984013953246176,
+            "top1": 0.4324016571044922,
+            "top2": 0.33959051966667175,
+            "entropy": 4.790024319663189,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.0391320288181305,
+            "top1": 0.906047523021698,
+            "top2": 0.03092009574174881,
+            "entropy": 0.6996879561960708,
+            "essential_bars": 0
+          }
+        }
+      ]
+    }
+  ]
+}

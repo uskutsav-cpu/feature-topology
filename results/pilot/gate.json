@@ -1,0 +1,179 @@
+{
+  "proceed_to_main": true,
+  "diagnostics": {
+    "all_converged": true,
+    "low_gamma_ntk_median": 0.01999674364924431,
+    "high_gamma_ntk_median": 4462.4404296875,
+    "high_gamma_cka_median": 0.35507978504318927,
+    "high_gamma_nuisance_cosine": 0.9954766631126404
+  },
+  "runs": [
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.08312783889770507,
+      "ntk_drift": 151.82691955566406,
+      "cka_drift": 0.30567754817820936,
+      "local_q01": 0.04542672261595726,
+      "nuisance_cosine": 0.9991258382797241
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.08220590591430664,
+      "ntk_drift": 0.6141279935836792,
+      "cka_drift": 0.27079774081612207,
+      "local_q01": 0.5052049160003662,
+      "nuisance_cosine": 0.9982553720474243
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.0883557403564453,
+      "ntk_drift": 0.9097630381584167,
+      "cka_drift": 0.1600382699169054,
+      "local_q01": 0.5798972249031067,
+      "nuisance_cosine": 0.9991627931594849
+    },
+    {
+      "gamma": 0.03125,
+      "seed": 2,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09767492370605468,
+      "ntk_drift": 0.029734697192907333,
+      "cka_drift": 0.0012291228796920128,
+      "local_q01": 0.8776983618736267,
+      "nuisance_cosine": 0.9993133544921875
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.0756195198059082,
+      "ntk_drift": 1.8034225702285767,
+      "cka_drift": 0.3640959897180225,
+      "local_q01": 0.3677687644958496,
+      "nuisance_cosine": 0.9991474747657776
+    },
+    {
+      "gamma": 0.03125,
+      "seed": 1,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09527055053710938,
+      "ntk_drift": 0.019929802045226097,
+      "cka_drift": 0.0013350748555718273,
+      "local_q01": 0.8118354678153992,
+      "nuisance_cosine": 0.9988604784011841
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.07975946617126464,
+      "ntk_drift": 3.631577491760254,
+      "cka_drift": 0.26369385538934365,
+      "local_q01": 0.31256476044654846,
+      "nuisance_cosine": 0.9991431832313538
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.04394989814758301,
+      "ntk_drift": 5425.6787109375,
+      "cka_drift": 0.43118076605599986,
+      "local_q01": 0.00799777451902628,
+      "nuisance_cosine": 0.9924675822257996
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.05350928573608398,
+      "ntk_drift": 4462.4404296875,
+      "cka_drift": 0.35507978504318927,
+      "local_q01": 0.011328482069075108,
+      "nuisance_cosine": 0.9954766631126404
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.04399038944244385,
+      "ntk_drift": 154.9319305419922,
+      "cka_drift": 0.36068771987452153,
+      "local_q01": 0.042776092886924744,
+      "nuisance_cosine": 0.9987397193908691
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09904208908081055,
+      "ntk_drift": 0.4741446077823639,
+      "cka_drift": 0.263753492263207,
+      "local_q01": 0.5555053353309631,
+      "nuisance_cosine": 0.9989571571350098
+    },
+    {
+      "gamma": 0.03125,
+      "seed": 0,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09815455932617187,
+      "ntk_drift": 0.01999674364924431,
+      "cka_drift": 0.0005828437873003356,
+      "local_q01": 0.8946226239204407,
+      "nuisance_cosine": 0.9988811016082764
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.04773618278503418,
+      "ntk_drift": 162.52040100097656,
+      "cka_drift": 0.43874094978812717,
+      "local_q01": 0.035687416791915894,
+      "nuisance_cosine": 0.9974598288536072
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09957181854248047,
+      "ntk_drift": 4304.48291015625,
+      "cka_drift": 0.2966511838301149,
+      "local_q01": 0.01296065654605627,
+      "nuisance_cosine": 0.9959172606468201
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "profile": "03878c8d9b9954cd",
+      "converged": true,
+      "training_loss": 0.09491087493896484,
+      "ntk_drift": 2.223552942276001,
+      "cka_drift": 0.30309542112193055,
+      "local_q01": 0.3660075068473816,
+      "nuisance_cosine": 0.9991536140441895
+    }
+  ],
+  "interpretation": "Operational pilot gate establishes a measurable regime contrast and optimization comparability. It neither requires nor certifies information destruction.",
+  "thresholds": "Exploratory engineering checks: low NTK <0.1, high NTK >1, high CKA drift >0.05; these were not preregistered statistical tests."
+}

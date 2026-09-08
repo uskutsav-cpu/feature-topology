@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "feature-topology"
+version = "0.1.0"
+description = "Controlled experiments separating feature geometry from information loss"
+requires-python = ">=3.11"
+dependencies = ["torch", "numpy", "scipy", "scikit-learn", "ripser", "persim", "gudhi", "pandas", "matplotlib", "torchvision"]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

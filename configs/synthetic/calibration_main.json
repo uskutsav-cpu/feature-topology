@@ -1,0 +1,41 @@
+{
+  "gammas": [
+    0.03125,
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0
+  ],
+  "calibration_seeds": [
+    900
+  ],
+  "lr_multipliers": [
+    0.125,
+    0.25,
+    0.5,
+    1,
+    2,
+    4,
+    8
+  ],
+  "base_lr": 0.05,
+  "width": 256,
+  "depth": 4,
+  "centered": true,
+  "n_train": 20000,
+  "n_validation": 5000,
+  "n_grid": 10000,
+  "max_steps": 1024,
+  "eval_every": 128,
+  "batch_size": 256,
+  "target_loss": 0.1,
+  "threads": 2
+}

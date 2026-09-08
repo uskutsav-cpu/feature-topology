@@ -1,0 +1,150 @@
+{
+  "run_id": "157cdd1903ca2ff6",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 128.0,
+    "lr": 0.3482202253184497,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 2.1817913750419393,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.3862509033203125,
+      "training_accuracy": 0.71015,
+      "validation_loss": 1.3862508544921874,
+      "validation_accuracy": 0.7172,
+      "seconds": 3.502396292053163,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.3862083618164063,
+      "training_accuracy": 0.78925,
+      "validation_loss": 1.386208251953125,
+      "validation_accuracy": 0.7928,
+      "seconds": 4.707575167063624,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.3861205078125,
+      "training_accuracy": 0.80875,
+      "validation_loss": 1.386121142578125,
+      "validation_accuracy": 0.808,
+      "seconds": 5.755141542060301,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.3859437377929686,
+      "training_accuracy": 0.8093,
+      "validation_loss": 1.385946142578125,
+      "validation_accuracy": 0.8022,
+      "seconds": 6.870479667093605,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 16,
+      "training_loss": 1.3855783325195312,
+      "training_accuracy": 0.72285,
+      "validation_loss": 1.3855853515625,
+      "validation_accuracy": 0.7138,
+      "seconds": 7.770784749998711,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 1.3848432006835938,
+      "training_accuracy": 0.7762,
+      "validation_loss": 1.3848523193359374,
+      "validation_accuracy": 0.7674,
+      "seconds": 9.119983500102535,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 64,
+      "training_loss": 1.3831862548828124,
+      "training_accuracy": 0.80485,
+      "validation_loss": 1.3832102783203124,
+      "validation_accuracy": 0.7988,
+      "seconds": 11.167493292014115,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 128,
+      "training_loss": 1.3782491455078125,
+      "training_accuracy": 0.772,
+      "validation_loss": 1.378350927734375,
+      "validation_accuracy": 0.7674,
+      "seconds": 14.789383833063766,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 256,
+      "training_loss": 1.3374070190429688,
+      "training_accuracy": 0.6451,
+      "validation_loss": 1.3382352294921875,
+      "validation_accuracy": 0.6418,
+      "seconds": 19.587941667065024,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 384,
+      "training_loss": 0.6830926879882813,
+      "training_accuracy": 0.8881,
+      "validation_loss": 0.68540380859375,
+      "validation_accuracy": 0.8862,
+      "seconds": 23.67341862502508,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 512,
+      "training_loss": 0.11210170059204101,
+      "training_accuracy": 0.99155,
+      "validation_loss": 0.11199491424560547,
+      "validation_accuracy": 0.992,
+      "seconds": 27.453778083086945,
+      "accuracy_crossings": [
+        0.9,
+        0.95,
+        0.99
+      ]
+    },
+    {
+      "step": 640,
+      "training_loss": 0.06943834419250489,
+      "training_accuracy": 0.9944,
+      "validation_loss": 0.06919624481201171,
+      "validation_accuracy": 0.9944,
+      "seconds": 31.369742708047852,
+      "accuracy_crossings": []
+    }
+  ],
+  "weight_displacement": 0.2603530971752025,
+  "elapsed_seconds": 31.372513417038135
+}

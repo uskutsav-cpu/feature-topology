@@ -1,0 +1,152 @@
+{
+  "run_id": "9afb472f284ab3f8",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 0.5,
+    "lr": 0.003125,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 0.42585024994332343,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.3610417358398437,
+      "training_accuracy": 0.71025,
+      "validation_loss": 1.3610476318359375,
+      "validation_accuracy": 0.7174,
+      "seconds": 0.6782845000270754,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.3370639282226562,
+      "training_accuracy": 0.80955,
+      "validation_loss": 1.3370094482421875,
+      "validation_accuracy": 0.812,
+      "seconds": 0.94079433393199,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.2900181579589844,
+      "training_accuracy": 0.84435,
+      "validation_loss": 1.29026611328125,
+      "validation_accuracy": 0.8462,
+      "seconds": 1.3415620420128107,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.2030974670410157,
+      "training_accuracy": 0.8746,
+      "validation_loss": 1.204052880859375,
+      "validation_accuracy": 0.8682,
+      "seconds": 1.5990760419517756,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 16,
+      "training_loss": 1.0539899841308593,
+      "training_accuracy": 0.88625,
+      "validation_loss": 1.0554961303710937,
+      "validation_accuracy": 0.88,
+      "seconds": 2.12463408394251,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 0.8202968322753906,
+      "training_accuracy": 0.9474,
+      "validation_loss": 0.8203620239257813,
+      "validation_accuracy": 0.9486,
+      "seconds": 2.705794999958016,
+      "accuracy_crossings": [
+        0.9
+      ]
+    },
+    {
+      "step": 64,
+      "training_loss": 0.5303911437988281,
+      "training_accuracy": 0.96375,
+      "validation_loss": 0.5319745544433594,
+      "validation_accuracy": 0.9646,
+      "seconds": 3.5325454169651493,
+      "accuracy_crossings": [
+        0.95
+      ]
+    },
+    {
+      "step": 128,
+      "training_loss": 0.29880196990966795,
+      "training_accuracy": 0.97505,
+      "validation_loss": 0.301059326171875,
+      "validation_accuracy": 0.9748,
+      "seconds": 4.340216125012375,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 256,
+      "training_loss": 0.1743618133544922,
+      "training_accuracy": 0.9827,
+      "validation_loss": 0.17609466247558594,
+      "validation_accuracy": 0.982,
+      "seconds": 6.0174828339368105,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 384,
+      "training_loss": 0.13338555755615233,
+      "training_accuracy": 0.98685,
+      "validation_loss": 0.13452520294189454,
+      "validation_accuracy": 0.985,
+      "seconds": 7.9258423750288785,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 512,
+      "training_loss": 0.11234085006713868,
+      "training_accuracy": 0.98845,
+      "validation_loss": 0.1133366973876953,
+      "validation_accuracy": 0.9872,
+      "seconds": 9.945241333916783,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 640,
+      "training_loss": 0.09895129318237304,
+      "training_accuracy": 0.9901,
+      "validation_loss": 0.09996312103271485,
+      "validation_accuracy": 0.9894,
+      "seconds": 11.504012958961539,
+      "accuracy_crossings": [
+        0.99
+      ]
+    }
+  ],
+  "weight_displacement": 0.023671393434784197,
+  "elapsed_seconds": 11.507267541950569
+}

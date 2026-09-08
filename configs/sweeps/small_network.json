@@ -1,0 +1,846 @@
+{
+  "name": "small_network",
+  "runs": [
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 8,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 16,
+      "depth": 4,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 2,
+      "manifold": "torus"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 32,
+      "depth": 4,
+      "manifold": "torus"
+    }
+  ],
+  "requires": "Passed pilot; separately frozen per-architecture/per-task calibration; deduplicate shared main runs"
+}

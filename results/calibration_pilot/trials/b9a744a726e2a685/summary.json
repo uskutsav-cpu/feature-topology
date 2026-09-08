@@ -1,0 +1,152 @@
+{
+  "run_id": "b9a744a726e2a685",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 1.0,
+    "lr": 0.00625,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 0.40272079198621213,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.37359150390625,
+      "training_accuracy": 0.71025,
+      "validation_loss": 1.373595263671875,
+      "validation_accuracy": 0.7174,
+      "seconds": 0.8976275419117883,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.3613314453125,
+      "training_accuracy": 0.80025,
+      "validation_loss": 1.361308544921875,
+      "validation_accuracy": 0.802,
+      "seconds": 1.3497084999689832,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.33661123046875,
+      "training_accuracy": 0.8292,
+      "validation_loss": 1.336762890625,
+      "validation_accuracy": 0.8274,
+      "seconds": 1.79951237491332,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.2889170959472656,
+      "training_accuracy": 0.84515,
+      "validation_loss": 1.2895155029296874,
+      "validation_accuracy": 0.8386,
+      "seconds": 2.2326550419675186,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 16,
+      "training_loss": 1.1994560913085937,
+      "training_accuracy": 0.8351,
+      "validation_loss": 1.2007137939453125,
+      "validation_accuracy": 0.8294,
+      "seconds": 2.784104458987713,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 1.035439288330078,
+      "training_accuracy": 0.92285,
+      "validation_loss": 1.036132275390625,
+      "validation_accuracy": 0.9214,
+      "seconds": 3.312756458995864,
+      "accuracy_crossings": [
+        0.9
+      ]
+    },
+    {
+      "step": 64,
+      "training_loss": 0.7482955322265625,
+      "training_accuracy": 0.9611,
+      "validation_loss": 0.7501030029296875,
+      "validation_accuracy": 0.9604,
+      "seconds": 4.097637666971423,
+      "accuracy_crossings": [
+        0.95
+      ]
+    },
+    {
+      "step": 128,
+      "training_loss": 0.3986577423095703,
+      "training_accuracy": 0.97215,
+      "validation_loss": 0.40113509521484375,
+      "validation_accuracy": 0.9704,
+      "seconds": 5.120620124973357,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 256,
+      "training_loss": 0.1950581298828125,
+      "training_accuracy": 0.98195,
+      "validation_loss": 0.196857373046875,
+      "validation_accuracy": 0.9816,
+      "seconds": 6.718924249988049,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 384,
+      "training_loss": 0.13919487762451171,
+      "training_accuracy": 0.987,
+      "validation_loss": 0.14034640350341798,
+      "validation_accuracy": 0.9864,
+      "seconds": 9.038536833948456,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 512,
+      "training_loss": 0.11321032791137696,
+      "training_accuracy": 0.98885,
+      "validation_loss": 0.1141954818725586,
+      "validation_accuracy": 0.9872,
+      "seconds": 10.712575916899368,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 640,
+      "training_loss": 0.09758998794555664,
+      "training_accuracy": 0.99105,
+      "validation_loss": 0.09851827392578125,
+      "validation_accuracy": 0.9896,
+      "seconds": 12.774770666961558,
+      "accuracy_crossings": [
+        0.99
+      ]
+    }
+  ],
+  "weight_displacement": 0.03609735415211849,
+  "elapsed_seconds": 12.77716612489894
+}

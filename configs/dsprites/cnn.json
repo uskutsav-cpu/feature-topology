@@ -1,0 +1,22 @@
+{
+  "task": "shape",
+  "nuisance": "orientation",
+  "architecture": "CNN",
+  "gammas": [
+    0.125,
+    0.5,
+    1.0,
+    4.0,
+    16.0,
+    64.0,
+    128.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "requires": "Official dSprites archive; stratified factor design; acknowledge shape rotational symmetries"
+}

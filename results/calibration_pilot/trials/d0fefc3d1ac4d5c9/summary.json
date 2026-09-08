@@ -1,0 +1,151 @@
+{
+  "run_id": "d0fefc3d1ac4d5c9",
+  "config": {
+    "width": 256,
+    "depth": 4,
+    "centered": true,
+    "n_train": 20000,
+    "n_validation": 5000,
+    "n_grid": 10000,
+    "max_steps": 1024,
+    "eval_every": 128,
+    "batch_size": 256,
+    "target_loss": 0.1,
+    "threads": 2,
+    "gamma": 32.0,
+    "lr": 0.1,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 1.3862946044921876,
+      "training_accuracy": 0.2496,
+      "validation_loss": 1.38629462890625,
+      "validation_accuracy": 0.2418,
+      "seconds": 0.30748333304654807,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 1,
+      "training_loss": 1.386094775390625,
+      "training_accuracy": 0.71005,
+      "validation_loss": 1.3860949462890626,
+      "validation_accuracy": 0.7172,
+      "seconds": 0.6939643750665709,
+      "accuracy_crossings": [
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "step": 2,
+      "training_loss": 1.3858991577148438,
+      "training_accuracy": 0.7894,
+      "validation_loss": 1.385898828125,
+      "validation_accuracy": 0.7926,
+      "seconds": 0.9456887920387089,
+      "accuracy_crossings": [
+        0.75
+      ]
+    },
+    {
+      "step": 4,
+      "training_loss": 1.3854954467773437,
+      "training_accuracy": 0.8092,
+      "validation_loss": 1.3854981689453125,
+      "validation_accuracy": 0.8082,
+      "seconds": 1.277511875028722,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 8,
+      "training_loss": 1.3846824584960937,
+      "training_accuracy": 0.80965,
+      "validation_loss": 1.3846938232421875,
+      "validation_accuracy": 0.8022,
+      "seconds": 1.8299215420847759,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 16,
+      "training_loss": 1.3830005615234375,
+      "training_accuracy": 0.72555,
+      "validation_loss": 1.383032373046875,
+      "validation_accuracy": 0.7172,
+      "seconds": 2.3253303330857307,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 32,
+      "training_loss": 1.3795967895507812,
+      "training_accuracy": 0.78035,
+      "validation_loss": 1.3796396240234374,
+      "validation_accuracy": 0.7722,
+      "seconds": 3.0643715830519795,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 64,
+      "training_loss": 1.3717364868164061,
+      "training_accuracy": 0.80975,
+      "validation_loss": 1.371852490234375,
+      "validation_accuracy": 0.8044,
+      "seconds": 3.5897170830285177,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 128,
+      "training_loss": 1.3465710083007814,
+      "training_accuracy": 0.77615,
+      "validation_loss": 1.347077099609375,
+      "validation_accuracy": 0.768,
+      "seconds": 4.815418833051808,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 256,
+      "training_loss": 1.1243751831054687,
+      "training_accuracy": 0.7559,
+      "validation_loss": 1.1278234985351563,
+      "validation_accuracy": 0.7482,
+      "seconds": 6.639398083090782,
+      "accuracy_crossings": []
+    },
+    {
+      "step": 384,
+      "training_loss": 0.3013524948120117,
+      "training_accuracy": 0.98435,
+      "validation_loss": 0.3024939453125,
+      "validation_accuracy": 0.9852,
+      "seconds": 8.3012274580542,
+      "accuracy_crossings": [
+        0.9,
+        0.95
+      ]
+    },
+    {
+      "step": 512,
+      "training_loss": 0.1335350212097168,
+      "training_accuracy": 0.99125,
+      "validation_loss": 0.1340447250366211,
+      "validation_accuracy": 0.9922,
+      "seconds": 10.439187708077952,
+      "accuracy_crossings": [
+        0.99
+      ]
+    },
+    {
+      "step": 640,
+      "training_loss": 0.09376214523315429,
+      "training_accuracy": 0.99475,
+      "validation_loss": 0.09404638366699218,
+      "validation_accuracy": 0.9948,
+      "seconds": 11.961456792079844,
+      "accuracy_crossings": []
+    }
+  ],
+  "weight_displacement": 0.15882092940156387,
+  "elapsed_seconds": 11.966281250002794
+}
