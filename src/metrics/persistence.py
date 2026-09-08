@@ -1,10 +1,15 @@
 import numpy as np
 import hashlib
 import json
-import os
 from pathlib import Path
-from ripser import ripser
+try:
+    from ripser import ripser
+except ModuleNotFoundError as exc:
+    if exc.name != 'ripser':
+        raise
+    ripser = None
 from src.metrics.geometry import rms_scale
+from src.training.checkpoints import atomic_write
 
 
 def statistics(diagrams):
@@ -23,8 +28,15 @@ def statistics(diagrams):
 
 
 def persistence(h, size=500, repeats=20, maxdim=2, seed=2026, normalize=True, cache_dir=None):
-    if size > 1000:
-        raise ValueError("Rips is capped at 1000 points; use subsampling")
+    h = np.asarray(h)
+    if h.ndim != 2 or min(h.shape) < 1 or not np.isfinite(h).all():
+        raise ValueError("PH requires a finite, nonempty N x D point cloud")
+    if not isinstance(size, int) or isinstance(size, bool) or not 1 <= size <= 1000:
+        raise ValueError("Rips size must be an integer between 1 and 1000")
+    if not isinstance(repeats, int) or isinstance(repeats, bool) or repeats < 1:
+        raise ValueError("PH repeats must be a positive integer")
+    if not isinstance(maxdim, int) or isinstance(maxdim, bool) or maxdim < 0:
+        raise ValueError("PH maxdim must be a nonnegative integer")
     cache = None
     if cache_dir is not None:
         digest = hashlib.sha256(np.ascontiguousarray(h).tobytes())
@@ -45,14 +57,14 @@ def persistence(h, size=500, repeats=20, maxdim=2, seed=2026, normalize=True, ca
                 rows.append(json.loads(str(saved["statistics"])))
             diagrams.append(d)
             continue
+        if ripser is None:
+            raise RuntimeError("Ripser is required for uncached PH; install ripser. No substitute results were generated.")
         d = ripser(h[ids], maxdim=maxdim, coeff=2)["dgms"]
         rows.append({"repeat": repeat, "size": len(ids), "normalized": normalize,
                      "scale": scale, **statistics(d)})
         diagrams.append(d)
         if cached is not None:
-            temp = cached.with_suffix(".tmp")
-            with temp.open("wb") as stream:
-                np.savez_compressed(stream, indices=ids, statistics=json.dumps(rows[-1]),
-                                    **{f"H{i}":v for i,v in enumerate(d)})
-            os.replace(temp, cached)
+            atomic_write(cached, lambda stream: np.savez_compressed(
+                stream, indices=ids, statistics=json.dumps(rows[-1]),
+                **{f"H{i}":v for i,v in enumerate(d)}))
     return rows, diagrams

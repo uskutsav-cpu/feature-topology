@@ -1,0 +1,13 @@
+{
+  "study": "cpu_replication_2026_09_08",
+  "source_commit": "d6c3f34b41feab45d7d963228c5c3e327098203b",
+  "calibration_source": "results/calibration_main/gamma_to_lr.json",
+  "calibration_blob_sha": "70c1445cb52138c2f90987a5c805bf3b5c826f4c",
+  "calibration_id": "d94b0112a7aa3e46",
+  "gammas": [0.03125, 0.0625, 0.125, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0],
+  "seeds": [100, 101, 102],
+  "learning_rates": {"0.03125": 0.000390625, "0.0625": 0.0015625, "0.125": 0.00625, "0.25": 0.025, "0.5": 0.1, "1.0": 0.2, "2.0": 0.5278031643091577, "4.0": 0.6964404506368993, "8.0": 0.9189586839976281, "16.0": 1.2125732532083187, "32.0": 1.6, "64.0": 2.111212657236631, "128.0": 2.7857618025475976},
+  "training": {"width": 256, "depth": 4, "dimension": 16, "centered": true, "n_train": 20000, "n_validation": 5000, "n_grid": 10000, "max_steps": 8192, "eval_every": 128, "batch_size": 256, "target_loss": 0.1, "threads": 1},
+  "metrics": {"grid_points": 1600, "jacobian_points": 256, "ntk_points": 16, "probe_train": 2000, "probe_test": 1000, "probe_iterations": 200, "fiber_points": 512},
+  "interpretation": "Independent new-seed CPU replication, not completion of the original 130-run production sweep. No learning-rate retuning. Reduced metric resolution; no persistent homology in this profile."
+}

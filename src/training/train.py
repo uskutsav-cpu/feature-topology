@@ -52,6 +52,8 @@ def train(config, root, save=True):
     state_path = directory/"resume.pt"
     if state_path.exists():
         state = torch.load(state_path, weights_only=False)
+        if state.get("config") != config:
+            raise ValueError("Resume checkpoint configuration does not match the requested run")
         model.load_state_dict(state["model"]); optimizer.load_state_dict(state["optimizer"])
         generator.set_state(state["batch_rng"])
         start_step, history, crossed = state["step"], state["history"], state["crossed"]
@@ -60,6 +62,17 @@ def train(config, root, save=True):
     max_steps = config.get("max_steps", 4096)
     status = "budget_exhausted"
     for step in range(start_step, max_steps+1):
+        # resume.pt is saved before the terminal step/final artifacts. A crash
+        # in that interval must finish the same run, not perform another update.
+        if (history and history[-1]["step"] == step
+                and history[-1]["training_loss"] <= config.get("target_loss", .05)):
+            status = "converged"
+            terminal = directory/f"step_{step:07d}.pt"
+            if save and not terminal.exists():
+                save_checkpoint(terminal, dict(
+                    step=step, model=model.state_dict(), optimizer=optimizer.state_dict(),
+                    batch_rng=generator.get_state(), history=history, crossed=crossed, config=config))
+            break
         should_eval = step == 0 or step == max_steps or step & (step-1) == 0 or step % config.get("eval_every", 64) == 0
         if should_eval and (not history or history[-1]["step"] != step):
             loss, accuracy = evaluate(model, x, y)

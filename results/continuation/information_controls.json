@@ -1,0 +1,1154 @@
+[
+  {
+    "seed": 200,
+    "amplitude": 1.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.7071841304780658,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.4502074001669122,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 1.4140588807104406,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999772368,
+        "angular_mae": 5.526829168181586e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 1.4140588807104406,
+        "coordinate_noise_sd": 0.0007070294403552204,
+        "angular_cosine": 0.9999997368249666,
+        "angular_mae": 0.0005787780401690334
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 1.4140588807104406,
+        "coordinate_noise_sd": 0.007070294403552203,
+        "angular_cosine": 0.9999737264216415,
+        "angular_mae": 0.005782892257266577
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 1.4140588807104406,
+        "coordinate_noise_sd": 0.07070294403552203,
+        "angular_cosine": 0.9973862108051944,
+        "angular_mae": 0.057768010304618596
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 1.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 0.999813482305474,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.007363101788983396,
+        "angular_mae": 1.5799256878980716
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 0.999813482305474,
+        "coordinate_noise_sd": 0.000499906741152737,
+        "angular_cosine": 0.019275071455412202,
+        "angular_mae": 1.546827224003264
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 0.999813482305474,
+        "coordinate_noise_sd": 0.00499906741152737,
+        "angular_cosine": 0.01915911546367541,
+        "angular_mae": 1.546771517390671
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 0.999813482305474,
+        "coordinate_noise_sd": 0.0499906741152737,
+        "angular_cosine": 0.018229156579474184,
+        "angular_mae": 1.5465657887362148
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 10.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.09952212962845892,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.06335775550960644,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 10.048016493751197,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999772368,
+        "angular_mae": 5.526829168175997e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 10.048016493751197,
+        "coordinate_noise_sd": 0.005024008246875599,
+        "angular_cosine": 0.9999867304395684,
+        "angular_mae": 0.004109520694706058
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 10.048016493751197,
+        "coordinate_noise_sd": 0.050240082468755984,
+        "angular_cosine": 0.9986789518885173,
+        "angular_mae": 0.041041768945185624
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 10.048016493751197,
+        "coordinate_noise_sd": 0.5024008246875599,
+        "angular_cosine": 0.829018218823629,
+        "angular_mae": 0.47029978911417614
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 10.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 9.99813482305474,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.0073631017889833,
+        "angular_mae": 1.5799256878980714
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 9.99813482305474,
+        "coordinate_noise_sd": 0.00499906741152737,
+        "angular_cosine": 0.01927507145541216,
+        "angular_mae": 1.5468272240032641
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 9.99813482305474,
+        "coordinate_noise_sd": 0.0499906741152737,
+        "angular_cosine": 0.019159115463675432,
+        "angular_mae": 1.546771517390671
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 9.99813482305474,
+        "coordinate_noise_sd": 0.499906741152737,
+        "angular_cosine": 0.018229156579474232,
+        "angular_mae": 1.5465657887362145
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 100.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.010001365314803435,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.006367066910075186,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 99.98634871579569,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999772368,
+        "angular_mae": 5.526829168160731e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 99.98634871579569,
+        "coordinate_noise_sd": 0.049993174357897845,
+        "angular_cosine": 0.9986919055157342,
+        "angular_mae": 0.04083920997422596
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 99.98634871579569,
+        "coordinate_noise_sd": 0.49993174357897846,
+        "angular_cosine": 0.8306904806088029,
+        "angular_mae": 0.4676339071311049
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 99.98634871579569,
+        "coordinate_noise_sd": 4.999317435789784,
+        "angular_cosine": 0.12771131173113387,
+        "angular_mae": 1.4102673130017127
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 100.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 99.9813482305474,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.00736310178898335,
+        "angular_mae": 1.5799256878980714
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 99.9813482305474,
+        "coordinate_noise_sd": 0.0499906741152737,
+        "angular_cosine": 0.019275071455412213,
+        "angular_mae": 1.546827224003264
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 99.9813482305474,
+        "coordinate_noise_sd": 0.499906741152737,
+        "angular_cosine": 0.01915911546367545,
+        "angular_mae": 1.5467715173906709
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 99.9813482305474,
+        "coordinate_noise_sd": 4.9990674115273706,
+        "angular_cosine": 0.018229156579474215,
+        "angular_mae": 1.5465657887362148
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 1000.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.0010001860522426194,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.0006367382169039261,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.8139823663785,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999772368,
+        "angular_mae": 5.526829168172865e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.8139823663785,
+        "coordinate_noise_sd": 0.49990699118318926,
+        "angular_cosine": 0.8307009605344099,
+        "angular_mae": 0.4676095775345879
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.8139823663785,
+        "coordinate_noise_sd": 4.999069911831892,
+        "angular_cosine": 0.12850676692854812,
+        "angular_mae": 1.4094196289397323
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.8139823663785,
+        "coordinate_noise_sd": 49.99069911831893,
+        "angular_cosine": 0.02255336191151644,
+        "angular_mae": 1.5418503393688439
+      }
+    ]
+  },
+  {
+    "seed": 200,
+    "amplitude": 1000.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.8134823054738,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.007363101788983393,
+        "angular_mae": 1.5799256878980716
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.8134823054738,
+        "coordinate_noise_sd": 0.4999067411527369,
+        "angular_cosine": 0.01927507145541218,
+        "angular_mae": 1.5468272240032641
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.8134823054738,
+        "coordinate_noise_sd": 4.99906741152737,
+        "angular_cosine": 0.01915911546367544,
+        "angular_mae": 1.546771517390671
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.8134823054738,
+        "coordinate_noise_sd": 49.99067411527369,
+        "angular_cosine": 0.018229156579474194,
+        "angular_mae": 1.5465657887362148
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 1.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.7072314272659813,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.45023751023726866,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 1.413964314150751,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999998988387,
+        "angular_mae": 1.1833201791177194e-05
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 1.413964314150751,
+        "coordinate_noise_sd": 0.0007069821570753755,
+        "angular_cosine": 0.9999997650134198,
+        "angular_mae": 0.00054121385984585
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 1.413964314150751,
+        "coordinate_noise_sd": 0.007069821570753755,
+        "angular_cosine": 0.9999765606155773,
+        "angular_mae": 0.0054036365495878855
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 1.413964314150751,
+        "coordinate_noise_sd": 0.07069821570753755,
+        "angular_cosine": 0.9976516233102068,
+        "angular_mae": 0.05409059554409179
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 1.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 0.9998853437446706,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.0065690999434293166,
+        "angular_mae": 1.5599093264145139
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 0.9998853437446706,
+        "coordinate_noise_sd": 0.0004999426718723353,
+        "angular_cosine": -0.007136541041682491,
+        "angular_mae": 1.5791970833124382
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 0.9998853437446706,
+        "coordinate_noise_sd": 0.004999426718723353,
+        "angular_cosine": -0.006807883042343539,
+        "angular_mae": 1.5786977244304912
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 0.9998853437446706,
+        "coordinate_noise_sd": 0.049994267187233536,
+        "angular_cosine": -0.002983808954258764,
+        "angular_mae": 1.5731561968340388
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 10.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.09951525043023063,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.06335337607599627,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 10.048711083745825,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999998988387,
+        "angular_mae": 1.1833201791186335e-05
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 10.048711083745825,
+        "coordinate_noise_sd": 0.005024355541872913,
+        "angular_cosine": 0.9999881596289643,
+        "angular_mae": 0.0038405486851167425
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 10.048711083745825,
+        "coordinate_noise_sd": 0.05024355541872913,
+        "angular_cosine": 0.9988160162391109,
+        "angular_mae": 0.038414367264149686
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 10.048711083745825,
+        "coordinate_noise_sd": 0.5024355541872912,
+        "angular_cosine": 0.8541407224707875,
+        "angular_mae": 0.425972882850998
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 10.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 9.998853437446707,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.006569099943429253,
+        "angular_mae": 1.559909326414514
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 9.998853437446707,
+        "coordinate_noise_sd": 0.004999426718723354,
+        "angular_cosine": -0.007136541041682527,
+        "angular_mae": 1.5791970833124385
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 9.998853437446707,
+        "coordinate_noise_sd": 0.049994267187233536,
+        "angular_cosine": -0.006807883042343541,
+        "angular_mae": 1.5786977244304912
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 9.998853437446707,
+        "coordinate_noise_sd": 0.4999426718723354,
+        "angular_cosine": -0.0029838089542587555,
+        "angular_mae": 1.5731561968340388
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 100.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.010000646797379099,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.006366609487676062,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 99.99353244452881,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999998988387,
+        "angular_mae": 1.1833201791180606e-05
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 99.99353244452881,
+        "coordinate_noise_sd": 0.049996766222264406,
+        "angular_cosine": 0.9988276382624895,
+        "angular_mae": 0.038225554330408834
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 99.99353244452881,
+        "coordinate_noise_sd": 0.49996766222264405,
+        "angular_cosine": 0.8554875446347455,
+        "angular_mae": 0.4237077213235351
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 99.99353244452881,
+        "coordinate_noise_sd": 4.999676622226441,
+        "angular_cosine": 0.13320674610410915,
+        "angular_mae": 1.399348182973754
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 100.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 99.98853437446706,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.006569099943429232,
+        "angular_mae": 1.559909326414514
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 99.98853437446706,
+        "coordinate_noise_sd": 0.049994267187233536,
+        "angular_cosine": -0.007136541041682506,
+        "angular_mae": 1.5791970833124382
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 99.98853437446706,
+        "coordinate_noise_sd": 0.4999426718723353,
+        "angular_cosine": -0.0068078830423435105,
+        "angular_mae": 1.5786977244304912
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 99.98853437446706,
+        "coordinate_noise_sd": 4.999426718723353,
+        "angular_cosine": -0.0029838089542587854,
+        "angular_mae": 1.5731561968340388
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 1000.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.001000114169469136,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.000636692454909034,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.8858435640436,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999998988387,
+        "angular_mae": 1.1833201791182644e-05
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.8858435640436,
+        "coordinate_noise_sd": 0.4999429217820218,
+        "angular_cosine": 0.8554959361547719,
+        "angular_mae": 0.4236858720814474
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.8858435640436,
+        "coordinate_noise_sd": 4.999429217820218,
+        "angular_cosine": 0.12997906530385933,
+        "angular_mae": 1.4033972770570946
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.8858435640436,
+        "coordinate_noise_sd": 49.99429217820219,
+        "angular_cosine": -0.0009486743033358688,
+        "angular_mae": 1.5693472034692342
+      }
+    ]
+  },
+  {
+    "seed": 201,
+    "amplitude": 1000.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.8853437446706,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.006569099943429286,
+        "angular_mae": 1.5599093264145139
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.8853437446706,
+        "coordinate_noise_sd": 0.4999426718723353,
+        "angular_cosine": -0.007136541041682488,
+        "angular_mae": 1.5791970833124382
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.8853437446706,
+        "coordinate_noise_sd": 4.999426718723353,
+        "angular_cosine": -0.0068078830423435426,
+        "angular_mae": 1.5786977244304912
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.8853437446706,
+        "coordinate_noise_sd": 49.99426718723353,
+        "angular_cosine": -0.00298380895425878,
+        "angular_mae": 1.5731561968340388
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 1.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.7072539107894418,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.45025182369285605,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 1.413919364381871,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999373765,
+        "angular_mae": 9.656075032623097e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 1.413919364381871,
+        "coordinate_noise_sd": 0.0007069596821909355,
+        "angular_cosine": 0.9999997555851428,
+        "angular_mae": 0.000556170337236046
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 1.413919364381871,
+        "coordinate_noise_sd": 0.007069596821909356,
+        "angular_cosine": 0.9999755448904758,
+        "angular_mae": 0.0055622489499450225
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 1.413919364381871,
+        "coordinate_noise_sd": 0.07069596821909356,
+        "angular_cosine": 0.9975376437704168,
+        "angular_mae": 0.05579232536391322
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 1.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 0.999981256720658,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.0055364716832277325,
+        "angular_mae": 1.5747053930918629
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 0.999981256720658,
+        "coordinate_noise_sd": 0.000499990628360329,
+        "angular_cosine": -0.022077405429198473,
+        "angular_mae": 1.5996639711050036
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 0.999981256720658,
+        "coordinate_noise_sd": 0.00499990628360329,
+        "angular_cosine": -0.022096319758387065,
+        "angular_mae": 1.5995870649242927
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 0.999981256720658,
+        "coordinate_noise_sd": 0.0499990628360329,
+        "angular_cosine": -0.02199797192918748,
+        "angular_mae": 1.5989184149761655
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 10.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.09950595702654569,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.06334745971145785,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 10.049649587644538,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999373765,
+        "angular_mae": 9.656075032618453e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 10.049649587644538,
+        "coordinate_noise_sd": 0.005024824793822269,
+        "angular_cosine": 0.9999876467531144,
+        "angular_mae": 0.003953347792393023
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 10.049649587644538,
+        "coordinate_noise_sd": 0.05024824793822269,
+        "angular_cosine": 0.9987595290017829,
+        "angular_mae": 0.039605958217894366
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 10.049649587644538,
+        "coordinate_noise_sd": 0.5024824793822269,
+        "angular_cosine": 0.8311062707711022,
+        "angular_mae": 0.46161142989194515
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 10.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 9.99981256720658,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.0055364716832277455,
+        "angular_mae": 1.5747053930918629
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 9.99981256720658,
+        "coordinate_noise_sd": 0.00499990628360329,
+        "angular_cosine": -0.022077405429198463,
+        "angular_mae": 1.5996639711050038
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 9.99981256720658,
+        "coordinate_noise_sd": 0.049999062836032906,
+        "angular_cosine": -0.0220963197583871,
+        "angular_mae": 1.5995870649242927
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 9.99981256720658,
+        "coordinate_noise_sd": 0.49999062836032904,
+        "angular_cosine": -0.021997971929187527,
+        "angular_mae": 1.5989184149761655
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 100.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.00999968784292619,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.006365998998310541,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 100.00312166818317,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999373765,
+        "angular_mae": 9.656075032626241e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 100.00312166818317,
+        "coordinate_noise_sd": 0.05000156083409159,
+        "angular_cosine": 0.9987716905820703,
+        "angular_mae": 0.03941144399900264
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 100.00312166818317,
+        "coordinate_noise_sd": 0.5000156083409159,
+        "angular_cosine": 0.8327757191931073,
+        "angular_mae": 0.45898636209894345
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 100.00312166818317,
+        "coordinate_noise_sd": 5.000156083409159,
+        "angular_cosine": 0.1065014278246345,
+        "angular_mae": 1.4396809385267957
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 100.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 99.9981256720658,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.005536471683227731,
+        "angular_mae": 1.5747053930918629
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 99.9981256720658,
+        "coordinate_noise_sd": 0.0499990628360329,
+        "angular_cosine": -0.022077405429198442,
+        "angular_mae": 1.5996639711050036
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 99.9981256720658,
+        "coordinate_noise_sd": 0.499990628360329,
+        "angular_cosine": -0.022096319758387082,
+        "angular_mae": 1.5995870649242925
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 99.9981256720658,
+        "coordinate_noise_sd": 4.99990628360329,
+        "angular_cosine": -0.02199797192918753,
+        "angular_mae": 1.5989184149761655
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 1000.0,
+    "projection": false,
+    "known_map": "injective_torus_embedding",
+    "tangent_sigma_min": 1.0,
+    "normalized_tangent_sigma_min": 0.0010000182440002125,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.6366197723675813,
+      "raw_q01": 0.6366197723675813,
+      "raw_median": 0.6366197723675814,
+      "normalized_q01": 0.0006366313868588436,
+      "exact_float_equal_pairs": 0,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.9817563326251,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": 0.9999999999373765,
+        "angular_mae": 9.656075032625103e-06
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.9817563326251,
+        "coordinate_noise_sd": 0.49999087816631255,
+        "angular_cosine": 0.8327903341591145,
+        "angular_mae": 0.4589608252873025
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.9817563326251,
+        "coordinate_noise_sd": 4.999908781663126,
+        "angular_cosine": 0.10527206763927476,
+        "angular_mae": 1.4411568636142047
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.9817563326251,
+        "coordinate_noise_sd": 49.99908781663126,
+        "angular_cosine": -0.023266452000690843,
+        "angular_mae": 1.6004801532161264
+      }
+    ]
+  },
+  {
+    "seed": 202,
+    "amplitude": 1000.0,
+    "projection": true,
+    "known_map": "noninjective_phi_projection",
+    "tangent_sigma_min": 0.0,
+    "normalized_tangent_sigma_min": 0.0,
+    "fibers": {
+      "pairs": 1000,
+      "latent_separation": 3.141592653589793,
+      "raw_min": 0.0,
+      "raw_q01": 0.0,
+      "raw_median": 0.0,
+      "normalized_q01": 0.0,
+      "exact_float_equal_pairs": 1000,
+      "qualification": "Sampled pi-separated nuisance fibers; floating-point equality is not a continuum certificate."
+    },
+    "noise": [
+      {
+        "noise_level": 0.0,
+        "training_rms": 999.9812567206579,
+        "coordinate_noise_sd": 0.0,
+        "angular_cosine": -0.005536471683227738,
+        "angular_mae": 1.5747053930918626
+      },
+      {
+        "noise_level": 0.001,
+        "training_rms": 999.9812567206579,
+        "coordinate_noise_sd": 0.499990628360329,
+        "angular_cosine": -0.022077405429198466,
+        "angular_mae": 1.5996639711050038
+      },
+      {
+        "noise_level": 0.01,
+        "training_rms": 999.9812567206579,
+        "coordinate_noise_sd": 4.9999062836032895,
+        "angular_cosine": -0.02209631975838706,
+        "angular_mae": 1.5995870649242927
+      },
+      {
+        "noise_level": 0.1,
+        "training_rms": 999.9812567206579,
+        "coordinate_noise_sd": 49.9990628360329,
+        "angular_cosine": -0.021997971929187506,
+        "angular_mae": 1.5989184149761655
+      }
+    ]
+  }
+]

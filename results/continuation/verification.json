@@ -1,0 +1,12 @@
+{
+  "checkpoints_verified": 39,
+  "unique_gamma_seed_pairs": 39,
+  "configuration_shape_verified": true,
+  "numerical_code_sha256": "32d72c44dc656506782da2732e3999a6e4fba59e4dcd3748bcf23d1691af907a",
+  "manifest_preserved_after_limited_cache_only_rerun": true,
+  "workers_still_running": false,
+  "base_commit": "d6c3f34b41feab45d7d963228c5c3e327098203b",
+  "remote_write_status": "rejected_403_resource_not_accessible_by_integration",
+  "remote_commit_created": false,
+  "remote_push_completed": false
+}

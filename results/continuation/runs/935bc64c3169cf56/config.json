@@ -1,0 +1,19 @@
+{
+  "width": 256,
+  "depth": 4,
+  "dimension": 16,
+  "centered": true,
+  "n_train": 20000,
+  "n_validation": 5000,
+  "n_grid": 10000,
+  "max_steps": 8192,
+  "eval_every": 128,
+  "batch_size": 256,
+  "target_loss": 0.1,
+  "threads": 1,
+  "gamma": 0.0625,
+  "seed": 102,
+  "lr": 0.0015625,
+  "calibration_id": "d94b0112a7aa3e46",
+  "study": "cpu_replication_2026_09_08"
+}

@@ -9,7 +9,8 @@ import numpy as np
 import torch
 from src.training.train import build, data_for, evaluate
 from src.data.torus import dataset
-from src.training.checkpoints import atomic_json, fingerprint
+from src.training.checkpoints import atomic_json, atomic_write, fingerprint
+from src.training.sharding import select_shard
 from src.metrics.geometry import cka, effective_rank, distortion, rms_scale
 from src.metrics.jacobian import tangent_jacobians, summarize
 from src.metrics.injectivity import global_margin, collisions
@@ -68,11 +69,9 @@ def compute(run, options):
             raw_k0 = np.load(raw_path)
         else:
             raw_k0 = empirical_ntk(model.network, gx[ntk_ids], gamma=1.)
-            with raw_path.with_suffix(".tmp").open("wb") as stream:
-                np.save(stream, raw_k0)
-            os.replace(raw_path.with_suffix(".tmp"), raw_path)
+            atomic_write(raw_path, lambda stream: np.save(stream, raw_k0))
         k0 = raw_k0/(config["gamma"]**2)
-        np.save(k0_path, k0)
+        atomic_write(k0_path, lambda stream: np.save(stream, k0))
     common = {k:config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode"] if k in config}
     px, py, pz, _ = dataset(options["probe_train"], seed=4001, **common)
     tx, ty, tz, _ = dataset(options["probe_test"], seed=4002, **common)
@@ -167,7 +166,7 @@ if __name__ == "__main__":
         audit = json.loads(Path(exclude_audit).read_text())
         excluded = {row["run_id"] for row in audit["experiments"].get("main", [])}
     selected = [run for run in sorted(runs.iterdir()) if run.name not in excluded]
-    selected = [run for position, run in enumerate(selected) if position % shard_count == shard_index]
+    selected = select_shard(selected, shard_index, shard_count)
     print(json.dumps(dict(selected_runs=len(selected), excluded_runs=len(excluded),
                           shard_index=shard_index, shard_count=shard_count)), flush=True)
     for run in selected:

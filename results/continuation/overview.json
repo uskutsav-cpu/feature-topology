@@ -1,0 +1,20 @@
+{
+  "completed_runs": 39,
+  "gamma_levels": 13,
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "layer_records": 156,
+  "noise_records": 156,
+  "training_loss_range": [
+    0.03755314598083496,
+    0.09973429336547851
+  ],
+  "exact_float_equal_pairs": 0,
+  "probe_convergence_warnings": 0,
+  "numerical_code_sha256": "32d72c44dc656506782da2732e3999a6e4fba59e4dcd3748bcf23d1691af907a",
+  "persistence_computed": false,
+  "interpretation": "Independent new-seed CPU replication, not completion of the original 130-run production sweep. No learning-rate retuning. Reduced metric resolution; no persistent homology in this profile."
+}
