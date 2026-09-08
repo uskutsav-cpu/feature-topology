@@ -1,0 +1,10 @@
+# Extension analysis/test dependencies. Keep the original training environment
+# frozen for existing production runs; install missing dependencies only there.
+numpy>=1.26,<3
+pandas>=2.2,<3
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+matplotlib>=3.8,<4
+pytest>=8,<10
+# Training/integration/checkpoint export additionally need the repository's
+# platform-appropriate torch build. PH needs the repository's ripser dependency.

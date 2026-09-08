@@ -1,0 +1,6 @@
+name = "featureTopology"
+version = "0.1.0"
+defaultTargets = ["FeatureTopology"]
+
+[[lean_lib]]
+name = "FeatureTopology"

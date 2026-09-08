@@ -1,0 +1,4 @@
+{
+  "vertices": [["-1", "-1"], ["1", "-1"], ["1", "1"], ["-1", "1"]],
+  "description": "Exact square boundary in R^2; control only, not a smooth circle or torus."
+}
