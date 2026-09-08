@@ -35,6 +35,11 @@ def image_graph(vertices, layers, tolerance=1e-7):
     for i, (a, b) in enumerate(segments):
         for j in range(i):
             c, d = segments[j]
+            # Coordinate bounding boxes give a sound rejection test before
+            # the more expensive LP feasibility/overlap calculations.
+            if np.any(np.maximum(np.minimum(a, b), np.minimum(c, d)) >
+                      np.minimum(np.maximum(a, b), np.maximum(c, d)) + tolerance):
+                continue
             equality = np.stack((b-a, c-d), 1)
             # Both extrema are necessary for collinear overlap intervals.
             solutions = []

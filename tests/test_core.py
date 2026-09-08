@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from src.data.torus import dataset, coordinates, geodesic, labels
+from src.data.circle import circle_dataset
 from src.models.mlp import MLP, ScaledModel
 from src.metrics.geometry import cka, effective_rank
 from src.metrics.jacobian import tangent_jacobians, summarize
@@ -16,6 +17,14 @@ def test_exact_manifold():
     assert torch.allclose(x@q, coordinates(z), atol=1e-6)
     assert np.isclose(geodesic([[0, 0]], [[2*np.pi-.1, 0]])[0], .1)
     assert len(set(y.tolist())) == 4
+
+
+def test_circle_grid_and_labels():
+    x, y, theta = circle_dataset(100, grid=True, classes=2)
+    assert x.shape == (100, 2)
+    assert torch.allclose(x.square().sum(1), torch.ones(100), atol=1e-6)
+    assert set(y.tolist()) == {0, 1}
+    assert torch.all(theta[:-1] < theta[1:])
 
 
 def test_geometry_invariance():

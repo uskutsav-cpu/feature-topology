@@ -154,7 +154,22 @@ if __name__ == "__main__":
     p.add_argument("--probe-test", type=int, default=2000)
     p.add_argument("--probe-iterations", type=int, default=300)
     p.add_argument("--all-checkpoints", action="store_true")
+    p.add_argument("--exclude-audit", help="Audit JSON whose recorded main run IDs are handled elsewhere")
+    p.add_argument("--shard-index", type=int, default=0)
+    p.add_argument("--shard-count", type=int, default=1)
     a = vars(p.parse_args()); runs = Path(a.pop("runs"))
-    for run in sorted(runs.iterdir()):
+    exclude_audit = a.pop("exclude_audit")
+    shard_index, shard_count = a.pop("shard_index"), a.pop("shard_count")
+    if not 0 <= shard_index < shard_count:
+        raise ValueError("shard-index must satisfy 0 <= index < shard-count")
+    excluded = set()
+    if exclude_audit:
+        audit = json.loads(Path(exclude_audit).read_text())
+        excluded = {row["run_id"] for row in audit["experiments"].get("main", [])}
+    selected = [run for run in sorted(runs.iterdir()) if run.name not in excluded]
+    selected = [run for position, run in enumerate(selected) if position % shard_count == shard_index]
+    print(json.dumps(dict(selected_runs=len(selected), excluded_runs=len(excluded),
+                          shard_index=shard_index, shard_count=shard_count)), flush=True)
+    for run in selected:
         if (run/"summary.json").exists():
             compute(run, a)

@@ -1,10 +1,11 @@
 {
-  "state": "paused_for_requested_commit_and_push",
+  "state": "running_after_verified_private_push",
   "workers": {
     "images": 31641,
     "main_training": 34079,
     "main_metrics": 35435
   },
-  "resume_after": "Push to user-specified GitHub repository succeeds",
-  "note": "SIGSTOP preserves in-memory progress; completed artifacts and atomic recovery checkpoints are included in this snapshot."
+  "repository": "https://github.com/uskutsav-cpu/feature-topology",
+  "pushed_commit": "3dcfc03aed529e3b89f399ffd49d78c507a18579",
+  "note": "All three workers resumed after GitHub private-repository and remote-head verification."
 }
