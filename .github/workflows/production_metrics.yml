@@ -2,8 +2,12 @@ name: Production metrics batch
 on:
   workflow_dispatch:
     inputs:
+      index_path:
+        description: 'Committed, checksum-verified input index for one synthetic data condition'
+        required: true
+        default: configs/completion/primary_inputs.json
       run_ids:
-        description: 'JSON list of at most 24 primary run IDs; [] selects the first 24'
+        description: 'JSON list of at most 24 run IDs; [] selects the first 24'
         required: true
         default: '[]'
       input_tag:
@@ -17,7 +21,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: primary-production-${{ github.ref }}
+  group: synthetic-production-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   plan:
@@ -30,7 +34,8 @@ jobs:
       - id: plan
         env:
           REQUESTED_RUN_IDS: ${{ inputs.run_ids }}
-        run: python scripts/remote_metrics.py plan --run-ids "$REQUESTED_RUN_IDS"
+          INPUT_INDEX: ${{ inputs.index_path }}
+        run: python scripts/remote_metrics.py plan --index "$INPUT_INDEX" --run-ids "$REQUESTED_RUN_IDS"
   metrics:
     needs: plan
     runs-on: ubuntu-24.04
@@ -46,6 +51,7 @@ jobs:
       RUN_ID: ${{ matrix.run_id }}
       INPUT_TAG: ${{ inputs.input_tag }}
       RESULT_TAG: ${{ inputs.result_tag }}
+      INPUT_INDEX: ${{ inputs.index_path }}
       OPENBLAS_NUM_THREADS: '2'
       OMP_NUM_THREADS: '2'
       MPLBACKEND: Agg
@@ -66,10 +72,10 @@ jobs:
           cache-dependency-path: requirements.lock.txt
       - run: python -m pip install -r requirements.lock.txt
       - name: Compute full-resolution trajectory
-        run: timeout --signal=TERM 19000s python scripts/remote_metrics.py compute --run-id "$RUN_ID"
+        run: timeout --signal=TERM 19000s python scripts/remote_metrics.py compute --index "$INPUT_INDEX" --run-id "$RUN_ID"
       - name: Preserve completed checkpoints and partial PH cache
         if: always()
-        run: python scripts/remote_metrics.py pack --run-id "$RUN_ID" --job-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+        run: python scripts/remote_metrics.py pack --index "$INPUT_INDEX" --run-id "$RUN_ID" --job-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
       - name: Upload measured outputs
         if: always()
         env:
