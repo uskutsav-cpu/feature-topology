@@ -1,0 +1,30 @@
+{
+  "schema": "feature-topology.final-analysis-plan.v1",
+  "timing": "Recorded after the pilot and recovered H1-only results; exploratory, not a preregistration",
+  "primary": {
+    "study": "main",
+    "target_training_loss": 0.1,
+    "selection": "First stored checkpoint reaching the target; report actual loss and step",
+    "gammas": [0.03125, 0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128],
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "bootstrap_repeats": 2000,
+    "transition_bootstrap_repeats": 300,
+    "replicate_unit": "Training seed; preserve paired gamma observations",
+    "nonconvergence": "Retain all requested outcomes; exclude unreached risks from matched-risk contrasts with counts"
+  },
+  "production_metrics": {
+    "jacobian_points": 10000,
+    "ntk_points": 128,
+    "ph_size": 500,
+    "ph_repeats": 20,
+    "ph_maxdim": 2,
+    "probe_train": 5000,
+    "probe_test": 2000,
+    "probe_iterations": 300,
+    "all_checkpoints": true
+  },
+  "synthetic_studies": ["main", "width", "depth", "relevance", "swapped", "cylinder", "small_network"],
+  "image_studies": ["rotated_digits", "dsprites", "cifar10", "cifar100"],
+  "interpretation": "Analyze geometry, margins, decoding and PH separately. No threshold is selected to force a transition or nuisance-loss claim. Exact polygon certificates have a separate restricted domain. CIFAR supports geometry claims only.",
+  "freeze_policy": "All requested training outcomes, required metric files, dataset validation, exact certificate replay, and Lean audit must pass before final analysis and paper generation."
+}

@@ -1,0 +1,103 @@
+# Completion work, 13 September 2026
+
+This is an execution record. The complete study is **not frozen or finished**.
+
+The archived original workspace was ahead of the GitHub snapshot. Its results
+were recovered into a separate writable workspace, leaving the archive read-only.
+The original Python environment is available: Python 3.13 and PyTorch 2.14.0,
+NumPy 2.5.3 and Ripser 0.6.15. The separate 39-run CPU continuation remains a
+separate experiment and does not replace any primary seed.
+
+## Verified recovery
+
+- All 130 requested primary gamma/seed pairs have converged summaries and final
+  checkpoints. Configurations, run fingerprints, final steps, finite tensors,
+  target-loss statuses and checkpoint SHA-256 values were checked.
+- The archive contained 170/175 width entries, 35/35 rotated-digit production
+  runs with metrics, and 20 trained circle networks with numerical quotient results.
+- Shared baseline runs also account for 35 depth entries and 35 relevance entries.
+- Recovered primary metrics include H1-only initial/final profiles. These do not
+  satisfy the full H2 and all-checkpoint production protocol.
+
+The five remaining width runs and the full cylinder and swapped-factor training
+sweeps have subsequently completed. Depth, relevance and small-network training
+continue with their own frozen condition-specific calibrations. Run
+`scripts/completion_inventory.py` for current artifact-backed counts; process exit
+alone is not treated as scientific completion.
+
+## Exact and formal evidence
+
+`scripts/certify_trained_circles.py` exported the exact stored finite weights from
+20 trained circle networks, computed 40 certificates (both hidden layers), and
+replayed each certificate independently with rational arithmetic. The explicit
+domain is the ten-vertex rational polygon recorded in every certificate. This
+is neither a smooth-circle nor a smooth-torus certificate and does not describe
+IEEE floating-point inference semantics.
+
+All 40 certificates have an injective map on their stated polygon domain and
+image-graph counts (1 component, 1 cycle). This is a restricted-domain result;
+it does not establish global injectivity for the synthetic torus study.
+
+The generated Lean example now checks a 38-vertex graph from one of these trained
+network certificates. An executable component-label merging routine replaced
+the costly all-pairs reachability calculation for graph counts. Connected,
+disconnected, reordered-edge and invalid-edge examples are kernel checked.
+All 17 audited declarations compile without axioms. Lean verifies the supplied
+abstract graph and logical lemmas; the Python network-to-graph construction is
+not a Lean theorem. The build log and source hashes are in
+`results/completion/formal/`.
+
+## Running computation
+
+```sh
+python scripts/complete_synthetic_training.py
+python scripts/compute_metrics.py --runs results/main/runs --all-checkpoints
+python scripts/run_dsprites.py --device mps
+python scripts/complete_cifar.py
+```
+
+The synthetic driver has a single-writer lock and per-study logs. The metrics job
+uses the full 10,000-point Jacobian, 128-point NTK, and 500-point, 20-repeat H2
+profile. New metric rows bind checkpoint bytes and the metric code/environment.
+Caches without that provenance are retained but rejected by this new runner.
+Use a separate result workspace when changing metric code or environment.
+
+The dSprites runner verifies the official archive's Git blob identity. Its fixed
+design uses all scales and orientations at four declared positions per axis.
+Shape/scale/position identities are partitioned before their orientations, with
+6,960 training and 2,280 validation/test images each. Images remain 64×64.
+Separate orientation probes use symmetry multipliers 4, 2 and 1 for square,
+ellipse and heart; their auxiliary sector accuracy is not shape accuracy.
+The GPU pooling implementation uses the same adaptive bins as PyTorch and is
+tested against reference values and gradients. This is a planned 35-run study,
+not yet a completed experiment.
+
+The CIFAR queue downloads and validates both official datasets, then waits for
+the dSprites manifest before using the GPU. Both CIFAR10 and CIFAR100 retain the
+seven-gamma/five-seed scope and the original calibration and maximum-update
+budgets. On macOS Python installations without configured certificate roots,
+set `SSL_CERT_FILE=/etc/ssl/cert.pem`; TLS verification stays enabled.
+
+## Freeze, analysis and release
+
+Analysis choices are recorded in `configs/completion/analysis_plan.json`. They
+were recorded after pilot and recovered H1-only results, so are exploratory,
+not a preregistration. No parameter is tuned to force nuisance loss.
+
+```sh
+python scripts/completion_inventory.py --output results/completion/inventory.json --check-tensors
+python scripts/freeze_results.py --check-only --output results/completion/readiness.json
+# Only when readiness passes:
+python scripts/freeze_results.py --output results/frozen_manifest.json
+python scripts/final_analysis.py --manifest results/frozen_manifest.json
+python scripts/pack_release.py --manifest results/frozen_manifest.json --output release-assets
+```
+
+The freeze requires every design, production trajectory, image study, trained
+certificate and formal audit. Final statistics/figures require verified frozen
+inputs. The release packer creates deterministic gzip/tar parts of at most 1 GiB,
+with checksums, and refuses changed frozen inputs. Final image-study synthesis
+and the paper remain dependent on completed experiments and the results freeze.
+
+GitHub Actions checks Python tests and the Lean build/audit. Successful CI is an
+engineering check, not evidence that long-running studies have completed.

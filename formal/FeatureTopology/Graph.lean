@@ -31,9 +31,12 @@ def reachability (g : FiniteGraph) : List (List Bool) :=
     lookup previous i j || (lookup previous i k && lookup previous k j)))) initial
 
 def components (g : FiniteGraph) : Nat :=
-  let connected := reachability g
-  ((List.range g.vertices).filter (fun i =>
-    (List.range i).all (fun j => !(lookup connected i j)))).length
+  let labels := g.edges.foldl (fun labels edge =>
+    let a := labels.getD edge.1 edge.1
+    let b := labels.getD edge.2 edge.2
+    labels.map (fun label => if label == a || label == b then min a b else label))
+    (List.range g.vertices)
+  labels.eraseDups.length
 
 def graphCounts (g : FiniteGraph) : Nat × Nat :=
   let c := components g

@@ -2,6 +2,9 @@ import argparse
 import json
 import os
 import shutil
+import hashlib
+import importlib.metadata
+import platform
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -37,9 +40,28 @@ def clean(value):
 
 def compute(run, options):
     run = Path(run)
+    repo = Path(__file__).resolve().parents[1]
+    sources = [Path(__file__), repo/"src/data/torus.py", repo/"src/models/mlp.py",
+               repo/"src/training/train.py", repo/"src/training/checkpoints.py",
+               *sorted((repo/"src/metrics").glob("*.py"))]
+    provenance = dict(sources={str(p.relative_to(repo)):hashlib.sha256(p.read_bytes()).hexdigest()
+                              for p in sources}, python=platform.python_version(),
+                      packages={name:importlib.metadata.version(name) for name in
+                                ["torch", "numpy", "scipy", "scikit-learn", "ripser"]})
     expected = ([p.stem for p in run.glob("step_*.pt")]+["final"] if options["all_checkpoints"] else ["step_0000000", "final"])
     cached_output = run/"metrics"/fingerprint(options)
+    provenance_path = cached_output/"provenance"/"execution.json"
+    if provenance_path.exists() and json.loads(provenance_path.read_text()) != provenance:
+        raise RuntimeError(f"Metric code/environment changed; preserve existing profile and use a separate result workspace: {cached_output}")
+    if not provenance_path.exists() and any(cached_output.glob("step_*.json")):
+        raise RuntimeError(f"Existing metric cache lacks code/environment provenance: {cached_output}")
+    atomic_json(provenance_path, provenance)
     if expected and all((cached_output/(name+".json")).exists() for name in expected):
+        for name in expected:
+            with (run/(name+".pt")).open("rb") as stream:
+                checkpoint_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+            if json.loads((cached_output/(name+".json")).read_text()).get("checkpoint_sha256") != checkpoint_hash:
+                raise RuntimeError(f"Metric checkpoint hash mismatch: {run/name}")
         return
     config = json.loads((run/"config.json").read_text())
     if json.loads((run/"summary.json").read_text())["status"] == "diverged":
@@ -57,7 +79,7 @@ def compute(run, options):
     atomic_json(output/"options.json", options)
     baseline_config = {k:v for k,v in config.items() if k not in ["gamma", "lr", "max_steps", "calibration_id"]}
     baseline_options = {k:v for k,v in options.items() if k != "all_checkpoints"}
-    baseline_key = fingerprint(dict(config=baseline_config, options=baseline_options))
+    baseline_key = fingerprint(dict(config=baseline_config, options=baseline_options, provenance=provenance))
     shared_initial = run.parents[2]/"initial_metric_cache"/baseline_key
     shared_initial.mkdir(parents=True, exist_ok=True)
     k0_path = output/"initial_ntk.npy"
@@ -81,11 +103,18 @@ def compute(run, options):
     for path in checkpoints:
         target = output/(path.stem+".json")
         if target.exists():
+            with path.open("rb") as stream:
+                checkpoint_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+            if json.loads(target.read_text()).get("checkpoint_sha256") != checkpoint_hash:
+                raise RuntimeError(f"Metric checkpoint hash mismatch: {path}")
             continue
+        with path.open("rb") as stream:
+            checkpoint_hash = hashlib.file_digest(stream, "sha256").hexdigest()
         is_initial = path.stem == "step_0000000" and config.get("centered", True)
         if is_initial and (shared_initial/"row.json").exists():
             row = json.loads((shared_initial/"row.json").read_text())
             row["gamma"] = config["gamma"]
+            row["checkpoint_sha256"] = checkpoint_hash
             row["initial_metric_reused"] = str(shared_initial)
             for artifact in shared_initial.glob("step_0000000_*.npz"):
                 destination = output/artifact.name
@@ -102,6 +131,7 @@ def compute(run, options):
         k = empirical_ntk(model.network, gx[ntk_ids], config["gamma"])
         test_loss, test_accuracy = evaluate(model, tx, ty)
         row = dict(step=state["step"], gamma=config["gamma"], seed=config["seed"],
+                   checkpoint_sha256=checkpoint_hash,
                    test_loss=test_loss, test_accuracy=test_accuracy,
                    ntk_drift=float(np.linalg.norm(k-k0)/np.linalg.norm(k0)),
                    ntk_points=len(ntk_ids), layers=[])
@@ -128,6 +158,7 @@ def compute(run, options):
                  jacobian=jac, global_margin=margin,
                  collisions=collisions(current, z.numpy(), manifold=config.get("manifold", "torus")),
                  probes=probes, persistence=stats))
+            print(f"metrics layer complete {run.name} {path.stem} layer={layer+1}", flush=True)
         atomic_json(target, clean(row))
         if is_initial:
             for artifact in output.glob("step_0000000_*.npz"):

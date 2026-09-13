@@ -46,7 +46,17 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
             if (run/'metrics.json').is_file() and row['status'] != 'diverged':
                 metrics = read_json(run/'metrics.json')
                 # Existing digits and CIFAR scripts have different native schemas.
-                if 'rotation_loops' in metrics:
+                if metrics.get('schema') == 'feature-topology.dsprites-metrics.v1':
+                    if len(metrics.get('layers', [])) != 3 or any(
+                        set(layer.get('shape_probes', {})) != {'0', '1', '2'} for layer in metrics['layers']):
+                        raise ValueError('Incomplete dSprites metrics')
+                    if metrics.get('dataset_id') != config.get('dataset_id'):
+                        raise ValueError('dSprites dataset identity mismatch')
+                    if metrics.get('checkpoint_sha256') != file_digest(run/'final.pt'):
+                        raise ValueError('dSprites checkpoint hash mismatch')
+                    accuracy = metrics['test']['accuracy']
+                    row['metric_schema'] = 'dsprites'
+                elif 'rotation_loops' in metrics:
                     if not metrics['rotation_loops'] or not isinstance(metrics.get('probes'), dict):
                         raise ValueError('Incomplete rotated-digits metrics')
                     accuracy = metrics['test_accuracy']

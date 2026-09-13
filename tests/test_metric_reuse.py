@@ -1,4 +1,5 @@
 import json
+import pytest
 from src.training.train import train
 from src.training.checkpoints import fingerprint
 from scripts.compute_metrics import compute
@@ -21,3 +22,9 @@ def test_centered_initial_metrics_reused_across_gamma(tmp_path):
     assert "initial_metric_reused" in second
     assert first["layers"] == second["layers"]
     assert second["gamma"] == 2.
+    # A fully populated cache must still validate the checkpoint bytes.
+    compute(path, options)
+    with (path/"final.pt").open("ab") as stream:
+        stream.write(b"changed checkpoint bytes")
+    with pytest.raises(RuntimeError, match="checkpoint hash mismatch"):
+        compute(path, options)
