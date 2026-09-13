@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import sys
 import zipfile
+from functools import lru_cache
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import torch
@@ -28,20 +29,33 @@ GAMMAS = [.125, .5, 1., 4., 16., 64., 128.]
 POSITIONS = [4, 12, 20, 28]
 
 
+@lru_cache(maxsize=32)
+def pooling_weights(length,size,dtype,device):
+    weights=torch.zeros(size,length,dtype=dtype)
+    for i in range(size):
+        start,end=i*length//size,((i+1)*length+size-1)//size
+        weights[i,start:end]=1/(end-start)
+    return weights.to(device)
+
+
 def adaptive_mean(x, size=6):
-    """The exact adaptive pooling bins, expressed with differentiable means.
+    """The same adaptive pooling bins as a separable linear operation.
 
     MPS does not implement non-divisible adaptive_avg_pool2d dimensions.
     This retains the full 64x64 images and the CNN's specified 6x6 pooling.
     """
-    height, width = x.shape[-2:]
-    cells = [x[..., i*height//size:((i+1)*height+size-1)//size,
-                   j*width//size:((j+1)*width+size-1)//size].mean(dim=(-2,-1))
-             for i in range(size) for j in range(size)]
-    return torch.stack(cells,dim=-1).reshape(*x.shape[:-2],size,size)
+    height,width=x.shape[-2:]
+    a=pooling_weights(height,size,x.dtype,x.device)
+    b=pooling_weights(width,size,x.dtype,x.device)
+    return torch.matmul(torch.matmul(a,x),b.T)
 
 
 class DSpritesCNN(CNN):
+    def forward(self,x):
+        a=torch.relu(self.conv1(x))
+        b=torch.relu(self.conv2(F.avg_pool2d(a,2)))
+        return self.head(torch.relu(self.projection(adaptive_mean(b).flatten(1))))
+
     def representations(self,x):
         a=torch.relu(self.conv1(x))
         b=torch.relu(self.conv2(F.avg_pool2d(a,2)))
@@ -222,7 +236,7 @@ def main(args):
     root.mkdir(parents=True, exist_ok=True)
     data, dataset_id = prepare(args.data, root)
     base = dict(dataset_id=dataset_id, architecture="CNN", width=16, classes=3,
-                centered=True, target_loss=.2, pooling="explicit_adaptive_mean_v1")
+                centered=True, target_loss=.2, pooling="separable_adaptive_mean_v2")
     frozen_path = root/"gamma_to_lr.json"
     calibration_config = dict(base=base, gammas=GAMMAS, calibration_steps=args.calibration_steps,
                               multipliers=[.125,.25,.5,1.,2.,4.,8.], seed=900)

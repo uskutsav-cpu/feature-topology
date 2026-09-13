@@ -53,6 +53,7 @@ def readiness(repo):
             problems.append(dict(run=r['run_id'],error='Metric execution provenance missing'))
             continue
         paths.update([directory/'options.json',execution])
+        paths.update((directory/'provenance').glob('*.json'))
         for checkpoint in checkpoints:
             metric=directory/(checkpoint.stem+'.json')
             row=json.loads(metric.read_text())

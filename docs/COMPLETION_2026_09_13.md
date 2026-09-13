@@ -15,6 +15,9 @@ separate experiment and does not replace any primary seed.
   target-loss statuses and checkpoint SHA-256 values were checked.
 - The archive contained 170/175 width entries, 35/35 rotated-digit production
   runs with metrics, and 20 trained circle networks with numerical quotient results.
+- Held-out classification was replayed from all 35 digit checkpoints; all matched
+  the saved metrics within the recorded tolerances. The digit and circle source
+  checkpoints are included in this update.
 - Shared baseline runs also account for 35 depth entries and 35 relevance entries.
 - Recovered primary metrics include H1-only initial/final profiles. These do not
   satisfy the full H2 and all-checkpoint production protocol.
@@ -72,6 +75,12 @@ The GPU pooling implementation uses the same adaptive bins as PyTorch and is
 tested against reference values and gradients. This is a planned 35-run study,
 not yet a completed experiment.
 
+The initial explicit-bin fallback was replaced during calibration with a
+separable linear implementation and a head-only training forward pass. CPU and
+MPS value/gradient checks passed. Provisional fallback calibration files are
+preserved under their distinct configuration IDs; production uses
+`separable_adaptive_mean_v2` and a separately selected rate map.
+
 The CIFAR queue downloads and validates both official datasets, then waits for
 the dSprites manifest before using the GPU. Both CIFAR10 and CIFAR100 retain the
 seven-gamma/five-seed scope and the original calibration and maximum-update
@@ -101,3 +110,28 @@ and the paper remain dependent on completed experiments and the results freeze.
 
 GitHub Actions checks Python tests and the Lean build/audit. Successful CI is an
 engineering check, not evidence that long-running studies have completed.
+
+## Hosted production metrics
+
+The `Production metrics batch` workflow evaluates up to 24 explicitly selected
+primary runs per batch, with at most eight standard Ubuntu workers concurrently.
+It is gated to public repositories. The first batch is a one-run validation;
+larger batches follow only after its artifact checks pass.
+
+`configs/completion/primary_inputs.json` binds all 130 input archives and every
+checkpoint member to SHA-256 values. The shared analysis grid and probe arrays
+are also frozen by checksum. Metrics load the saved initialization checkpoint,
+so cross-platform RNG differences cannot silently change the baseline. Hosted
+production uses Python 3.13.5 and the pinned dependency lock; host and source
+provenance accompany the outputs. Earlier local full-profile diagnostics remain
+separate from this production cohort.
+
+Workers stop computation before the hosted job limit, package all completed
+metric rows plus partial PH caches, and upload a complete/partial status manifest.
+Compatible previous artifacts can be resumed. Training-input and in-progress
+metric prereleases are explicitly not the final research release.
+
+The CIFAR runner also now checks resume configurations, final artifacts and the
+frozen calibration protocol, resumes terminal checkpoints without another update,
+and detaches Jacobians before NumPy export. These changes were made before the
+queued CIFAR studies started.

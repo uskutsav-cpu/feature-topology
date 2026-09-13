@@ -38,8 +38,7 @@ def clean(value):
     return value
 
 
-def compute(run, options):
-    run = Path(run)
+def metric_provenance(analysis_data=None):
     repo = Path(__file__).resolve().parents[1]
     sources = [Path(__file__), repo/"src/data/torus.py", repo/"src/models/mlp.py",
                repo/"src/training/train.py", repo/"src/training/checkpoints.py",
@@ -48,6 +47,15 @@ def compute(run, options):
                               for p in sources}, python=platform.python_version(),
                       packages={name:importlib.metadata.version(name) for name in
                                 ["torch", "numpy", "scipy", "scikit-learn", "ripser"]})
+    if analysis_data is not None:
+        with Path(analysis_data).open('rb') as stream:
+            provenance['analysis_data_sha256']=hashlib.file_digest(stream,'sha256').hexdigest()
+    return provenance
+
+
+def compute(run, options, analysis_data=None):
+    run = Path(run)
+    provenance=metric_provenance(analysis_data)
     expected = ([p.stem for p in run.glob("step_*.pt")]+["final"] if options["all_checkpoints"] else ["step_0000000", "final"])
     cached_output = run/"metrics"/fingerprint(options)
     provenance_path = cached_output/"provenance"/"execution.json"
@@ -68,7 +76,26 @@ def compute(run, options):
         return
     torch.set_num_threads(2)
     model = build(config, config["seed"])
-    _, _, (gx, gy, z, q) = data_for(config)
+    initial_state=torch.load(run/'step_0000000.pt',weights_only=True,map_location='cpu')
+    if initial_state.get('step')!=0 or initial_state.get('config')!=config:
+        raise ValueError('Saved initialization checkpoint identity mismatch')
+    model.load_state_dict(initial_state['model'])
+    initial_digest=hashlib.sha256()
+    for key,value in model.network.state_dict().items():
+        initial_digest.update(key.encode())
+        initial_digest.update(value.detach().cpu().contiguous().numpy().tobytes())
+    if analysis_data is None:
+        _, _, (gx, gy, z, q) = data_for(config)
+    else:
+        with np.load(analysis_data,allow_pickle=False) as frozen:
+            expected_data=dict(dimension=16,manifold='torus',swap=False,relevance=0.,relevance_mode='periodic')
+            expected_data.update({k:config[k] for k in expected_data if k in config})
+            if json.loads(str(frozen['data_config']))!=expected_data:
+                raise ValueError('Frozen analysis data do not match the run condition')
+            gx,gy,z,q=[torch.from_numpy(frozen[k]) for k in ['gx','gy','z','q']]
+            px,py,pz,tx,ty,tz=[torch.from_numpy(frozen[k]) for k in ['px','py','pz','tx','ty','tz']]
+        if len(gx)!=config.get('n_grid',10000) or len(px)!=options['probe_train'] or len(tx)!=options['probe_test']:
+            raise ValueError('Frozen analysis data have incorrect sample counts')
     initial = features(model.network, gx)
     rng = np.random.default_rng(777)
     ids = np.sort(rng.choice(len(gx), min(options["jacobian_points"], len(gx)), replace=False))
@@ -79,7 +106,8 @@ def compute(run, options):
     atomic_json(output/"options.json", options)
     baseline_config = {k:v for k,v in config.items() if k not in ["gamma", "lr", "max_steps", "calibration_id"]}
     baseline_options = {k:v for k,v in options.items() if k != "all_checkpoints"}
-    baseline_key = fingerprint(dict(config=baseline_config, options=baseline_options, provenance=provenance))
+    baseline_key = fingerprint(dict(config=baseline_config, options=baseline_options, provenance=provenance,
+                                    initial_weights=initial_digest.hexdigest()))
     shared_initial = run.parents[2]/"initial_metric_cache"/baseline_key
     shared_initial.mkdir(parents=True, exist_ok=True)
     k0_path = output/"initial_ntk.npy"
@@ -95,8 +123,9 @@ def compute(run, options):
         k0 = raw_k0/(config["gamma"]**2)
         atomic_write(k0_path, lambda stream: np.save(stream, k0))
     common = {k:config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode"] if k in config}
-    px, py, pz, _ = dataset(options["probe_train"], seed=4001, **common)
-    tx, ty, tz, _ = dataset(options["probe_test"], seed=4002, **common)
+    if analysis_data is None:
+        px, py, pz, _ = dataset(options["probe_train"], seed=4001, **common)
+        tx, ty, tz, _ = dataset(options["probe_test"], seed=4002, **common)
     checkpoints = sorted(run.glob("step_*.pt")) if options["all_checkpoints"] else [run/"step_0000000.pt", run/"final.pt"]
     if options["all_checkpoints"]:
         checkpoints.append(run/"final.pt")
@@ -175,6 +204,7 @@ def compute(run, options):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--runs", required=True)
+    p.add_argument("--analysis-data", help="Verified frozen grid/probe arrays for cross-machine evaluation")
     p.add_argument("--jacobian-points", type=int, default=10000)
     p.add_argument("--ntk-points", type=int, default=128)
     p.add_argument("--ph-size", type=int, default=500)
@@ -188,6 +218,7 @@ if __name__ == "__main__":
     p.add_argument("--shard-index", type=int, default=0)
     p.add_argument("--shard-count", type=int, default=1)
     a = vars(p.parse_args()); runs = Path(a.pop("runs"))
+    analysis_data=a.pop('analysis_data')
     exclude_audit = a.pop("exclude_audit")
     shard_index, shard_count = a.pop("shard_index"), a.pop("shard_count")
     if not 0 <= shard_index < shard_count:
@@ -202,4 +233,4 @@ if __name__ == "__main__":
                           shard_index=shard_index, shard_count=shard_count)), flush=True)
     for run in selected:
         if (run/"summary.json").exists():
-            compute(run, a)
+            compute(run, a, analysis_data=analysis_data)
