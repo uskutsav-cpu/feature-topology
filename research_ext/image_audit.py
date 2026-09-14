@@ -50,6 +50,9 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
                     if len(metrics.get('layers', [])) != 3 or any(
                         set(layer.get('shape_probes', {})) != {'0', '1', '2'} for layer in metrics['layers']):
                         raise ValueError('Incomplete dSprites metrics')
+                    if not metrics.get('initial_model_reconstructed_from_seed') or not isinstance(
+                        metrics.get('initial_model_sha256'), str):
+                        raise ValueError('dSprites metrics lack the seeded initial-model provenance')
                     if metrics.get('dataset_id') != config.get('dataset_id'):
                         raise ValueError('dSprites dataset identity mismatch')
                     if metrics.get('checkpoint_sha256') != file_digest(run/'final.pt'):

@@ -4,6 +4,7 @@ The fixed position subgrid and all scales/orientations are declared before runs.
 Symmetry-adjusted nuisance probes are reported separately for each shape.
 """
 import argparse
+import math
 import hashlib
 import json
 from pathlib import Path
@@ -189,17 +190,32 @@ def train(config, root, data, device):
     return result
 
 
-def analyze(config, root, data, device):
+def analyze(config, root, data, device, force=False):
     directory = Path(root) / fingerprint(config)
     target = directory / "metrics.json"
-    if target.exists():
+    if target.exists() and not force:
         return
     model = build(config).to(device).eval()
     def features(x):
         with torch.no_grad():
             batches = [model.network.representations(a.to(device)) for a in x.split(128)]
         return [torch.cat([b[i].cpu() for b in batches]).numpy() for i in range(3)]
-    initial = features(data["test"]["x"])
+    # `train` constructs its model immediately after this seed.  Reconstruct the
+    # corresponding initial network without depending on the caller's advanced
+    # RNG state, then restore that state before doing the saved-checkpoint work.
+    rng_state = torch.get_rng_state()
+    torch.manual_seed(config["seed"])
+    initial_model = build(config).to(device).eval()
+    torch.set_rng_state(rng_state)
+    def initial_features(x):
+        with torch.no_grad():
+            batches = [initial_model.network.representations(a.to(device)) for a in x.split(128)]
+        return [torch.cat([b[i].cpu() for b in batches]).numpy() for i in range(3)]
+    initial = initial_features(data["test"]["x"])
+    initial_digest = hashlib.sha256()
+    for name, tensor in initial_model.state_dict().items():
+        initial_digest.update(name.encode())
+        initial_digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
     state = torch.load(directory/"final.pt", map_location="cpu", weights_only=True)
     model.load_state_dict(state["model"])
     current, training = features(data["test"]["x"]), features(data["train"]["x"])
@@ -220,14 +236,33 @@ def analyze(config, root, data, device):
                      auxiliary_task="sign(cos(symmetry_multiplier * orientation))")
         stats, _ = persistence(h, size=500, repeats=20, maxdim=1,
                                cache_dir=directory.parents[2]/"ph_cache")
-        layers.append(dict(layer=layer+1, cka_drift=1-cka(initial[layer],h),
+        cka_value = cka(initial[layer], h)
+        layers.append(dict(layer=layer+1,
+                           cka_drift=(1-cka_value if math.isfinite(cka_value) else None),
                            effective_rank=effective_rank(h), persistence=stats, shape_probes=shape_probes))
     with (directory/"final.pt").open("rb") as stream:
         checkpoint_hash = hashlib.file_digest(stream,"sha256").hexdigest()
-    atomic_json(target, dict(dataset_id=config["dataset_id"], checkpoint_sha256=checkpoint_hash,
+    nonfinite = []
+    def json_safe(value, path=""):
+        if isinstance(value, float):
+            if not math.isfinite(value):
+                nonfinite.append(path)
+                return None
+            return value
+        if isinstance(value, dict):
+            return {key: json_safe(item, f"{path}.{key}" if path else key)
+                    for key, item in value.items()}
+        if isinstance(value, list):
+            return [json_safe(item, f"{path}[{i}]") for i, item in enumerate(value)]
+        return value
+    report = json_safe(dict(dataset_id=config["dataset_id"], checkpoint_sha256=checkpoint_hash,
+                initial_model_sha256=initial_digest.hexdigest(), initial_model_reconstructed_from_seed=True,
                 test=dict(loss=loss,accuracy=accuracy), layers=layers,
                 schema="feature-topology.dsprites-metrics.v1",
                 limitation="Raster images on a fixed position subgrid; symmetry-adjusted orientation decoding and H1 diagnostics do not establish continuum injectivity."))
+    if nonfinite:
+        report["nonfinite_metrics"] = nonfinite
+    atomic_json(target, report)
 
 
 def main(args):
