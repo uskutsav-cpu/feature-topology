@@ -10,6 +10,7 @@ import math
 from pathlib import Path
 import sys
 
+import numpy as np
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -24,6 +25,14 @@ SEEDS = range(5)
 
 def finite_number(value):
     return isinstance(value, (float, int)) and math.isfinite(value)
+
+
+def finite_tree(value):
+    if isinstance(value, dict):
+        return all(finite_tree(item) for item in value.values())
+    if isinstance(value, list):
+        return all(finite_tree(item) for item in value)
+    return value is None or finite_number(value) or isinstance(value, str)
 
 
 def validate_dataset(repo, name):
@@ -60,11 +69,18 @@ def validate_dataset(repo, name):
             if not metric_path.is_file() or not reps_path.is_file():
                 raise ValueError(f"Missing analysis artifact: {run}")
             metric = json.loads(metric_path.read_text())
+            with np.load(reps_path) as arrays:
+                expected_arrays = {f"{stage}_h{layer}" for stage in ("initial", "final")
+                                   for layer in range(1, 5)} | {"input_logit_jacobian_singular_values"}
+                if set(arrays.files) != expected_arrays or any(
+                    not np.isfinite(arrays[key]).all() for key in arrays.files
+                ):
+                    raise ValueError(f"Invalid representation artifact: {run}")
             layers = metric.get("layers")
             saved = metric.get("test", {})
             if not isinstance(layers, list) or len(layers) != 4:
                 raise ValueError(f"Unexpected layer metric shape: {run}")
-            if not all(finite_number(saved.get(key)) for key in ("loss", "accuracy")):
+            if not finite_tree(metric) or not all(finite_number(saved.get(key)) for key in ("loss", "accuracy")):
                 raise ValueError(f"Non-finite saved test metric: {run}")
             state = torch.load(run / "final.pt", map_location="cpu", weights_only=True)
             torch.manual_seed(seed)
