@@ -17,6 +17,9 @@ def export_graph(cert: dict, path: str | Path) -> dict:
     edges = ", ".join(f"({a}, {b})" for a,b in graph["edges"])
     code = f'''import FeatureTopology.Graph
 
+set_option maxHeartbeats 10000000
+set_option maxRecDepth 4096
+
 /- Certificate SHA256: {digest(cert)}.
    This checks the abstract supplied graph, not Python's geometric construction. -/
 namespace FeatureTopology.Generated

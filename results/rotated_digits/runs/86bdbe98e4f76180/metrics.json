@@ -1,0 +1,1081 @@
+{
+  "test_loss": 0.5821519003974067,
+  "test_accuracy": 0.8020833333333334,
+  "cka_drift": 0.4660344025369936,
+  "effective_rank": 14.235590112950215,
+  "probes": {
+    "linear": {
+      "task_accuracy": 0.8458333333333333,
+      "nuisance_r2": 0.13815582355804967,
+      "convergence_warnings": 0,
+      "angular_mae": 1.104651649199112,
+      "angular_cosine": 0.3544570223142242
+    },
+    "mlp": {
+      "task_accuracy": 0.85625,
+      "nuisance_r2": 0.4545501486428647,
+      "convergence_warnings": 0,
+      "angular_mae": 0.6822378820493435,
+      "angular_cosine": 0.6407952485205305
+    }
+  },
+  "rotation_loops": [
+    {
+      "base_id": 15,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06661258637905121,
+        "H0": {
+          "total_persistence": 15.436160832643509,
+          "top1": 0.5919657349586487,
+          "top2": 0.5872207880020142,
+          "entropy": 3.544780998628779,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.323516607284546,
+          "top1": 0.767028272151947,
+          "top2": 0.24938565492630005,
+          "entropy": 1.2280315364425687,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 7.4769816398620605,
+        "H0": {
+          "total_persistence": 14.163966670632362,
+          "top1": 0.5373177528381348,
+          "top2": 0.5113893747329712,
+          "entropy": 3.531409296378191,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.6072681546211243,
+          "top1": 0.7236711978912354,
+          "top2": 0.5135295391082764,
+          "entropy": 1.3309847647714521,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 16.485889434814453
+    },
+    {
+      "base_id": 116,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05666838958859444,
+        "H0": {
+          "total_persistence": 16.523509562015533,
+          "top1": 0.6771302223205566,
+          "top2": 0.5917556285858154,
+          "entropy": 3.545479419802095,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.71133154630661,
+          "top1": 0.8273742198944092,
+          "top2": 0.34291261434555054,
+          "entropy": 1.605671476599157,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 8.231043815612793,
+        "H0": {
+          "total_persistence": 13.671093076467514,
+          "top1": 0.5262251496315002,
+          "top2": 0.5167911052703857,
+          "entropy": 3.5383829800078357,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 2.128279358148575,
+          "top1": 0.9969270825386047,
+          "top2": 0.19744127988815308,
+          "entropy": 2.011729272331409,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 19.06471824645996
+    },
+    {
+      "base_id": 164,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06924346834421158,
+        "H0": {
+          "total_persistence": 14.109451413154602,
+          "top1": 0.5053306221961975,
+          "top2": 0.5009925961494446,
+          "entropy": 3.5454599819365202,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.9418601393699646,
+          "top1": 0.7878226637840271,
+          "top2": 0.11823141574859619,
+          "entropy": 0.5602747677503233,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 7.609897136688232,
+        "H0": {
+          "total_persistence": 10.909838527441025,
+          "top1": 0.4254154562950134,
+          "top2": 0.41352903842926025,
+          "entropy": 3.5375020769103744,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0583138763904572,
+          "top1": 1.0583138763904572,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 13.120429992675781
+    },
+    {
+      "base_id": 169,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06702885031700134,
+        "H0": {
+          "total_persistence": 13.597905486822128,
+          "top1": 0.4976271390914917,
+          "top2": 0.4801698923110962,
+          "entropy": 3.5476130798368457,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.922147810459137,
+          "top1": 0.7990913987159729,
+          "top2": 0.12305641174316406,
+          "entropy": 0.39288423697903396,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 6.598451614379883,
+        "H0": {
+          "total_persistence": 11.457773432135582,
+          "top1": 0.4236263930797577,
+          "top2": 0.40520626306533813,
+          "entropy": 3.5456924657294597,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0169513821601868,
+          "top1": 1.0169513821601868,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 11.654947280883789
+    },
+    {
+      "base_id": 226,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.07336936891078949,
+        "H0": {
+          "total_persistence": 12.83213496208191,
+          "top1": 0.43352314829826355,
+          "top2": 0.42439380288124084,
+          "entropy": 3.548152549939849,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.003712385892868,
+          "top1": 0.8567437827587128,
+          "top2": 0.14696860313415527,
+          "entropy": 0.4164574668222255,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 8.645112037658691,
+        "H0": {
+          "total_persistence": 11.26093140244484,
+          "top1": 0.3903963565826416,
+          "top2": 0.3855319917201996,
+          "entropy": 3.5451078649249737,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0323452651500702,
+          "top1": 1.0323452651500702,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 15.286909103393555
+    },
+    {
+      "base_id": 240,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.0548502653837204,
+        "H0": {
+          "total_persistence": 18.310000956058502,
+          "top1": 0.6798155307769775,
+          "top2": 0.6768064498901367,
+          "entropy": 3.5447182643509336,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.2203671336174011,
+          "top1": 0.7787156701087952,
+          "top2": 0.24458491802215576,
+          "entropy": 0.9472584329562457,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.35755729675293,
+        "H0": {
+          "total_persistence": 15.048216074705124,
+          "top1": 0.6249377727508545,
+          "top2": 0.6192781329154968,
+          "entropy": 3.520548689234758,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.9416155219078064,
+          "top1": 0.6371343731880188,
+          "top2": 0.4472033381462097,
+          "entropy": 2.080700994463228,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 12.424342155456543
+    },
+    {
+      "base_id": 320,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05862082540988922,
+        "H0": {
+          "total_persistence": 17.69333153963089,
+          "top1": 0.6256458163261414,
+          "top2": 0.6069017648696899,
+          "entropy": 3.5466021866572075,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.3915150165557861,
+          "top1": 0.6504256129264832,
+          "top2": 0.38731497526168823,
+          "entropy": 1.5188351199845596,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 3.9473824501037598,
+        "H0": {
+          "total_persistence": 12.315263718366623,
+          "top1": 0.46759849786758423,
+          "top2": 0.45186647772789,
+          "entropy": 3.5457987354597384,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.9321647584438324,
+          "top1": 0.9321647584438324,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 7.281126499176025
+    },
+    {
+      "base_id": 384,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05595431476831436,
+        "H0": {
+          "total_persistence": 16.068803519010544,
+          "top1": 0.5287594795227051,
+          "top2": 0.5222100019454956,
+          "entropy": 3.551078119396043,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.4435760974884033,
+          "top1": 0.8242641687393188,
+          "top2": 0.32505595684051514,
+          "entropy": 1.1622460220636865,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 4.787444114685059,
+        "H0": {
+          "total_persistence": 12.194837436079979,
+          "top1": 0.4740224778652191,
+          "top2": 0.4369695484638214,
+          "entropy": 3.544154120327167,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.069185495376587,
+          "top1": 0.985730767250061,
+          "top2": 0.08345472812652588,
+          "entropy": 0.27399185413344596,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 8.855384826660156
+    },
+    {
+      "base_id": 419,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.0623016431927681,
+        "H0": {
+          "total_persistence": 15.100664049386978,
+          "top1": 0.5981266498565674,
+          "top2": 0.5677226185798645,
+          "entropy": 3.5370242545283834,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.7970428466796875,
+          "top1": 0.6973117589950562,
+          "top2": 0.3183783292770386,
+          "entropy": 1.9159119740410122,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.958459377288818,
+        "H0": {
+          "total_persistence": 15.014491468667984,
+          "top1": 0.5266897678375244,
+          "top2": 0.5184246897697449,
+          "entropy": 3.5396775704285988,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 2.234830915927887,
+          "top1": 0.88626629114151,
+          "top2": 0.40666013956069946,
+          "entropy": 1.8972543453213322,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 14.086287498474121
+    },
+    {
+      "base_id": 429,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.058908313512802124,
+        "H0": {
+          "total_persistence": 16.68936562538147,
+          "top1": 0.6141768097877502,
+          "top2": 0.5997255444526672,
+          "entropy": 3.54555997741878,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.3158133625984192,
+          "top1": 0.7636401653289795,
+          "top2": 0.344573438167572,
+          "entropy": 1.0500851187458151,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.761352062225342,
+        "H0": {
+          "total_persistence": 12.35342988371849,
+          "top1": 0.42521536350250244,
+          "top2": 0.420833557844162,
+          "entropy": 3.547213259865312,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.1619993448257446,
+          "top1": 0.9416791200637817,
+          "top2": 0.2203202247619629,
+          "entropy": 0.4856488771559455,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 10.78514289855957
+    },
+    {
+      "base_id": 536,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.0408082939684391,
+        "H0": {
+          "total_persistence": 16.970157712697983,
+          "top1": 0.6694239377975464,
+          "top2": 0.669012188911438,
+          "entropy": 3.543772689412378,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.6874012351036072,
+          "top1": 0.5891746878623962,
+          "top2": 0.3079017996788025,
+          "entropy": 2.0799214288637984,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 3.7100257873535156,
+        "H0": {
+          "total_persistence": 14.50985273718834,
+          "top1": 0.5666337609291077,
+          "top2": 0.5479787588119507,
+          "entropy": 3.538369373730218,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.7891192436218262,
+          "top1": 0.7202733755111694,
+          "top2": 0.49649131298065186,
+          "entropy": 1.6524777764448706,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 8.242712020874023
+    },
+    {
+      "base_id": 542,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06617163866758347,
+        "H0": {
+          "total_persistence": 14.652276515960693,
+          "top1": 0.5367395281791687,
+          "top2": 0.517703115940094,
+          "entropy": 3.5422841154150415,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.9683074951171875,
+          "top1": 0.7059521675109863,
+          "top2": 0.10620337724685669,
+          "entropy": 0.8846665618195548,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.750140190124512,
+        "H0": {
+          "total_persistence": 12.379896014928818,
+          "top1": 0.5028100609779358,
+          "top2": 0.4967428147792816,
+          "entropy": 3.5356996633412017,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.9244575500488281,
+          "top1": 0.867368221282959,
+          "top2": 0.04519796371459961,
+          "entropy": 0.26336675968333983,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 11.130060195922852
+    },
+    {
+      "base_id": 555,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05313493311405182,
+        "H0": {
+          "total_persistence": 16.24496877193451,
+          "top1": 0.6635703444480896,
+          "top2": 0.6390675902366638,
+          "entropy": 3.540452236664868,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.330328643321991,
+          "top1": 0.676841139793396,
+          "top2": 0.4254361391067505,
+          "entropy": 1.1632755250585156,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.262287616729736,
+        "H0": {
+          "total_persistence": 14.273281410336494,
+          "top1": 0.6369329690933228,
+          "top2": 0.517585813999176,
+          "entropy": 3.536270253342449,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.62421315908432,
+          "top1": 0.6933774948120117,
+          "top2": 0.48033463954925537,
+          "entropy": 1.2954172424978836,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 11.341794967651367
+    },
+    {
+      "base_id": 685,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.04840864613652229,
+        "H0": {
+          "total_persistence": 16.000184416770935,
+          "top1": 0.5902246832847595,
+          "top2": 0.5343748331069946,
+          "entropy": 3.5495164319471555,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.1737220287322998,
+          "top1": 0.8876731395721436,
+          "top2": 0.159584641456604,
+          "entropy": 0.82494649063176,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 3.921626567840576,
+        "H0": {
+          "total_persistence": 12.353766053915024,
+          "top1": 0.475792795419693,
+          "top2": 0.4719468057155609,
+          "entropy": 3.54461454526215,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0529595613479614,
+          "top1": 0.9468117952346802,
+          "top2": 0.07068228721618652,
+          "entropy": 0.3910775925923702,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 7.319396018981934
+    },
+    {
+      "base_id": 724,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.046613335609436035,
+        "H0": {
+          "total_persistence": 14.091315031051636,
+          "top1": 0.549346387386322,
+          "top2": 0.5244042873382568,
+          "entropy": 3.5405845179930258,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.6884754300117493,
+          "top1": 0.7128574252128601,
+          "top2": 0.29717081785202026,
+          "entropy": 1.9535705791651372,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 4.2948689460754395,
+        "H0": {
+          "total_persistence": 15.45585584640503,
+          "top1": 0.5234238505363464,
+          "top2": 0.5223747491836548,
+          "entropy": 3.5485723106220886,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 2.360995292663574,
+          "top1": 0.9438030123710632,
+          "top2": 0.20088064670562744,
+          "entropy": 2.1967007518374135,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 10.06312084197998
+    },
+    {
+      "base_id": 796,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.04674305021762848,
+        "H0": {
+          "total_persistence": 14.077641278505325,
+          "top1": 0.5095844864845276,
+          "top2": 0.502174973487854,
+          "entropy": 3.5478051852253585,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.2848306894302368,
+          "top1": 0.8635399341583252,
+          "top2": 0.3174874186515808,
+          "entropy": 0.8634800080434306,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 4.216728687286377,
+        "H0": {
+          "total_persistence": 13.730419963598251,
+          "top1": 0.5165331959724426,
+          "top2": 0.49558964371681213,
+          "entropy": 3.545420649922887,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.4268465638160706,
+          "top1": 0.6937459111213684,
+          "top2": 0.4580420255661011,
+          "entropy": 1.3561877652606427,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 8.699850082397461
+    },
+    {
+      "base_id": 1126,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06737248599529266,
+        "H0": {
+          "total_persistence": 15.594635039567947,
+          "top1": 0.5916914343833923,
+          "top2": 0.565987765789032,
+          "entropy": 3.5443052436170817,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.5450513362884521,
+          "top1": 0.8408781290054321,
+          "top2": 0.42459636926651,
+          "entropy": 1.3293490557102665,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 7.946542263031006,
+        "H0": {
+          "total_persistence": 14.380841866135597,
+          "top1": 0.5930062532424927,
+          "top2": 0.5546833276748657,
+          "entropy": 3.524783151543564,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.513944149017334,
+          "top1": 0.6186643242835999,
+          "top2": 0.6172846555709839,
+          "entropy": 1.3172488463080234,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 18.08715057373047
+    },
+    {
+      "base_id": 1145,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06126231700181961,
+        "H0": {
+          "total_persistence": 18.040270745754242,
+          "top1": 0.6592767238616943,
+          "top2": 0.6424334049224854,
+          "entropy": 3.5447779353696656,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.050074577331543,
+          "top1": 0.677093505859375,
+          "top2": 0.22860312461853027,
+          "entropy": 1.0534381971981501,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 7.040591239929199,
+        "H0": {
+          "total_persistence": 12.759132251143456,
+          "top1": 0.5665031671524048,
+          "top2": 0.5341888666152954,
+          "entropy": 3.521947755412828,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.136043906211853,
+          "top1": 0.8557459115982056,
+          "top2": 0.2513316869735718,
+          "entropy": 0.6505614087073912,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 13.401217460632324
+    },
+    {
+      "base_id": 1186,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06515443325042725,
+        "H0": {
+          "total_persistence": 13.179453074932098,
+          "top1": 0.5041950941085815,
+          "top2": 0.49381184577941895,
+          "entropy": 3.543652991984145,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.212777018547058,
+          "top1": 0.8241316080093384,
+          "top2": 0.14671921730041504,
+          "entropy": 1.2054725765491878,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 5.689064025878906,
+        "H0": {
+          "total_persistence": 12.810851112008095,
+          "top1": 0.5147500038146973,
+          "top2": 0.46762335300445557,
+          "entropy": 3.533331278727745,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0414024591445923,
+          "top1": 0.7619613409042358,
+          "top2": 0.19326770305633545,
+          "entropy": 0.7920350556089488,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 11.134960174560547
+    },
+    {
+      "base_id": 1304,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05972510203719139,
+        "H0": {
+          "total_persistence": 15.45935931801796,
+          "top1": 0.5490760207176208,
+          "top2": 0.5372454524040222,
+          "entropy": 3.547722011596133,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.8514018058776855,
+          "top1": 0.8514018058776855,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 7.603212833404541,
+        "H0": {
+          "total_persistence": 11.038328170776367,
+          "top1": 0.4089393615722656,
+          "top2": 0.4084365665912628,
+          "entropy": 3.540823844688686,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.0478154718875885,
+          "top1": 1.0395963490009308,
+          "top2": 0.008219122886657715,
+          "entropy": 0.0458411864672442,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 13.21851634979248
+    },
+    {
+      "base_id": 1357,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.06647486984729767,
+        "H0": {
+          "total_persistence": 10.289166040718555,
+          "top1": 0.6133406758308411,
+          "top2": 0.6025776863098145,
+          "entropy": 3.339688292622194,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.8795975148677826,
+          "top1": 0.868837833404541,
+          "top2": 0.0073247551918029785,
+          "entropy": 0.07759536497764992,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 8.65206527709961,
+        "H0": {
+          "total_persistence": 8.350389748811722,
+          "top1": 0.6005460619926453,
+          "top2": 0.5826094746589661,
+          "entropy": 3.166465121374681,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 0.9576950669288635,
+          "top1": 0.9576950669288635,
+          "top2": 0.0,
+          "entropy": -0.0,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 20.28252410888672
+    },
+    {
+      "base_id": 1538,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.05989740788936615,
+        "H0": {
+          "total_persistence": 17.2814399600029,
+          "top1": 0.6301380395889282,
+          "top2": 0.5944550633430481,
+          "entropy": 3.5459936538383268,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.272204577922821,
+          "top1": 0.5626627802848816,
+          "top2": 0.40882885456085205,
+          "entropy": 1.3607357333348655,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 4.989398002624512,
+        "H0": {
+          "total_persistence": 15.811951726675034,
+          "top1": 0.5942115187644958,
+          "top2": 0.5874263644218445,
+          "entropy": 3.542122875812887,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.8585917949676514,
+          "top1": 0.8889385461807251,
+          "top2": 0.41885679960250854,
+          "entropy": 1.5166488847202368,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 11.817220687866211
+    },
+    {
+      "base_id": 1663,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.04557967558503151,
+        "H0": {
+          "total_persistence": 14.488935768604279,
+          "top1": 0.5609760284423828,
+          "top2": 0.525370717048645,
+          "entropy": 3.546476808249782,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.6672765910625458,
+          "top1": 0.8755792379379272,
+          "top2": 0.15204176306724548,
+          "entropy": 1.8337481131491045,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 3.5197033882141113,
+        "H0": {
+          "total_persistence": 14.01961624622345,
+          "top1": 0.4816916286945343,
+          "top2": 0.47202035784721375,
+          "entropy": 3.545884240354875,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.5639239251613617,
+          "top1": 0.786898136138916,
+          "top2": 0.13267472386360168,
+          "entropy": 1.8655498754321669,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 8.204100608825684
+    },
+    {
+      "base_id": 1747,
+      "initial_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 0.056470971554517746,
+        "H0": {
+          "total_persistence": 14.231804877519608,
+          "top1": 0.5303167700767517,
+          "top2": 0.5024368166923523,
+          "entropy": 3.5449464778111106,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 1.9304828643798828,
+          "top1": 1.051665186882019,
+          "top2": 0.2804676294326782,
+          "entropy": 1.6888839450159565,
+          "essential_bars": 0
+        }
+      },
+      "final_ph": {
+        "repeat": 0,
+        "size": 36,
+        "normalized": true,
+        "scale": 4.655622482299805,
+        "H0": {
+          "total_persistence": 15.686542928218842,
+          "top1": 0.6316528916358948,
+          "top2": 0.6240819096565247,
+          "entropy": 3.5187109026434165,
+          "essential_bars": 1
+        },
+        "H1": {
+          "total_persistence": 2.270539402961731,
+          "top1": 0.7815812230110168,
+          "top2": 0.2404346466064453,
+          "entropy": 2.1895393654949786,
+          "essential_bars": 0
+        }
+      },
+      "median_rotation_finite_difference_norm": 10.80951976776123
+    }
+  ],
+  "limitation": "Discrete rotated handwritten digits; interpolation, digit symmetry and rotation-label ambiguity preclude exact S1/injectivity claims"
+}

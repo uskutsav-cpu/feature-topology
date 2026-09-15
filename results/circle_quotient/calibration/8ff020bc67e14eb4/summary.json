@@ -1,0 +1,82 @@
+{
+  "run_id": "8ff020bc67e14eb4",
+  "config": {
+    "width": 16,
+    "depth": 2,
+    "n_train": 4000,
+    "n_validation": 1000,
+    "max_steps": 2048,
+    "eval_every": 64,
+    "batch_size": 128,
+    "target_loss": 0.08,
+    "gamma": 128.0,
+    "lr": 1.2699208415745593,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 0.6931473612785339,
+      "training_accuracy": 0.49900001287460327,
+      "validation_loss": 0.6931474208831787,
+      "validation_accuracy": 0.5059999823570251
+    },
+    {
+      "step": 64,
+      "training_loss": 0.6913903951644897,
+      "training_accuracy": 0.7927500009536743,
+      "validation_loss": 0.6914078593254089,
+      "validation_accuracy": 0.8069999814033508
+    },
+    {
+      "step": 128,
+      "training_loss": 0.6891434788703918,
+      "training_accuracy": 0.8379999995231628,
+      "validation_loss": 0.689163863658905,
+      "validation_accuracy": 0.8379999995231628
+    },
+    {
+      "step": 192,
+      "training_loss": 0.6843805909156799,
+      "training_accuracy": 0.8765000104904175,
+      "validation_loss": 0.6844033002853394,
+      "validation_accuracy": 0.8799999952316284
+    },
+    {
+      "step": 256,
+      "training_loss": 0.670674204826355,
+      "training_accuracy": 0.9177500009536743,
+      "validation_loss": 0.6707346439361572,
+      "validation_accuracy": 0.9190000295639038
+    },
+    {
+      "step": 320,
+      "training_loss": 0.617043137550354,
+      "training_accuracy": 0.9412500262260437,
+      "validation_loss": 0.617655336856842,
+      "validation_accuracy": 0.9440000057220459
+    },
+    {
+      "step": 384,
+      "training_loss": 0.37172073125839233,
+      "training_accuracy": 0.981249988079071,
+      "validation_loss": 0.3756718933582306,
+      "validation_accuracy": 0.9850000143051147
+    },
+    {
+      "step": 448,
+      "training_loss": 0.1335851103067398,
+      "training_accuracy": 0.9965000152587891,
+      "validation_loss": 0.14091676473617554,
+      "validation_accuracy": 0.9990000128746033
+    },
+    {
+      "step": 512,
+      "training_loss": 0.07860007137060165,
+      "training_accuracy": 0.996999979019165,
+      "validation_loss": 0.08658359944820404,
+      "validation_accuracy": 0.9980000257492065
+    }
+  ]
+}

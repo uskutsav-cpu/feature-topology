@@ -1,0 +1,21 @@
+........................................................................ [ 48%]
+........................................................................ [ 96%]
+......                                                                   [100%]
+=============================== warnings summary ===============================
+tests/test_core.py::test_analytic_tangent
+  /Users/swethasunilkumar/Documents/Codex/2026-09-08/do-thsi-entire-project-for-me/work/venv/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_core.py::test_collision_detects_factor_collapse
+  /Users/swethasunilkumar/Documents/Codex/2026-09-08/do-thsi-entire-project-for-me/work/venv/lib/python3.13/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+  invalid literal for int() with base 10: ''
+  Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+    warnings.warn(
+
+tests/test_images_statistics.py::test_image_identity_split
+  /Users/swethasunilkumar/Documents/Codex/2026-09-08/do-thsi-entire-project-for-me/work/venv/lib/python3.13/site-packages/sklearn/datasets/_base.py:1007: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  As an alternative, you can create a new view using np.reshape (with copy=False if needed).
+    images.shape = (-1, 8, 8)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+150 passed, 3 warnings in 34.68s

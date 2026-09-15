@@ -1,0 +1,99 @@
+{
+  "config": {
+    "gamma": 128.0,
+    "lr": 2.2627416997969525,
+    "seed": 2,
+    "max_steps": 3000,
+    "target_loss": 0.5,
+    "width": 16
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 2.3025851205461323,
+      "training_accuracy": 0.09925788497217068,
+      "validation_loss": 2.302585144893041,
+      "validation_accuracy": 0.10027855153203342
+    },
+    {
+      "step": 100,
+      "training_loss": 2.302543512744231,
+      "training_accuracy": 0.19782003710575138,
+      "validation_loss": 2.3025471041793613,
+      "validation_accuracy": 0.1915041782729805
+    },
+    {
+      "step": 200,
+      "training_loss": 2.302484600796107,
+      "training_accuracy": 0.20037105751391465,
+      "validation_loss": 2.302492912101214,
+      "validation_accuracy": 0.19428969359331477
+    },
+    {
+      "step": 300,
+      "training_loss": 2.3023496779970865,
+      "training_accuracy": 0.20616883116883117,
+      "validation_loss": 2.3023689716307234,
+      "validation_accuracy": 0.19568245125348188
+    },
+    {
+      "step": 400,
+      "training_loss": 2.3017354480410774,
+      "training_accuracy": 0.2054730983302412,
+      "validation_loss": 2.3018070954134204,
+      "validation_accuracy": 0.19498607242339833
+    },
+    {
+      "step": 500,
+      "training_loss": 2.2585029389729967,
+      "training_accuracy": 0.1790352504638219,
+      "validation_loss": 2.2614227549943418,
+      "validation_accuracy": 0.1713091922005571
+    },
+    {
+      "step": 600,
+      "training_loss": 1.675662307880805,
+      "training_accuracy": 0.313543599257885,
+      "validation_loss": 1.7052019804633096,
+      "validation_accuracy": 0.346100278551532
+    },
+    {
+      "step": 700,
+      "training_loss": 1.3704658041194993,
+      "training_accuracy": 0.47518552875695735,
+      "validation_loss": 1.4072667071414193,
+      "validation_accuracy": 0.48885793871866295
+    },
+    {
+      "step": 800,
+      "training_loss": 0.9979913495688358,
+      "training_accuracy": 0.6477272727272727,
+      "validation_loss": 1.0578099412838398,
+      "validation_accuracy": 0.6344011142061281
+    },
+    {
+      "step": 900,
+      "training_loss": 0.8482531085748619,
+      "training_accuracy": 0.6688311688311688,
+      "validation_loss": 0.9322009817139352,
+      "validation_accuracy": 0.6462395543175488
+    },
+    {
+      "step": 1000,
+      "training_loss": 0.5476254107558439,
+      "training_accuracy": 0.8096011131725418,
+      "validation_loss": 0.6409974536523846,
+      "validation_accuracy": 0.7841225626740947
+    },
+    {
+      "step": 1100,
+      "training_loss": 0.425275756609462,
+      "training_accuracy": 0.8494897959183674,
+      "validation_loss": 0.5413991880284046,
+      "validation_accuracy": 0.825208913649025
+    }
+  ],
+  "run_id": "0b64bb3f4f460be8",
+  "execution_device": "mps"
+}

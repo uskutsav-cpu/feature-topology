@@ -1,0 +1,215 @@
+{
+  "selection": {
+    "0.125": {
+      "lr": 0.00625,
+      "status": "converged",
+      "loss": 0.055897340178489685,
+      "step": 128,
+      "candidates": [
+        {
+          "lr": 9.765625e-05,
+          "status": "budget_exhausted",
+          "loss": 0.1204051822423935,
+          "step": 2048
+        },
+        {
+          "lr": 0.0001953125,
+          "status": "budget_exhausted",
+          "loss": 0.08069924265146255,
+          "step": 2048
+        },
+        {
+          "lr": 0.000390625,
+          "status": "converged",
+          "loss": 0.07802121341228485,
+          "step": 1088
+        },
+        {
+          "lr": 0.00078125,
+          "status": "converged",
+          "loss": 0.0758129432797432,
+          "step": 576
+        },
+        {
+          "lr": 0.0015625,
+          "status": "converged",
+          "loss": 0.07143812626600266,
+          "step": 320
+        },
+        {
+          "lr": 0.003125,
+          "status": "converged",
+          "loss": 0.06515691429376602,
+          "step": 192
+        },
+        {
+          "lr": 0.00625,
+          "status": "converged",
+          "loss": 0.055897340178489685,
+          "step": 128
+        }
+      ]
+    },
+    "1.0": {
+      "lr": 0.4,
+      "status": "converged",
+      "loss": 0.04040161147713661,
+      "step": 64,
+      "candidates": [
+        {
+          "lr": 0.00625,
+          "status": "converged",
+          "loss": 0.0768243670463562,
+          "step": 1280
+        },
+        {
+          "lr": 0.0125,
+          "status": "converged",
+          "loss": 0.07689312100410461,
+          "step": 640
+        },
+        {
+          "lr": 0.025,
+          "status": "converged",
+          "loss": 0.07682443410158157,
+          "step": 320
+        },
+        {
+          "lr": 0.05,
+          "status": "converged",
+          "loss": 0.06719798594713211,
+          "step": 192
+        },
+        {
+          "lr": 0.1,
+          "status": "converged",
+          "loss": 0.05555547773838043,
+          "step": 128
+        },
+        {
+          "lr": 0.2,
+          "status": "converged",
+          "loss": 0.057166922837495804,
+          "step": 64
+        },
+        {
+          "lr": 0.4,
+          "status": "converged",
+          "loss": 0.04040161147713661,
+          "step": 64
+        }
+      ]
+    },
+    "16.0": {
+      "lr": 2.539841683149119,
+      "status": "converged",
+      "loss": 0.04236959293484688,
+      "step": 64,
+      "candidates": [
+        {
+          "lr": 0.039685026299204985,
+          "status": "budget_exhausted",
+          "loss": 0.10173074156045914,
+          "step": 2048
+        },
+        {
+          "lr": 0.07937005259840997,
+          "status": "converged",
+          "loss": 0.07943376153707504,
+          "step": 1152
+        },
+        {
+          "lr": 0.15874010519681994,
+          "status": "converged",
+          "loss": 0.06717944145202637,
+          "step": 640
+        },
+        {
+          "lr": 0.3174802103936399,
+          "status": "converged",
+          "loss": 0.06697497516870499,
+          "step": 320
+        },
+        {
+          "lr": 0.6349604207872798,
+          "status": "converged",
+          "loss": 0.05326993390917778,
+          "step": 192
+        },
+        {
+          "lr": 1.2699208415745595,
+          "status": "converged",
+          "loss": 0.04029816761612892,
+          "step": 128
+        },
+        {
+          "lr": 2.539841683149119,
+          "status": "converged",
+          "loss": 0.04236959293484688,
+          "step": 64
+        }
+      ]
+    },
+    "128.0": {
+      "lr": 10.159366732596474,
+      "status": "converged",
+      "loss": 0.0308495182543993,
+      "step": 128,
+      "candidates": [
+        {
+          "lr": 0.15874010519681991,
+          "status": "budget_exhausted",
+          "loss": 0.6699262857437134,
+          "step": 2048
+        },
+        {
+          "lr": 0.31748021039363983,
+          "status": "converged",
+          "loss": 0.07749536633491516,
+          "step": 2048
+        },
+        {
+          "lr": 0.6349604207872797,
+          "status": "converged",
+          "loss": 0.07756264507770538,
+          "step": 1024
+        },
+        {
+          "lr": 1.2699208415745593,
+          "status": "converged",
+          "loss": 0.07860007137060165,
+          "step": 512
+        },
+        {
+          "lr": 2.5398416831491186,
+          "status": "converged",
+          "loss": 0.07873401790857315,
+          "step": 256
+        },
+        {
+          "lr": 5.079683366298237,
+          "status": "converged",
+          "loss": 0.0798298642039299,
+          "step": 128
+        },
+        {
+          "lr": 10.159366732596474,
+          "status": "converged",
+          "loss": 0.0308495182543993,
+          "step": 128
+        }
+      ]
+    }
+  },
+  "common": {
+    "width": 16,
+    "depth": 2,
+    "n_train": 4000,
+    "n_validation": 1000,
+    "max_steps": 2048,
+    "eval_every": 64,
+    "batch_size": 128,
+    "target_loss": 0.08
+  },
+  "policy": "stable target-reaching rate, then fewest evaluated steps"
+}

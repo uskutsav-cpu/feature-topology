@@ -13,4 +13,7 @@ import FeatureTopology
 #print axioms FeatureTopology.square_graph_counts
 #print axioms FeatureTopology.interval_graph_counts
 #print axioms FeatureTopology.point_graph_counts
+#print axioms FeatureTopology.disconnected_graph_counts
+#print axioms FeatureTopology.reordered_disconnected_graph_counts
+#print axioms FeatureTopology.invalid_edge_rejected
 #print axioms FeatureTopology.Generated.certificate_graph_checked

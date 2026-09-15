@@ -4,3 +4,6 @@ __pycache__/
 .venv/
 /data/
 *.tmp
+formal/.lake/
+results/completion/*.log
+results/completion/*.lock

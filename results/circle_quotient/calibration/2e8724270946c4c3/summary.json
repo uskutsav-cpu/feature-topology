@@ -1,0 +1,61 @@
+{
+  "run_id": "2e8724270946c4c3",
+  "config": {
+    "width": 16,
+    "depth": 2,
+    "n_train": 4000,
+    "n_validation": 1000,
+    "max_steps": 2048,
+    "eval_every": 64,
+    "batch_size": 128,
+    "target_loss": 0.08,
+    "gamma": 16.0,
+    "lr": 0.3174802103936399,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 0.6931473612785339,
+      "training_accuracy": 0.49900001287460327,
+      "validation_loss": 0.6931474208831787,
+      "validation_accuracy": 0.5059999823570251
+    },
+    {
+      "step": 64,
+      "training_loss": 0.6626660823822021,
+      "training_accuracy": 0.8360000252723694,
+      "validation_loss": 0.6628400087356567,
+      "validation_accuracy": 0.8379999995231628
+    },
+    {
+      "step": 128,
+      "training_loss": 0.5602255463600159,
+      "training_accuracy": 0.9202499985694885,
+      "validation_loss": 0.560468852519989,
+      "validation_accuracy": 0.9210000038146973
+    },
+    {
+      "step": 192,
+      "training_loss": 0.25461268424987793,
+      "training_accuracy": 0.965499997138977,
+      "validation_loss": 0.25911852717399597,
+      "validation_accuracy": 0.9670000076293945
+    },
+    {
+      "step": 256,
+      "training_loss": 0.1029859110713005,
+      "training_accuracy": 0.9975000023841858,
+      "validation_loss": 0.10983092337846756,
+      "validation_accuracy": 0.9990000128746033
+    },
+    {
+      "step": 320,
+      "training_loss": 0.06697497516870499,
+      "training_accuracy": 0.9962499737739563,
+      "validation_loss": 0.07441707700490952,
+      "validation_accuracy": 0.9980000257492065
+    }
+  ]
+}

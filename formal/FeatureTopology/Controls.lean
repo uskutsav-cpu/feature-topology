@@ -35,4 +35,13 @@ theorem interval_graph_counts : checkGraph intervalGraph 1 0 = true := by decide
 
 theorem point_graph_counts : checkGraph pointGraph 1 0 = true := by decide
 
+theorem disconnected_graph_counts :
+    checkGraph ⟨5, [(0, 1), (0, 2), (1, 2)]⟩ 3 1 = true := by decide
+
+theorem reordered_disconnected_graph_counts :
+    checkGraph ⟨5, [(1, 2), (0, 2), (0, 1)]⟩ 3 1 = true := by decide
+
+theorem invalid_edge_rejected :
+    checkGraph ⟨2, [(0, 2)]⟩ 1 0 = false := by decide
+
 end FeatureTopology

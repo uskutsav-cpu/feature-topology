@@ -1,0 +1,23 @@
+$ lake build
+✔ [5/7] Built FeatureTopology.Controls
+✔ [6/7] Built FeatureTopology
+Build completed successfully.
+
+$ lake env lean FeatureTopology/Audit.lean
+'FeatureTopology.injective_of_reconstruction' does not depend on any axioms
+'FeatureTopology.collision_not_injective' does not depend on any axioms
+'FeatureTopology.injective_no_collision' does not depend on any axioms
+'FeatureTopology.collision_survives_postprocessing' does not depend on any axioms
+'FeatureTopology.different_factor_collision_blocks_decoder' does not depend on any axioms
+'FeatureTopology.recoverable_before_postprocessing' does not depend on any axioms
+'FeatureTopology.injective_composition' does not depend on any axioms
+'FeatureTopology.relu_has_explicit_collision' does not depend on any axioms
+'FeatureTopology.relu_is_not_injective' does not depend on any axioms
+'FeatureTopology.projection_loses_nuisance' does not depend on any axioms
+'FeatureTopology.square_graph_counts' does not depend on any axioms
+'FeatureTopology.interval_graph_counts' does not depend on any axioms
+'FeatureTopology.point_graph_counts' does not depend on any axioms
+'FeatureTopology.disconnected_graph_counts' does not depend on any axioms
+'FeatureTopology.reordered_disconnected_graph_counts' does not depend on any axioms
+'FeatureTopology.invalid_edge_rejected' does not depend on any axioms
+'FeatureTopology.Generated.certificate_graph_checked' does not depend on any axioms

@@ -1,0 +1,14 @@
+{
+  "files": {
+    "FeatureTopology.lean": "e4d5b64b664440f87facfe7e5f15554a5880a15cebac16ba5d93788de693870f",
+    "FeatureTopology/Audit.lean": "fefac367d45c61b18d0b567545c9095a87ef5aa2c3b16e41b1a1da20233f744f",
+    "FeatureTopology/Basic.lean": "5e5a813def957494ac6b21a84e95a165c843292fd179f62629bd513e7d9e301b",
+    "FeatureTopology/Controls.lean": "c04e1061d9f3ac05de2c21741964ce07530c630c1bef5877d98965842308d4e7",
+    "FeatureTopology/Generated.lean": "c741e8061e913bb569f48b45ce7e6be27e3bd0fd0ba83aeaaf346c03694f1791",
+    "FeatureTopology/Graph.lean": "32e18445d571db5ee87ae2ae6fb089c27685caea77c93315c1bf7667f260c3d8"
+  },
+  "lean_verified": true,
+  "scope": "Logical lemmas and the finite supplied-graph checker only.",
+  "status": "compiled_and_axiom_audited",
+  "utc": "2026-09-13T20:31:31.512268+00:00"
+}

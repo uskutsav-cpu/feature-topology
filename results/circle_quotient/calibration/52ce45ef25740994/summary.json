@@ -1,0 +1,40 @@
+{
+  "run_id": "52ce45ef25740994",
+  "config": {
+    "width": 16,
+    "depth": 2,
+    "n_train": 4000,
+    "n_validation": 1000,
+    "max_steps": 2048,
+    "eval_every": 64,
+    "batch_size": 128,
+    "target_loss": 0.08,
+    "gamma": 16.0,
+    "lr": 1.2699208415745595,
+    "seed": 900
+  },
+  "status": "converged",
+  "history": [
+    {
+      "step": 0,
+      "training_loss": 0.6931473612785339,
+      "training_accuracy": 0.49900001287460327,
+      "validation_loss": 0.6931474208831787,
+      "validation_accuracy": 0.5059999823570251
+    },
+    {
+      "step": 64,
+      "training_loss": 0.10445653647184372,
+      "training_accuracy": 0.9940000176429749,
+      "validation_loss": 0.1112952008843422,
+      "validation_accuracy": 0.9929999709129333
+    },
+    {
+      "step": 128,
+      "training_loss": 0.04029816761612892,
+      "training_accuracy": 0.9972500205039978,
+      "validation_loss": 0.04542648047208786,
+      "validation_accuracy": 0.9980000257492065
+    }
+  ]
+}

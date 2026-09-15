@@ -1,7 +1,9 @@
 import json
+import pytest
 from src.training.train import train
 from src.training.checkpoints import fingerprint
 from scripts.compute_metrics import compute
+from scripts import compute_metrics
 
 
 def test_centered_initial_metrics_reused_across_gamma(tmp_path):
@@ -21,3 +23,24 @@ def test_centered_initial_metrics_reused_across_gamma(tmp_path):
     assert "initial_metric_reused" in second
     assert first["layers"] == second["layers"]
     assert second["gamma"] == 2.
+    # A fully populated cache must still validate the checkpoint bytes.
+    compute(path, options)
+    with (path/"final.pt").open("ab") as stream:
+        stream.write(b"changed checkpoint bytes")
+    with pytest.raises(RuntimeError, match="checkpoint hash mismatch"):
+        compute(path, options)
+
+
+def test_baseline_uses_saved_initial_weights_not_local_rng(tmp_path,monkeypatch):
+    config=dict(lr=.01,seed=0,gamma=1.,width=8,depth=1,n_train=64,
+                n_validation=32,n_grid=25,max_steps=1)
+    result=train(config,tmp_path/'runs')
+    run=tmp_path/'runs'/result['run_id']
+    original=compute_metrics.build
+    monkeypatch.setattr(compute_metrics,'build',lambda c,s:original(c,s+111))
+    options=dict(jacobian_points=25,ntk_points=4,ph_size=20,ph_repeats=1,
+                 ph_maxdim=1,probe_train=80,probe_test=40,probe_iterations=10,all_checkpoints=False)
+    compute(run,options)
+    row=json.loads((run/'metrics'/fingerprint(options)/'step_0000000.json').read_text())
+    assert row['ntk_drift']==pytest.approx(0.,abs=1e-7)
+    assert row['layers'][0]['cka_drift']==pytest.approx(0.,abs=1e-7)

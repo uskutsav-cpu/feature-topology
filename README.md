@@ -7,6 +7,11 @@ completed runs; this repository is not evidence that a hypothesized transition e
 Read [the protocol](docs/PROTOCOL.md) for assumptions and limitations, and
 [the original brief](docs/original_brief.txt) for the requested scope.
 
+See [the completion record](docs/COMPLETION_2026_09_13.md) for recovered primary
+run accounting, trained-network rational certificates, the compiled Lean audit,
+and the remaining production/image computations. The final results freeze and
+paper are still pending.
+
 ## Environment
 
 Python 3.11+ and the dependencies in `requirements.lock.txt`. On this workspace,

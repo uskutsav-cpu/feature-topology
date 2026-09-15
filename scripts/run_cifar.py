@@ -49,7 +49,10 @@ def evaluate(model, pair, device, batch=128):
 def train(config, root, data, device):
     root = Path(root)/fingerprint(config)
     if (root/"summary.json").exists():
-        return json.loads((root/"summary.json").read_text())
+        result=json.loads((root/"summary.json").read_text())
+        if result["config"]!=config or (result["status"]!="diverged" and not (root/"final.pt").is_file()):
+            raise ValueError("Completed CIFAR run has inconsistent or missing artifacts")
+        return result
     root.mkdir(parents=True, exist_ok=True)
     atomic_json(root/"config.json", config)
     torch.manual_seed(config["seed"])
@@ -60,6 +63,8 @@ def train(config, root, data, device):
     history, start = [], 0
     if resume.exists():
         saved = torch.load(resume, map_location="cpu", weights_only=False)
+        if saved.get("config")!=config:
+            raise ValueError("CIFAR resume configuration mismatch")
         model.network.load_state_dict(saved["network"])
         optimizer.load_state_dict(saved["optimizer"])
         generator.set_state(saved["rng"])
@@ -67,6 +72,9 @@ def train(config, root, data, device):
     x,y = data["train"]
     status = "budget_exhausted"
     for step in range(start, config["max_steps"]+1):
+        if history and history[-1]["step"]==step and history[-1]["training_loss"]<=config["target_loss"]:
+            status="converged"
+            break
         if (step == 0 or step % config["eval_every"] == 0 or step == config["max_steps"]) and (not history or history[-1]["step"] != step):
             risk = evaluate(model, data["train"], device)
             val = evaluate(model, data["validation"], device)
@@ -75,7 +83,7 @@ def train(config, root, data, device):
             history.append(dict(step=step, training_loss=risk["loss"], training_accuracy=risk["accuracy"],
                                 validation_loss=val["loss"], validation_accuracy=val["accuracy"]))
             save_checkpoint(resume, dict(network={k:v.cpu() for k,v in model.network.state_dict().items()},
-                            optimizer=optimizer.state_dict(), rng=generator.get_state(), history=history, step=step))
+                            optimizer=optimizer.state_dict(), rng=generator.get_state(), history=history, step=step,config=config))
             if risk["loss"] <= config["target_loss"]:
                 status = "converged"; break
         if step == config["max_steps"]:
@@ -120,7 +128,7 @@ def analyze(config, root, data, device):
     for sample in x[:4]:
         a = inputs(sample[None], device)[0]
         j = torch.func.jacrev(lambda t:model(t[None])[0], chunk_size=4)(a)
-        spectrum.append(torch.linalg.svdvals(j.flatten(1).cpu()).numpy())
+        spectrum.append(torch.linalg.svdvals(j.flatten(1).detach().cpu()).numpy())
     np.savez_compressed(root/"representations.npz", **{f"initial_h{i+1}":h for i,h in enumerate(initial)},
                          **{f"final_h{i+1}":h for i,h in enumerate(current)},
                          input_logit_jacobian_singular_values=np.stack(spectrum))
@@ -162,6 +170,8 @@ def main(a):
         atomic_json(frozen_path, dict(selection=chosen, calibration_steps=a.calibration_steps,
                                       protocol=base, device=a.device))
     frozen = json.loads(frozen_path.read_text())
+    if frozen.get("protocol")!=base or frozen.get("calibration_steps")!=a.calibration_steps:
+        raise ValueError("Frozen CIFAR calibration differs from the requested protocol")
     for gamma in gammas:
         for seed in range(5):
             c = dict(**base, gamma=gamma, seed=seed, lr=frozen["selection"][str(gamma)]["lr"],
