@@ -1,0 +1,13 @@
+{
+  "width": 16,
+  "depth": 2,
+  "n_train": 4000,
+  "n_validation": 1000,
+  "max_steps": 2048,
+  "eval_every": 64,
+  "batch_size": 128,
+  "target_loss": 0.08,
+  "gamma": 1.0,
+  "seed": 0,
+  "lr": 0.4
+}

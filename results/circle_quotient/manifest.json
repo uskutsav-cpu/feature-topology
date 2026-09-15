@@ -1,0 +1,1182 @@
+[
+  {
+    "gamma": 0.125,
+    "seed": 0,
+    "run_id": "fb6b3be085a2ff59",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 0.125,
+    "seed": 1,
+    "run_id": "983813e75b759cb6",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 0.125,
+    "seed": 2,
+    "run_id": "cafa1ce9ba627813",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 414,
+          "edges": 414,
+          "affine_segments": 414,
+          "pair_intersections": 414,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 412,
+          "edges": 412,
+          "affine_segments": 412,
+          "pair_intersections": 412,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 0.125,
+    "seed": 3,
+    "run_id": "d1faa60703958f09",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 0.125,
+    "seed": 4,
+    "run_id": "119a0be1b0cb9385",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 426,
+          "edges": 426,
+          "affine_segments": 426,
+          "pair_intersections": 426,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 424,
+          "edges": 424,
+          "affine_segments": 424,
+          "pair_intersections": 424,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 1.0,
+    "seed": 0,
+    "run_id": "3b3ae1f442a0e188",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 1.0,
+    "seed": 1,
+    "run_id": "1069c9ec3fd2f9fc",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 422,
+          "edges": 422,
+          "affine_segments": 422,
+          "pair_intersections": 422,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 1.0,
+    "seed": 2,
+    "run_id": "8d792c30817ecac1",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 414,
+          "edges": 414,
+          "affine_segments": 414,
+          "pair_intersections": 414,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 416,
+          "edges": 416,
+          "affine_segments": 416,
+          "pair_intersections": 416,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 1.0,
+    "seed": 3,
+    "run_id": "92a0a0591c556a55",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 424,
+          "edges": 424,
+          "affine_segments": 424,
+          "pair_intersections": 424,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 1.0,
+    "seed": 4,
+    "run_id": "0e093abf2106cfde",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 426,
+          "edges": 426,
+          "affine_segments": 426,
+          "pair_intersections": 426,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 424,
+          "edges": 424,
+          "affine_segments": 424,
+          "pair_intersections": 424,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 16.0,
+    "seed": 0,
+    "run_id": "f8f3b77f06bf1744",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 416,
+          "edges": 416,
+          "affine_segments": 416,
+          "pair_intersections": 416,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 16.0,
+    "seed": 1,
+    "run_id": "a6022b4a56b15c2a",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 422,
+          "edges": 422,
+          "affine_segments": 422,
+          "pair_intersections": 422,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 16.0,
+    "seed": 2,
+    "run_id": "fc8222bd05eb8bcb",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 414,
+          "edges": 414,
+          "affine_segments": 414,
+          "pair_intersections": 414,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 420,
+          "edges": 420,
+          "affine_segments": 420,
+          "pair_intersections": 420,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 16.0,
+    "seed": 3,
+    "run_id": "c53e8409579ff206",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 424,
+          "edges": 424,
+          "affine_segments": 424,
+          "pair_intersections": 424,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 16.0,
+    "seed": 4,
+    "run_id": "d0bfc5b011ca75fc",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 426,
+          "edges": 426,
+          "affine_segments": 426,
+          "pair_intersections": 426,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 390,
+          "edges": 390,
+          "affine_segments": 390,
+          "pair_intersections": 390,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 420,
+          "edges": 420,
+          "affine_segments": 420,
+          "pair_intersections": 420,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 128.0,
+    "seed": 0,
+    "run_id": "eeab3e733914ed0e",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 416,
+          "edges": 416,
+          "affine_segments": 416,
+          "pair_intersections": 416,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 128.0,
+    "seed": 1,
+    "run_id": "3182623000ec6c27",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 422,
+          "edges": 422,
+          "affine_segments": 422,
+          "pair_intersections": 422,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 128.0,
+    "seed": 2,
+    "run_id": "7750f23cf88db67e",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 414,
+          "edges": 414,
+          "affine_segments": 414,
+          "pair_intersections": 414,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 420,
+          "edges": 420,
+          "affine_segments": 420,
+          "pair_intersections": 420,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 128.0,
+    "seed": 3,
+    "run_id": "b88e8e9383744ad3",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 428,
+          "edges": 428,
+          "affine_segments": 428,
+          "pair_intersections": 428,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 388,
+          "edges": 388,
+          "affine_segments": 388,
+          "pair_intersections": 388,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 418,
+          "edges": 418,
+          "affine_segments": 418,
+          "pair_intersections": 418,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  },
+  {
+    "gamma": 128.0,
+    "seed": 4,
+    "run_id": "fe5f0fc86bb55803",
+    "status": "converged",
+    "quotient": {
+      "polygon_points": 360,
+      "tolerance": 1e-07,
+      "initial": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 392,
+          "edges": 392,
+          "affine_segments": 392,
+          "pair_intersections": 392,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 426,
+          "edges": 426,
+          "affine_segments": 426,
+          "pair_intersections": 426,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "final": [
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 390,
+          "edges": 390,
+          "affine_segments": 390,
+          "pair_intersections": 390,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        },
+        {
+          "beta0": 1,
+          "beta1": 1,
+          "nodes": 418,
+          "edges": 418,
+          "affine_segments": 418,
+          "pair_intersections": 418,
+          "tolerance": 1e-07,
+          "domain": "polygonal circle",
+          "method": "ReLU edge subdivision + LP intersections + image graph"
+        }
+      ],
+      "qualification": "Betti numbers are for the numerically resolved image graph of a 720-edge polygonal circle. Pairwise image intersections use LP; results are tolerance-dependent and do not certify a smooth continuum."
+    }
+  }
+]
