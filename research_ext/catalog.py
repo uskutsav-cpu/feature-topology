@@ -134,6 +134,12 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                 rid = original_fingerprint(config)
                 info = {"run_id": rid, "directory": str(run), "gamma": config["gamma"],
                         "seed": config["seed"], "condition": condition_id(config), "status": "invalid",
+                        "width": int(config.get("width", DEFAULTS["width"])),
+                        "depth": int(config.get("depth", DEFAULTS["depth"])),
+                        "manifold": config.get("manifold", DEFAULTS["manifold"]),
+                        "swap": bool(config.get("swap", DEFAULTS["swap"])),
+                        "relevance": float(config.get("relevance", DEFAULTS["relevance"])),
+                        "nuisance_condition": config.get("nuisance_condition", "iid"),
                         "profiles": [], "checkpoint_count": len(list(run.glob("step_*.pt"))),
                         "has_final_checkpoint": (run/"final.pt").is_file(),
                         "has_resume_checkpoint": (run/"resume.pt").is_file()}
@@ -193,6 +199,10 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                                    "profile": pid, "profile_directory": directory.name,
                                    "checkpoint": path.stem, "gamma": float(config["gamma"]),
                                    "seed": int(config["seed"]), "step": step, "status": summary["status"],
+                                   "width": info["width"], "depth": info["depth"],
+                                   "manifold": info["manifold"], "swap": info["swap"],
+                                   "relevance": info["relevance"],
+                                   "nuisance_condition": info["nuisance_condition"],
                                    "training_loss": _get(h, "training_loss") if h else None,
                                    "training_accuracy": _get(h, "training_accuracy") if h else None,
                                    "risk_join": "exact" if h else "missing",

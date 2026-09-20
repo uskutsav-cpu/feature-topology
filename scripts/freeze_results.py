@@ -100,6 +100,29 @@ def readiness(repo):
             else:
                 paths.add(checkpoint)
         paths.update(p for p in ood_manifest.parent.glob('*.json'))
+    width_spec=repo/'configs/width_scaling_gate_v1.json'
+    width_result=repo/'results/analysis/width_scaling_gate.json'
+    if not width_result.exists():
+        problems.append(dict(study='width_scaling',error='Finite-width terminology gate missing'))
+    else:
+        gate=json.loads(width_result.read_text())
+        if (gate.get('schema')!='feature-topology.width-scaling-result.v1'
+                or gate.get('status')!='complete'):
+            problems.append(dict(study='width_scaling',error='Finite-width terminology gate incomplete'))
+        if gate.get('specification_sha256')!=sha256(width_spec):
+            problems.append(dict(study='width_scaling',error='Finite-width gate specification mismatch'))
+        allowed=gate.get('phase_transition_language_allowed') is True
+        expected_term='phase transition' if allowed else 'crossover'
+        if gate.get('terminology')!=expected_term:
+            problems.append(dict(study='width_scaling',error='Finite-width terminology decision inconsistent'))
+        for relative,expected in gate.get('input_hashes',{}).items():
+            source=repo/relative
+            if (not source.resolve().is_relative_to(repo) or not source.exists()
+                    or sha256(source)!=expected):
+                problems.append(dict(study='width_scaling',error=f'Finite-width input changed: {relative}'))
+            else:
+                paths.add(source)
+        paths.update([width_spec,width_result])
     exact=repo/'results/exact_trained_circles/manifest.json'
     if not exact.exists():
         problems.append(dict(study='exact',error='Trained-network certificate manifest missing'))

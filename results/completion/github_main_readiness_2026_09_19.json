@@ -1166,6 +1166,10 @@
     {
       "study": "ood_evaluation",
       "error": "Nuisance-shift evaluation missing"
+    },
+    {
+      "study": "width_scaling",
+      "error": "Finite-width terminology gate missing"
     }
   ],
   "studies": {

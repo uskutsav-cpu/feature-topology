@@ -1,0 +1,29 @@
+{
+  "schema": "feature-topology.width-scaling-gate.v1",
+  "frozen_at": "2026-09-19",
+  "status": "prospective; frozen before v2 width-scaling production outputs",
+  "primary_metric": "fiber_global_normalized_minimum",
+  "expected_direction": "decreasing",
+  "widths": [64, 128, 256, 512, 1024],
+  "gammas": [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0],
+  "seeds": [0, 1, 2, 3, 4],
+  "target_training_loss": 0.1,
+  "primary_layer": "last_hidden",
+  "bootstrap_repeats": 2000,
+  "fit_models": {
+    "smooth_null": "quadratic in log2(gamma)",
+    "transition": "four-parameter monotone logistic in log2(gamma)",
+    "transition_width": "10%-to-90% logistic width in log2(gamma) units"
+  },
+  "gate": {
+    "minimum_delta_aicc_each_width": 6.0,
+    "maximum_width_spearman_rho": -0.8,
+    "maximum_largest_to_smallest_transition_width_ratio": 0.75,
+    "minimum_bootstrap_shrink_support": 0.9,
+    "maximum_largest_width_center_drift_log2": 1.0,
+    "minimum_bootstrap_stable_center_support": 0.9,
+    "require_all_centers_interior": true
+  },
+  "decision_rule": "Every gate clause must pass. Otherwise all manuscripts, reports, captions, and metadata must use crossover or regime change, not phase transition.",
+  "scope": "A passed finite-width gate licenses terminology for this empirical order parameter only; it is not a theorem or evidence of exact quotienting."
+}
