@@ -86,6 +86,18 @@ def test_hosted_queue_provenance_is_complete(tmp_path):
         atomic_json(completion/'remote_collections'/f'{name}.json',{
             'expected':count,'complete':['x']*count,'missing':[],'invalid':[]})
     assert len(production_queue_paths(tmp_path))==5
+    atomic_json(completion/'controller_incidents_v3.json',{
+        'schema':'feature-topology.controller-incidents.v1',
+        'incidents':[{'classification':'infrastructure','summary':'transient API read failure',
+                      'recovery':'resumed from the existing state ledger',
+                      'hosted_workflow_impact':'none','scientific_protocol_impact':'none'}]})
+    assert len(production_queue_paths(tmp_path))==6
+    incident=json.loads((completion/'controller_incidents_v3.json').read_text())
+    del incident['incidents'][0]['recovery']
+    atomic_json(completion/'controller_incidents_v3.json',incident)
+    with pytest.raises(ValueError,match='incident ledger'):
+        production_queue_paths(tmp_path)
+    (completion/'controller_incidents_v3.json').unlink()
     state=json.loads((completion/'production_queue_ablation_v3.json').read_text())
     state['cohorts']['width']['missing']=1
     atomic_json(completion/'production_queue_ablation_v3.json',state)

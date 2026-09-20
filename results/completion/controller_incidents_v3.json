@@ -1,0 +1,30 @@
+{
+  "schema": "feature-topology.controller-incidents.v1",
+  "incidents": [
+    {
+      "recorded_at_utc": "2026-09-20T23:52:05Z",
+      "classification": "infrastructure",
+      "summary": "A transient GitHub API read outage exhausted the bounded status-read retries in all three local hosted-workflow controllers.",
+      "failed_operation": "gh run view <workflow-run> --json status,conclusion,jobs,url",
+      "affected_local_controllers": [
+        "results/completion/production_queue_ablation_v3.json",
+        "results/completion/cifar10_remote_queue_d06123e.json",
+        "results/completion/cifar100_remote_queue_b20f3c7.json"
+      ],
+      "active_hosted_workflows": [
+        "35540815229",
+        "35496783813",
+        "35501211434"
+      ],
+      "hosted_workflow_impact": "none",
+      "scientific_protocol_impact": "none",
+      "recovery": "After GitHub API reads recovered, each controller was restarted from its existing state ledger. The completed 24-cell relevance attempt was collected, and only its 11 missing cells were dispatched in workflow 35545832830. Both CIFAR controllers resumed monitoring their original workflow IDs without redispatch.",
+      "duplicate_computation_detected": false,
+      "artifact_validation_after_recovery": {
+        "relevance_0.25_complete": 24,
+        "relevance_0.25_expected": 35,
+        "relevance_0.25_invalid": 0
+      }
+    }
+  ]
+}

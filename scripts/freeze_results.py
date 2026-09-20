@@ -124,6 +124,20 @@ def production_queue_paths(repo):
                 or report.get('missing')!=[] or report.get('invalid')!=[]):
             raise ValueError(f'Collector ledger incomplete: {name}')
         paths.append(report_path)
+    incidents_path=completion/'controller_incidents_v3.json'
+    if incidents_path.exists():
+        incidents=json.loads(incidents_path.read_text())
+        rows=incidents.get('incidents',[])
+        allowed={'infrastructure','numerical','code','data','scientific'}
+        if (incidents.get('schema')!='feature-topology.controller-incidents.v1'
+                or not rows
+                or any(row.get('classification') not in allowed
+                       or not row.get('summary') or not row.get('recovery')
+                       or 'hosted_workflow_impact' not in row
+                       or 'scientific_protocol_impact' not in row
+                       for row in rows)):
+            raise ValueError('Invalid hosted-controller incident ledger')
+        paths.append(incidents_path)
     return paths
 
 
