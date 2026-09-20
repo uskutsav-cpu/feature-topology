@@ -145,3 +145,30 @@ The CIFAR runner also now checks resume configurations, final artifacts and the
 frozen calibration protocol, resumes terminal checkpoints without another update,
 and detaches Jacobians before NumPy export. These changes were made before the
 queued CIFAR studies started.
+
+### Hosted CIFAR continuation
+
+The original single-worker MPS path was stopped only after one complete
+2,000-step calibration trial had been written. That trial and the next cell's
+configuration are retained unchanged under
+`results/cifar10/calibration_mps_partial_2026_09_20`; their hashes and the reason
+for the handoff are recorded in `results/completion/cifar_mps_handoff.json`.
+They are not mixed into the hosted CPU learning-rate selection.
+
+The replacement hosted path reconstructs the same seven gammas, seven
+calibration multipliers, five production seeds, selection rule, ResNet, training
+budgets, and image metrics from the original runner. Each cell is bound to a
+fixed source tag and an official CIFAR archive SHA-256, saves the existing
+500-step resume checkpoint, and publishes an immutable checksum manifest to a
+work-in-progress GitHub release. Collection validates the entire archive before
+additive installation and refuses a conflicting local file. Terminal optimizer
+resumes present in early hosted archives are validated but not duplicated into
+the local frozen-results tree; later workers omit that redundant terminal-only
+state while still retaining every partial resume needed for recovery. Final
+checkpoints, summaries, metrics, representations, and provenance are installed.
+This is an infrastructure change, not a protocol or analysis change.
+
+The final freeze requires complete 49-cell calibration and 35-cell production
+ledgers for both CIFAR-10 and CIFAR-100, a single source commit per result tag,
+source-specification agreement with the local dataset-provenance record, and the
+existing full CPU held-out replay of all 70 production checkpoints.

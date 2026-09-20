@@ -63,7 +63,8 @@ def test_pack_and_restore_checksum_bound_resume(tmp_path):
     saved=next(outgoing.glob("*.tar.gz"))
     resume=tmp_path/"resume"; resume.mkdir(); target=resume/saved.name; target.write_bytes(saved.read_bytes())
     restored=tmp_path/"restored"
-    assert remote_cifar.restore_archives(resume,restored,cell,remote_cifar.sha256(archive))==4
+    assert remote_cifar.restore_archives(resume,restored,cell,remote_cifar.sha256(archive))==3
+    assert not any(name.endswith("resume.pt") for name in report["files"])
     assert (remote_cifar.run_directory(restored,cell)/"final.pt").read_bytes()==b"checkpoint"
     with tarfile.open(target,"r:gz") as tar:
         assert "job_manifest.json" in tar.getnames()

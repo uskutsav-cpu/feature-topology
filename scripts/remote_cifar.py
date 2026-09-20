@@ -203,12 +203,15 @@ def pack(work: str | Path, data_root: str | Path, output: str | Path, cell: dict
     specification = sources(source_specification)
     _, dataset_sha = verify_dataset(data_root, cell["dataset"], specification)
     directory = run_directory(work, cell)
-    paths = sorted(path for path in directory.rglob("*") if path.is_file()) if directory.exists() else []
+    complete = _complete(directory, cell)
+    paths = (sorted(path for path in directory.rglob("*")
+                    if path.is_file() and not (complete and path.name == "resume.pt"))
+             if directory.exists() else [])
     files = {path.relative_to(Path(work)).as_posix(): sha256(path) for path in paths}
     report = {
         "schema": "feature-topology.remote-cifar.v1", "cell": cell,
         "cell_id": cell_id(cell), "config": config_for(cell),
-        "run_id": fingerprint(config_for(cell)), "complete": _complete(directory, cell),
+        "run_id": fingerprint(config_for(cell)), "complete": complete,
         "dataset_sha256": dataset_sha,
         "source_specification_sha256": sha256(source_specification),
         "host": {"platform": platform.platform(), "machine": platform.machine(),
