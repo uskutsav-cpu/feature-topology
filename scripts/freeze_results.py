@@ -85,18 +85,22 @@ def production_queue_paths(repo):
     registry_path=repo/'configs/completion/production_cohorts_v3.json'
     registry=json.loads(registry_path.read_text())
     cohorts={row['name']:row for row in registry['cohorts']}
-    state_paths=[repo/'results/completion/production_queue_primary_v3.json',
-                 repo/'results/completion/production_queue_ablation_v3.json']
+    completion=repo/'results/completion'
+    required=[completion/'production_queue_primary_v3.json',
+              completion/'production_queue_ablation_v3.json']
+    # Additional nonoverlapping lanes may finish cohorts early.  Preserve their
+    # attempt ledgers too, but ignore the superseded original single-lane file.
+    extras=sorted(path for path in completion.glob('production_queue_*_v3.json')
+                  if path not in required and path.name!='production_queue_v3.json')
+    state_paths=required+extras
     observed={}
     paths=[registry_path]
     for path in state_paths:
         state=json.loads(path.read_text())
         if state.get('schema')!='feature-topology.production-queue-state.v1':
             raise ValueError(f'Invalid production queue ledger: {path.name}')
-        overlap=set(observed)&set(state.get('cohorts',{}))
-        if overlap:
-            raise ValueError(f'Duplicate queue cohorts: {sorted(overlap)}')
-        observed.update(state.get('cohorts',{}))
+        for name,row in state.get('cohorts',{}).items():
+            observed.setdefault(name,[]).append(row)
         for attempt in state.get('attempts',[]):
             if (attempt.get('cohort') not in cohorts or not str(attempt.get('workflow_run','')).isdigit()
                     or not str(attempt.get('url','')).startswith('https://github.com/')
@@ -108,10 +112,10 @@ def production_queue_paths(repo):
     if set(observed)!=set(cohorts):
         raise ValueError(f'Hosted cohort ledger coverage {len(observed)}/{len(cohorts)}')
     for name,definition in cohorts.items():
-        row=observed[name]
         expected=definition['expected_unique_profiles']
-        if (row.get('expected')!=expected or row.get('complete')!=expected
-                or row.get('missing')!=0 or row.get('invalid')!=[]):
+        rows=observed[name]
+        if any(row.get('expected')!=expected or row.get('complete')!=expected
+               or row.get('missing')!=0 or row.get('invalid')!=[] for row in rows):
             raise ValueError(f'Hosted cohort incomplete: {name}')
         report_path=repo/'results/completion/remote_collections'/f'{name}.json'
         report=json.loads(report_path.read_text())
