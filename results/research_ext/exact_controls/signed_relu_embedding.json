@@ -1,0 +1,146 @@
+{
+  "affine_pieces": 8,
+  "collision": null,
+  "evidence_level": "exact_rational_python_replay",
+  "graph": {
+    "beta0": 1,
+    "beta1": 1,
+    "edge_count": 8,
+    "edges": [
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ]
+    ],
+    "vertex_count": 8,
+    "vertices": [
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "1",
+        "0"
+      ]
+    ]
+  },
+  "injective_on_polygon_subset": true,
+  "layers": [
+    {
+      "bias": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "relu": true,
+      "weight": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "-1"
+        ]
+      ]
+    }
+  ],
+  "lean_verified": false,
+  "schema": "feature-topology.exact-polygon.v1",
+  "scope": "Union of the listed straight input edges under ideal rational arithmetic; not the smooth torus.",
+  "vertices": [
+    [
+      "-1",
+      "-1"
+    ],
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-1",
+      "1"
+    ]
+  ]
+}

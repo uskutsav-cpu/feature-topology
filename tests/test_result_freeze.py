@@ -4,10 +4,11 @@ import pytest
 import gzip
 import io
 import tarfile
-from scripts.freeze_results import nonfinite_paths,readiness,verify_manifest
+from scripts.freeze_results import exact_control_paths,nonfinite_paths,readiness,verify_manifest
 from scripts.pack_release import pack
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
+from research_ext.cli import exact_controls
 
 
 def test_missing_studies_cannot_be_frozen(tmp_path):
@@ -40,6 +41,17 @@ def test_inventory_rejects_nonfinite_training_history(tmp_path):
                                     'status':'diverged','history':[{'training_loss':None}]})
     with pytest.raises(ValueError,match='Nonfinite summary values'):
         inspect_run(run)
+
+
+def test_exact_controls_are_replayed_before_freeze(tmp_path):
+    root=tmp_path/'results/research_ext/exact_controls'
+    exact_controls(root)
+    assert len(exact_control_paths(tmp_path))==8
+    certificate=json.loads((root/'projection.json').read_text())
+    certificate['graph']['beta1']=1
+    atomic_json(root/'projection.json',certificate)
+    with pytest.raises(ValueError,match='replay failed'):
+        exact_control_paths(tmp_path)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):

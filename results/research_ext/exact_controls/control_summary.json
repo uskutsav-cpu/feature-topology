@@ -1,0 +1,96 @@
+{
+  "controls": {
+    "constant": {
+      "beta0": 1,
+      "beta1": 0,
+      "collision": {
+        "common_output": [
+          "0"
+        ],
+        "x": [
+          "-1",
+          "-1"
+        ],
+        "y": [
+          "1",
+          "-1"
+        ]
+      },
+      "injective_on_polygon_subset": false,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    },
+    "identity": {
+      "beta0": 1,
+      "beta1": 1,
+      "collision": null,
+      "injective_on_polygon_subset": true,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    },
+    "positive_box": {
+      "lean_verified": false,
+      "python_exact_replay_passed": true,
+      "status": "certified_injective_on_box"
+    },
+    "projection": {
+      "beta0": 1,
+      "beta1": 0,
+      "collision": {
+        "common_output": [
+          "1"
+        ],
+        "x": [
+          "1",
+          "-1"
+        ],
+        "y": [
+          "1",
+          "1"
+        ]
+      },
+      "injective_on_polygon_subset": false,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    },
+    "relu_same_cycle_rank_collision": {
+      "beta0": 1,
+      "beta1": 1,
+      "collision": {
+        "common_output": [
+          "0",
+          "0"
+        ],
+        "x": [
+          "-1",
+          "-1"
+        ],
+        "y": [
+          "0",
+          "-1"
+        ]
+      },
+      "injective_on_polygon_subset": false,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    },
+    "scaled_rotated": {
+      "beta0": 1,
+      "beta1": 1,
+      "collision": null,
+      "injective_on_polygon_subset": true,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    },
+    "signed_relu_embedding": {
+      "beta0": 1,
+      "beta1": 1,
+      "collision": null,
+      "injective_on_polygon_subset": true,
+      "lean_verified": false,
+      "python_exact_replay_passed": true
+    }
+  },
+  "scope": "Analytic controls, not observations from the production training sweep.",
+  "status": "exact_controls_passed"
+}

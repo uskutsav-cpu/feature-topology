@@ -1,0 +1,70 @@
+{
+  "affine_pieces": 4,
+  "collision": null,
+  "evidence_level": "exact_rational_python_replay",
+  "graph": {
+    "beta0": 1,
+    "beta1": 1,
+    "edge_count": 4,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "vertex_count": 4,
+    "vertices": [
+      [
+        "-1",
+        "-1"
+      ],
+      [
+        "-1",
+        "1"
+      ],
+      [
+        "1",
+        "-1"
+      ],
+      [
+        "1",
+        "1"
+      ]
+    ]
+  },
+  "injective_on_polygon_subset": true,
+  "layers": [],
+  "lean_verified": false,
+  "schema": "feature-topology.exact-polygon.v1",
+  "scope": "Union of the listed straight input edges under ideal rational arithmetic; not the smooth torus.",
+  "vertices": [
+    [
+      "-1",
+      "-1"
+    ],
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-1",
+      "1"
+    ]
+  ]
+}

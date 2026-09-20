@@ -1,0 +1,64 @@
+{
+  "activation_signs": [
+    [
+      true,
+      true
+    ]
+  ],
+  "affine_bias": [
+    "0",
+    "0"
+  ],
+  "affine_matrix": [
+    [
+      "2",
+      "0"
+    ],
+    [
+      "0",
+      "3"
+    ]
+  ],
+  "evidence_level": "exact_rational_python_replay",
+  "layers": [
+    {
+      "bias": [
+        "0",
+        "0"
+      ],
+      "relu": true,
+      "weight": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ]
+    }
+  ],
+  "lean_verified": false,
+  "left_inverse": [
+    [
+      "1/2",
+      "0"
+    ],
+    [
+      "0",
+      "1/3"
+    ]
+  ],
+  "lower": [
+    "1",
+    "1"
+  ],
+  "schema": "feature-topology.exact-box.v1",
+  "scope": "Fixed activation region on the supplied ambient-coordinate box; not global torus injectivity.",
+  "status": "certified_injective_on_box",
+  "upper": [
+    "2",
+    "2"
+  ]
+}

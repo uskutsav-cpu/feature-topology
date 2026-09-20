@@ -9,7 +9,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.completion_inventory import inventory, sha256
 from research_ext.catalog import ABLATION_PRODUCTION, load_catalog, PRODUCTION
 from research_ext.image_audit import audit_images
-from research_ext.exact import verify_polygon_certificate
+from research_ext.exact import verify_box_certificate,verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
 from scripts.dataset_provenance import verify_provenance
 
@@ -25,6 +25,42 @@ def nonfinite_paths(value,path=""):
         return [item for index,child in enumerate(value)
                 for item in nonfinite_paths(child,f"{path}[{index}]")]
     return []
+
+
+def exact_control_paths(repo):
+    """Replay every deterministic analytic control and return frozen inputs."""
+    root=Path(repo)/'results/research_ext/exact_controls'
+    summary_path=root/'control_summary.json'
+    summary=json.loads(summary_path.read_text())
+    expected={
+        'identity':(1,True),'scaled_rotated':(1,True),
+        'projection':(0,False),'constant':(0,False),
+        'relu_same_cycle_rank_collision':(1,False),
+        'signed_relu_embedding':(1,True),
+    }
+    if summary.get('status')!='exact_controls_passed' or set(summary.get('controls',{}))!=set(expected)|{'positive_box'}:
+        raise ValueError('Exact analytic control summary incomplete')
+    paths=[summary_path]
+    for name,(beta1,injective) in expected.items():
+        path=root/f'{name}.json'
+        certificate=json.loads(path.read_text())
+        row=summary['controls'][name]
+        if (not verify_polygon_certificate(certificate)
+                or certificate.get('graph',{}).get('beta1')!=beta1
+                or certificate.get('injective_on_polygon_subset') is not injective
+                or row.get('beta1')!=beta1
+                or row.get('injective_on_polygon_subset') is not injective
+                or row.get('python_exact_replay_passed') is not True):
+            raise ValueError(f'Exact analytic control replay failed: {name}')
+        paths.append(path)
+    box_path=root/'positive_box.json'
+    box=json.loads(box_path.read_text())
+    if (not verify_box_certificate(box)
+            or summary['controls']['positive_box'].get('status')!='certified_injective_on_box'
+            or summary['controls']['positive_box'].get('python_exact_replay_passed') is not True):
+        raise ValueError('Exact positive-box control replay failed')
+    paths.append(box_path)
+    return paths
 
 
 def readiness(repo):
@@ -196,6 +232,10 @@ def readiness(repo):
                 problems.append(dict(study='exact',error=f'Certificate replay failed: {certificate}'))
             paths.update([certificate,checkpoint,checkpoint.parent/'summary.json',checkpoint.parent/'config.json'])
         paths.add(exact)
+    try:
+        paths.update(exact_control_paths(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='exact_controls',error=str(exc)))
     formal=repo/'results/completion/formal/formal_status.json'
     if not formal.exists() or not json.loads(formal.read_text()).get('lean_verified'):
         problems.append(dict(study='formal',error='Compiled theorem audit missing'))
