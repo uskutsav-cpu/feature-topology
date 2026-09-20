@@ -1,6 +1,7 @@
 import json
 import shutil
 import pytest
+import pandas as pd
 from research_ext.io import atomic_json,read_json
 from research_ext.catalog import load_catalog,matched_risk,coverage,production_profile,PRODUCTION,condition_id
 from research_ext.report import analyze
@@ -83,3 +84,13 @@ def test_report_end_to_end(make_run,tmp_path):
     assert (out/'input_hashes.json').exists()
     assert read_json(out/'model_comparisons.json')[0]['status']=='insufficient_data'
     assert read_json(out/'event_intervals.json')==[]
+
+def test_report_filters_explicit_manifest_run_ids(make_run,tmp_path):
+    root,first,_=make_run(seed=0)
+    make_run(seed=1,root=root)
+    out=tmp_path/'filtered'
+    result=analyze([root],out,gammas=[.5],seeds=[0],repeats=10,
+                   transition_repeats=2,run_ids=[first.name])
+    assert result['runs_read']==1
+    frame=pd.read_csv(out/'metrics_long.csv')
+    assert set(frame.run_id)=={first.name}

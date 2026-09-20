@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from research_ext.finite_width import evaluate_gate, fit_width_curve
+from research_ext.finite_width import evaluate_gate, fit_width_curve, select_gate_rows
 
 
 def specification(repeats=80):
@@ -80,3 +80,12 @@ def test_gate_ignores_prespecified_out_of_design_gamma_cells():
     result = evaluate_gate(pd.concat([data, extras], ignore_index=True), specification(repeats=5))
     assert result["status"] == "complete"
     assert len(result["ignored_out_of_design_cells"]) == 5
+
+
+def test_metric_layer_numbering_is_one_indexed():
+    # Production metric rows label hidden layers 1..depth, so the frozen
+    # "last_hidden" selector must use equality rather than depth-1.
+    shared=dict(width=64,profile='ablation',manifold='torus',swap=False,
+                relevance=0.,nuisance_condition='iid',depth=4)
+    rows=pd.DataFrame([{**shared,'layer':3},{**shared,'layer':4}])
+    assert select_gate_rows(rows,'primary','ablation').layer.tolist()==[4]

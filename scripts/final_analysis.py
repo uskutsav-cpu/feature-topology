@@ -21,24 +21,35 @@ def main(args):
         raise ValueError('Final analysis output must be empty to exclude stale artifacts')
     reports=[]
     plan=json.loads((repo/'configs/completion/analysis_plan.json').read_text())
+    primary_index=json.loads((repo/'configs/completion/primary_inputs_v3.json').read_text())
+    primary_ids={row['run_id'] for row in primary_index['runs']}
     for name in [*plan['synthetic_studies'], 'ood']:
         study=repo/'results'/name
         if name=='main':
-            groups=[dict(path=str(study),gammas=plan['primary']['gammas'],seeds=plan['primary']['seeds'])]
+            groups=[dict(path=str(study),gammas=plan['primary']['gammas'],seeds=plan['primary']['seeds'],
+                         run_ids=sorted(primary_ids),profile=PRODUCTION,source='primary')]
         else:
             groups=[]
             for group in json.loads((study/'manifest.json').read_text()):
+                run_ids={row['run_id'] for row in group['runs']}
+                shared=run_ids & primary_ids
+                if shared and shared != run_ids:
+                    raise ValueError(f"Partially shared primary group is ambiguous: {name}/{group['path']}")
                 # Portable group identity; never follow an old machine's absolute path.
-                path=study/Path(group['path']).name
+                path=repo/'results/main' if shared else study/Path(group['path']).name
                 groups.append(dict(path=str(path),gammas=sorted({r['gamma'] for r in group['runs']}),
-                                   seeds=sorted({r['seed'] for r in group['runs']})))
+                                   seeds=sorted({r['seed'] for r in group['runs']}),run_ids=sorted(run_ids),
+                                   profile=PRODUCTION if shared else ABLATION_PRODUCTION,
+                                   source='shared_primary' if shared else 'ablation'))
         for group in groups:
-            destination=output/name/Path(group['path']).name
-            profile=PRODUCTION if name=='main' else ABLATION_PRODUCTION
-            result=analyze([group['path']],destination,target=.1,profile=fingerprint(profile),
+            destination=output/name/(Path(group['path']).name if group['source']!='shared_primary'
+                                     else 'shared_primary')
+            result=analyze([group['path']],destination,target=.1,profile=fingerprint(group['profile']),
                 gammas=group['gammas'],seeds=group['seeds'],repeats=2000,
-                transition_repeats=300,rules=[],make_plots=True)
-            reports.append(dict(study=name,group=Path(group['path']).name,output=destination.relative_to(repo).as_posix()))
+                transition_repeats=300,rules=[],make_plots=True,run_ids=group['run_ids'])
+            reports.append(dict(study=name,group=Path(group['path']).name,source=group['source'],
+                                run_count=len(group['run_ids']),profile=fingerprint(group['profile']),
+                                output=destination.relative_to(repo).as_posix()))
     summarize_images(repo,output/'images')
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}

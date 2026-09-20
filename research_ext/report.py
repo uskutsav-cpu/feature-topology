@@ -16,12 +16,21 @@ METRICS = ["test_accuracy", "ntk_drift", "cka_drift", "effective_rank", "local_q
 
 
 def analyze(roots, output, *, target=.1, profile=None, gammas=None, seeds=None,
-            repeats=2000, transition_repeats=300, rules=None, make_plots=False) -> dict:
+            repeats=2000, transition_repeats=300, rules=None, make_plots=False,
+            run_ids=None) -> dict:
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     gammas = list(gammas if gammas is not None else [2.**i for i in range(-5, 8)])
     seeds = list(seeds if seeds is not None else range(10))
     catalog = load_catalog(roots, profile=profile)
+    requested_run_ids = None if run_ids is None else set(run_ids)
+    if requested_run_ids is not None:
+        observed = {run["run_id"] for run in catalog.runs}
+        missing_ids = requested_run_ids-observed
+        if missing_ids:
+            raise ValueError(f"Requested run IDs are absent: {sorted(missing_ids)}")
+        catalog.runs = [run for run in catalog.runs if run["run_id"] in requested_run_ids]
+        catalog.rows = [row for row in catalog.rows if row["run_id"] in requested_run_ids]
     atomic_json(output/"audit.json", coverage(catalog, gammas, seeds))
     catalog.require_clean()
     frame = catalog.frame()
@@ -82,7 +91,8 @@ def analyze(roots, output, *, target=.1, profile=None, gammas=None, seeds=None,
     atomic_json(output/"event_intervals.json", events)
     atomic_json(output/"event_order.json", orders)
     settings = {"target_loss": target, "profile_filter": profile, "gammas": gammas, "seeds": seeds,
-                "bootstrap_repeats": repeats, "transition_repeats": transition_repeats, "rules": rules}
+                "bootstrap_repeats": repeats, "transition_repeats": transition_repeats, "rules": rules,
+                "run_ids": sorted(requested_run_ids) if requested_run_ids is not None else None}
     atomic_json(output/"analysis_settings.json", settings)
     atomic_json(output/"environment.json", environment())
     if make_plots and not agg.empty:

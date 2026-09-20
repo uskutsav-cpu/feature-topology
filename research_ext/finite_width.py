@@ -173,6 +173,17 @@ def evaluate_gate(frame: pd.DataFrame, specification: dict) -> dict:
     }
 
 
+def select_gate_rows(frame: pd.DataFrame, primary_profile: str, ablation_profile: str) -> pd.DataFrame:
+    """Apply the frozen condition/profile/last-hidden-layer selection."""
+    return frame[(((frame.width == 256) & (frame.profile == primary_profile))
+                  | ((frame.width != 256) & (frame.profile == ablation_profile)))
+                 & (frame.manifold == "torus") & (~frame.swap)
+                 & (frame.relevance == 0.) & (frame.nuisance_condition == "iid")
+                 # Metric layers are one-indexed; config depth is the number
+                 # of hidden layers.  The frozen gate specifies last_hidden.
+                 & (frame.layer == frame.depth)]
+
+
 def analyze_width_scaling(roots, output, specification_path, profile=None) -> dict:
     repository = Path(__file__).resolve().parents[1]
     expanded_roots = []
@@ -195,11 +206,11 @@ def analyze_width_scaling(roots, output, specification_path, profile=None) -> di
     frame, exclusions = matched_risk(catalog.frame(), specification["target_training_loss"])
     if not frame.empty:
         if profile is None:
-            frame = frame[((frame.width == 256) & (frame.profile == primary_profile))
-                          | ((frame.width != 256) & (frame.profile == ablation_profile))]
-        frame = frame[(frame.manifold == "torus") & (~frame.swap)
-                      & (frame.relevance == 0.) & (frame.nuisance_condition == "iid")
-                      & (frame.layer == frame.depth-1)]
+            frame = select_gate_rows(frame, primary_profile, ablation_profile)
+        else:
+            frame = frame[(frame.manifold == "torus") & (~frame.swap)
+                          & (frame.relevance == 0.) & (frame.nuisance_condition == "iid")
+                          & (frame.layer == frame.depth)]
     result = evaluate_gate(frame, specification)
     result.update({
         "schema": "feature-topology.width-scaling-result.v1",
