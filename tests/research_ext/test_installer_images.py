@@ -71,6 +71,19 @@ def test_image_native_artifacts_and_missing_metrics(tmp_path):
     assert audit_images(tmp_path,gammas=[.5],seeds=[0])['artifact_completion']
 
 
+def test_image_audit_rejects_silent_nonfinite_metrics(tmp_path):
+    config={'gamma':.5,'seed':0};rid=original_fingerprint(config)
+    run=tmp_path/'runs'/rid;run.mkdir(parents=True)
+    atomic_json(run/'config.json',config)
+    atomic_json(run/'summary.json',{'config':config,'run_id':rid,'status':'converged'})
+    (run/'final.pt').write_bytes(b'test-only-checkpoint-existence-fixture')
+    atomic_json(run/'metrics.json',{'rotation_loops':[{}],'probes':{},
+                                    'test_accuracy':.9,'hidden_failure':None})
+    result=audit_images(tmp_path,gammas=[.5],seeds=[0])
+    assert not result['artifact_completion']
+    assert 'Nonfinite metric values' in result['issues'][0]['error']
+
+
 def test_image_plans_no_unrequested_download(tmp_path):
     cifar=make_plan(tmp_path,suite='cifar')
     assert all('--download' not in t['command'] for t in cifar['tasks'])

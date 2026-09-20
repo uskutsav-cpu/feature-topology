@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -13,6 +14,19 @@ DEFAULTS = dict(width=256, depth=4, dimension=16, manifold="torus", swap=False,
                 nuisance_condition="iid")
 
 
+def nonfinite_paths(value, path=""):
+    """Return paths to null or non-finite values in measured run records."""
+    if value is None or (isinstance(value, float) and not math.isfinite(value)):
+        return [path or "<root>"]
+    if isinstance(value, dict):
+        return [item for key, child in value.items()
+                for item in nonfinite_paths(child, f"{path}.{key}" if path else key)]
+    if isinstance(value, list):
+        return [item for index, child in enumerate(value)
+                for item in nonfinite_paths(child, f"{path}[{index}]")]
+    return []
+
+
 def sha256(path):
     with path.open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
@@ -21,6 +35,9 @@ def sha256(path):
 def inspect_run(path, check_tensors=False):
     summary = json.loads((path / "summary.json").read_text())
     config = json.loads((path / "config.json").read_text())
+    invalid_summary = nonfinite_paths(summary)
+    if invalid_summary:
+        raise ValueError(f"Nonfinite summary values: {invalid_summary}")
     if summary["config"] != config or summary["run_id"] != fingerprint(config):
         raise ValueError(f"Configuration/summary identity mismatch: {path}")
     if path.name != summary["run_id"]:

@@ -6,6 +6,8 @@ import io
 import tarfile
 from scripts.freeze_results import nonfinite_paths,readiness,verify_manifest
 from scripts.pack_release import pack
+from scripts.completion_inventory import inspect_run
+from src.training.checkpoints import atomic_json, fingerprint
 
 
 def test_missing_studies_cannot_be_frozen(tmp_path):
@@ -17,6 +19,16 @@ def test_missing_studies_cannot_be_frozen(tmp_path):
 def test_nonfinite_metric_paths_are_never_silent():
     value={'ok':1.,'bad':None,'nested':[2.,float('inf')]}
     assert nonfinite_paths(value)==['bad','nested[1]']
+
+
+def test_inventory_rejects_nonfinite_training_history(tmp_path):
+    config={'seed':0,'target_loss':1.}
+    run=tmp_path/fingerprint(config);run.mkdir()
+    atomic_json(run/'config.json',config)
+    atomic_json(run/'summary.json',{'config':config,'run_id':run.name,
+                                    'status':'diverged','history':[{'training_loss':None}]})
+    with pytest.raises(ValueError,match='Nonfinite summary values'):
+        inspect_run(run)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):

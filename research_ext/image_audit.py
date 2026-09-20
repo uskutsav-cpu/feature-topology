@@ -11,6 +11,19 @@ from .io import read_json, original_fingerprint, file_digest
 IMAGE_GAMMAS = [.125, .5, 1., 4., 16., 64., 128.]
 
 
+def nonfinite_paths(value, path=''):
+    """Return paths to null or non-finite values in measured JSON trees."""
+    if value is None or (isinstance(value, float) and not math.isfinite(value)):
+        return [path or '<root>']
+    if isinstance(value, dict):
+        return [item for key, child in value.items()
+                for item in nonfinite_paths(child, f'{path}.{key}' if path else key)]
+    if isinstance(value, list):
+        return [item for index, child in enumerate(value)
+                for item in nonfinite_paths(child, f'{path}[{index}]')]
+    return []
+
+
 def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
     root = Path(root)
     gammas = list(IMAGE_GAMMAS if gammas is None else gammas)
@@ -34,6 +47,9 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
             summary = read_json(run/'summary.json')
             if summary['config'] != config or summary['run_id'] != rid:
                 raise ValueError('Summary/config identity mismatch')
+            invalid_summary = nonfinite_paths(summary)
+            if invalid_summary:
+                raise ValueError(f'Nonfinite summary values: {invalid_summary}')
             row['status'] = summary['status']
             if row['status'] not in {'converged', 'budget_exhausted', 'diverged'}:
                 raise ValueError('Unknown image run status')
@@ -45,6 +61,9 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
                 raise ValueError('Nondiverged image run has no nonempty final checkpoint')
             if (run/'metrics.json').is_file() and row['status'] != 'diverged':
                 metrics = read_json(run/'metrics.json')
+                invalid_metrics = nonfinite_paths(metrics)
+                if invalid_metrics:
+                    raise ValueError(f'Nonfinite metric values: {invalid_metrics}')
                 # Existing digits and CIFAR scripts have different native schemas.
                 if metrics.get('schema') == 'feature-topology.dsprites-metrics.v1':
                     if len(metrics.get('layers', [])) != 3 or any(
