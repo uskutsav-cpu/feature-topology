@@ -1,0 +1,17 @@
+{
+  "schema": "feature-topology.cifar-execution-handoff.v1",
+  "dataset": "CIFAR10",
+  "source_commit": "86e1e10368d8b7582a3e0b840624928aaabbece7",
+  "original_execution": "mps",
+  "status": "preserved_before_hosted_restart",
+  "reason": "The frozen CIFAR design projected to require days on one local MPS worker. The complete first calibration trial and the interrupted next-cell configuration were moved intact to prevent cross-platform artifact collision before checksum-bound hosted CPU execution.",
+  "path": "results/cifar10/calibration_mps_partial_2026_09_20",
+  "files": {
+    "0692ff9d8801eda4/config.json": "2a59073e1138776807510e2ee5d840ace49ed574875ab053e1f523421b596c8e",
+    "0692ff9d8801eda4/final.pt": "381aba8fa42b0a56e575d617d33359a0298bea5645bf1d73257913510c24dff5",
+    "0692ff9d8801eda4/resume.pt": "b6f5afb787b59dffb6e9cd43c457b9e9880b3f99993b53a5f042f9cb5ae65a53",
+    "0692ff9d8801eda4/summary.json": "39729b7762834c1d307da4c614e199ea09e0aed15ce253d33a4395ce423e08fe",
+    "a3c14a3534854a12/config.json": "5124749c61905d8fd21b8844a2c6fc7e3cc31427e1940fe1dc10da6b1711e2f5"
+  },
+  "scientific_scope": "These MPS artifacts are retained as execution provenance and are not mixed into the hosted CPU calibration selection. The frozen scientific grid, candidate learning rates, selection rule, and budgets are unchanged."
+}
