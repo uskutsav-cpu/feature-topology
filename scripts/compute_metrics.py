@@ -17,6 +17,7 @@ from src.training.sharding import select_shard
 from src.metrics.geometry import cka, effective_rank, distortion, rms_scale
 from src.metrics.jacobian import tangent_jacobians, summarize
 from src.metrics.injectivity import global_margin, collisions
+from src.metrics.fiber_survival import dense_fiber_separation, empirical_regime, local_fiber_margin
 from src.metrics.ntk import empirical_ntk
 from src.metrics.probes import evaluate_probes
 from src.metrics.persistence import persistence
@@ -36,6 +37,19 @@ def clean(value):
     if isinstance(value, float) and not np.isfinite(value):
         return None
     return value
+
+
+def fiber_grid(values, latent, config):
+    """Arrange a square analysis grid as base x nuisance-fiber x features."""
+    side = int(np.sqrt(len(values)))
+    if side*side != len(values):
+        raise ValueError("Fiber diagnostics require a square analysis grid")
+    h = np.asarray(values).reshape(side, side, -1)
+    z = np.asarray(latent).reshape(side, side, 2)
+    nuisance = int(not config.get("swap", False))
+    if nuisance == 1:
+        return h, z[0, :, 1]
+    return h.transpose(1, 0, 2), z[:, 0, 0]
 
 
 def metric_provenance(analysis_data=None):
@@ -169,11 +183,20 @@ def compute(run, options, analysis_data=None):
             scale = rms_scale(current)
             j = tangent_jacobians(model.network, z[ids], q, layer, config.get("manifold", "torus"))
             jac, singular = summarize(j, scale, config.get("swap", False))
+            nuisance_column = int(not config.get("swap", False))
+            fiber_local = local_fiber_margin(j, nuisance_column, scale)
+            fiber_values, fiber_latent = fiber_grid(current, z.numpy(), config)
+            fiber_global = dense_fiber_separation(
+                fiber_values, fiber_latent,
+                periodic=config.get("manifold", "torus") == "torus" or nuisance_column == 0,
+            )
+            fiber_global["normalized_sampled_minimum"] = (
+                fiber_global["sampled_minimum"]/scale if scale > 0 else None
+            )
             np.savez_compressed(output/f"{path.stem}_layer{layer+1}_tangents.npz", indices=ids,
                                 sigma_min=singular, factor_norms=np.linalg.norm(j, axis=1))
             margin = global_margin(current, z.numpy(), manifold=config.get("manifold", "torus"))
             margin["normalized_q01"] = margin["q01"]/scale if scale > 0 else 0.
-            nuisance_column = int(not config.get("swap", False))
             probes = evaluate_probes(ph[layer], th[layer], py.numpy(), ty.numpy(),
                                      pz[:, nuisance_column].numpy(), tz[:, nuisance_column].numpy(),
                                      seed=config["seed"], max_iter=options["probe_iterations"],
@@ -182,9 +205,16 @@ def compute(run, options, analysis_data=None):
                                           maxdim=options["ph_maxdim"], cache_dir=run.parents[2]/"ph_cache")
             np.savez_compressed(output/f"{path.stem}_layer{layer+1}_ph.npz",
                                 **{f"r{r}_h{d}":v for r, ds in enumerate(diagrams) for d,v in enumerate(ds)})
-            row["layers"].append(dict(layer=layer+1, cka_drift=1-cka(initial[layer], current),
+            cka_drift = 1-cka(initial[layer], current)
+            row["layers"].append(dict(layer=layer+1, cka_drift=cka_drift,
                  effective_rank=effective_rank(current), scale=scale, distortion=distortion(initial[layer], current),
                  jacobian=jac, global_margin=margin,
+                 fiber_local_margin=fiber_local, fiber_global_separation=fiber_global,
+                 fiber_empirical_regime=empirical_regime(
+                     cka_drift, fiber_local["normalized_minimum"] or 0.,
+                     fiber_global["normalized_sampled_minimum"] or 0.,
+                     fiber_global["tolerance_collision_pairs"],
+                 ),
                  collisions=collisions(current, z.numpy(), manifold=config.get("manifold", "torus")),
                  probes=probes, persistence=stats))
             print(f"metrics layer complete {run.name} {path.stem} layer={layer+1}", flush=True)

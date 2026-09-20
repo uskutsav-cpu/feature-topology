@@ -38,6 +38,13 @@ activation boundaries use PyTorch's convention. Finite probes cannot certify
 absence of all decodable information. The NTK uses the trace over class outputs,
 accumulated by parameter tensor to bound memory, with a fixed point subset.
 
+The v2 production profile additionally records the nuisance-restricted local
+margin, every within-fiber pair on the declared dense latent grid, and sampled
+fiber collisions. These are the empirical counterparts of the hierarchy in
+`SCIENTIFIC_CLAIMS.md`; the grid-wide minimum is not a continuum infimum. A
+descriptive regime label uses the thresholds frozen in `analysis_plan_v2.json`
+and never upgrades a sampled noncollision into an injectivity claim.
+
 PH uses RMS-normalized representations and fixed, paired subsample indices across
 checkpoints; raw scale is retained separately. H1 bar lifetimes are diagnostics,
 not estimates of exact Betti numbers without a stated filtration scale. H2 resource

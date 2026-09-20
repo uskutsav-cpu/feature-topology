@@ -91,6 +91,14 @@ def _flatten(layer: dict, record: dict) -> dict:
                 nuisance_jacobian=_get(layer, "jacobian", "nuisance_norm"),
                 global_q01=_get(layer, "global_margin", "q01"),
                 global_normalized_q01=_get(layer, "global_margin", "normalized_q01"),
+                fiber_local_minimum=_get(layer, "fiber_local_margin", "minimum"),
+                fiber_local_normalized_minimum=_get(layer, "fiber_local_margin", "normalized_minimum"),
+                fiber_global_minimum=_get(layer, "fiber_global_separation", "sampled_minimum"),
+                fiber_global_normalized_minimum=_get(
+                    layer, "fiber_global_separation", "normalized_sampled_minimum"),
+                fiber_collision_pairs=_get(
+                    layer, "fiber_global_separation", "tolerance_collision_pairs"),
+                fiber_empirical_regime=layer.get("fiber_empirical_regime"),
                 collision_score=_get(layer, "collisions", "mean"),
                 linear_nuisance_cosine=_get(layer, "probes", "linear", "angular_cosine"),
                 mlp_nuisance_cosine=_get(layer, "probes", "mlp", "angular_cosine"),

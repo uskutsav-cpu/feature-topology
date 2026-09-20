@@ -11,7 +11,8 @@ from .statistics import bootstrap_mean, paired_contrast, model_comparison, cross
 
 METRICS = ["test_accuracy", "ntk_drift", "cka_drift", "effective_rank", "local_q01",
            "local_normalized_q01", "global_normalized_q01", "nuisance_jacobian",
-           "mlp_nuisance_cosine", "ph_h1_top2", "ph_h2_top1"]
+           "fiber_local_normalized_minimum", "fiber_global_normalized_minimum",
+           "fiber_collision_pairs", "mlp_nuisance_cosine", "ph_h1_top2", "ph_h2_top1"]
 
 
 def analyze(roots, output, *, target=.1, profile=None, gammas=None, seeds=None,

@@ -48,3 +48,11 @@ def test_empirical_regime_precedence():
     assert empirical_regime(.9, 1e-4, 1e-4, 0) == "near-singular"
     assert empirical_regime(.2, 1., 1., 0) == "deformed"
     assert empirical_regime(.0, 1., 1., 0) == "preserved"
+
+
+def test_nonperiodic_fiber_uses_interval_distance():
+    fiber = np.linspace(0, 1, 5)
+    values = fiber[None, :, None]
+    result = dense_fiber_separation(values, fiber, periodic=False)
+    assert result["sampled_minimum"] == pytest.approx(1.0)
+    assert not result["periodic_fiber"]

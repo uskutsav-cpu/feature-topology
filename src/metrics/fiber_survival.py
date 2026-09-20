@@ -27,7 +27,8 @@ def local_fiber_margin(jacobian, nuisance_index=1, representation_scale=1.0):
     }
 
 
-def dense_fiber_separation(representations, fiber_values, collision_tolerance=1e-10):
+def dense_fiber_separation(representations, fiber_values, collision_tolerance=1e-10,
+                           periodic=True):
     """Evaluate all distinct within-fiber pairs on a B x F x D grid."""
     h = np.asarray(representations, dtype=np.float64)
     phi = np.asarray(fiber_values, dtype=np.float64)
@@ -37,8 +38,12 @@ def dense_fiber_separation(representations, fiber_values, collision_tolerance=1e
         raise ValueError("nonfinite input")
     if collision_tolerance < 0 or not np.isfinite(collision_tolerance):
         raise ValueError("invalid collision tolerance")
-    delta = np.abs(phi[:, None]-phi[None, :]) % (2*np.pi)
-    latent_distance = np.minimum(delta, 2*np.pi-delta)
+    delta = np.abs(phi[:, None]-phi[None, :])
+    if periodic:
+        delta %= 2*np.pi
+        latent_distance = np.minimum(delta, 2*np.pi-delta)
+    else:
+        latent_distance = delta
     upper = np.triu(np.ones_like(latent_distance, dtype=bool), 1)
     ratios, distances = [], []
     exact, tolerant = 0, 0
@@ -60,6 +65,7 @@ def dense_fiber_separation(representations, fiber_values, collision_tolerance=1e
         "tolerance_collision_pairs": tolerant,
         "collision_tolerance": float(collision_tolerance),
         "pairs": int(ratios.size),
+        "periodic_fiber": bool(periodic),
         "qualification": "Exhaustive only on the declared grid; not a continuum certificate.",
     }
 

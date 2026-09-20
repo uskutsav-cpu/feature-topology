@@ -22,6 +22,12 @@ def test_centered_initial_metrics_reused_across_gamma(tmp_path):
     first, second = [json.loads(p.read_text()) for p in paths]
     assert "initial_metric_reused" in second
     assert first["layers"] == second["layers"]
+    assert first["layers"][0]["fiber_local_margin"]["samples"] == 25
+    assert first["layers"][0]["fiber_global_separation"]["pairs"] == 50
+    assert "normalized_sampled_minimum" in first["layers"][0]["fiber_global_separation"]
+    assert first["layers"][0]["fiber_empirical_regime"] in {
+        "preserved", "deformed", "near-singular", "sampled-collision"
+    }
     assert second["gamma"] == 2.
     # A fully populated cache must still validate the checkpoint bytes.
     compute(path, options)
