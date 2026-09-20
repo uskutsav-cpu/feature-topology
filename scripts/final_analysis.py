@@ -9,6 +9,7 @@ from research_ext.report import analyze
 from src.training.checkpoints import fingerprint,atomic_json
 from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
 from scripts.image_statistics import summarize_images
+from scripts.ood_statistics import summarize_nuisance_shift
 
 
 def main(args):
@@ -51,9 +52,11 @@ def main(args):
                                 run_count=len(group['run_ids']),profile=fingerprint(group['profile']),
                                 output=destination.relative_to(repo).as_posix()))
     summarize_images(repo,output/'images')
+    ood_statistics=summarize_nuisance_shift(repo/'results/ood_evaluation/manifest.json',output/'ood_evaluation')
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
+                ood_statistics=ood_statistics,
                 frozen_manifest_sha256=sha256(Path(args.manifest)),files=files,
                 frozen_input_files=len(manifest['files']),
                 scope='Separate condition-level seed analyses and distinct image-study schemas; exact certificates retain their own domain-specific claims.'))
