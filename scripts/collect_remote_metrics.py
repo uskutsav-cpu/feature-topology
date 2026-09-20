@@ -39,7 +39,9 @@ def _download(tag, cache, patterns, allow_empty=False):
     for pattern in patterns:
         command.extend(["--pattern", pattern])
     result = subprocess.run(command, text=True, capture_output=True)
-    if result.returncode and not (allow_empty and "no assets match" in result.stderr.lower()):
+    empty_message = result.stderr.lower()+result.stdout.lower()
+    expected_empty = "no assets match" in empty_message or "no assets to download" in empty_message
+    if result.returncode and not (allow_empty and expected_empty):
         raise subprocess.CalledProcessError(result.returncode, command, result.stdout, result.stderr)
 
 
