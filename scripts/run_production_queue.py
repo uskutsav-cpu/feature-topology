@@ -65,6 +65,25 @@ def workflow_state(run_id):
             "counts": counts, "url": value["url"], "run_ids": sorted(run_ids)}
 
 
+def begin_attempt(state, cohort, run_id, url, run_ids, adopted=False):
+    """Create a workflow ledger row, or resume its interrupted controller."""
+    if adopted:
+        matches = [row for row in state["attempts"]
+                   if row["cohort"] == cohort and row["workflow_run"] == run_id]
+        if matches:
+            attempt = matches[-1]
+            if attempt.get("finished"):
+                raise ValueError(f"Cannot adopt already-final workflow {run_id}")
+            if sorted(attempt["run_ids"]) != sorted(run_ids):
+                raise ValueError(f"Adopted workflow run IDs changed: {run_id}")
+            attempt["url"] = url
+            return attempt
+    attempt = {"cohort": cohort, "workflow_run": run_id,
+               "url": url, "run_ids": run_ids, "started": time.time()}
+    state["attempts"].append(attempt)
+    return attempt
+
+
 def main(args):
     repo = Path(args.repo).resolve()
     registry = json.loads((repo / args.registry).read_text())
@@ -111,11 +130,13 @@ def main(args):
                 adopted_state = workflow_state(adopted)
                 run_id, url, batch = adopted, adopted_state["url"], adopted_state["run_ids"]
                 adopted = None
+                was_adopted = True
             else:
                 run_id, url = dispatch(registry, cohort, batch)
-            attempt = {"cohort": cohort["name"], "workflow_run": run_id,
-                       "url": url, "run_ids": batch, "started": time.time()}
-            state["attempts"].append(attempt)
+                was_adopted = False
+            attempt = begin_attempt(
+                state, cohort["name"], run_id, url, batch, adopted=was_adopted
+            )
             atomic_json(state_path, state)
             previous = None
             while True:
