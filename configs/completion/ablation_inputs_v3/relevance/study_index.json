@@ -1,0 +1,39 @@
+{
+  "schema": "feature-topology.ablation-inputs.v1",
+  "study": "relevance",
+  "planned": 210,
+  "conditions": [
+    {
+      "condition": "259fe2e03a6cfd6a",
+      "index": "259fe2e03a6cfd6a.json",
+      "runs": 35
+    },
+    {
+      "condition": "44c559adaa067137",
+      "index": "44c559adaa067137.json",
+      "runs": 35
+    },
+    {
+      "condition": "480aa1fb6e46d7e5",
+      "index": "480aa1fb6e46d7e5.json",
+      "runs": 35
+    },
+    {
+      "condition": "746c074a2f43dcdd",
+      "index": "746c074a2f43dcdd.json",
+      "runs": 35
+    },
+    {
+      "condition": "91d5ad7e3327b2b6",
+      "index": "91d5ad7e3327b2b6.json",
+      "runs": 35
+    },
+    {
+      "condition": "95eddf02ab1216cc",
+      "index": "95eddf02ab1216cc.json",
+      "runs": 35
+    }
+  ],
+  "excluded_diverged": [],
+  "scope": "Training inputs only; full production metrics remain required"
+}
