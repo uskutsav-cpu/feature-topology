@@ -149,6 +149,43 @@ def validate_ood_evaluation_row(row):
     return row
 
 
+def calibration_artifact_paths(repo):
+    """Validate and retain outcome-blind LR calibration records and checkpoints."""
+    repo=Path(repo)
+    paths=[]
+    for pattern in ('results/**/gamma_to_lr.json','results/**/calibration_progress.json'):
+        for path in repo.glob(pattern):
+            value=json.loads(path.read_text())
+            invalid=nonfinite_paths(value)
+            if invalid:
+                raise ValueError(f'Nonfinite calibration map: {path}: {invalid}')
+            paths.append(path)
+    summaries=[path for path in repo.glob('results/**/summary.json')
+               if any('calibration' in part for part in path.parts)]
+    for summary_path in summaries:
+        directory=summary_path.parent
+        config_path=directory/'config.json'
+        summary=json.loads(summary_path.read_text())
+        config=json.loads(config_path.read_text())
+        if (summary.get('config')!=config or summary.get('run_id')!=fingerprint(config)
+                or directory.name!=summary.get('run_id')
+                or summary.get('status') not in {'converged','budget_exhausted','diverged'}):
+            raise ValueError(f'Invalid calibration trial identity: {directory}')
+        invalid=nonfinite_paths(summary)
+        if invalid:
+            raise ValueError(f'Nonfinite calibration trial: {directory}: {invalid}')
+        paths.extend([config_path,summary_path])
+        checkpoint=directory/'final.pt'
+        if checkpoint.exists():
+            import torch
+            state=torch.load(checkpoint,map_location='cpu',weights_only=True)
+            weights=state.get('model',state.get('network'))
+            if state.get('config')!=config or not weights or any(not torch.isfinite(v).all() for v in weights.values()):
+                raise ValueError(f'Invalid calibration checkpoint tensors: {directory}')
+            paths.append(checkpoint)
+    return paths
+
+
 def readiness(repo):
     repo=Path(repo).resolve()
     # A freeze must independently replay the strict checkpoint-tensor audit;
@@ -261,6 +298,10 @@ def readiness(repo):
         paths.update(production_queue_paths(repo))
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_metrics',error=str(exc)))
+    try:
+        paths.update(calibration_artifact_paths(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='calibration',error=str(exc)))
     ood_manifest=repo/'results/ood_evaluation/manifest.json'
     if not ood_manifest.exists():
         problems.append(dict(study='ood_evaluation',error='Nuisance-shift evaluation missing'))
@@ -346,7 +387,6 @@ def readiness(repo):
         paths.update(p for p in (repo/name).rglob('*') if p.is_file()
                      and not any(part in {'.lake','__pycache__'} for part in p.parts))
     paths.update(p for p in repo.glob('*') if p.is_file() and p.suffix in {'.txt','.toml','.md'})
-    paths.update((repo/'results').rglob('gamma_to_lr.json'))
     for name in ['main','width','depth','relevance','swapped','cylinder','small_network','ood',
                  'rotated_digits','dsprites','cifar10','cifar100','circle_quotient']:
         path=repo/'results'/name/'manifest.json'

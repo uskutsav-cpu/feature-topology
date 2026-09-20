@@ -5,7 +5,8 @@ import gzip
 import io
 import tarfile
 from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
-                                    production_queue_paths,validate_numeric_circle_quotient,
+                                    calibration_artifact_paths,production_queue_paths,
+                                    validate_numeric_circle_quotient,
                                     validate_ood_evaluation_row,verify_manifest)
 from scripts.pack_release import pack
 from scripts.completion_inventory import inspect_run
@@ -101,6 +102,22 @@ def test_ood_evaluation_must_be_finite_before_freeze():
     row['environments']['unseen']['loss']=None
     with pytest.raises(ValueError,match='Nonfinite nuisance-shift'):
         validate_ood_evaluation_row(row)
+
+
+def test_calibration_evidence_is_validated_and_retained(tmp_path):
+    run=tmp_path/'results/example/calibration'
+    config={'gamma':1.,'lr':.1,'seed':900}
+    trial=run/fingerprint(config);trial.mkdir(parents=True)
+    atomic_json(trial/'config.json',config)
+    atomic_json(trial/'summary.json',{'config':config,'run_id':trial.name,
+                                      'status':'diverged','history':[{'training_loss':1.}]})
+    atomic_json(run.parent/'gamma_to_lr.json',{'selection':{'1.0':{'lr':.1,'loss':1.}}})
+    assert len(calibration_artifact_paths(tmp_path))==3
+    summary=json.loads((trial/'summary.json').read_text())
+    summary['history'][0]['training_loss']=None
+    atomic_json(trial/'summary.json',summary)
+    with pytest.raises(ValueError,match='Nonfinite calibration trial'):
+        calibration_artifact_paths(tmp_path)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):
