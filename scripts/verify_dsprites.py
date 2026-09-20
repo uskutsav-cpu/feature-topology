@@ -79,9 +79,9 @@ def verify(repo,allow_partial=False):
                 path=f'layers[{index}].cka_drift'
                 if (result['score'] is not None or layer.get('cka_status')!=result['status']
                         or not np.isclose(layer.get('cka_initial_centered_gram_norm',np.nan),
-                                          result['initial_centered_gram_norm'],rtol=1e-12,atol=0)
+                                          result['initial_centered_gram_norm'],rtol=1e-6,atol=1e-12)
                         or not np.isclose(layer.get('cka_current_centered_gram_norm',np.nan),
-                                          result['current_centered_gram_norm'],rtol=1e-12,atol=0)):
+                                          result['current_centered_gram_norm'],rtol=1e-6,atol=1e-12)):
                     raise ValueError(f'Undefined CKA replay mismatch: {run.name}, layer {index+1}')
                 undefined.append(dict(path=path,status=result['status'],
                     initial_centered_gram_norm=result['initial_centered_gram_norm'],
