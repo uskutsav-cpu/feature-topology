@@ -69,12 +69,23 @@ def main(args):
     repo = Path(args.repo).resolve()
     registry = json.loads((repo / args.registry).read_text())
     primary_ids = validate_registry(repo, registry)
+    cohorts=registry["cohorts"]
+    names=[cohort["name"] for cohort in cohorts]
+    if args.start_at:
+        if args.start_at not in names:
+            raise ValueError(f"Unknown start cohort: {args.start_at}")
+        cohorts=cohorts[names.index(args.start_at):]
+    if args.stop_after:
+        selected_names=[cohort["name"] for cohort in cohorts]
+        if args.stop_after not in selected_names:
+            raise ValueError(f"Unknown stop cohort: {args.stop_after}")
+        cohorts=cohorts[:selected_names.index(args.stop_after)+1]
     state_path = repo / args.state
     state = json.loads(state_path.read_text()) if state_path.exists() else {
         "schema": "feature-topology.production-queue-state.v1", "attempts": [], "cohorts": {}
     }
     adopted = args.adopt_run
-    for cohort in registry["cohorts"]:
+    for cohort in cohorts:
         excluded = primary_ids if cohort.get("exclude_shared_primary") else set()
         retries_without_progress = 0
         while True:
@@ -136,4 +147,6 @@ if __name__ == "__main__":
     parser.add_argument("--poll-seconds", type=int, default=30)
     parser.add_argument("--max-stalled-attempts", type=int, default=3)
     parser.add_argument("--adopt-run", help="Existing workflow run for the first incomplete cohort")
+    parser.add_argument("--start-at", help="Start at this registry cohort (inclusive)")
+    parser.add_argument("--stop-after", help="Stop after this registry cohort (inclusive)")
     main(parser.parse_args())

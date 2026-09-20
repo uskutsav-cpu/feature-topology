@@ -21,7 +21,9 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: synthetic-production-${{ github.ref }}
+  # Retries/batches writing to one result release remain serialized. Independent
+  # cohorts use distinct releases and can occupy a second eight-worker lane.
+  group: synthetic-production-${{ github.ref }}-${{ inputs.result_tag }}
   cancel-in-progress: false
 jobs:
   plan:
