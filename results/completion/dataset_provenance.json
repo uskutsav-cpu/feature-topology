@@ -1,0 +1,33 @@
+{
+  "schema": "feature-topology.dataset-provenance.v1",
+  "sources": [
+    {
+      "path": "data/dsprites/dsprites.npz",
+      "bytes": 19318135,
+      "sha256": "857dc001287e8efa226e0025fac6b29e5745c621b380b0d3363e4e33f4e28fa2",
+      "source_identity": {
+        "algorithm": "git_blob_sha1",
+        "value": "d98996d3f8ee1550e06b9d4ed78d0beb478910d5"
+      }
+    },
+    {
+      "path": "data/cifar/cifar-10-python.tar.gz",
+      "bytes": 170498071,
+      "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+      "source_identity": {
+        "algorithm": "md5",
+        "value": "c58f30108f718f92721af3b95e74349a"
+      }
+    },
+    {
+      "path": "data/cifar/cifar-100-python.tar.gz",
+      "bytes": 169001437,
+      "sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+      "source_identity": {
+        "algorithm": "md5",
+        "value": "eb9058c3a382ffc7106e4002c42a8d85"
+      }
+    }
+  ],
+  "scope": "Official source archives only; split/design identities are recorded by each frozen image study."
+}
