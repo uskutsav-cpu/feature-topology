@@ -440,6 +440,32 @@ def image_replay_paths(repo):
         replayed={item.get('path') for item in row.get('explicit_undefined_cka',[])}
         if declared!=replayed:
             raise ValueError(f"dSprites undefined CKA replay changed: {row['run_id']}")
+    undefined_runs={row['run_id'] for row in dsprites['records'] if row.get('explicit_undefined_cka')}
+    if undefined_runs:
+        annotation_path=repo/'results/completion/dsprites_cka_undefined.json'
+        annotation=json.loads(annotation_path.read_text())
+        records=annotation.get('records',[])
+        if (annotation.get('schema')!='feature-topology.dsprites-cka-undefined.v1'
+                or annotation.get('dataset_id')!=dsprites.get('dataset_id')
+                or annotation.get('annotated_runs')!=len(records)
+                or {record.get('run_id') for record in records}!=undefined_runs):
+            raise ValueError('dSprites undefined CKA annotation coverage changed')
+        for record in records:
+            run=repo/'results/dsprites/runs'/record['run_id']
+            backup=repo/record['backup']
+            metric=run/'metrics.json'
+            checkpoint=run/'final.pt'
+            if (not backup.resolve().is_relative_to(repo)
+                    or record.get('original_metrics_sha256')!=record.get('backup_sha256')
+                    or sha256(backup)!=record.get('backup_sha256')
+                    or sha256(metric)!=record.get('annotated_metrics_sha256')
+                    or sha256(checkpoint)!=record.get('checkpoint_sha256')):
+                raise ValueError(f"dSprites undefined CKA provenance changed: {record['run_id']}")
+            declared=set(json.loads(metric.read_text()).get('explicit_undefined_metrics',[]))
+            if {item.get('path') for item in record.get('diagnostics',[])}!=declared:
+                raise ValueError(f"dSprites undefined CKA diagnostics changed: {record['run_id']}")
+            paths.extend([backup,metric,checkpoint])
+        paths.append(annotation_path)
     paths.append(dsprites_path)
     cifar_path=repo/'results/completion/cifar_validation.json'
     cifar=json.loads(cifar_path.read_text())
