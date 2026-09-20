@@ -1,8 +1,10 @@
 """Fail closed until every requested study and production trajectory is complete."""
 import argparse
 import json
+import math
 from pathlib import Path
 import sys
+import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.completion_inventory import inventory, sha256
 from research_ext.catalog import ABLATION_PRODUCTION, load_catalog, PRODUCTION
@@ -10,6 +12,19 @@ from research_ext.image_audit import audit_images
 from research_ext.exact import verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
 from scripts.dataset_provenance import verify_provenance
+
+
+def nonfinite_paths(value,path=""):
+    """Locate serialized nonfinite/null metric values without hiding them."""
+    if value is None or (isinstance(value,float) and not math.isfinite(value)):
+        return [path or "<root>"]
+    if isinstance(value,dict):
+        return [item for key,child in value.items()
+                for item in nonfinite_paths(child,f"{path}.{key}" if path else key)]
+    if isinstance(value,list):
+        return [item for index,child in enumerate(value)
+                for item in nonfinite_paths(child,f"{path}[{index}]")]
+    return []
 
 
 def readiness(repo):
@@ -66,6 +81,10 @@ def readiness(repo):
         for checkpoint in checkpoints:
             metric=directory/(checkpoint.stem+'.json')
             row=json.loads(metric.read_text())
+            invalid_numbers=nonfinite_paths(row)
+            if invalid_numbers:
+                problems.append(dict(run=r['run_id'],error=f"Nonfinite metric values: {metric.name}",
+                                     paths=invalid_numbers))
             if row.get('checkpoint_sha256')!=sha256(checkpoint):
                 problems.append(dict(run=r['run_id'],error=f'Checkpoint hash mismatch: {metric.name}'))
             if len(row.get('layers',[]))!=r['config'].get('depth',4):
@@ -84,6 +103,17 @@ def readiness(repo):
                         problems.append(dict(run=r['run_id'],error=f'Missing {artifact.name}'))
                     else:
                         paths.add(artifact)
+                        if suffix=='tangents':
+                            try:
+                                with np.load(artifact,allow_pickle=False) as arrays:
+                                    if (set(arrays.files)!={'indices','sigma_min','factor_norms'}
+                                            or any(not np.isfinite(arrays[name]).all()
+                                                   for name in ['sigma_min','factor_norms'])):
+                                        problems.append(dict(run=r['run_id'],
+                                                             error=f'Invalid tangent archive: {artifact.name}'))
+                            except (ValueError,OSError) as exc:
+                                problems.append(dict(run=r['run_id'],
+                                                     error=f'Unreadable tangent archive: {artifact.name}: {exc}'))
     for name in ['rotated_digits','dsprites','cifar10','cifar100']:
         audit=audit_images(repo/'results'/name)
         if not audit['artifact_completion']:

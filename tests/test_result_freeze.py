@@ -4,7 +4,7 @@ import pytest
 import gzip
 import io
 import tarfile
-from scripts.freeze_results import readiness,verify_manifest
+from scripts.freeze_results import nonfinite_paths,readiness,verify_manifest
 from scripts.pack_release import pack
 
 
@@ -12,6 +12,11 @@ def test_missing_studies_cannot_be_frozen(tmp_path):
     report,_=readiness(tmp_path)
     assert not report['ready']
     assert any(p.get('study')=='design' for p in report['problems'])
+
+
+def test_nonfinite_metric_paths_are_never_silent():
+    value={'ok':1.,'bad':None,'nested':[2.,float('inf')]}
+    assert nonfinite_paths(value)==['bad','nested[1]']
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):
