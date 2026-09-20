@@ -1,0 +1,1193 @@
+{
+  "ready": false,
+  "problems": [
+    {
+      "study": "cylinder",
+      "error": "Training coverage 0/35"
+    },
+    {
+      "study": "depth",
+      "error": "Training coverage 19/140"
+    },
+    {
+      "study": "main",
+      "error": "Training coverage 56/130"
+    },
+    {
+      "study": "relevance",
+      "error": "Training coverage 19/210"
+    },
+    {
+      "study": "small_network",
+      "error": "Training coverage 0/120"
+    },
+    {
+      "study": "swapped",
+      "error": "Training coverage 0/35"
+    },
+    {
+      "study": "width",
+      "error": "Training coverage 19/175"
+    },
+    {
+      "run": "08cf20ff7ed501ca",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "09f09127289304d6",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "137a26c5b6d0b26e",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "14084c311596e2ac",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "1716adb0d6762ffd",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "1930842ce1d7aef5",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "1bb2fd9adb594cf3",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "1bb5ed0f27b012d0",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "25b579b2abddc0f9",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "26fcc572aad0c57c",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "3eee6c43030e08dc",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "40f3baf3b73d474d",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "4af1ea473ba49a67",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "64551e6adcfe8b61",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "65de165a8d21b0ec",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "67d2d347184f129d",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "7c258fc31375e104",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "7d212bfe6d1ad0af",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "8095fa26ddb37240",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "816f68ab7f31ca7a",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "81de0fae98e48076",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "8212b25d1f355922",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "85f1c3d41df3a90e",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "8a6750bf26cfcb5c",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "961556700d1c4f55",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "9afa239c50fc8ae6",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "9eb9b205693b955a",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "a6518ea41c24dd1b",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "abba2740ff02594c",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "ac15d031f86b33bf",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "aee06fabc0e9d2c9",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "b0a0c357600c19ef",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "b29113687367d5a6",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "badffd089aaff19f",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "bf480bb8ab1826dd",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "c987b77da670fe33",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "cb6e463ae41e1f43",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "cc1f980a3afd1b2b",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "cd3f5e7d231fb54c",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "d098a51a4bdade0c",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "d4342ef1d0cdfffa",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "e1aa71cdb84337ed",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "e1f9ca7576a59eb1",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "ee7fea86765a638f",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "f2c437318ee16bea",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "f5af1a36f024490f",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "f71a0c33e5dcd121",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "192b10da1b3cc56f",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "3c7c28f731ba2310",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "6ee367a979aa16dd",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "76cc1d0eb774858e",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "a0f1d488e49d1856",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "a1dbfdb26a4eaf3b",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "d07a7cddba9045c4",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "d225c2cecd893785",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "run": "d70493ac41c9495a",
+      "error": "Full production trajectory metrics missing"
+    },
+    {
+      "study": "dsprites",
+      "error": "Image coverage incomplete",
+      "audit": {
+        "schema": "feature-topology.image-audit.v1",
+        "artifact_completion": false,
+        "expected_runs": 35,
+        "observed_runs": 0,
+        "finished_runs": 0,
+        "measured_runs": 0,
+        "diverged_runs": 0,
+        "missing_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "unexpected_pairs": [],
+        "missing_metrics_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "issues": [],
+        "runs": [],
+        "input_hashes": {},
+        "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
+      }
+    },
+    {
+      "study": "cifar10",
+      "error": "Image coverage incomplete",
+      "audit": {
+        "schema": "feature-topology.image-audit.v1",
+        "artifact_completion": false,
+        "expected_runs": 35,
+        "observed_runs": 0,
+        "finished_runs": 0,
+        "measured_runs": 0,
+        "diverged_runs": 0,
+        "missing_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "unexpected_pairs": [],
+        "missing_metrics_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "issues": [],
+        "runs": [],
+        "input_hashes": {},
+        "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
+      }
+    },
+    {
+      "study": "cifar100",
+      "error": "Image coverage incomplete",
+      "audit": {
+        "schema": "feature-topology.image-audit.v1",
+        "artifact_completion": false,
+        "expected_runs": 35,
+        "observed_runs": 0,
+        "finished_runs": 0,
+        "measured_runs": 0,
+        "diverged_runs": 0,
+        "missing_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "unexpected_pairs": [],
+        "missing_metrics_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ],
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.5,
+            3
+          ],
+          [
+            0.5,
+            4
+          ],
+          [
+            1.0,
+            0
+          ],
+          [
+            1.0,
+            1
+          ],
+          [
+            1.0,
+            2
+          ],
+          [
+            1.0,
+            3
+          ],
+          [
+            1.0,
+            4
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            4.0,
+            1
+          ],
+          [
+            4.0,
+            2
+          ],
+          [
+            4.0,
+            3
+          ],
+          [
+            4.0,
+            4
+          ],
+          [
+            16.0,
+            0
+          ],
+          [
+            16.0,
+            1
+          ],
+          [
+            16.0,
+            2
+          ],
+          [
+            16.0,
+            3
+          ],
+          [
+            16.0,
+            4
+          ],
+          [
+            64.0,
+            0
+          ],
+          [
+            64.0,
+            1
+          ],
+          [
+            64.0,
+            2
+          ],
+          [
+            64.0,
+            3
+          ],
+          [
+            64.0,
+            4
+          ],
+          [
+            128.0,
+            0
+          ],
+          [
+            128.0,
+            1
+          ],
+          [
+            128.0,
+            2
+          ],
+          [
+            128.0,
+            3
+          ],
+          [
+            128.0,
+            4
+          ]
+        ],
+        "issues": [],
+        "runs": [],
+        "input_hashes": {},
+        "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
+      }
+    }
+  ],
+  "studies": {
+    "cylinder": {
+      "expected": 35,
+      "accounted": 0
+    },
+    "depth": {
+      "expected": 140,
+      "accounted": 19
+    },
+    "main": {
+      "expected": 130,
+      "accounted": 56
+    },
+    "relevance": {
+      "expected": 210,
+      "accounted": 19
+    },
+    "small_network": {
+      "expected": 120,
+      "accounted": 0
+    },
+    "swapped": {
+      "expected": 35,
+      "accounted": 0
+    },
+    "width": {
+      "expected": 175,
+      "accounted": 19
+    }
+  }
+}

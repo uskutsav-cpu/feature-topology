@@ -9,8 +9,13 @@ Read [the protocol](docs/PROTOCOL.md) for assumptions and limitations, and
 
 See [the completion record](docs/COMPLETION_2026_09_13.md) for recovered primary
 run accounting, trained-network rational certificates, the compiled Lean audit,
-and the remaining production/image computations. The final results freeze and
-paper are still pending.
+and the remaining production/image computations. The dated
+[GitHub-main audit](docs/AUDIT_2026_09_19.md) supersedes stale recovery counts for
+the current checkout. The final results freeze and paper are still pending.
+
+The current scientific contract is in [SCIENTIFIC_CLAIMS.md](docs/SCIENTIFIC_CLAIMS.md),
+with complete assumptions and proofs in [THEORY.md](docs/THEORY.md) and the
+source-backed novelty audit in [RELATED_WORK_MATRIX.md](docs/RELATED_WORK_MATRIX.md).
 
 ## Environment
 
@@ -37,6 +42,8 @@ python scripts/run_pilot.py --calibration results/calibration_pilot/gamma_to_lr.
 python scripts/compute_metrics.py --runs results/pilot/runs --ntk-points 32 --jacobian-points 1000 --ph-size 150 --ph-repeats 3 --ph-maxdim 1
 python scripts/summarize.py --root results/pilot
 python scripts/run_controls.py
+python scripts/run_ground_truth_controls.py
+python scripts/plot_ground_truth_controls.py
 ```
 
 Those reduced PH/NTK/Jacobian settings are **pilot diagnostics**, not the full
@@ -79,7 +86,8 @@ checkpoint by checkpoint without retaining this entire activation collection in 
 - `src/models`: plain MLP, CNN, and CIFAR-compatible ResNet18.
 - `src/training`: centered output scaling, vanilla SGD, frozen LR calibration support.
 - `src/metrics`: geometry, tangent Jacobians, sampled global margins, collisions,
-  held-out probes, PH, empirical NTK, nulls, polygon image-graph quotient.
+  fiber-survival diagnostics, held-out probes, PH, empirical NTK, nulls, and
+  polygon image-graph quotient.
 - `src/analysis`: seed bootstrap confidence intervals and segmented/smooth comparisons.
 - `configs/sweeps`: requested main, width, depth, relevance, and control designs.
 - `tests`: analytic invariants, known quotient controls, leakage checks, and resume behavior.

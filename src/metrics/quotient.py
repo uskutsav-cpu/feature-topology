@@ -59,6 +59,10 @@ def image_graph(vertices, layers, tolerance=1e-7):
                 return i
         nodes.append(x); return len(nodes)-1
     for (a, b), points in zip(segments, cuts):
+        # A fully collapsed edge is still a one-point image.  Registering its
+        # endpoint makes beta_0(point)=1 instead of incorrectly returning an
+        # empty graph with beta_0=0.
+        node(a); node(b)
         points = sorted(points)
         for t, u in zip(points[:-1], points[1:]):
             i, j = node(a+t*(b-a)), node(a+u*(b-a))

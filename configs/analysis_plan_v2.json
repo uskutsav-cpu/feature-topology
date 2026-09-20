@@ -1,0 +1,65 @@
+{
+  "schema": "feature-topology.analysis-plan.v2",
+  "frozen_at": "2026-09-19",
+  "status": "prospective for v2 outputs; exploratory relative to all artifacts already committed before this file",
+  "immutability": "Any change requires a new versioned plan; this file is never edited after v2 production begins.",
+  "primary_hypotheses": {
+    "H1": "At matched training risk, geometric deformation can increase with feature-learning strength while nuisance fibers remain globally separated.",
+    "H2": "Local nuisance degeneration, global loss of separation, and collision occur at distinguishable gamma ranges when they occur at all.",
+    "H3": "Increasing nuisance relevance lambda makes nuisance collision predictively costly and shifts the fiber-survival regime map.",
+    "H4": "Nuisance-shift robustness is associated with the fiber-survival regime after controlling for matched risk; exact quotienting is not presumed optimal."
+  },
+  "primary_design": {
+    "manifold": "T2 = S1_theta x S1_phi",
+    "task": "four-class periodic label from theta + lambda*sin(phi)",
+    "architecture": {"type": "MLP", "width": 256, "hidden_layers": 4},
+    "primary_layer": "last hidden layer",
+    "gammas": [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0],
+    "lambdas": [0.0, 0.05, 0.1, 0.25, 0.5, 1.0],
+    "training_seeds": [0, 1, 2, 3, 4],
+    "target_training_loss": 0.1,
+    "checkpoint_rule": "first stored checkpoint at or below target; no interpolation",
+    "learning_rate_rule": "independent optimization-only calibration by condition; no topology, probe, validation accuracy, or OOD metric enters selection",
+    "pairing": "initialization and minibatch sequence paired by seed across gamma within each architecture and lambda"
+  },
+  "order_parameters": {
+    "G": "1 - linear CKA from initialization",
+    "L": "minimum and q01 nuisance tangent norm divided by representation RMS, with raw values retained",
+    "M": "dense within-fiber lower-Lipschitz ratio plus adversarial latent-pair search",
+    "Q": "collision count/witness with evidence level: analytic, exact restricted certificate, interval bound, or empirical",
+    "D_F": "held-out circular nuisance decoding, clean and under frozen relative-noise levels",
+    "R": "task risk/accuracy under IID and declared nuisance shifts"
+  },
+  "descriptive_thresholds": {
+    "geometry_deformed": 0.05,
+    "near_singular_normalized_margin": 0.001,
+    "collision_tolerance_float64_controls": 1e-10,
+    "note": "Thresholded labels are descriptive. Exact equality requires a witness/certificate."
+  },
+  "width_scaling": {
+    "widths": [64, 128, 256, 512, 1024],
+    "gammas": [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0],
+    "training_seeds": [0, 1, 2, 3, 4],
+    "phase_transition_gate": "Use phase-transition language only if a prespecified smooth/segmented fit shows systematic transition-width shrinkage and controlled pseudo-critical drift with width; otherwise use crossover."
+  },
+  "statistics": {
+    "replicate_unit": "training seed",
+    "bootstrap": "paired seed bootstrap across gamma, 2000 repeats, percentile 95% intervals",
+    "transition_bootstrap_repeats": 300,
+    "multiple_metrics": "G, L, M, Q, D_F, and R are reported separately; no composite score is primary",
+    "nonconvergence": "retain every requested outcome; exclude unreached-risk runs only from matched-risk contrasts and report counts",
+    "persistent_homology": "supporting/exploratory; subsamples are not replicates"
+  },
+  "confirmatory_outputs": [
+    "gamma-lambda regime map with seed confidence intervals",
+    "paired nuisance-relevance contrasts for M, Q, D_F, and R",
+    "finite-width crossover/transition audit",
+    "IID, nuisance-distribution shift, spurious-correlation, and unseen-nuisance evaluation"
+  ],
+  "exclusions": [
+    "No learning-rate selection based on representation or test outcomes.",
+    "No threshold changes after v2 production outputs are inspected.",
+    "No exact-injectivity claim from finite samples, probes, Jacobians, CKA, or PH.",
+    "No phase-transition language without passing the width-scaling gate."
+  ]
+}

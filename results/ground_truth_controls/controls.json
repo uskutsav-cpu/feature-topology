@@ -1,0 +1,740 @@
+{
+  "schema": "feature-topology.ground-truth-controls.v1",
+  "grid": {
+    "base_points": 16,
+    "fiber_points": 32
+  },
+  "persistent_homology": {
+    "subsample_size": 256,
+    "repeats": 3,
+    "max_dimension": 2
+  },
+  "thresholds": {
+    "deformation": 0.05,
+    "near_singular": 0.001,
+    "collision_tolerance": 1e-10
+  },
+  "qualification": "Analytic truth labels certify these constructed maps. Numerical metrics remain finite-grid diagnostics and do not become continuum certificates.",
+  "controls": {
+    "isometry": {
+      "truth": {
+        "regime": "preserved",
+        "description": "Product-circle isometry.",
+        "injective": true,
+        "local_margin": 1.0,
+        "global_margin": 0.6366197723675814
+      },
+      "geometry": {
+        "cka_drift_from_isometry": -2.220446049250313e-16,
+        "effective_rank": 4.0,
+        "rms_scale": 1.4142135623730951
+      },
+      "local_fiber_margin": {
+        "minimum": 0.9999999999999999,
+        "q01": 0.9999999999999999,
+        "median": 1.0,
+        "normalized_minimum": 0.7071067811865474,
+        "samples": 512,
+        "qualification": "Dense-sample differential evidence; not a continuum lower bound."
+      },
+      "global_fiber_separation": {
+        "sampled_minimum": 0.6366197723675813,
+        "q001": 0.6366197723675813,
+        "q01": 0.6366197723675814,
+        "minimum_representation_distance": 0.1960342806591205,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 0,
+        "collision_tolerance": 1e-10,
+        "pairs": 7936,
+        "qualification": "Exhaustive only on the declared grid; not a continuum certificate."
+      },
+      "empirical_regime": "preserved",
+      "nuisance_fiber_image_graph": {
+        "beta0": 1,
+        "beta1": 1,
+        "nodes": 32,
+        "edges": 32,
+        "affine_segments": 32,
+        "pair_intersections": 32,
+        "tolerance": 1e-07,
+        "domain": "polygonal circle",
+        "method": "ReLU edge subdivision + LP intersections + image graph"
+      },
+      "persistent_homology": [
+        {
+          "repeat": 0,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 52.19440220296383,
+            "top1": 0.3087639808654785,
+            "top2": 0.3087639808654785,
+            "entropy": 5.483825215727721,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 10.505482822656631,
+            "top1": 0.9977990388870239,
+            "top2": 0.9713256657123566,
+            "entropy": 4.056850280050723,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 1.5340129137039185,
+            "top1": 0.5208680629730225,
+            "top2": 0.05933797359466553,
+            "entropy": 2.9157261398296876,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 53.53435967862606,
+            "top1": 0.3087639808654785,
+            "top2": 0.3087639808654785,
+            "entropy": 5.485964504684691,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 11.725489467382431,
+            "top1": 1.030663639307022,
+            "top2": 0.9713256657123566,
+            "entropy": 4.105716843385856,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 1.8010669946670532,
+            "top1": 0.6151589155197144,
+            "top2": 0.05933797359466553,
+            "entropy": 3.036179919981069,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 52.880813241004944,
+            "top1": 0.3087639808654785,
+            "top2": 0.3087639808654785,
+            "entropy": 5.484739061909362,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 10.438612818717957,
+            "top1": 0.9977990388870239,
+            "top2": 0.9713256657123566,
+            "entropy": 4.065656664483223,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 1.5831584930419922,
+            "top1": 0.5087456703186035,
+            "top2": 0.05933797359466553,
+            "entropy": 3.0075130655337814,
+            "essential_bars": 0
+          }
+        }
+      ],
+      "held_out_probes": {
+        "linear": {
+          "task_accuracy": 0.987,
+          "nuisance_r2": 0.9999997497331525,
+          "convergence_warnings": 0,
+          "angular_mae": 1.193790203443983e-05,
+          "angular_cosine": 0.9999999999050194
+        },
+        "mlp": {
+          "task_accuracy": 0.985,
+          "nuisance_r2": 0.9992893432184939,
+          "convergence_warnings": 0,
+          "angular_mae": 0.016053731990925257,
+          "angular_cosine": 0.9997964260453464
+        }
+      }
+    },
+    "deformed": {
+      "truth": {
+        "regime": "deformed",
+        "description": "Injective radius-and-twist deformation with recoverable theta and phi.",
+        "injective": true,
+        "local_margin": 0.1353352832366127,
+        "global_margin": 0.08615711720739452
+      },
+      "geometry": {
+        "cka_drift_from_isometry": 0.7997368416044607,
+        "effective_rank": 2.6513033511042776,
+        "rms_scale": 3.507409579739835
+      },
+      "local_fiber_margin": {
+        "minimum": 0.13533528323661267,
+        "q01": 0.1353352832366127,
+        "median": 1.0,
+        "normalized_minimum": 0.03858553732029531,
+        "samples": 512,
+        "qualification": "Dense-sample differential evidence; not a continuum lower bound."
+      },
+      "global_fiber_separation": {
+        "sampled_minimum": 0.08615711720739452,
+        "q001": 0.08615711720739452,
+        "q01": 0.09788634175899597,
+        "minimum_representation_distance": 0.026530354897087695,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 0,
+        "collision_tolerance": 1e-10,
+        "pairs": 7936,
+        "qualification": "Exhaustive only on the declared grid; not a continuum certificate."
+      },
+      "empirical_regime": "deformed",
+      "nuisance_fiber_image_graph": {
+        "beta0": 1,
+        "beta1": 1,
+        "nodes": 32,
+        "edges": 32,
+        "affine_segments": 32,
+        "pair_intersections": 32,
+        "tolerance": 1e-07,
+        "domain": "polygonal circle",
+        "method": "ReLU edge subdivision + LP intersections + image graph"
+      },
+      "persistent_homology": [
+        {
+          "repeat": 0,
+          "size": 256,
+          "normalized": true,
+          "scale": 3.507409579739835,
+          "H0": {
+            "total_persistence": 39.934229077771306,
+            "top1": 0.7988182902336121,
+            "top2": 0.6604296565055847,
+            "entropy": 4.999621484618952,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 4.691099481657147,
+            "top1": 0.16396713256835938,
+            "top2": 0.16396713256835938,
+            "entropy": 4.307129680517717,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.29775112122297287,
+            "top1": 0.07436245679855347,
+            "top2": 0.03345656394958496,
+            "entropy": 2.614845972914941,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 256,
+          "normalized": true,
+          "scale": 3.507409579739835,
+          "H0": {
+            "total_persistence": 41.29945221636444,
+            "top1": 0.6604296565055847,
+            "top2": 0.6604296565055847,
+            "entropy": 5.044542189187608,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 4.7744006421417,
+            "top1": 0.3066738247871399,
+            "top2": 0.26119107007980347,
+            "entropy": 4.215709293247163,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.2135583758354187,
+            "top1": 0.05584079027175903,
+            "top2": 0.03496229648590088,
+            "entropy": 2.4280693464299725,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 256,
+          "normalized": true,
+          "scale": 3.507409579739835,
+          "H0": {
+            "total_persistence": 40.85647835582495,
+            "top1": 0.6604296565055847,
+            "top2": 0.6604296565055847,
+            "entropy": 5.040951848977133,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 4.794402984902263,
+            "top1": 0.2167406678199768,
+            "top2": 0.18068885803222656,
+            "entropy": 4.263140773269271,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.12885712832212448,
+            "top1": 0.018577568233013153,
+            "top2": 0.01744137704372406,
+            "entropy": 2.618077325042057,
+            "essential_bars": 0
+          }
+        }
+      ],
+      "held_out_probes": {
+        "linear": {
+          "task_accuracy": 0.992,
+          "nuisance_r2": 0.19287923190610096,
+          "convergence_warnings": 0,
+          "angular_mae": 1.072746492661216,
+          "angular_cosine": 0.40906143499207964
+        },
+        "mlp": {
+          "task_accuracy": 0.982,
+          "nuisance_r2": 0.9966421341446767,
+          "convergence_warnings": 0,
+          "angular_mae": 0.030323028000160016,
+          "angular_cosine": 0.9992268281974008
+        }
+      }
+    },
+    "near_singular": {
+      "truth": {
+        "regime": "near-singular",
+        "description": "Injective nuisance circle scaled by epsilon=1e-4.",
+        "injective": true,
+        "local_margin": 0.0001,
+        "global_margin": 6.366197723675813e-05
+      },
+      "geometry": {
+        "cka_drift_from_isometry": 0.2928932117423846,
+        "effective_rank": 2.000000388413649,
+        "rms_scale": 1.000000005
+      },
+      "local_fiber_margin": {
+        "minimum": 9.999999999999999e-05,
+        "q01": 9.999999999999999e-05,
+        "median": 0.0001,
+        "normalized_minimum": 9.99999995e-05,
+        "samples": 512,
+        "qualification": "Dense-sample differential evidence; not a continuum lower bound."
+      },
+      "global_fiber_separation": {
+        "sampled_minimum": 6.366197723675813e-05,
+        "q001": 6.366197723675813e-05,
+        "q01": 6.366197723675813e-05,
+        "minimum_representation_distance": 1.960342806591204e-05,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 0,
+        "collision_tolerance": 1e-10,
+        "pairs": 7936,
+        "qualification": "Exhaustive only on the declared grid; not a continuum certificate."
+      },
+      "empirical_regime": "near-singular",
+      "nuisance_fiber_image_graph": {
+        "beta0": 1,
+        "beta1": 1,
+        "nodes": 32,
+        "edges": 32,
+        "affine_segments": 32,
+        "pair_intersections": 32,
+        "tolerance": 1e-07,
+        "domain": "polygonal circle",
+        "method": "ReLU edge subdivision + LP intersections + image graph"
+      },
+      "persistent_homology": [
+        {
+          "repeat": 0,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.000000005,
+          "H0": {
+            "total_persistence": 5.860962620563441,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.722382619040086,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4588552236637042,
+            "top1": 1.4575783610343933,
+            "top2": 0.00011832731252070516,
+            "entropy": 0.009381249646981595,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.0001628821191843599,
+            "top1": 1.5003824955783784e-05,
+            "top2": 1.5003810403868556e-05,
+            "entropy": 2.881830162040347,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.000000005,
+          "H0": {
+            "total_persistence": 5.8609566160266695,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.722404361487655,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4588114615871746,
+            "top1": 1.4575783610343933,
+            "top2": 0.00011832731252070516,
+            "entropy": 0.009087231951848133,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.00021272215235512704,
+            "top1": 1.5003810403868556e-05,
+            "top2": 1.5003810403868556e-05,
+            "entropy": 3.120162769025841,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.000000005,
+          "H0": {
+            "total_persistence": 5.860866511400673,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.722263448862545,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4587296364479698,
+            "top1": 1.4575783610343933,
+            "top2": 0.00013736617984250188,
+            "entropy": 0.008505980181908488,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.0001827781816245988,
+            "top1": 1.5003824955783784e-05,
+            "top2": 1.5003824955783784e-05,
+            "entropy": 2.977600424156995,
+            "essential_bars": 0
+          }
+        }
+      ],
+      "held_out_probes": {
+        "linear": {
+          "task_accuracy": 0.987,
+          "nuisance_r2": 0.9999997497331525,
+          "convergence_warnings": 0,
+          "angular_mae": 1.193790203445578e-05,
+          "angular_cosine": 0.9999999999050194
+        },
+        "mlp": {
+          "task_accuracy": 0.985,
+          "nuisance_r2": 0.9992893432184939,
+          "convergence_warnings": 0,
+          "angular_mae": 0.016053731990925257,
+          "angular_cosine": 0.9997964260453464
+        }
+      }
+    },
+    "double_cover": {
+      "truth": {
+        "regime": "quotiented",
+        "description": "Everywhere-regular nuisance double cover: positive local margin but global collisions.",
+        "injective": false,
+        "local_margin": 2.0,
+        "global_margin": 0.0
+      },
+      "geometry": {
+        "cka_drift_from_isometry": 0.4999999999999998,
+        "effective_rank": 4.0,
+        "rms_scale": 1.4142135623730951
+      },
+      "local_fiber_margin": {
+        "minimum": 1.9999999999999998,
+        "q01": 1.9999999999999998,
+        "median": 2.0,
+        "normalized_minimum": 1.4142135623730947,
+        "samples": 512,
+        "qualification": "Dense-sample differential evidence; not a continuum lower bound."
+      },
+      "global_fiber_separation": {
+        "sampled_minimum": 4.9977595182166055e-17,
+        "q001": 4.9977595182166055e-17,
+        "q01": 7.79634366503875e-17,
+        "minimum_representation_distance": 1.5700924586837752e-16,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 256,
+        "collision_tolerance": 1e-10,
+        "pairs": 7936,
+        "qualification": "Exhaustive only on the declared grid; not a continuum certificate."
+      },
+      "empirical_regime": "sampled-collision",
+      "nuisance_fiber_image_graph": {
+        "beta0": 1,
+        "beta1": 1,
+        "nodes": 16,
+        "edges": 16,
+        "affine_segments": 32,
+        "pair_intersections": 80,
+        "tolerance": 1e-07,
+        "domain": "polygonal circle",
+        "method": "ReLU edge subdivision + LP intersections + image graph"
+      },
+      "persistent_homology": [
+        {
+          "repeat": 0,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 52.259264329923006,
+            "top1": 0.39018064737319946,
+            "top2": 0.27589938044548035,
+            "entropy": 5.241348673086329,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 18.665444642305374,
+            "top1": 1.030663639307022,
+            "top2": 1.030663639307022,
+            "entropy": 4.627945919014326,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.5679017901420593,
+            "top1": 0.5208680629730225,
+            "top2": 0.047033727169036865,
+            "entropy": 0.28560376272813376,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 52.42088259606801,
+            "top1": 0.27589938044548035,
+            "top2": 0.27589938044548035,
+            "entropy": 5.247024178492152,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 18.714819341897964,
+            "top1": 1.030663639307022,
+            "top2": 1.030663639307022,
+            "entropy": 4.599499190733684,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.5208680629730225,
+            "top1": 0.5208680629730225,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.4142135623730951,
+          "H0": {
+            "total_persistence": 53.524480026635146,
+            "top1": 0.27589938044548035,
+            "top2": 0.27589938044548035,
+            "entropy": 5.267858232775989,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 19.64618492126465,
+            "top1": 1.030663639307022,
+            "top2": 1.030663639307022,
+            "entropy": 4.667375572727384,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.4738343358039856,
+            "top1": 0.4738343358039856,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          }
+        }
+      ],
+      "held_out_probes": {
+        "linear": {
+          "task_accuracy": 0.991,
+          "nuisance_r2": -0.004051600352622142,
+          "convergence_warnings": 0,
+          "angular_mae": 1.588985484275418,
+          "angular_cosine": -0.013129620811319884
+        },
+        "mlp": {
+          "task_accuracy": 0.989,
+          "nuisance_r2": -0.011634287513628605,
+          "convergence_warnings": 0,
+          "angular_mae": 1.5622612390076946,
+          "angular_cosine": 0.008324292090567158
+        }
+      }
+    },
+    "quotient": {
+      "truth": {
+        "regime": "quotiented",
+        "description": "Task quotient that removes the nuisance circle.",
+        "injective": false,
+        "local_margin": 0.0,
+        "global_margin": 0.0
+      },
+      "geometry": {
+        "cka_drift_from_isometry": 0.2928932188134522,
+        "effective_rank": 2.0,
+        "rms_scale": 1.0
+      },
+      "local_fiber_margin": {
+        "minimum": 0.0,
+        "q01": 0.0,
+        "median": 0.0,
+        "normalized_minimum": 0.0,
+        "samples": 512,
+        "qualification": "Dense-sample differential evidence; not a continuum lower bound."
+      },
+      "global_fiber_separation": {
+        "sampled_minimum": 0.0,
+        "q001": 0.0,
+        "q01": 0.0,
+        "minimum_representation_distance": 0.0,
+        "exact_float_collision_pairs": 7936,
+        "tolerance_collision_pairs": 7936,
+        "collision_tolerance": 1e-10,
+        "pairs": 7936,
+        "qualification": "Exhaustive only on the declared grid; not a continuum certificate."
+      },
+      "empirical_regime": "sampled-collision",
+      "nuisance_fiber_image_graph": {
+        "beta0": 1,
+        "beta1": 0,
+        "nodes": 1,
+        "edges": 0,
+        "affine_segments": 32,
+        "pair_intersections": 496,
+        "tolerance": 1e-07,
+        "domain": "polygonal circle",
+        "method": "ReLU edge subdivision + LP intersections + image graph"
+      },
+      "persistent_homology": [
+        {
+          "repeat": 0,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.0,
+          "H0": {
+            "total_persistence": 5.852709710597992,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.70805020110221,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4575783610343933,
+            "top1": 1.4575783610343933,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.0,
+            "top1": 0.0,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.0,
+          "H0": {
+            "total_persistence": 5.852709710597992,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.70805020110221,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4575783610343933,
+            "top1": 1.4575783610343933,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.0,
+            "top1": 0.0,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          }
+        },
+        {
+          "repeat": 2,
+          "size": 256,
+          "normalized": true,
+          "scale": 1.0,
+          "H0": {
+            "total_persistence": 5.852709710597992,
+            "top1": 0.39018064737319946,
+            "top2": 0.39018064737319946,
+            "entropy": 2.70805020110221,
+            "essential_bars": 1
+          },
+          "H1": {
+            "total_persistence": 1.4575783610343933,
+            "top1": 1.4575783610343933,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          },
+          "H2": {
+            "total_persistence": 0.0,
+            "top1": 0.0,
+            "top2": 0.0,
+            "entropy": -0.0,
+            "essential_bars": 0
+          }
+        }
+      ],
+      "held_out_probes": {
+        "linear": {
+          "task_accuracy": 0.993,
+          "nuisance_r2": 0.0005921216684241504,
+          "convergence_warnings": 0,
+          "angular_mae": 1.521502197975997,
+          "angular_cosine": 0.03708641196712878
+        },
+        "mlp": {
+          "task_accuracy": 0.984,
+          "nuisance_r2": -0.005866207482436936,
+          "convergence_warnings": 0,
+          "angular_mae": 1.5651726826173955,
+          "angular_cosine": 0.007221406612799173
+        }
+      }
+    }
+  }
+}
