@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import pytest
 import torch
-from scripts.prepare_ablation_inputs import groups
+from scripts.prepare_ablation_inputs import DATA_KEYS, STUDIES, groups
 from scripts import prepare_primary_inputs as exporter
 from scripts.remote_metrics import unpack_input
 
@@ -18,6 +18,11 @@ def test_conditions_and_shared_baselines():
     assert {g['data_config']['relevance'] for g in result.values()}=={0.,1.}
     report['studies']['relevance']['missing']=[{}]
     with pytest.raises(ValueError,match='incomplete'):groups(report,'relevance')
+
+
+def test_ood_is_a_first_class_separate_data_condition():
+    assert 'ood' in STUDIES
+    assert 'nuisance_condition' in DATA_KEYS
 
 
 def test_ablation_archive_round_trip_and_stale_rejection(tmp_path,monkeypatch):

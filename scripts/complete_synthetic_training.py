@@ -17,7 +17,7 @@ def main():
                  "--output", "results/main", "--pilot-gate", "results/pilot/gate.json"])]
     commands += [(name, ["scripts/run_ablation.py", "--plan", f"configs/sweeps/{name}.json",
                         "--output", f"results/{name}"])
-                 for name in ["width", "cylinder", "swapped", "depth", "relevance", "small_network"]]
+                 for name in ["ood", "width", "cylinder", "swapped", "depth", "relevance", "small_network"]]
     with (output / "synthetic_training.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         records = []

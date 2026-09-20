@@ -11,7 +11,8 @@ from research_ext.finite_width import analyze_width_scaling
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--roots", nargs="+", default=["results/main", "results/extended/width"])
+    parser.add_argument("--roots", nargs="+",
+                        default=["results/main", "results/width", "results/extended/width"])
     parser.add_argument("--output", default="results/analysis/width_scaling_gate.json")
     parser.add_argument("--specification", default="configs/width_scaling_gate_v1.json")
     parser.add_argument("--profile")

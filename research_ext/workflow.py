@@ -87,7 +87,7 @@ def make_plan(repo: str | Path, *, suite: str = 'primary', image_device: str = '
             Task('exact-controls', prefix+['controls','--output','results/research_ext/exact_controls'],
                  outputs=['results/research_ext/exact_controls/*.json'])]
         if suite == 'ablations':
-            for name in ['width','depth','relevance','swapped','cylinder','small_network']:
+            for name in ['width','depth','relevance','swapped','cylinder','small_network','ood']:
                 output = f'results/extended/{name}'
                 tasks.append(Task(f'{name}-training', [py,'scripts/run_ablation.py','--plan',f'configs/sweeps/{name}.json',
                     '--output',output], ['main-training'],

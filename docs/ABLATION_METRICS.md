@@ -6,7 +6,12 @@ After a synthetic sweep finishes, prepare its verified training inputs:
 python scripts/prepare_ablation_inputs.py --repo PATH_TO_RESULTS_REPO --study width --output PATH_TO_INPUT_DIRECTORY
 ```
 
-Supported studies are width, depth, relevance, swapped, cylinder, and small_network. Preparation refuses incomplete training coverage. Diverged runs are accounted for separately and do not receive nonexistent final-checkpoint metrics. Shared baseline checkpoints are packaged once within a study.
+Supported studies are width, depth, relevance, swapped, cylinder, small_network,
+and OOD nuisance shift. Preparation refuses incomplete training coverage. Diverged
+runs are accounted for separately and do not receive nonexistent final-checkpoint
+metrics. Shared baseline checkpoints are packaged once within a study. OOD
+conditions are packaged separately because they require different fixed analysis
+arrays.
 
 The output contains a study_index.json and one directory per data-condition fingerprint. Each condition directory contains input_index.json, analysis_data.npz, and checkpoint archives. Conditions include dimension, manifold, factor swapping, relevance, and relevance mode. Different widths and depths can share the same analysis data; different data conditions cannot.
 

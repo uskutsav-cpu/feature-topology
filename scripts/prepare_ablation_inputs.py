@@ -8,8 +8,8 @@ from scripts.completion_inventory import DEFAULTS, inventory
 from scripts.prepare_primary_inputs import package
 from src.training.checkpoints import atomic_json, fingerprint
 
-STUDIES=('width','depth','relevance','swapped','cylinder','small_network')
-DATA_KEYS=('dimension','manifold','swap','relevance','relevance_mode')
+STUDIES=('width','depth','relevance','swapped','cylinder','small_network','ood')
+DATA_KEYS=('dimension','manifold','swap','relevance','relevance_mode','nuisance_condition')
 
 
 def groups(report,study):
