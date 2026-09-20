@@ -99,6 +99,10 @@ def readiness(repo):
             paths.update(verify_provenance(repo,dataset_provenance))
         except (ValueError,KeyError,OSError) as exc:
             problems.append(dict(study='datasets',error=str(exc)))
+    try:
+        paths.update(image_replay_paths(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='image_replay',error=str(exc)))
     ood_manifest=repo/'results/ood_evaluation/manifest.json'
     if not ood_manifest.exists():
         problems.append(dict(study='ood_evaluation',error='Nuisance-shift evaluation missing'))
@@ -194,6 +198,49 @@ def verify_manifest(repo,path):
         if not source.resolve().is_relative_to(repo) or sha256(source)!=expected:
             raise ValueError(f'Frozen file missing or changed: {relative}')
     return manifest
+
+
+def image_replay_paths(repo):
+    """Validate held-out replay reports and their checkpoint/metric bindings."""
+    repo=Path(repo)
+    paths=[]
+    rotated_path=repo/'results/completion/rotated_digits_replay.json'
+    rotated=json.loads(rotated_path.read_text())
+    if (not rotated.get('complete') or len(rotated.get('records',[]))!=35
+            or not all(row.get('passed') for row in rotated.get('records',[]))):
+        raise ValueError('Rotated-digits held-out replay incomplete')
+    for row in rotated['records']:
+        run=repo/'results/rotated_digits/runs'/row['run_id']
+        if (sha256(run/'final.pt')!=row.get('checkpoint_sha256')
+                or sha256(run/'metrics.json')!=row.get('metrics_sha256')):
+            raise ValueError(f"Rotated-digits replay binding changed: {row['run_id']}")
+    paths.append(rotated_path)
+    dsprites_path=repo/'results/completion/dsprites_replay.json'
+    dsprites=json.loads(dsprites_path.read_text())
+    if (dsprites.get('schema')!='feature-topology.dsprites-replay.v1'
+            or not dsprites.get('complete') or dsprites.get('replayed_runs')!=35
+            or len(dsprites.get('records',[]))!=35):
+        raise ValueError('dSprites held-out replay incomplete')
+    for row in dsprites['records']:
+        checkpoint=repo/'results/dsprites/runs'/row['run_id']/'final.pt'
+        if sha256(checkpoint)!=row.get('checkpoint_sha256'):
+            raise ValueError(f"dSprites replay binding changed: {row['run_id']}")
+    paths.append(dsprites_path)
+    cifar_path=repo/'results/completion/cifar_validation.json'
+    cifar=json.loads(cifar_path.read_text())
+    datasets={row.get('dataset'):row for row in cifar.get('datasets',[])}
+    if (cifar.get('schema')!='feature-topology.cifar-validation.v1' or not cifar.get('complete')
+            or set(datasets)!={'CIFAR10','CIFAR100'}
+            or any(row.get('validated_runs')!=35 or len(row.get('records',[]))!=35
+                   for row in datasets.values())):
+        raise ValueError('CIFAR held-out replay incomplete')
+    for name,dataset in datasets.items():
+        for row in dataset['records']:
+            checkpoint=repo/'results'/name.lower()/'runs'/row['run_id']/'final.pt'
+            if sha256(checkpoint)!=row.get('checkpoint_sha256'):
+                raise ValueError(f"CIFAR replay binding changed: {row['run_id']}")
+    paths.append(cifar_path)
+    return paths
 
 
 if __name__=='__main__':
