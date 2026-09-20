@@ -23,7 +23,8 @@ def run(plan, main_calibration, output, main_runs, gate_path):
     manifest = []
     for key, group in groups.items():
         condition = group["condition"]
-        default = dict(width=256, depth=4, manifold="torus", swap=False, relevance=0., relevance_mode="periodic")
+        default = dict(width=256, depth=4, manifold="torus", swap=False, relevance=0.,
+                       relevance_mode="periodic", nuisance_condition="iid")
         primary = all(v == default.get(k) for k,v in condition.items())
         group_root = root/key
         if primary:

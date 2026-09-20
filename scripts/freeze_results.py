@@ -15,7 +15,8 @@ def readiness(repo):
     repo=Path(repo).resolve()
     result=inventory(repo)
     problems=list(result['failures'])
-    expected_counts=dict(main=130,width=175,depth=140,relevance=210,swapped=35,cylinder=35,small_network=120)
+    expected_counts=dict(main=130,width=175,depth=140,relevance=210,swapped=35,cylinder=35,
+                         small_network=120,ood=140)
     if {k:v['expected'] for k,v in result['studies'].items()}!=expected_counts:
         problems.append(dict(study='design',error='Required sweep designs missing or changed'))
     paths=set()
@@ -78,6 +79,27 @@ def readiness(repo):
         for path in (repo/'results'/name).glob('runs/*/*'):
             if path.is_file() and path.name!='resume.pt':
                 paths.add(path)
+    ood_manifest=repo/'results/ood_evaluation/manifest.json'
+    if not ood_manifest.exists():
+        problems.append(dict(study='ood_evaluation',error='Nuisance-shift evaluation missing'))
+    else:
+        ood=json.loads(ood_manifest.read_text())
+        expected_ood={r['run_id'] for r in result['studies'].get('ood',{}).get('runs',[])}
+        observed={r.get('run_id') for r in ood.get('runs',[]) if r.get('status')=='evaluated'}
+        if observed!=expected_ood:
+            problems.append(dict(study='ood_evaluation',error=f'Evaluation coverage {len(observed)}/{len(expected_ood)}'))
+        for row in ood.get('runs',[]):
+            if row.get('status')!='evaluated':
+                continue
+            if set(row.get('environments',{}))!={'iid','concentrated','spurious','unseen'}:
+                problems.append(dict(study='ood_evaluation',error=f'Environment coverage missing: {row.get("run_id")}'))
+            record=next((r for r in result['validated_runs'] if r['run_id']==row.get('run_id')),None)
+            checkpoint=Path(record['path'])/row['checkpoint'] if record else None
+            if checkpoint is None or not checkpoint.exists() or sha256(checkpoint)!=row.get('checkpoint_sha256'):
+                problems.append(dict(study='ood_evaluation',error=f'Checkpoint mismatch: {row.get("run_id")}'))
+            else:
+                paths.add(checkpoint)
+        paths.update(p for p in ood_manifest.parent.glob('*.json'))
     exact=repo/'results/exact_trained_circles/manifest.json'
     if not exact.exists():
         problems.append(dict(study='exact',error='Trained-network certificate manifest missing'))
@@ -109,7 +131,8 @@ def readiness(repo):
                      and not any(part in {'.lake','__pycache__'} for part in p.parts))
     paths.update(p for p in repo.glob('*') if p.is_file() and p.suffix in {'.txt','.toml','.md'})
     paths.update((repo/'results').rglob('gamma_to_lr.json'))
-    for name in ['main','width','depth','relevance','swapped','cylinder','small_network','rotated_digits','dsprites','cifar10','cifar100','circle_quotient']:
+    for name in ['main','width','depth','relevance','swapped','cylinder','small_network','ood',
+                 'rotated_digits','dsprites','cifar10','cifar100','circle_quotient']:
         path=repo/'results'/name/'manifest.json'
         if path.exists(): paths.add(path)
     design=repo/'results/dsprites/dataset_design.json'

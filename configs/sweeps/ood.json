@@ -1,0 +1,1126 @@
+{
+  "name": "ood",
+  "runs": [
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "iid"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "concentrated"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "spurious"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.125,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 1.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 4.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 16.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 64.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 0,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 1,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 2,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 3,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    },
+    {
+      "gamma": 128.0,
+      "seed": 4,
+      "width": 256,
+      "depth": 4,
+      "manifold": "torus",
+      "nuisance_condition": "unseen"
+    }
+  ],
+  "requires": "Passed pilot; separately frozen per-architecture/per-task calibration; deduplicate shared main runs"
+}

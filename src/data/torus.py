@@ -27,9 +27,48 @@ def labels(latent, swap=False, relevance=0., relevance_mode="periodic"):
     return (np.mod(angle, 2*np.pi) / (np.pi/2)).astype(np.int64)
 
 
-def dataset(n=20000, seed=0, dimension=16, manifold="torus", grid=False,
-            swap=False, relevance=0., relevance_mode="periodic"):
+def sample_latent(n, seed, manifold="torus", nuisance_condition="iid",
+                  distribution_split="train"):
+    """Sample declared nuisance environments without changing the task rule.
+
+    `spurious` correlates phi with the theta class during training and reverses
+    the association at test time. `unseen` uses disjoint phi arcs.  These modes
+    are currently defined only for the torus.
+    """
+    if distribution_split not in {"train", "test"}:
+        raise ValueError("distribution_split must be train or test")
+    allowed = {"iid", "concentrated", "spurious", "unseen"}
+    if nuisance_condition not in allowed:
+        raise ValueError(f"Unknown nuisance condition: {nuisance_condition}")
+    if manifold != "torus" and nuisance_condition != "iid":
+        raise ValueError("Shifted nuisance conditions are defined only for the torus")
     rng = np.random.default_rng(seed)
+    # Preserve the original interleaved RNG draws exactly for all legacy runs.
+    if nuisance_condition == "iid":
+        latent = rng.uniform(0, 2*np.pi, (n, 2))
+        if manifold == "cylinder":
+            latent[:, 1] /= 2*np.pi
+        return latent
+    theta = rng.uniform(0, 2*np.pi, n)
+    if nuisance_condition == "concentrated":
+        center = 0. if distribution_split == "train" else np.pi
+        phi = np.mod(rng.vonmises(center, 8., n), 2*np.pi)
+    elif nuisance_condition == "spurious":
+        theta_class = (np.mod(theta, 2*np.pi)/(np.pi/2)).astype(int)
+        offset = 0 if distribution_split == "train" else 2
+        center = ((theta_class+offset) % 4)*(np.pi/2)+np.pi/4
+        phi = np.mod(rng.vonmises(center, 16.), 2*np.pi)
+    else:
+        if distribution_split == "train":
+            phi = rng.uniform(0, 1.5*np.pi, n)
+        else:
+            phi = rng.uniform(1.5*np.pi, 2*np.pi, n)
+    return np.column_stack((theta, phi))
+
+
+def dataset(n=20000, seed=0, dimension=16, manifold="torus", grid=False,
+            swap=False, relevance=0., relevance_mode="periodic",
+            nuisance_condition="iid", distribution_split="train"):
     if grid:
         side = int(np.sqrt(n))
         if side*side != n:
@@ -38,9 +77,7 @@ def dataset(n=20000, seed=0, dimension=16, manifold="torus", grid=False,
         p = t if manifold == "torus" else np.linspace(0, 1, side)
         latent = np.stack(np.meshgrid(t, p, indexing="ij"), -1).reshape(-1, 2)
     else:
-        latent = rng.uniform(0, 2*np.pi, (n, 2))
-        if manifold == "cylinder":
-            latent[:, 1] /= 2*np.pi
+        latent = sample_latent(n, seed, manifold, nuisance_condition, distribution_split)
     q = embedding(dimension=dimension)
     z = torch.tensor(latent, dtype=torch.float32)
     x = coordinates(z, manifold) @ torch.from_numpy(q).T

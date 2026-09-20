@@ -14,6 +14,10 @@
       "error": "Training coverage 56/130"
     },
     {
+      "study": "ood",
+      "error": "Training coverage 19/140"
+    },
+    {
       "study": "relevance",
       "error": "Training coverage 19/210"
     },
@@ -1158,6 +1162,10 @@
         "input_hashes": {},
         "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
       }
+    },
+    {
+      "study": "ood_evaluation",
+      "error": "Nuisance-shift evaluation missing"
     }
   ],
   "studies": {
@@ -1172,6 +1180,10 @@
     "main": {
       "expected": 130,
       "accounted": 56
+    },
+    "ood": {
+      "expected": 140,
+      "accounted": 19
     },
     "relevance": {
       "expected": 210,

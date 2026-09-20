@@ -22,6 +22,10 @@ def main():
         "swapped": [dict(gamma=g, seed=s, width=256, depth=4, manifold="torus", swap=True) for g,s in itertools.product(representative, range(5))],
         "relevance": [dict(gamma=g, seed=s, width=256, depth=4, manifold="torus", relevance=r, relevance_mode="periodic") for g,s,r in itertools.product(representative, range(5), [0,.05,.1,.25,.5,1])],
         "small_network": [dict(gamma=g, seed=s, width=w, depth=d, manifold="torus") for g,s,w,d in itertools.product([.125,1.,16.,128.], range(5), [8,16,32], [2,4])],
+        "ood": [dict(gamma=g, seed=s, width=256, depth=4, manifold="torus",
+                     nuisance_condition=condition)
+                for condition,g,s in itertools.product(
+                    ["iid", "concentrated", "spurious", "unseen"], representative, range(5))],
     }
     for name, runs in plans.items():
         write(root/"sweeps"/(name+".json"), dict(name=name, runs=runs,

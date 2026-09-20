@@ -44,6 +44,7 @@ python scripts/summarize.py --root results/pilot
 python scripts/run_controls.py
 python scripts/run_ground_truth_controls.py
 python scripts/plot_ground_truth_controls.py
+python scripts/evaluate_nuisance_shift.py --runs results/ood --output results/ood_evaluation
 ```
 
 Those reduced PH/NTK/Jacobian settings are **pilot diagnostics**, not the full

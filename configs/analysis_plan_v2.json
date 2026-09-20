@@ -42,6 +42,17 @@
     "training_seeds": [0, 1, 2, 3, 4],
     "phase_transition_gate": "Use phase-transition language only if a prespecified smooth/segmented fit shows systematic transition-width shrinkage and controlled pseudo-critical drift with width; otherwise use crossover."
   },
+  "nuisance_shift": {
+    "training_conditions": ["iid", "concentrated", "spurious", "unseen"],
+    "evaluation_environments": ["iid", "concentrated", "spurious", "unseen"],
+    "definitions": {
+      "concentrated": "train phi ~ von Mises(0,8), test phi ~ von Mises(pi,8)",
+      "spurious": "train phi is concentrated at the theta-class sector center; test association is reversed by pi",
+      "unseen": "train phi is uniform on [0,3pi/2); test phi is uniform on [3pi/2,2pi)"
+    },
+    "checkpoint_rule": "the same first stored checkpoint at or below target training loss used by representation analysis",
+    "samples_per_environment": 5000
+  },
   "statistics": {
     "replicate_unit": "training seed",
     "bootstrap": "paired seed bootstrap across gamma, 2000 repeats, percentile 95% intervals",

@@ -9,7 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.training.checkpoints import atomic_json, fingerprint
 
 DEFAULTS = dict(width=256, depth=4, dimension=16, manifold="torus", swap=False,
-                relevance=0., relevance_mode="periodic", centered=True)
+                relevance=0., relevance_mode="periodic", centered=True,
+                nuisance_condition="iid")
 
 
 def sha256(path):
@@ -54,7 +55,7 @@ def inventory(repo, check_tensors=False):
     repo = Path(repo).resolve()
     records, failures, seen = [], [], set()
     folders = [repo / "results/main", repo / "results/pilot"]
-    for name in ["width", "depth", "relevance", "swapped", "cylinder", "small_network"]:
+    for name in ["width", "depth", "relevance", "swapped", "cylinder", "small_network", "ood"]:
         for parent in [repo / "results" / name, repo / "results/extended" / name]:
             if parent.exists():
                 folders.extend(p.parent for p in parent.glob("*/runs"))

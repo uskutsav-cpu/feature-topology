@@ -18,9 +18,10 @@ def build(config, seed):
 
 
 def data_for(config):
-    options = {k: config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode"] if k in config}
-    return (dataset(config.get("n_train", 20000), seed=1001, **options),
-            dataset(config.get("n_validation", 5000), seed=1002, **options),
+    options = {k: config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode",
+                                               "nuisance_condition"] if k in config}
+    return (dataset(config.get("n_train", 20000), seed=1001, distribution_split="train", **options),
+            dataset(config.get("n_validation", 5000), seed=1002, distribution_split="train", **options),
             dataset(config.get("n_grid", 10000), grid=True, **options))
 
 
