@@ -22,6 +22,23 @@ def selected(index,run_id):
     return next(r for r in index['runs'] if r['run_id']==run_id)
 
 
+def required_checkpoints(index, record):
+    """Return checkpoints required by the frozen metric schedule.
+
+    Training-input archives intentionally retain the full optimization
+    trajectory even when an ablation profile measures endpoints only.  Do not
+    infer metric coverage from every ``.pt`` member in such an archive.
+    """
+    available = [name[:-3] for name in record['files'] if name.endswith('.pt')]
+    if index['metric_options']['all_checkpoints']:
+        return available
+    required = ['step_0000000', 'final']
+    missing = sorted(set(required) - set(available))
+    if missing:
+        raise ValueError(f'Endpoint metric inputs are missing: {missing}')
+    return required
+
+
 def unpack_input(index,run_id,incoming,work):
     record=selected(index,run_id)
     incoming,work=Path(incoming),Path(work)
@@ -93,7 +110,7 @@ def pack(index,run_id,work,output,job_id):
               commit=os.environ.get('GITHUB_SHA'),workflow_run=os.environ.get('GITHUB_RUN_ID'))
     (directory/'provenance').mkdir(parents=True,exist_ok=True)
     (directory/'provenance/host.json').write_text(json.dumps(host,sort_keys=True,indent=2)+'\n')
-    expected=[name[:-3] for name in record['files'] if name.endswith('.pt')]
+    expected=required_checkpoints(index,record)
     completed=[]
     for checkpoint in expected:
         path=directory/(checkpoint+'.json')

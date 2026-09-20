@@ -19,6 +19,7 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.completion_inventory import inventory
 from scripts.compute_metrics import metric_provenance
+from scripts.remote_metrics import required_checkpoints
 from src.training.checkpoints import atomic_json, fingerprint
 
 
@@ -52,13 +53,31 @@ def _record(index, run_id):
     return matches[0]
 
 
+def _protocol_complete(report, index, record):
+    expected_checkpoints = sorted(required_checkpoints(index, record))
+    completed = sorted(report.get("completed", []))
+    all_training_checkpoints = sorted(
+        name[:-3] for name in record["files"] if name.endswith(".pt")
+    )
+    current_complete = (
+        report.get("complete") is True
+        and completed == expected_checkpoints
+        and sorted(report.get("expected", [])) == expected_checkpoints
+    )
+    legacy_endpoint_complete = (
+        report.get("complete") is False
+        and not index["metric_options"]["all_checkpoints"]
+        and completed == expected_checkpoints
+        and sorted(report.get("expected", [])) == all_training_checkpoints
+    )
+    return current_complete or legacy_endpoint_complete
+
+
 def validate_archive(archive, status, index, expected_provenance):
     """Validate a complete result archive without changing local results."""
     archive = Path(archive)
     run_id = status["run_id"]
     record = _record(index, run_id)
-    if not status.get("complete"):
-        raise ValueError(f"Result is partial: {archive.name}")
     if sha256(archive) != status.get("archive_sha256"):
         raise ValueError(f"Result archive checksum mismatch: {archive.name}")
     with tarfile.open(archive, "r:gz") as tar:
@@ -77,8 +96,12 @@ def validate_archive(archive, status, index, expected_provenance):
                 or report["analysis_data_sha256"] != index["analysis_data"]["sha256"]
                 or report["metric_provenance"] != expected_provenance):
             raise ValueError(f"Result provenance mismatch: {archive.name}")
-        expected_checkpoints = sorted(name[:-3] for name in record["files"] if name.endswith(".pt"))
-        if sorted(report["expected"]) != expected_checkpoints or sorted(report["completed"]) != expected_checkpoints:
+        # Releases produced before the endpoint-schedule bookkeeping fix
+        # recorded every training checkpoint in ``expected`` and set
+        # ``complete=false``, despite having both frozen endpoint measurements.
+        # Accept exactly that auditable legacy shape; any genuinely missing
+        # protocol checkpoint still fails closed.
+        if not _protocol_complete(report, index, record):
             raise ValueError(f"Incomplete checkpoint coverage: {archive.name}")
         if names != {*report["files"], "job_manifest.json"}:
             raise ValueError(f"Result archive membership mismatch: {archive.name}")
@@ -189,7 +212,11 @@ def collect(repo, index_path, input_tag, result_tag, cache, install=True, exclud
     canonical = _canonical_runs(repo) if install else {}
     for run_id in sorted(expected):
         candidates = statuses.get(run_id, [])
-        completed = [(path, row) for path, row in candidates if row.get("complete")]
+        record = _record(index, run_id)
+        completed = [
+            (path, row) for path, row in candidates
+            if _protocol_complete(row, index, record)
+        ]
         if not completed:
             if candidates:
                 partial[run_id] = [path.name for path, _ in candidates]

@@ -3,7 +3,7 @@ import hashlib
 import io
 import tarfile
 import pytest
-from scripts.remote_metrics import unpack_input
+from scripts.remote_metrics import required_checkpoints, unpack_input
 
 
 def test_remote_inputs_are_bound_to_member_and_archive_hashes(tmp_path):
@@ -24,3 +24,16 @@ def test_remote_inputs_are_bound_to_member_and_archive_hashes(tmp_path):
     arrays.write_bytes(b'changed arrays')
     with pytest.raises(ValueError,match='checksum mismatch'):
         unpack_input(index,run_id,incoming,tmp_path/'other')
+
+
+def test_required_checkpoints_follow_metric_schedule_not_input_archive():
+    record = {"files": {
+        "final.pt": "a", "step_0000000.pt": "b", "step_0000001.pt": "c",
+        "config.json": "d",
+    }}
+    endpoints = {"metric_options": {"all_checkpoints": False}}
+    trajectory = {"metric_options": {"all_checkpoints": True}}
+    assert required_checkpoints(endpoints, record) == ["step_0000000", "final"]
+    assert required_checkpoints(trajectory, record) == [
+        "final", "step_0000000", "step_0000001"
+    ]

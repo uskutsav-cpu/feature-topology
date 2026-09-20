@@ -84,3 +84,37 @@ def test_archive_status_mismatch_is_rejected(tmp_path):
     import pytest
     with pytest.raises(ValueError, match="disagreement"):
         validate_archive(archive, status, index, provenance)
+
+
+def test_legacy_endpoint_archive_is_complete_under_frozen_schedule(tmp_path):
+    run_id = "c" * 16
+    index = {
+        "runs": [{"run_id": run_id, "archive_sha256": "input-hash",
+                  "files": {"final.pt": "x", "step_0000000.pt": "y",
+                            "step_0000001.pt": "z"}}],
+        "analysis_data": {"sha256": "data-hash"},
+        "metric_options": {"all_checkpoints": False},
+    }
+    provenance = {"analysis_data_sha256": "data-hash"}
+    archive = tmp_path / "metrics.tar.gz"
+    status = make_archive(archive, index, provenance, {"final.json": b"metric"})
+    # This is the exact legacy packer defect: both required endpoints were
+    # completed, but every training checkpoint was listed as expected.
+    status["complete"] = False
+    status["expected"] = ["final", "step_0000000", "step_0000001"]
+    # Rebuild so the status and embedded manifest remain checksum-bound.
+    archive.unlink()
+    profile = fingerprint(index["metric_options"])
+    payloads = {f"main/runs/{run_id}/metrics/{profile}/final.json": b"metric"}
+    embedded = {k: v for k, v in status.items() if k != "archive_sha256"}
+    embedded["files"] = {name: digest_bytes(value) for name, value in payloads.items()}
+    with archive.open("wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as zipped:
+        with tarfile.open(fileobj=zipped, mode="w|") as tar:
+            for name, value in payloads.items():
+                info = tarfile.TarInfo(name); info.size = len(value)
+                tar.addfile(info, io.BytesIO(value))
+            encoded = (json.dumps(embedded, sort_keys=True, indent=2) + "\n").encode()
+            info = tarfile.TarInfo("job_manifest.json"); info.size = len(encoded)
+            tar.addfile(info, io.BytesIO(encoded))
+    status = {**embedded, "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest()}
+    assert validate_archive(archive, status, index, provenance)["complete"] is False
