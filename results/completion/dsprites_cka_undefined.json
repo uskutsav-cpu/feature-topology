@@ -1,0 +1,26 @@
+{
+  "schema": "feature-topology.dsprites-cka-undefined.v1",
+  "dataset_id": "794d2c79097d89ec",
+  "annotated_runs": 1,
+  "records": [
+    {
+      "run_id": "92be99ab165939b6",
+      "checkpoint_sha256": "3b5d10ea54413a6fc8525b7e621eff3a906dba036ab0f377571db2a1a78aece6",
+      "original_metrics_sha256": "38fb4ec7c457f4e11e1e6203bb30347ed7f34c78f7aabd67a3393cedd8b107d1",
+      "backup": "results/dsprites/runs/92be99ab165939b6/metrics.pre_cka_annotation.json",
+      "backup_sha256": "38fb4ec7c457f4e11e1e6203bb30347ed7f34c78f7aabd67a3393cedd8b107d1",
+      "annotated_metrics_sha256": "a366bd7e36231e584e6cb2654a80d6461c46036574021bd622a390cfb6e758c6",
+      "diagnostics": [
+        {
+          "layer": 3,
+          "path": "layers[2].cka_drift",
+          "score": null,
+          "status": "undefined_zero_variance_current",
+          "initial_centered_gram_norm": 1.2731046742521435,
+          "current_centered_gram_norm": 0.0
+        }
+      ]
+    }
+  ],
+  "interpretation": "Null CKA is retained only when exact replay finds a zero centered-Gram norm; it is a structural collapse outcome, not a numeric effect estimate."
+}
