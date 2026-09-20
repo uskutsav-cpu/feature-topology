@@ -83,5 +83,8 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--repo',default='.')
     parser.add_argument('--output',required=True)
+    parser.add_argument('--index-output',help='Optional committed copy of the portable input index')
     args=parser.parse_args()
-    package(args.repo,args.output)
+    result=package(args.repo,args.output)
+    if args.index_output:
+        atomic_json(Path(args.index_output),result)
