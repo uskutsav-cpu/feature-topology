@@ -1,0 +1,24 @@
+{
+  "schema": "feature-topology.cifar-sources.v1",
+  "datasets": {
+    "CIFAR10": {
+      "archive": "cifar-10-python.tar.gz",
+      "bytes": 170498071,
+      "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+      "source_identity": {
+        "algorithm": "md5",
+        "value": "c58f30108f718f92721af3b95e74349a"
+      }
+    },
+    "CIFAR100": {
+      "archive": "cifar-100-python.tar.gz",
+      "bytes": 169001437,
+      "sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+      "source_identity": {
+        "algorithm": "md5",
+        "value": "eb9058c3a382ffc7106e4002c42a8d85"
+      }
+    }
+  },
+  "scope": "Official CIFAR source archives already bound by the frozen-v3 dataset provenance record."
+}
