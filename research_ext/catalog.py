@@ -26,6 +26,7 @@ DEFAULTS = dict(dimension=16, width=256, depth=4, manifold="torus", swap=False,
                 n_train=20000, n_validation=5000, n_grid=10000, batch_size=256,
                 target_loss=.05, eval_every=64)
 EXECUTION_AXES = {"gamma", "seed", "lr", "calibration_id", "max_steps", "threads"}
+ENDPOINT_ONLY_FIELDS = {"ph_h1_top1", "ph_h1_top2", "ph_h2_top1"}
 
 
 def condition_id(config: dict) -> str:
@@ -218,7 +219,13 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                             key = (step, row["layer"])
                             if key in canonical:
                                 old = canonical[key]
-                                excluded = {"checkpoint"}
+                                # With endpoint-only PH, a numbered checkpoint may
+                                # alias the terminal step while intentionally lacking
+                                # the PH values computed for ``final``.  All other
+                                # scientific fields must still agree exactly and the
+                                # endpoint-complete final row is canonical.
+                                final_alias = "final" in {path.stem, old["checkpoint"]}
+                                excluded = {"checkpoint"} | (ENDPOINT_ONLY_FIELDS if final_alias else set())
                                 if {k:v for k,v in row.items() if k not in excluded} != {k:v for k,v in old.items() if k not in excluded}:
                                     out.issue("conflicting_checkpoint_alias", path, f"Two metrics differ for {key}")
                                     continue

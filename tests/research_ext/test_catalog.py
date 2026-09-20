@@ -31,6 +31,16 @@ def test_conflicting_alias_fails(make_run):
     atomic_json(metrics/'final.json',d)
     with pytest.raises(ValueError): load_catalog([root]).require_clean()
 
+def test_terminal_alias_may_add_prespecified_endpoint_ph(make_run):
+    root,_,metrics=make_run()
+    numbered=read_json(metrics/'step_0000010.json')
+    numbered['layers'][0]['persistence']=[]
+    atomic_json(metrics/'step_0000010.json',numbered)
+    catalog=load_catalog([root]);catalog.require_clean()
+    terminal=[r for r in catalog.rows if r['step']==10]
+    assert len(terminal)==1 and terminal[0]['checkpoint']=='final'
+    assert terminal[0]['ph_h1_top1']==.5
+
 def test_symlinks_and_copies_deduplicated(make_run,tmp_path):
     root,run,_=make_run()
     other=tmp_path/'other'/'runs';other.mkdir(parents=True)
