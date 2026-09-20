@@ -4,7 +4,8 @@ import pytest
 import gzip
 import io
 import tarfile
-from scripts.freeze_results import exact_control_paths,nonfinite_paths,readiness,verify_manifest
+from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
+                                    validate_numeric_circle_quotient,verify_manifest)
 from scripts.pack_release import pack
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
@@ -52,6 +53,17 @@ def test_exact_controls_are_replayed_before_freeze(tmp_path):
     atomic_json(root/'projection.json',certificate)
     with pytest.raises(ValueError,match='replay failed'):
         exact_control_paths(tmp_path)
+
+
+def test_numerical_circle_quotient_validation_keeps_empirical_scope():
+    layer={'beta0':1,'beta1':1,'nodes':10,'edges':10,'affine_segments':10,
+           'pair_intersections':10,'tolerance':1e-7}
+    report={'polygon_points':360,'tolerance':1e-7,'initial':[layer,layer],
+            'final':[layer,layer],'qualification':'finite polygon only'}
+    assert validate_numeric_circle_quotient(report) is report
+    report['final'][0]={**layer,'nodes':None}
+    with pytest.raises(ValueError,match='values'):
+        validate_numeric_circle_quotient(report)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):

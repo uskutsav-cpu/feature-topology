@@ -11,6 +11,7 @@ from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
 from scripts.image_statistics import summarize_images
 from scripts.ood_statistics import summarize_nuisance_shift
 from scripts.relevance_statistics import summarize_relevance
+from scripts.certification_statistics import summarize_certification
 
 
 def main(args):
@@ -59,10 +60,12 @@ def main(args):
     summarize_images(repo,output/'images')
     relevance_statistics=summarize_relevance(relevance_groups,output/'relevance_dependence')
     ood_statistics=summarize_nuisance_shift(repo/'results/ood_evaluation/manifest.json',output/'ood_evaluation')
+    certification=summarize_certification(repo,output/'certification')
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
                 relevance_statistics=relevance_statistics,ood_statistics=ood_statistics,
+                certification=certification,
                 frozen_manifest_sha256=sha256(Path(args.manifest)),files=files,
                 frozen_input_files=len(manifest['files']),
                 scope='Separate condition-level seed analyses and distinct image-study schemas; exact certificates retain their own domain-specific claims.'))

@@ -63,6 +63,22 @@ def exact_control_paths(repo):
     return paths
 
 
+def validate_numeric_circle_quotient(report):
+    """Validate the finite polygon/LP diagnostic without upgrading it to proof."""
+    if (report.get('polygon_points')!=360
+            or not isinstance(report.get('tolerance'),(int,float))
+            or not math.isfinite(report['tolerance']) or report['tolerance']<=0
+            or len(report.get('initial',[]))!=2 or len(report.get('final',[]))!=2):
+        raise ValueError('Invalid numerical circle-quotient schema')
+    for stage in ('initial','final'):
+        for layer in report[stage]:
+            required=('beta0','beta1','nodes','edges','affine_segments','pair_intersections','tolerance')
+            if (any(key not in layer for key in required)
+                    or nonfinite_paths({key:layer[key] for key in required})):
+                raise ValueError('Invalid numerical circle-quotient values')
+    return report
+
+
 def readiness(repo):
     repo=Path(repo).resolve()
     # A freeze must independently replay the strict checkpoint-tensor audit;
@@ -226,11 +242,16 @@ def readiness(repo):
             certificate=exact.parent/record['certificate_file']
             cert=json.loads(certificate.read_text())
             checkpoint=repo/'results/circle_quotient/runs'/record['run_id']/'final.pt'
+            quotient=checkpoint.parent/'quotient.json'
             if (sha256(certificate)!=record['certificate_sha256'] or not verify_polygon_certificate(cert)
                 or sha256(checkpoint)!=record['checkpoint_sha256']
                 or cert.get('provenance',{}).get('checkpoint_sha256')!=record['checkpoint_sha256']):
                 problems.append(dict(study='exact',error=f'Certificate replay failed: {certificate}'))
-            paths.update([certificate,checkpoint,checkpoint.parent/'summary.json',checkpoint.parent/'config.json'])
+            try:
+                validate_numeric_circle_quotient(json.loads(quotient.read_text()))
+            except (ValueError,KeyError,OSError) as exc:
+                problems.append(dict(study='exact',error=f'Numerical quotient invalid: {record["run_id"]}: {exc}'))
+            paths.update([certificate,checkpoint,quotient,checkpoint.parent/'summary.json',checkpoint.parent/'config.json'])
         paths.add(exact)
     try:
         paths.update(exact_control_paths(repo))
