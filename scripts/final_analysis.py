@@ -61,11 +61,17 @@ def main(args):
     relevance_statistics=summarize_relevance(relevance_groups,output/'relevance_dependence')
     ood_statistics=summarize_nuisance_shift(repo/'results/ood_evaluation/manifest.json',output/'ood_evaluation')
     certification=summarize_certification(repo,output/'certification')
+    width_gate=json.loads((repo/'results/analysis/width_scaling_gate.json').read_text())
+    if (width_gate.get('schema')!='feature-topology.width-scaling-result.v1'
+            or width_gate.get('status')!='complete'):
+        raise ValueError('Frozen finite-width terminology result is incomplete')
+    width_scaling={key:width_gate[key] for key in [
+        'metric','terminology','phase_transition_language_allowed','clauses','scaling','scope']}
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
                 relevance_statistics=relevance_statistics,ood_statistics=ood_statistics,
-                certification=certification,
+                certification=certification,width_scaling=width_scaling,
                 frozen_manifest_sha256=sha256(Path(args.manifest)),files=files,
                 frozen_input_files=len(manifest['files']),
                 scope='Separate condition-level seed analyses and distinct image-study schemas; exact certificates retain their own domain-specific claims.'))
