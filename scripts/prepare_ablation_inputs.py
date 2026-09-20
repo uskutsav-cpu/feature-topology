@@ -7,6 +7,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.completion_inventory import DEFAULTS, inventory
 from scripts.prepare_primary_inputs import package
 from src.training.checkpoints import atomic_json, fingerprint
+from research_ext.catalog import ABLATION_PRODUCTION
 
 STUDIES=('width','depth','relevance','swapped','cylinder','small_network','ood')
 DATA_KEYS=('dimension','manifold','swap','relevance','relevance_mode','nuisance_condition')
@@ -40,7 +41,7 @@ def prepare(repo,output,study):
     output=Path(output)
     indexes=[]
     for key,group in sorted(conditions.items()):
-        package(repo,output/key,**group)
+        package(repo,output/key,metric_options=ABLATION_PRODUCTION,**group)
         indexes.append(dict(condition=key,index=f'{key}/input_index.json',runs=len(group['rows'])))
     result=dict(schema='feature-topology.ablation-inputs.v1',study=study,
                 planned=report['studies'][study]['expected'],conditions=indexes,

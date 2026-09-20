@@ -83,7 +83,7 @@ def pack(index,run_id,work,output,job_id):
     work,output=Path(work),Path(output)
     output.mkdir(parents=True,exist_ok=True)
     run=work/'main/runs'/run_id
-    profile=json.loads((Path(__file__).resolve().parents[1]/'configs/completion/analysis_plan.json').read_text())['production_metrics']
+    profile=index['metric_options']
     # Same canonical serialization as src.training.checkpoints.fingerprint.
     from src.training.checkpoints import fingerprint
     directory=run/'metrics'/fingerprint(profile)
@@ -103,9 +103,13 @@ def pack(index,run_id,work,output,job_id):
             raise ValueError('Output row belongs to different checkpoint bytes')
         if len(row.get('layers',[]))!=record['config'].get('depth',4):continue
         valid=True
+        ph_required=(profile.get('ph_schedule','all')=='all'
+                     or checkpoint in {'step_0000000','final'})
         for layer in row['layers']:
-            valid &= len(layer.get('persistence',[]))==20 and all('H2' in p and p['size']==500 for p in layer['persistence'])
-            valid &= all((directory/f"{checkpoint}_layer{layer['layer']}_{suffix}.npz").exists() for suffix in ['ph','tangents'])
+            valid &= (not ph_required or (len(layer.get('persistence',[]))==profile['ph_repeats']
+                      and all('H2' in p and p['size']==profile['ph_size'] for p in layer['persistence'])))
+            suffixes=['tangents','ph'] if ph_required else ['tangents']
+            valid &= all((directory/f"{checkpoint}_layer{layer['layer']}_{suffix}.npz").exists() for suffix in suffixes)
         if valid:completed.append(checkpoint)
     files=sorted([p for p in directory.rglob('*') if p.is_file()]+list((work/'ph_cache').glob('*/repeat_*.npz')))
     report=dict(schema='feature-topology.remote-metrics.v1',run_id=run_id,job_id=job_id,
@@ -153,11 +157,10 @@ if __name__=='__main__':
         print(line,end='')
     elif args.command=='compute':
         from scripts.compute_metrics import compute,metric_provenance
-        from research_ext.catalog import PRODUCTION
         run,arrays=unpack_input(index,args.run_id,args.incoming,args.work)
         provenance=metric_provenance(arrays)
         for archive in sorted(Path(args.resume).glob(f'metrics-{args.run_id}-*.tar.gz')):
             print(json.dumps(dict(resume=archive.name,compatible=restore(archive,index,args.run_id,args.work,provenance))),flush=True)
-        compute(run,PRODUCTION,analysis_data=arrays)
+        compute(run,index['metric_options'],analysis_data=arrays)
     else:
         pack(index,args.run_id,args.work,args.output,args.job_id)

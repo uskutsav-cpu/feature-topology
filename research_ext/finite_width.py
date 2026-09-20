@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import least_squares
 
-from .catalog import PRODUCTION, load_catalog, matched_risk
+from .catalog import ABLATION_PRODUCTION, PRODUCTION, load_catalog, matched_risk
 from .io import atomic_json, file_digest, read_json
 from src.training.checkpoints import fingerprint
 
@@ -186,13 +186,17 @@ def analyze_width_scaling(roots, output, specification_path, profile=None) -> di
             expanded_roots.extend(sorted(root.glob("*/runs")))
     if not expanded_roots:
         raise FileNotFoundError("No supplied width-scaling result root exists")
-    profile = profile or fingerprint(PRODUCTION)
+    primary_profile = fingerprint(PRODUCTION)
+    ablation_profile = fingerprint(ABLATION_PRODUCTION)
     specification_path = Path(specification_path)
     specification = read_json(specification_path)
     catalog = load_catalog(expanded_roots, profile=profile)
     catalog.require_clean()
     frame, exclusions = matched_risk(catalog.frame(), specification["target_training_loss"])
     if not frame.empty:
+        if profile is None:
+            frame = frame[((frame.width == 256) & (frame.profile == primary_profile))
+                          | ((frame.width != 256) & (frame.profile == ablation_profile))]
         frame = frame[(frame.manifold == "torus") & (~frame.swap)
                       & (frame.relevance == 0.) & (frame.nuisance_condition == "iid")
                       & (frame.layer == frame.depth-1)]
@@ -201,7 +205,8 @@ def analyze_width_scaling(roots, output, specification_path, profile=None) -> di
         "schema": "feature-topology.width-scaling-result.v1",
         "specification": str(specification_path.resolve().relative_to(repository)),
         "specification_sha256": file_digest(specification_path),
-        "profile": profile, "matched_risk_exclusions": exclusions,
+        "profiles": ({"explicit": profile} if profile else
+                     {"primary_width_256": primary_profile, "width_ablation": ablation_profile}),
         "input_hashes": {
             str(path.resolve().relative_to(repository)): file_digest(path)
             for root in expanded_roots for path in Path(root).rglob("*.json")

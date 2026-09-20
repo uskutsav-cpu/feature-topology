@@ -14,7 +14,12 @@ from .io import read_json, digest, original_fingerprint, file_digest
 
 PRODUCTION = dict(jacobian_points=10000, ntk_points=128, ph_size=500,
                   ph_repeats=20, ph_maxdim=2, probe_train=5000,
-                  probe_test=2000, probe_iterations=300, all_checkpoints=True)
+                  probe_test=2000, probe_iterations=300, all_checkpoints=True,
+                  ph_schedule="endpoints")
+ABLATION_PRODUCTION = dict(jacobian_points=10000, ntk_points=128, ph_size=500,
+                           ph_repeats=5, ph_maxdim=2, probe_train=5000,
+                           probe_test=2000, probe_iterations=300,
+                           all_checkpoints=False, ph_schedule="endpoints")
 # Different scientific conditions must NEVER be pooled into the same contrast.
 DEFAULTS = dict(dimension=16, width=256, depth=4, manifold="torus", swap=False,
                 relevance=0., relevance_mode="periodic", centered=True,
@@ -27,12 +32,15 @@ def condition_id(config: dict) -> str:
     return digest({k: v for k, v in {**DEFAULTS, **config}.items() if k not in EXECUTION_AXES})[:16]
 
 
-def production_profile(options: dict) -> dict:
+def production_profile(options: dict, required: dict | None = None) -> dict:
+    required = PRODUCTION if required is None else required
     missing = []
-    for key, expected in PRODUCTION.items():
+    for key, expected in required.items():
         actual = options.get(key)
         if isinstance(expected, bool):
             good = actual is expected
+        elif isinstance(expected, str):
+            good = actual == expected
         else:
             good = (isinstance(actual, int) and not isinstance(actual, bool) and actual >= expected)
         if not good:

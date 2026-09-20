@@ -23,6 +23,14 @@ from src.metrics.probes import evaluate_probes
 from src.metrics.persistence import persistence
 
 
+ANALYSIS_DEFAULTS = dict(dimension=16, manifold="torus", swap=False, relevance=0.,
+                         relevance_mode="periodic", nuisance_condition="iid")
+
+
+def analysis_condition(config):
+    return {key: config.get(key, value) for key, value in ANALYSIS_DEFAULTS.items()}
+
+
 def features(net, x):
     with torch.no_grad():
         chunks = [net.representations(v) for v in x.split(1024)]
@@ -102,9 +110,9 @@ def compute(run, options, analysis_data=None):
         _, _, (gx, gy, z, q) = data_for(config)
     else:
         with np.load(analysis_data,allow_pickle=False) as frozen:
-            expected_data=dict(dimension=16,manifold='torus',swap=False,relevance=0.,relevance_mode='periodic')
-            expected_data.update({k:config[k] for k in expected_data if k in config})
-            if json.loads(str(frozen['data_config']))!=expected_data:
+            expected_data = analysis_condition(config)
+            frozen_data = {**ANALYSIS_DEFAULTS, **json.loads(str(frozen['data_config']))}
+            if frozen_data != expected_data:
                 raise ValueError('Frozen analysis data do not match the run condition')
             gx,gy,z,q=[torch.from_numpy(frozen[k]) for k in ['gx','gy','z','q']]
             px,py,pz,tx,ty,tz=[torch.from_numpy(frozen[k]) for k in ['px','py','pz','tx','ty','tz']]
@@ -136,7 +144,8 @@ def compute(run, options, analysis_data=None):
             atomic_write(raw_path, lambda stream: np.save(stream, raw_k0))
         k0 = raw_k0/(config["gamma"]**2)
         atomic_write(k0_path, lambda stream: np.save(stream, k0))
-    common = {k:config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode"] if k in config}
+    common = {k:config[k] for k in ["dimension", "manifold", "swap", "relevance", "relevance_mode",
+                                        "nuisance_condition"] if k in config}
     if analysis_data is None:
         px, py, pz, _ = dataset(options["probe_train"], seed=4001, **common)
         tx, ty, tz, _ = dataset(options["probe_test"], seed=4002, **common)
@@ -179,6 +188,8 @@ def compute(run, options, analysis_data=None):
                    ntk_drift=float(np.linalg.norm(k-k0)/np.linalg.norm(k0)),
                    ntk_points=len(ntk_ids), layers=[])
         ph = features(model.network, px); th = features(model.network, tx)
+        ph_required = (options.get("ph_schedule", "all") == "all"
+                       or path.stem in {"step_0000000", "final"})
         for layer, current in enumerate(h):
             scale = rms_scale(current)
             j = tangent_jacobians(model.network, z[ids], q, layer, config.get("manifold", "torus"))
@@ -201,10 +212,13 @@ def compute(run, options, analysis_data=None):
                                      pz[:, nuisance_column].numpy(), tz[:, nuisance_column].numpy(),
                                      seed=config["seed"], max_iter=options["probe_iterations"],
                                      periodic=config.get("manifold", "torus") == "torus" or config.get("swap", False))
-            stats, diagrams = persistence(current, size=options["ph_size"], repeats=options["ph_repeats"],
-                                          maxdim=options["ph_maxdim"], cache_dir=run.parents[2]/"ph_cache")
-            np.savez_compressed(output/f"{path.stem}_layer{layer+1}_ph.npz",
-                                **{f"r{r}_h{d}":v for r, ds in enumerate(diagrams) for d,v in enumerate(ds)})
+            if ph_required:
+                stats, diagrams = persistence(current, size=options["ph_size"], repeats=options["ph_repeats"],
+                                              maxdim=options["ph_maxdim"], cache_dir=run.parents[2]/"ph_cache")
+                np.savez_compressed(output/f"{path.stem}_layer{layer+1}_ph.npz",
+                                    **{f"r{r}_h{d}":v for r, ds in enumerate(diagrams) for d,v in enumerate(ds)})
+            else:
+                stats = []
             cka_drift = 1-cka(initial[layer], current)
             row["layers"].append(dict(layer=layer+1, cka_drift=cka_drift,
                  effective_rank=effective_rank(current), scale=scale, distortion=distortion(initial[layer], current),
@@ -240,6 +254,7 @@ if __name__ == "__main__":
     p.add_argument("--ph-size", type=int, default=500)
     p.add_argument("--ph-repeats", type=int, default=20)
     p.add_argument("--ph-maxdim", type=int, default=2)
+    p.add_argument("--ph-schedule", choices=["all", "endpoints"], default="endpoints")
     p.add_argument("--probe-train", type=int, default=5000)
     p.add_argument("--probe-test", type=int, default=2000)
     p.add_argument("--probe-iterations", type=int, default=300)

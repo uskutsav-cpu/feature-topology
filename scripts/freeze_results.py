@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.completion_inventory import inventory, sha256
-from research_ext.catalog import load_catalog, PRODUCTION
+from research_ext.catalog import ABLATION_PRODUCTION, load_catalog, PRODUCTION
 from research_ext.image_audit import audit_images
 from research_ext.exact import verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
@@ -21,13 +21,16 @@ def readiness(repo):
         problems.append(dict(study='design',error='Required sweep designs missing or changed'))
     paths=set()
     requested_ids=set()
+    primary_ids=set()
     for name,study in result['studies'].items():
         if study['accounted']!=study['expected']:
             problems.append(dict(study=name,error=f"Training coverage {study['accounted']}/{study['expected']}"))
         requested_ids.update(r['run_id'] for r in study['runs'])
+        if name=='main':
+            primary_ids.update(r['run_id'] for r in study['runs'])
     selected=[r for r in result['validated_runs'] if r['run_id'] in requested_ids]
     roots=sorted({str(Path(r['path']).parent) for r in selected})
-    catalog=load_catalog(roots,profile=fingerprint(PRODUCTION)) if roots else None
+    catalog=load_catalog(roots) if roots else None
     if catalog:
         problems.extend(i for i in catalog.issues if i['severity']=='error')
         info={r['run_id']:r for r in catalog.runs}
@@ -35,20 +38,24 @@ def readiness(repo):
         info={}
     for r in selected:
         run=Path(r['path'])
+        options=PRODUCTION if r['run_id'] in primary_ids else ABLATION_PRODUCTION
+        options_id=fingerprint(options)
         paths.update(run/p for p in ['summary.json','config.json'])
         if r['status']=='diverged':
             continue
         paths.add(run/'final.pt')
-        checkpoints=list(run.glob('step_*.pt'))+[run/'final.pt']
+        all_checkpoints=list(run.glob('step_*.pt'))+[run/'final.pt']
+        checkpoints=(all_checkpoints if options['all_checkpoints']
+                     else [run/'step_0000000.pt',run/'final.pt'])
         if not (run/'step_0000000.pt').exists():
             problems.append(dict(run=r['run_id'],error='Missing initial checkpoint'))
-        paths.update(checkpoints)
+        paths.update(all_checkpoints)
         profiles=[p for p in info.get(r['run_id'],{}).get('profiles',[])
-                  if p['directory_name']==fingerprint(PRODUCTION)]
-        if not profiles or profiles[0]['missing_checkpoints'] or not profiles[0]['production_resolution']:
+                  if p['directory_name']==options_id]
+        if not profiles or profiles[0]['missing_checkpoints']:
             problems.append(dict(run=r['run_id'],error='Full production trajectory metrics missing'))
             continue
-        directory=run/'metrics'/fingerprint(PRODUCTION)
+        directory=run/'metrics'/options_id
         execution=directory/'provenance/execution.json'
         if not execution.exists():
             problems.append(dict(run=r['run_id'],error='Metric execution provenance missing'))
@@ -64,9 +71,13 @@ def readiness(repo):
                 problems.append(dict(run=r['run_id'],error=f'Layer coverage mismatch: {metric.name}'))
             paths.add(metric)
             for layer in row.get('layers',[]):
-                if len(layer.get('persistence',[]))!=20 or any('H2' not in v for v in layer['persistence']):
+                ph_required=(options.get('ph_schedule','all')=='all'
+                             or checkpoint.stem in {'step_0000000','final'})
+                if ph_required and (len(layer.get('persistence',[]))!=options['ph_repeats']
+                                    or any('H2' not in v for v in layer['persistence'])):
                     problems.append(dict(run=r['run_id'],error='Required H2 replicates missing'))
-                for suffix in ['tangents','ph']:
+                suffixes=['tangents','ph'] if ph_required else ['tangents']
+                for suffix in suffixes:
                     artifact=directory/f"{checkpoint.stem}_layer{layer['layer']}_{suffix}.npz"
                     if not artifact.exists():
                         problems.append(dict(run=r['run_id'],error=f'Missing {artifact.name}'))

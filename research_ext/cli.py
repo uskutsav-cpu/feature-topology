@@ -141,8 +141,19 @@ def main(argv=None) -> int:
                 if not directory.is_relative_to(root):
                     raise ValueError('Ablation manifest points outside the selected study')
                 if a.command=='nested-metrics':
-                    subprocess.run([sys.executable,'scripts/compute_metrics.py','--runs',str(directory/'runs'),
-                                    '--all-checkpoints'],check=True)
+                    from .catalog import ABLATION_PRODUCTION
+                    options=ABLATION_PRODUCTION
+                    command=[sys.executable,'scripts/compute_metrics.py','--runs',str(directory/'runs'),
+                             '--jacobian-points',str(options['jacobian_points']),
+                             '--ntk-points',str(options['ntk_points']),
+                             '--ph-size',str(options['ph_size']),
+                             '--ph-repeats',str(options['ph_repeats']),
+                             '--ph-maxdim',str(options['ph_maxdim']),
+                             '--ph-schedule',options['ph_schedule'],
+                             '--probe-train',str(options['probe_train']),
+                             '--probe-test',str(options['probe_test']),
+                             '--probe-iterations',str(options['probe_iterations'])]
+                    subprocess.run(command,check=True)
                     result.append({'group':directory.name,'status':'metric_command_completed'})
                 else:
                     gammas=sorted({r['gamma'] for r in group['runs']})

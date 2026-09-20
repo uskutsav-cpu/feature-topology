@@ -13,9 +13,10 @@ from scripts.completion_inventory import inspect_run,sha256
 from src.training.train import data_for
 from src.data.torus import dataset
 from src.training.checkpoints import atomic_json
+from research_ext.catalog import PRODUCTION
 
 
-def package(repo,output,rows=None,data_config=None,run_paths=None):
+def package(repo,output,rows=None,data_config=None,run_paths=None,metric_options=None):
     repo,output=Path(repo),Path(output)
     output.mkdir(parents=True,exist_ok=True)
     primary=rows is None
@@ -71,6 +72,7 @@ def package(repo,output,rows=None,data_config=None,run_paths=None):
         print(json.dumps(dict(run_id=run.name,bytes=archive.stat().st_size)),flush=True)
     result=dict(schema='feature-topology.primary-inputs.v1' if primary else 'feature-topology.synthetic-inputs.v1',runs=records,
                 analysis_data=dict(asset=data_path.name,sha256=sha256(data_path),config=data_config),
+                metric_options=metric_options or PRODUCTION,
                 export_environment=dict(python=platform.python_version(),torch=torch.__version__,numpy=np.__version__),
                 scope='Frozen training inputs for production analysis; not a final scientific-results release')
     atomic_json(output/'input_index.json',result)

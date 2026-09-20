@@ -7,7 +7,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.freeze_results import verify_manifest, sha256
 from research_ext.report import analyze
 from src.training.checkpoints import fingerprint,atomic_json
-from research_ext.catalog import PRODUCTION
+from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
 from scripts.image_statistics import summarize_images
 
 
@@ -21,7 +21,7 @@ def main(args):
         raise ValueError('Final analysis output must be empty to exclude stale artifacts')
     reports=[]
     plan=json.loads((repo/'configs/completion/analysis_plan.json').read_text())
-    for name in plan['synthetic_studies']:
+    for name in [*plan['synthetic_studies'], 'ood']:
         study=repo/'results'/name
         if name=='main':
             groups=[dict(path=str(study),gammas=plan['primary']['gammas'],seeds=plan['primary']['seeds'])]
@@ -34,7 +34,8 @@ def main(args):
                                    seeds=sorted({r['seed'] for r in group['runs']})))
         for group in groups:
             destination=output/name/Path(group['path']).name
-            result=analyze([group['path']],destination,target=.1,profile=fingerprint(PRODUCTION),
+            profile=PRODUCTION if name=='main' else ABLATION_PRODUCTION
+            result=analyze([group['path']],destination,target=.1,profile=fingerprint(profile),
                 gammas=group['gammas'],seeds=group['seeds'],repeats=2000,
                 transition_repeats=300,rules=[],make_plots=True)
             reports.append(dict(study=name,group=Path(group['path']).name,output=destination.relative_to(repo).as_posix()))

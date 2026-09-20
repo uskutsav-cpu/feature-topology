@@ -13,7 +13,7 @@ import shutil
 import subprocess
 import sys
 from .io import read_json, atomic_json, digest, file_digest, exclusive_lock, utc_now, original_fingerprint, environment
-from .catalog import PRODUCTION, load_catalog
+from .catalog import ABLATION_PRODUCTION, PRODUCTION, load_catalog
 
 GAMMAS = [2.**i for i in range(-5,8)]
 
@@ -37,6 +37,7 @@ def make_plan(repo: str | Path, *, suite: str = 'primary', image_device: str = '
     py = sys.executable
     prefix = [py, 'scripts/research.py']
     options_id = original_fingerprint(PRODUCTION)
+    ablation_options_id = original_fingerprint(ABLATION_PRODUCTION)
     if suite in {'images','cifar'}:
         names = ['rotated_digits'] if suite == 'images' else ['CIFAR10','CIFAR100']
         tasks = []
@@ -94,10 +95,10 @@ def make_plan(repo: str | Path, *, suite: str = 'primary', image_device: str = '
                     [f'configs/sweeps/{name}.json','results/calibration_main/gamma_to_lr.json','results/pilot/gate.json'],
                     [output+'/manifest.json',output+'/*/runs/*/summary.json']))
                 tasks.append(Task(f'{name}-metrics', prefix+['nested-metrics','--root',output], [f'{name}-training'],
-                    [output+'/manifest.json',output+'/*/runs/*/summary.json'], [output+f'/*/runs/*/metrics/{options_id}/*.json']))
-                tasks.append(Task(f'{name}-report', prefix+['nested-analyze','--root',output,'--profile',options_id,
+                    [output+'/manifest.json',output+'/*/runs/*/summary.json'], [output+f'/*/runs/*/metrics/{ablation_options_id}/*.json']))
+                tasks.append(Task(f'{name}-report', prefix+['nested-analyze','--root',output,'--profile',ablation_options_id,
                     '--output',f'results/research_ext/{name}_report'], [f'{name}-metrics'],
-                    [output+f'/*/runs/*/metrics/{options_id}/*.json',output+'/*/runs/*/summary.json'],
+                    [output+f'/*/runs/*/metrics/{ablation_options_id}/*.json',output+'/*/runs/*/summary.json'],
                     [f'results/research_ext/{name}_report/*/analysis_result.json']))
     return {'schema':'feature-topology.workflow.v1','repo':str(repo),'suite':suite,
             'tasks':[asdict(task) for task in tasks], 'min_free_bytes':2*1024**3,
