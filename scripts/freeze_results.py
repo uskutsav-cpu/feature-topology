@@ -138,6 +138,20 @@ def cifar_hosted_paths(repo):
     provenance=json.loads((completion/'dataset_provenance.json').read_text())
     provenance_by_name={Path(row['path']).name:row for row in provenance.get('sources',[])}
     paths=[specification_path]
+    handoff_path=completion/'cifar_mps_handoff.json'
+    handoff=json.loads(handoff_path.read_text())
+    preserved=repo/handoff.get('path','')
+    if (handoff.get('schema')!='feature-topology.cifar-execution-handoff.v1'
+            or handoff.get('status')!='preserved_before_hosted_restart'
+            or not preserved.resolve().is_relative_to(repo)
+            or not handoff.get('files')):
+        raise ValueError('Invalid local-to-hosted CIFAR handoff provenance')
+    for relative,expected in handoff['files'].items():
+        artifact=preserved/relative
+        if not artifact.is_file() or sha256(artifact)!=expected:
+            raise ValueError(f'Preserved CIFAR handoff artifact changed: {relative}')
+        paths.append(artifact)
+    paths.append(handoff_path)
     for dataset in ('CIFAR10','CIFAR100'):
         source=specification['datasets'][dataset]
         bound=provenance_by_name.get(source['archive'])

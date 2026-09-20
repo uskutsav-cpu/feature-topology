@@ -109,6 +109,12 @@ def test_hosted_cifar_provenance_is_source_bound(tmp_path):
     spec=config/'cifar_sources_v3.json'
     atomic_json(spec,{'schema':'feature-topology.cifar-sources.v1','datasets':source_rows})
     atomic_json(completion/'dataset_provenance.json',{'sources':provenance})
+    preserved=tmp_path/'results/cifar10/preserved';preserved.mkdir(parents=True)
+    (preserved/'config.json').write_text('{}')
+    atomic_json(completion/'cifar_mps_handoff.json',{
+        'schema':'feature-topology.cifar-execution-handoff.v1',
+        'status':'preserved_before_hosted_restart','path':'results/cifar10/preserved',
+        'files':{'config.json':hashlib.sha256((preserved/'config.json').read_bytes()).hexdigest()}})
     commit='a'*40
     for dataset in ('CIFAR10','CIFAR100'):
         key=dataset.lower()
@@ -126,7 +132,7 @@ def test_hosted_cifar_provenance_is_source_bound(tmp_path):
                 'source_specification_sha256':hashlib.sha256(spec.read_bytes()).hexdigest(),
                 'expected':count,'complete':{str(i):'asset' for i in range(count)},
                 'missing':[],'invalid':[]})
-    assert len(cifar_hosted_paths(tmp_path))==7
+    assert len(cifar_hosted_paths(tmp_path))==9
     report=json.loads((collections/'cifar10_production.json').read_text())
     report['source_commit']='c'*40
     atomic_json(collections/'cifar10_production.json',report)

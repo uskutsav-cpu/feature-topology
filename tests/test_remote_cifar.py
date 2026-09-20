@@ -57,12 +57,13 @@ def test_pack_and_restore_checksum_bound_resume(tmp_path):
     atomic_json(directory/"summary.json",{
         "config":config,"run_id":directory.name,"status":"budget_exhausted","history":[]})
     (directory/"final.pt").write_bytes(b"checkpoint")
+    (directory/"resume.pt").write_bytes(b"terminal optimizer state")
     report=remote_cifar.pack(work,data,outgoing,cell,"job-1",source)
     assert report["complete"]
     saved=next(outgoing.glob("*.tar.gz"))
     resume=tmp_path/"resume"; resume.mkdir(); target=resume/saved.name; target.write_bytes(saved.read_bytes())
     restored=tmp_path/"restored"
-    assert remote_cifar.restore_archives(resume,restored,cell,remote_cifar.sha256(archive))==3
+    assert remote_cifar.restore_archives(resume,restored,cell,remote_cifar.sha256(archive))==4
     assert (remote_cifar.run_directory(restored,cell)/"final.pt").read_bytes()==b"checkpoint"
     with tarfile.open(target,"r:gz") as tar:
         assert "job_manifest.json" in tar.getnames()
@@ -106,11 +107,13 @@ def test_collector_validates_and_installs_complete_archive(tmp_path,monkeypatch)
     atomic_json(directory/"summary.json",{
         "config":config,"run_id":directory.name,"status":"budget_exhausted","history":[]})
     (directory/"final.pt").write_bytes(b"checkpoint")
+    (directory/"resume.pt").write_bytes(b"terminal optimizer state")
     remote_cifar.pack(work,data,cache,cell,"job-3",source)
     monkeypatch.setattr(collect_remote_cifar,"download",lambda tag,path:None)
     result=collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,install=True)
     assert len(result["complete"])==1 and not result["invalid"]
     installed=repo/"results"/"cifar10"/"calibration"/directory.name/"final.pt"
     assert installed.read_bytes()==b"checkpoint"
+    assert not (installed.parent/"resume.pt").exists()
     assert collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,install=True)[
         "installed_files"][remote_cifar.cell_id(cell)]==0

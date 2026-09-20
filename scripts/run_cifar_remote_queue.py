@@ -90,9 +90,28 @@ def ensure_release(tag: str, commit: str) -> None:
         raise ValueError(f"CIFAR result tag is not bound to source commit {commit}")
 
 
+def resume_unfinished_attempts(state: dict, state_path: Path, poll_seconds: int) -> None:
+    """Finish controller bookkeeping after an interruption without redispatch."""
+    for attempt in state.get("attempts",[]):
+        if attempt.get("finished"):
+            continue
+        previous=None
+        while True:
+            current=workflow_state(attempt["workflow_run"])
+            if current!=previous:
+                print(json.dumps({"workflow_run":attempt["workflow_run"],**current}),flush=True)
+                previous=current
+            if current["status"]=="completed":
+                attempt.update(finished=time.time(),conclusion=current["conclusion"])
+                atomic_json(state_path,state)
+                break
+            time.sleep(poll_seconds)
+
+
 def finish_stage(repo: Path, dataset: str, stage: str, cells: list[dict], tag: str,
-                 state: dict, state_path: Path, poll_seconds: int, max_stalled: int) -> None:
-    cache=repo/"results/completion/remote_cifar_cache"/tag
+                 state: dict, state_path: Path, poll_seconds: int, max_stalled: int,
+                 cache_root: Path) -> None:
+    cache=cache_root/tag
     stalled=0
     while True:
         report=collect(repo,tag,cells,cache,repo/"configs/completion/cifar_sources_v3.json",
@@ -138,22 +157,25 @@ def main() -> None:
     parser.add_argument("--state",default="results/completion/cifar_remote_queue.json")
     parser.add_argument("--poll-seconds",type=int,default=30)
     parser.add_argument("--max-stalled-attempts",type=int,default=3)
+    parser.add_argument("--cache",default="results/completion/remote_cifar_cache")
     args=parser.parse_args();repo=Path(args.repo).resolve();state_path=repo/args.state
     state=json.loads(state_path.read_text()) if state_path.exists() else {
         "schema":"feature-topology.remote-cifar-queue.v1","attempts":[]}
-    commit=run(["git","rev-parse","HEAD"])
-    if state.get("source_commit",commit)!=commit:
-        raise ValueError("CIFAR queue source commit changed; preserve the existing queue and use a new tag")
+    commit=state.get("source_commit") or run(["git","rev-parse","HEAD"])
     state["source_commit"]=commit
     state.setdefault(args.dataset,{})
     ensure_release(args.tag,commit)
+    resume_unfinished_attempts(state,state_path,args.poll_seconds)
+    cache_root=Path(args.cache)
+    if not cache_root.is_absolute():
+        cache_root=repo/cache_root
     calibration=calibration_cells(args.dataset)
     finish_stage(repo,args.dataset,"calibration",calibration,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts)
+                 args.poll_seconds,args.max_stalled_attempts,cache_root)
     frozen=finalize_calibration(repo,args.dataset)
     production=production_cells(args.dataset,frozen)
     finish_stage(repo,args.dataset,"production",production,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts)
+                 args.poll_seconds,args.max_stalled_attempts,cache_root)
     print(json.dumps({"status":"complete","dataset":args.dataset,"runs":len(production)}),flush=True)
 
 

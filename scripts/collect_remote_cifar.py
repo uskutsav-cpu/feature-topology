@@ -115,6 +115,12 @@ def install_archive(repo: str | Path, archive: str | Path, report: dict) -> int:
     written = 0
     with tarfile.open(archive, "r:gz") as tar:
         for name, expected in report["files"].items():
+            # A terminal archive is retained byte-for-byte on its immutable
+            # GitHub release.  The optimizer resume is execution state, not a
+            # frozen scientific output, and can be very large.  Validate it
+            # above but do not duplicate it in the local results tree.
+            if report.get("complete") and Path(name).name == "resume.pt":
+                continue
             target = repo/"results"/name
             if not target.resolve().is_relative_to((repo/"results").resolve()):
                 raise ValueError("CIFAR install path escapes results")
