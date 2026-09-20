@@ -21,7 +21,8 @@ from src.models.mlp import ScaledModel
 from src.training.checkpoints import atomic_json, save_checkpoint, fingerprint
 from src.training.fls import reference_lr
 from src.training.train import evaluate
-from src.metrics.geometry import cka, effective_rank
+from src.metrics.geometry import effective_rank
+from scripts.image_cka import cka_diagnostics
 from src.metrics.probes import evaluate_probes
 from src.metrics.persistence import persistence
 
@@ -236,9 +237,13 @@ def analyze(config, root, data, device, force=False):
                      auxiliary_task="sign(cos(symmetry_multiplier * orientation))")
         stats, _ = persistence(h, size=500, repeats=20, maxdim=1,
                                cache_dir=directory.parents[2]/"ph_cache")
-        cka_value = cka(initial[layer], h)
+        cka_result = cka_diagnostics(initial[layer], h)
         layers.append(dict(layer=layer+1,
-                           cka_drift=(1-cka_value if math.isfinite(cka_value) else None),
+                           cka_drift=(None if cka_result["score"] is None
+                                      else 1-cka_result["score"]),
+                           cka_status=cka_result["status"],
+                           cka_initial_centered_gram_norm=cka_result["initial_centered_gram_norm"],
+                           cka_current_centered_gram_norm=cka_result["current_centered_gram_norm"],
                            effective_rank=effective_rank(h), persistence=stats, shape_probes=shape_probes))
     with (directory/"final.pt").open("rb") as stream:
         checkpoint_hash = hashlib.file_digest(stream,"sha256").hexdigest()
@@ -255,9 +260,12 @@ def analyze(config, root, data, device, force=False):
         if isinstance(value, list):
             return [json_safe(item, f"{path}[{i}]") for i, item in enumerate(value)]
         return value
+    explicit_undefined=[f"layers[{index}].cka_drift" for index,layer in enumerate(layers)
+                        if layer["cka_drift"] is None]
     report = json_safe(dict(dataset_id=config["dataset_id"], checkpoint_sha256=checkpoint_hash,
                 initial_model_sha256=initial_digest.hexdigest(), initial_model_reconstructed_from_seed=True,
                 test=dict(loss=loss,accuracy=accuracy), layers=layers,
+                explicit_undefined_metrics=explicit_undefined,
                 schema="feature-topology.dsprites-metrics.v1",
                 limitation="Raster images on a fixed position subgrid; symmetry-adjusted orientation decoding and H1 diagnostics do not establish continuum injectivity."))
     if nonfinite:

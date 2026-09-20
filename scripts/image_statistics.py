@@ -11,7 +11,7 @@ from src.training.checkpoints import atomic_json
 
 
 def image_rows(repo):
-    rows=[]
+    rows=[]; exclusions=[]
     for study in ['rotated_digits','dsprites','cifar10','cifar100']:
         for path in sorted((Path(repo)/'results'/study).glob('runs/*/summary.json')):
             summary=json.loads(path.read_text())
@@ -31,8 +31,13 @@ def image_rows(repo):
             else:
                 values=[('test_accuracy',0,metrics['test']['accuracy']),('test_loss',0,metrics['test']['loss'])]
                 for layer in metrics['layers']:
-                    for metric in ['cka_drift','effective_rank']:
-                        values.append((metric,layer['layer'],layer[metric]))
+                    if layer['cka_drift'] is None:
+                        exclusions.append(dict(study=study,run_id=path.parent.name,
+                            gamma=config['gamma'],seed=config['seed'],metric='cka_drift',
+                            layer=layer['layer'],reason=layer.get('cka_status','undeclared')))
+                    else:
+                        values.append(('cka_drift',layer['layer'],layer['cka_drift']))
+                    values.append(('effective_rank',layer['layer'],layer['effective_rank']))
                     values.append(('ph_h1_lifetime',layer['layer'],float(np.mean([v['H1']['top1'] for v in layer['persistence']]))))
                     if study=='dsprites':
                         for shape,probes in layer['shape_probes'].items():
@@ -40,14 +45,15 @@ def image_rows(repo):
                                 values.append((f'{probe}_shape{shape}_orientation_cosine',layer['layer'],
                                                probes['nuisance_probes'][probe]['angular_cosine']))
             rows.extend({**base,'metric':metric,'layer':layer,'value':value} for metric,layer,value in values)
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows),pd.DataFrame(exclusions)
 
 
 def summarize_images(repo,output):
     output=Path(output)
     output.mkdir(parents=True,exist_ok=True)
-    frame=image_rows(repo)
+    frame,exclusions=image_rows(repo)
     frame.to_csv(output/'image_metrics_long.csv',index=False)
+    exclusions.to_csv(output/'image_metric_exclusions.csv',index=False)
     summaries=[]
     contrasts=[]
     for (study,metric,layer),part in frame.groupby(['study','metric','layer']):
@@ -88,4 +94,5 @@ def summarize_images(repo,output):
         intervals='Pointwise percentile bootstrap, 2000 resamples; not simultaneous intervals',
         risk='Final stopping-threshold comparison; actual training losses retained, not identical-risk matching',
         nonconvergence='All finite nondiverged runs retained with status; divergent outcomes remain in frozen run summaries',
+        undefined_metrics='Mathematically undefined CKA from an exactly zero-variance representation is retained as a structural outcome, excluded from numeric CKA summaries only, and listed in image_metric_exclusions.csv; per-cell n is reported.',
         limitations='Image schemas remain separate. No latent-manifold topology claim for CIFAR. dSprites orientation uses shape-specific symmetry harmonics.'))

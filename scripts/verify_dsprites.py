@@ -1,5 +1,6 @@
 """Replay held-out classification for saved dSprites production checkpoints."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -8,6 +9,7 @@ import numpy as np
 import torch
 from scripts.run_dsprites import build,GAMMAS,split_ids,SOURCE_BLOB
 from scripts.completion_inventory import inspect_run,sha256
+from scripts.image_cka import cka_diagnostics
 from src.training.checkpoints import atomic_json,fingerprint
 
 
@@ -51,8 +53,44 @@ def verify(repo,allow_partial=False):
         saved=metric['test']
         if abs(actual['loss']-saved['loss'])>=1e-4 or abs(actual['accuracy']-saved['accuracy'])>1/len(ids):
             raise ValueError(f'Held-out replay mismatch: {run.name}: {actual} vs {saved}')
+        undefined=[]
+        affected=[index for index,layer in enumerate(metric.get('layers',[]))
+                  if layer.get('cka_drift') is None]
+        if affected:
+            torch.manual_seed(config['seed'])
+            initial=build(config).eval()
+            digest=hashlib.sha256()
+            for name,value in initial.state_dict().items():
+                digest.update(name.encode())
+                digest.update(value.detach().cpu().contiguous().numpy().tobytes())
+            if digest.hexdigest()!=metric.get('initial_model_sha256'):
+                raise ValueError(f'Initial-model identity mismatch: {run.name}')
+            initial_parts=[]; final_parts=[]
+            with torch.no_grad():
+                for start in range(0,len(ids),32):
+                    x=torch.from_numpy(np.array(images[ids[start:start+32]],dtype=np.float32)[:,None])
+                    initial_parts.append(initial.network.representations(x))
+                    final_parts.append(model.network.representations(x))
+            before=[torch.cat([part[layer] for part in initial_parts]).numpy() for layer in range(3)]
+            after=[torch.cat([part[layer] for part in final_parts]).numpy() for layer in range(3)]
+            for index in affected:
+                result=cka_diagnostics(before[index],after[index])
+                layer=metric['layers'][index]
+                path=f'layers[{index}].cka_drift'
+                if (result['score'] is not None or layer.get('cka_status')!=result['status']
+                        or not np.isclose(layer.get('cka_initial_centered_gram_norm',np.nan),
+                                          result['initial_centered_gram_norm'],rtol=1e-12,atol=0)
+                        or not np.isclose(layer.get('cka_current_centered_gram_norm',np.nan),
+                                          result['current_centered_gram_norm'],rtol=1e-12,atol=0)):
+                    raise ValueError(f'Undefined CKA replay mismatch: {run.name}, layer {index+1}')
+                undefined.append(dict(path=path,status=result['status'],
+                    initial_centered_gram_norm=result['initial_centered_gram_norm'],
+                    current_centered_gram_norm=result['current_centered_gram_norm']))
+        if set(metric.get('explicit_undefined_metrics',[]))!={row['path'] for row in undefined}:
+            raise ValueError(f'Undefined CKA declaration mismatch: {run.name}')
         records.append(dict(run_id=run.name,gamma=config['gamma'],seed=config['seed'],
-                            checkpoint_sha256=checked['final_sha256'],replayed=actual,saved=saved))
+                            checkpoint_sha256=checked['final_sha256'],replayed=actual,saved=saved,
+                            explicit_undefined_cka=undefined))
     pairs={(r['gamma'],r['seed']) for r in records}
     expected={(g,s) for g in GAMMAS for s in range(5)}
     complete=pairs==expected and len(records)==35

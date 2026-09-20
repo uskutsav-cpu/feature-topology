@@ -13,7 +13,8 @@ from sklearn.model_selection import train_test_split
 from src.models.resnet import CIFARResNet
 from src.models.mlp import ScaledModel
 from src.training.checkpoints import atomic_json, fingerprint, save_checkpoint
-from src.metrics.geometry import cka, effective_rank, distortion
+from src.metrics.geometry import effective_rank, distortion
+from scripts.image_cka import cka_diagnostics
 from src.metrics.persistence import persistence
 
 
@@ -121,7 +122,13 @@ def analyze(config, root, data, device):
     for i,h in enumerate(current):
         stats, diagrams = persistence(h, size=500, repeats=20, maxdim=1,
                                        cache_dir=root.parents[2]/"ph_cache")
-        rows.append(dict(layer=i+1, cka_drift=1-cka(initial[i], h), effective_rank=effective_rank(h),
+        cka_result=cka_diagnostics(initial[i],h)
+        rows.append(dict(layer=i+1,
+                         cka_drift=(None if cka_result["score"] is None else 1-cka_result["score"]),
+                         cka_status=cka_result["status"],
+                         cka_initial_centered_gram_norm=cka_result["initial_centered_gram_norm"],
+                         cka_current_centered_gram_norm=cka_result["current_centered_gram_norm"],
+                         effective_rank=effective_rank(h),
                          distortion=distortion(initial[i], h), persistence=stats))
     # Ambient input-to-logit Jacobian, not a known manifold tangent Jacobian.
     spectrum = []
@@ -132,7 +139,10 @@ def analyze(config, root, data, device):
     np.savez_compressed(root/"representations.npz", **{f"initial_h{i+1}":h for i,h in enumerate(initial)},
                          **{f"final_h{i+1}":h for i,h in enumerate(current)},
                          input_logit_jacobian_singular_values=np.stack(spectrum))
+    explicit_undefined=[f"layers[{index}].cka_drift" for index,layer in enumerate(rows)
+                        if layer["cka_drift"] is None]
     atomic_json(target, dict(test=evaluate(model, data["test"], device), layers=rows,
+                  explicit_undefined_metrics=explicit_undefined,
                   jacobian="Ambient normalized-input to scaled-logit Jacobian on four fixed test images",
                   limitation="No known latent manifold: no injectivity or latent topology claim"))
 

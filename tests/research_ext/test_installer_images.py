@@ -84,6 +84,43 @@ def test_image_audit_rejects_silent_nonfinite_metrics(tmp_path):
     assert 'Nonfinite metric values' in result['issues'][0]['error']
 
 
+def test_image_audit_accepts_declared_zero_variance_cka(tmp_path):
+    config={'gamma':.5,'seed':0};rid=original_fingerprint(config)
+    run=tmp_path/'runs'/rid;run.mkdir(parents=True)
+    atomic_json(run/'config.json',config)
+    atomic_json(run/'summary.json',{'config':config,'run_id':rid,'status':'converged'})
+    (run/'final.pt').write_bytes(b'test-only-checkpoint-existence-fixture')
+    atomic_json(run/'metrics.json',{
+        'test':{'accuracy':.9},
+        'layers':[{'layer':1,'cka_drift':None,
+                   'cka_status':'undefined_zero_variance_current',
+                   'cka_initial_centered_gram_norm':1.0,
+                   'cka_current_centered_gram_norm':0.0} for _ in range(4)],
+        'explicit_undefined_metrics':[f'layers[{i}].cka_drift' for i in range(4)]})
+    result=audit_images(tmp_path,gammas=[.5],seeds=[0])
+    assert result['artifact_completion']
+    assert result['runs'][0]['explicit_undefined_metrics']==[
+        f'layers[{i}].cka_drift' for i in range(4)]
+
+
+def test_image_audit_rejects_false_undefined_cka_declaration(tmp_path):
+    config={'gamma':.5,'seed':0};rid=original_fingerprint(config)
+    run=tmp_path/'runs'/rid;run.mkdir(parents=True)
+    atomic_json(run/'config.json',config)
+    atomic_json(run/'summary.json',{'config':config,'run_id':rid,'status':'converged'})
+    (run/'final.pt').write_bytes(b'test-only-checkpoint-existence-fixture')
+    atomic_json(run/'metrics.json',{
+        'test':{'accuracy':.9},
+        'layers':[{'layer':i+1,'cka_drift':None,
+                   'cka_status':'undefined_zero_variance_current',
+                   'cka_initial_centered_gram_norm':1.0,
+                   'cka_current_centered_gram_norm':1.0} for i in range(4)],
+        'explicit_undefined_metrics':[f'layers[{i}].cka_drift' for i in range(4)]})
+    result=audit_images(tmp_path,gammas=[.5],seeds=[0])
+    assert not result['artifact_completion']
+    assert 'Inconsistent undefined CKA diagnostics' in result['issues'][0]['error']
+
+
 def test_image_plans_no_unrequested_download(tmp_path):
     cifar=make_plan(tmp_path,suite='cifar')
     assert all('--download' not in t['command'] for t in cifar['tasks'])

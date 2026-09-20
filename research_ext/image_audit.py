@@ -24,6 +24,34 @@ def nonfinite_paths(value, path=''):
     return []
 
 
+def explicit_undefined_cka(metrics):
+    """Validate declared zero-variance CKA outcomes and return their JSON paths."""
+    paths=set()
+    allowed={'undefined_zero_variance_initial','undefined_zero_variance_current',
+             'undefined_zero_variance_both'}
+    for index,layer in enumerate(metrics.get('layers',[])):
+        if layer.get('cka_drift') is not None:
+            continue
+        status=layer.get('cka_status')
+        initial=layer.get('cka_initial_centered_gram_norm')
+        current=layer.get('cka_current_centered_gram_norm')
+        if (status not in allowed or not isinstance(initial,(int,float))
+                or isinstance(initial,bool) or not math.isfinite(initial) or initial<0
+                or not isinstance(current,(int,float)) or isinstance(current,bool)
+                or not math.isfinite(current) or current<0):
+            raise ValueError(f'Unexplained undefined CKA at layer {index+1}')
+        expected=('undefined_zero_variance_both' if initial==0 and current==0
+                  else 'undefined_zero_variance_initial' if initial==0
+                  else 'undefined_zero_variance_current' if current==0 else None)
+        if status!=expected:
+            raise ValueError(f'Inconsistent undefined CKA diagnostics at layer {index+1}')
+        paths.add(f'layers[{index}].cka_drift')
+    declared=set(metrics.get('explicit_undefined_metrics',[]))
+    if declared!=paths:
+        raise ValueError('Explicit undefined-metric declaration mismatch')
+    return paths
+
+
 def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
     root = Path(root)
     gammas = list(IMAGE_GAMMAS if gammas is None else gammas)
@@ -61,7 +89,8 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
                 raise ValueError('Nondiverged image run has no nonempty final checkpoint')
             if (run/'metrics.json').is_file() and row['status'] != 'diverged':
                 metrics = read_json(run/'metrics.json')
-                invalid_metrics = nonfinite_paths(metrics)
+                explicit=explicit_undefined_cka(metrics)
+                invalid_metrics = [path for path in nonfinite_paths(metrics) if path not in explicit]
                 if invalid_metrics:
                     raise ValueError(f'Nonfinite metric values: {invalid_metrics}')
                 # Existing digits and CIFAR scripts have different native schemas.
@@ -93,6 +122,7 @@ def audit_images(root: str | Path, *, gammas=None, seeds=None) -> dict:
                 if not isinstance(accuracy, (int, float)) or isinstance(accuracy, bool) or not math.isfinite(accuracy) or not 0 <= accuracy <= 1:
                     raise ValueError('Invalid test accuracy')
                 row.update(metrics_present=True, test_accuracy=accuracy)
+                row['explicit_undefined_metrics']=sorted(explicit)
                 measured.add(pair)
             for filename in ['config.json', 'summary.json', 'metrics.json']:
                 path = run/filename

@@ -431,9 +431,15 @@ def image_replay_paths(repo):
             or len(dsprites.get('records',[]))!=35):
         raise ValueError('dSprites held-out replay incomplete')
     for row in dsprites['records']:
-        checkpoint=repo/'results/dsprites/runs'/row['run_id']/'final.pt'
+        run=repo/'results/dsprites/runs'/row['run_id']
+        checkpoint=run/'final.pt'
         if sha256(checkpoint)!=row.get('checkpoint_sha256'):
             raise ValueError(f"dSprites replay binding changed: {row['run_id']}")
+        metric=json.loads((run/'metrics.json').read_text())
+        declared=set(metric.get('explicit_undefined_metrics',[]))
+        replayed={item.get('path') for item in row.get('explicit_undefined_cka',[])}
+        if declared!=replayed:
+            raise ValueError(f"dSprites undefined CKA replay changed: {row['run_id']}")
     paths.append(dsprites_path)
     cifar_path=repo/'results/completion/cifar_validation.json'
     cifar=json.loads(cifar_path.read_text())

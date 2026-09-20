@@ -75,6 +75,14 @@ The GPU pooling implementation uses the same adaptive bins as PyTorch and is
 tested against reference values and gradients. This is a planned 35-run study,
 not yet a completed experiment.
 
+Linear CKA keeps its original definition. If a learned image representation is
+exactly constant, its centered Gram norm is zero and CKA is mathematically
+undefined rather than a finite drift score. Such a result is retained as null
+with an explicit zero-variance status and replayed diagnostics; it is never
+imputed. Final numeric CKA summaries exclude only these declared undefined
+seed-level values, report their actual replicate count, and list every exclusion
+separately. Effective rank and PH continue to record the collapse itself.
+
 The initial explicit-bin fallback was replaced during calibration with a
 separable linear implementation and a head-only training forward pass. CPU and
 MPS value/gradient checks passed. Provisional fallback calibration files are

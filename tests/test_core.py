@@ -4,6 +4,7 @@ from src.data.torus import dataset, coordinates, geodesic, labels
 from src.data.circle import circle_dataset
 from src.models.mlp import MLP, ScaledModel
 from src.metrics.geometry import cka, effective_rank
+from scripts.image_cka import cka_diagnostics
 from src.metrics.jacobian import tangent_jacobians, summarize
 from src.metrics.injectivity import collisions
 from src.metrics.ntk import empirical_ntk
@@ -33,6 +34,11 @@ def test_geometry_invariance():
     assert np.isclose(cka(h, .1*h@q+3), 1)
     assert np.isclose(effective_rank(h), effective_rank(h*.01))
     assert effective_rank(np.zeros((100, 4))) == 0
+    undefined=cka_diagnostics(h,np.zeros_like(h))
+    assert undefined['score'] is None
+    assert undefined['status']=='undefined_zero_variance_current'
+    assert undefined['initial_centered_gram_norm']>0
+    assert undefined['current_centered_gram_norm']==0
 
 
 def test_centering_and_gradient_scaling():
