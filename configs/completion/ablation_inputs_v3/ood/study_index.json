@@ -1,0 +1,29 @@
+{
+  "schema": "feature-topology.ablation-inputs.v1",
+  "study": "ood",
+  "planned": 140,
+  "conditions": [
+    {
+      "condition": "475bfb0e8e0812fa",
+      "index": "475bfb0e8e0812fa.json",
+      "runs": 35
+    },
+    {
+      "condition": "553ac91d740aab4e",
+      "index": "553ac91d740aab4e.json",
+      "runs": 35
+    },
+    {
+      "condition": "75e591f003a01877",
+      "index": "75e591f003a01877.json",
+      "runs": 35
+    },
+    {
+      "condition": "91d5ad7e3327b2b6",
+      "index": "91d5ad7e3327b2b6.json",
+      "runs": 35
+    }
+  ],
+  "excluded_diverged": [],
+  "scope": "Training inputs only; full production metrics remain required"
+}
