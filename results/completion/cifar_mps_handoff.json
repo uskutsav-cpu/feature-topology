@@ -1,7 +1,8 @@
 {
   "schema": "feature-topology.cifar-execution-handoff.v1",
   "dataset": "CIFAR10",
-  "source_commit": "86e1e10368d8b7582a3e0b840624928aaabbece7",
+  "source_commit": "fe936ffd3a0ef8622201eadfaca32abcdc9fae31",
+  "execution_started_at": "2026-09-20T01:53:00-05:00",
   "original_execution": "mps",
   "status": "preserved_before_hosted_restart",
   "reason": "The frozen CIFAR design projected to require days on one local MPS worker. The complete first calibration trial and the interrupted next-cell configuration were moved intact to prevent cross-platform artifact collision before checksum-bound hosted CPU execution.",
