@@ -51,8 +51,23 @@ def dispatch(registry, cohort, run_ids):
     return match.group(1), output
 
 
-def workflow_state(run_id):
-    payload = run(["gh", "run", "view", str(run_id), "--json", "status,conclusion,jobs,url"])
+def workflow_state(run_id, retries=6, initial_delay=2):
+    """Read workflow state, tolerating transient GitHub/API failures.
+
+    Dispatch is deliberately *not* retried because an ambiguous dispatch could
+    create duplicate scientific work.  Status reads are idempotent, so bounded
+    retry is safe and keeps a brief network or API outage from killing a queue
+    that is otherwise progressing remotely.
+    """
+    for attempt in range(retries):
+        try:
+            payload = run(["gh", "run", "view", str(run_id), "--json",
+                           "status,conclusion,jobs,url"])
+            break
+        except subprocess.CalledProcessError:
+            if attempt + 1 == retries:
+                raise
+            time.sleep(min(initial_delay * 2**attempt, 30))
     value = json.loads(payload)
     counts = {}
     run_ids = []

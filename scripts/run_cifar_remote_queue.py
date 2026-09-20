@@ -60,8 +60,22 @@ def production_cells(dataset: str, frozen: dict) -> list[dict]:
             for gamma in GAMMAS for seed in range(5)]
 
 
-def workflow_state(run_id: str) -> dict:
-    value=json.loads(run(["gh","run","view",run_id,"--json","status,conclusion,jobs,url"]))
+def workflow_state(run_id: str, retries: int = 6, initial_delay: float = 2) -> dict:
+    """Read workflow state with bounded retries for transient API failures.
+
+    Only this idempotent read is retried.  Workflow dispatch remains a
+    single-attempt operation so an ambiguous response cannot duplicate cells.
+    """
+    for attempt in range(retries):
+        try:
+            payload=run(["gh","run","view",run_id,"--json",
+                         "status,conclusion,jobs,url"])
+            break
+        except subprocess.CalledProcessError:
+            if attempt + 1 == retries:
+                raise
+            time.sleep(min(initial_delay * 2**attempt,30))
+    value=json.loads(payload)
     counts={}
     for job in value["jobs"]:
         counts[job["status"]]=counts.get(job["status"],0)+1

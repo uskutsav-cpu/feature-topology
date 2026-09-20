@@ -1,10 +1,11 @@
 import json
 from pathlib import Path
+import subprocess
 import tarfile
 
 import pytest
 
-from scripts import collect_remote_cifar, remote_cifar
+from scripts import collect_remote_cifar, remote_cifar, run_cifar_remote_queue
 from src.training.checkpoints import atomic_json
 
 
@@ -118,3 +119,26 @@ def test_collector_validates_and_installs_complete_archive(tmp_path,monkeypatch)
     assert not (installed.parent/"resume.pt").exists()
     assert collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,install=True)[
         "installed_files"][remote_cifar.cell_id(cell)]==0
+
+
+def test_cifar_status_poll_retries_transient_read_only_failure(monkeypatch):
+    calls=[]
+    def fake_run(command):
+        calls.append(command)
+        if len(calls)==1:
+            raise subprocess.CalledProcessError(1,command)
+        return json.dumps({"status":"queued","conclusion":"","url":"https://example/run",
+                           "jobs":[{"status":"in_progress"}]})
+    monkeypatch.setattr(run_cifar_remote_queue,"run",fake_run)
+    monkeypatch.setattr(run_cifar_remote_queue.time,"sleep",lambda _:None)
+    state=run_cifar_remote_queue.workflow_state("123",retries=2,initial_delay=0)
+    assert len(calls)==2 and state["counts"]=={"in_progress":1}
+
+
+def test_cifar_status_poll_exhausts_bounded_retries(monkeypatch):
+    def fail(command):
+        raise subprocess.CalledProcessError(1,command)
+    monkeypatch.setattr(run_cifar_remote_queue,"run",fail)
+    monkeypatch.setattr(run_cifar_remote_queue.time,"sleep",lambda _:None)
+    with pytest.raises(subprocess.CalledProcessError):
+        run_cifar_remote_queue.workflow_state("123",retries=2,initial_delay=0)
