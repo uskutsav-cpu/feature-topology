@@ -122,6 +122,29 @@ def production_queue_paths(repo):
     return paths
 
 
+def validate_ood_evaluation_row(row):
+    """Validate finite predictive intervention measurements before freezing."""
+    if (row.get('schema')!='feature-topology.nuisance-shift-evaluation.v1'
+            or row.get('status')!='evaluated'
+            or set(row.get('environments',{}))!={'iid','concentrated','spurious','unseen'}):
+        raise ValueError('Invalid nuisance-shift evaluation schema')
+    measured={'gamma':row.get('gamma'),'seed':row.get('seed'),
+              'selected_step':row.get('selected_step'),
+              'actual_training_loss':row.get('actual_training_loss'),
+              'environments':row.get('environments')}
+    invalid=nonfinite_paths(measured)
+    if invalid:
+        raise ValueError(f'Nonfinite nuisance-shift values: {invalid}')
+    for name,values in row['environments'].items():
+        accuracy,loss=values.get('accuracy'),values.get('loss')
+        if (not isinstance(values.get('samples'),int) or isinstance(values.get('samples'),bool)
+                or values['samples']<=0 or not isinstance(accuracy,(int,float))
+                or isinstance(accuracy,bool) or not 0<=accuracy<=1
+                or not isinstance(loss,(int,float)) or isinstance(loss,bool) or loss<0):
+            raise ValueError(f'Invalid nuisance-shift measurement: {name}')
+    return row
+
+
 def readiness(repo):
     repo=Path(repo).resolve()
     # A freeze must independently replay the strict checkpoint-tensor audit;
@@ -246,8 +269,10 @@ def readiness(repo):
         for row in ood.get('runs',[]):
             if row.get('status')!='evaluated':
                 continue
-            if set(row.get('environments',{}))!={'iid','concentrated','spurious','unseen'}:
-                problems.append(dict(study='ood_evaluation',error=f'Environment coverage missing: {row.get("run_id")}'))
+            try:
+                validate_ood_evaluation_row(row)
+            except (ValueError,KeyError) as exc:
+                problems.append(dict(study='ood_evaluation',error=f'{row.get("run_id")}: {exc}'))
             record=next((r for r in result['validated_runs'] if r['run_id']==row.get('run_id')),None)
             checkpoint=Path(record['path'])/row['checkpoint'] if record else None
             if checkpoint is None or not checkpoint.exists() or sha256(checkpoint)!=row.get('checkpoint_sha256'):

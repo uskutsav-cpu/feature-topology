@@ -6,7 +6,7 @@ import io
 import tarfile
 from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
                                     production_queue_paths,validate_numeric_circle_quotient,
-                                    verify_manifest)
+                                    validate_ood_evaluation_row,verify_manifest)
 from scripts.pack_release import pack
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
@@ -90,6 +90,17 @@ def test_hosted_queue_provenance_is_complete(tmp_path):
     atomic_json(completion/'production_queue_ablation_v3.json',state)
     with pytest.raises(ValueError,match='Hosted cohort incomplete'):
         production_queue_paths(tmp_path)
+
+
+def test_ood_evaluation_must_be_finite_before_freeze():
+    row={'schema':'feature-topology.nuisance-shift-evaluation.v1','status':'evaluated',
+         'gamma':1.,'seed':0,'selected_step':4,'actual_training_loss':.05,
+         'environments':{name:{'loss':.2,'accuracy':.9,'samples':5000}
+                         for name in ['iid','concentrated','spurious','unseen']}}
+    assert validate_ood_evaluation_row(row) is row
+    row['environments']['unseen']['loss']=None
+    with pytest.raises(ValueError,match='Nonfinite nuisance-shift'):
+        validate_ood_evaluation_row(row)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):
