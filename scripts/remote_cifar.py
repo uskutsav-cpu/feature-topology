@@ -21,13 +21,16 @@ import sys
 import tarfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from scripts.run_cifar import analyze, load_data, train
-from src.training.checkpoints import fingerprint
 
 
 GAMMAS = (0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0)
 MULTIPLIERS = (0.125, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0)
 BASE = {"batch_size": 128, "target_loss": 0.2, "eval_every": 500}
+
+
+def fingerprint(value: dict) -> str:
+    """Match the historical run identifier without importing PyTorch."""
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()[:16]
 
 
 def sha256(path: str | Path) -> str:
@@ -158,6 +161,9 @@ def restore_archives(resume: str | Path, work: str | Path, cell: dict,
 
 def compute(work: str | Path, data_root: str | Path, resume: str | Path,
             cell: dict, device: str, source_specification: str | Path) -> dict:
+    # The workflow plan intentionally uses only the standard library.  Import
+    # scientific dependencies after the compute job has installed the lockfile.
+    from scripts.run_cifar import analyze, load_data, train
     cell = parse_cell(cell)
     specification = sources(source_specification)
     data = load_data(cell["dataset"], str(data_root), download=True)
