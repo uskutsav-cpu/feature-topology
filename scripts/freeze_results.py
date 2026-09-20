@@ -9,6 +9,7 @@ from research_ext.catalog import ABLATION_PRODUCTION, load_catalog, PRODUCTION
 from research_ext.image_audit import audit_images
 from research_ext.exact import verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
+from scripts.dataset_provenance import verify_provenance
 
 
 def readiness(repo):
@@ -90,6 +91,14 @@ def readiness(repo):
         for path in (repo/'results'/name).glob('runs/*/*'):
             if path.is_file() and path.name!='resume.pt':
                 paths.add(path)
+    dataset_provenance=repo/'results/completion/dataset_provenance.json'
+    if not dataset_provenance.exists():
+        problems.append(dict(study='datasets',error='Official dataset provenance missing'))
+    else:
+        try:
+            paths.update(verify_provenance(repo,dataset_provenance))
+        except (ValueError,KeyError,OSError) as exc:
+            problems.append(dict(study='datasets',error=str(exc)))
     ood_manifest=repo/'results/ood_evaluation/manifest.json'
     if not ood_manifest.exists():
         problems.append(dict(study='ood_evaluation',error='Nuisance-shift evaluation missing'))
