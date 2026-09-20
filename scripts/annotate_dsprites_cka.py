@@ -58,7 +58,6 @@ def annotate(repo, device):
         before=feature_layers(initial_model,data['test']['x'],device)
         after=feature_layers(final_model,data['test']['x'],device)
 
-        current_hash=sha256(metric_path)
         backup=run/'metrics.pre_cka_annotation.json'
         if not backup.exists():
             shutil.copyfile(metric_path,backup)
@@ -88,7 +87,6 @@ def annotate(repo, device):
                             backup=backup.relative_to(repo).as_posix(),
                             backup_sha256=sha256(backup),
                             annotated_metrics_sha256=sha256(metric_path),
-                            input_metrics_sha256=current_hash,
                             diagnostics=diagnostics))
     return dict(schema='feature-topology.dsprites-cka-undefined.v1',dataset_id=dataset_id,
                 annotated_runs=len(records),records=records,
