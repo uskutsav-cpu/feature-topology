@@ -1,0 +1,14 @@
+{
+  "schema": "feature-topology.ablation-inputs.v1",
+  "study": "small_network",
+  "planned": 120,
+  "conditions": [
+    {
+      "condition": "91d5ad7e3327b2b6",
+      "index": "91d5ad7e3327b2b6.json",
+      "runs": 120
+    }
+  ],
+  "excluded_diverged": [],
+  "scope": "Training inputs only; full production metrics remain required"
+}

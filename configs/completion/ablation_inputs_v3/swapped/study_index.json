@@ -1,0 +1,14 @@
+{
+  "schema": "feature-topology.ablation-inputs.v1",
+  "study": "swapped",
+  "planned": 35,
+  "conditions": [
+    {
+      "condition": "e829e3c3dc554a90",
+      "index": "e829e3c3dc554a90.json",
+      "runs": 35
+    }
+  ],
+  "excluded_diverged": [],
+  "scope": "Training inputs only; full production metrics remain required"
+}
