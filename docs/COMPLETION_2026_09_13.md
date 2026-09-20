@@ -99,7 +99,9 @@ python scripts/freeze_results.py --check-only --output results/completion/readin
 # Only when readiness passes:
 python scripts/freeze_results.py --output results/frozen_manifest.json
 python scripts/final_analysis.py --manifest results/frozen_manifest.json
-python scripts/pack_release.py --manifest results/frozen_manifest.json --output release-assets
+python scripts/pack_release.py --manifest results/frozen_manifest.json \
+  --analysis-manifest results/final_analysis/analysis_manifest.json \
+  --output release-assets
 ```
 
 The freeze requires every design, production trajectory, image study, trained
