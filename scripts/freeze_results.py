@@ -79,6 +79,49 @@ def validate_numeric_circle_quotient(report):
     return report
 
 
+def production_queue_paths(repo):
+    """Require final hosted-queue and collector ledgers for every cohort."""
+    repo=Path(repo)
+    registry_path=repo/'configs/completion/production_cohorts_v3.json'
+    registry=json.loads(registry_path.read_text())
+    cohorts={row['name']:row for row in registry['cohorts']}
+    state_paths=[repo/'results/completion/production_queue_primary_v3.json',
+                 repo/'results/completion/production_queue_ablation_v3.json']
+    observed={}
+    paths=[registry_path]
+    for path in state_paths:
+        state=json.loads(path.read_text())
+        if state.get('schema')!='feature-topology.production-queue-state.v1':
+            raise ValueError(f'Invalid production queue ledger: {path.name}')
+        overlap=set(observed)&set(state.get('cohorts',{}))
+        if overlap:
+            raise ValueError(f'Duplicate queue cohorts: {sorted(overlap)}')
+        observed.update(state.get('cohorts',{}))
+        for attempt in state.get('attempts',[]):
+            if (attempt.get('cohort') not in cohorts or not str(attempt.get('workflow_run','')).isdigit()
+                    or not str(attempt.get('url','')).startswith('https://github.com/')
+                    or not attempt.get('run_ids') or len(attempt['run_ids'])>24
+                    or 'started' not in attempt or 'finished' not in attempt
+                    or not attempt.get('conclusion')):
+                raise ValueError(f'Incomplete hosted attempt provenance: {path.name}')
+        paths.append(path)
+    if set(observed)!=set(cohorts):
+        raise ValueError(f'Hosted cohort ledger coverage {len(observed)}/{len(cohorts)}')
+    for name,definition in cohorts.items():
+        row=observed[name]
+        expected=definition['expected_unique_profiles']
+        if (row.get('expected')!=expected or row.get('complete')!=expected
+                or row.get('missing')!=0 or row.get('invalid')!=[]):
+            raise ValueError(f'Hosted cohort incomplete: {name}')
+        report_path=repo/'results/completion/remote_collections'/f'{name}.json'
+        report=json.loads(report_path.read_text())
+        if (report.get('expected')!=expected or len(report.get('complete',[]))!=expected
+                or report.get('missing')!=[] or report.get('invalid')!=[]):
+            raise ValueError(f'Collector ledger incomplete: {name}')
+        paths.append(report_path)
+    return paths
+
+
 def readiness(repo):
     repo=Path(repo).resolve()
     # A freeze must independently replay the strict checkpoint-tensor audit;
@@ -187,6 +230,10 @@ def readiness(repo):
         paths.update(image_replay_paths(repo))
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='image_replay',error=str(exc)))
+    try:
+        paths.update(production_queue_paths(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='hosted_metrics',error=str(exc)))
     ood_manifest=repo/'results/ood_evaluation/manifest.json'
     if not ood_manifest.exists():
         problems.append(dict(study='ood_evaluation',error='Nuisance-shift evaluation missing'))

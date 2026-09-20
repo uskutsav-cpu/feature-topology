@@ -5,7 +5,8 @@ import gzip
 import io
 import tarfile
 from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
-                                    validate_numeric_circle_quotient,verify_manifest)
+                                    production_queue_paths,validate_numeric_circle_quotient,
+                                    verify_manifest)
 from scripts.pack_release import pack
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
@@ -64,6 +65,31 @@ def test_numerical_circle_quotient_validation_keeps_empirical_scope():
     report['final'][0]={**layer,'nodes':None}
     with pytest.raises(ValueError,match='values'):
         validate_numeric_circle_quotient(report)
+
+
+def test_hosted_queue_provenance_is_complete(tmp_path):
+    config=tmp_path/'configs/completion';config.mkdir(parents=True)
+    completion=tmp_path/'results/completion';(completion/'remote_collections').mkdir(parents=True)
+    cohorts=[{'name':'primary','expected_unique_profiles':1},
+             {'name':'width','expected_unique_profiles':2}]
+    atomic_json(config/'production_cohorts_v3.json',{'cohorts':cohorts})
+    attempt={'cohort':'primary','workflow_run':'123','url':'https://github.com/o/r/actions/runs/123',
+             'run_ids':['a'*16],'started':1.,'finished':2.,'conclusion':'success'}
+    atomic_json(completion/'production_queue_primary_v3.json',{
+        'schema':'feature-topology.production-queue-state.v1','attempts':[attempt],
+        'cohorts':{'primary':{'expected':1,'complete':1,'missing':0,'invalid':[]}}})
+    atomic_json(completion/'production_queue_ablation_v3.json',{
+        'schema':'feature-topology.production-queue-state.v1','attempts':[{**attempt,'cohort':'width'}],
+        'cohorts':{'width':{'expected':2,'complete':2,'missing':0,'invalid':[]}}})
+    for name,count in [('primary',1),('width',2)]:
+        atomic_json(completion/'remote_collections'/f'{name}.json',{
+            'expected':count,'complete':['x']*count,'missing':[],'invalid':[]})
+    assert len(production_queue_paths(tmp_path))==5
+    state=json.loads((completion/'production_queue_ablation_v3.json').read_text())
+    state['cohorts']['width']['missing']=1
+    atomic_json(completion/'production_queue_ablation_v3.json',state)
+    with pytest.raises(ValueError,match='Hosted cohort incomplete'):
+        production_queue_paths(tmp_path)
 
 
 def test_frozen_inputs_detect_changes_and_directory_escape(tmp_path):
