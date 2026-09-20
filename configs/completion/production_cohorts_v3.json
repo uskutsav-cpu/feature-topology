@@ -1,0 +1,110 @@
+{
+  "schema": "feature-topology.production-cohorts.v3",
+  "scope": "Operational release/dispatch registry for the already-frozen v3 metric profiles; this does not define or modify scientific settings",
+  "workflow": "production_metrics.yml",
+  "workflow_ref": "main",
+  "unique_profile_total": 845,
+  "shared_primary_index": "configs/completion/primary_inputs_v3.json",
+  "cohorts": [
+    {
+      "name": "primary",
+      "index": "configs/completion/primary_inputs_v3.json",
+      "input_tag": "primary-inputs-v3-2026-09-20",
+      "result_tag": "primary-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 130
+    },
+    {
+      "name": "width",
+      "index": "configs/completion/ablation_inputs_v3/width/91d5ad7e3327b2b6.json",
+      "input_tag": "width-91d5ad7e3327b2b6-inputs-v3-2026-09-20",
+      "result_tag": "width-91d5ad7e3327b2b6-metrics-v3-2026-09-20",
+      "exclude_shared_primary": true,
+      "expected_unique_profiles": 140
+    },
+    {
+      "name": "depth",
+      "index": "configs/completion/ablation_inputs_v3/depth/91d5ad7e3327b2b6.json",
+      "input_tag": "depth-91d5ad7e3327b2b6-inputs-v3-2026-09-20",
+      "result_tag": "depth-91d5ad7e3327b2b6-metrics-v3-2026-09-20",
+      "exclude_shared_primary": true,
+      "expected_unique_profiles": 105
+    },
+    {
+      "name": "ood-spurious",
+      "index": "configs/completion/ablation_inputs_v3/ood/475bfb0e8e0812fa.json",
+      "input_tag": "ood-475bfb0e8e0812fa-inputs-v3-2026-09-20",
+      "result_tag": "ood-475bfb0e8e0812fa-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "ood-concentrated",
+      "index": "configs/completion/ablation_inputs_v3/ood/553ac91d740aab4e.json",
+      "input_tag": "ood-553ac91d740aab4e-inputs-v3-2026-09-20",
+      "result_tag": "ood-553ac91d740aab4e-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "ood-unseen",
+      "index": "configs/completion/ablation_inputs_v3/ood/75e591f003a01877.json",
+      "input_tag": "ood-75e591f003a01877-inputs-v3-2026-09-20",
+      "result_tag": "ood-75e591f003a01877-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "relevance-0.25",
+      "index": "configs/completion/ablation_inputs_v3/relevance/259fe2e03a6cfd6a.json",
+      "input_tag": "relevance-259fe2e03a6cfd6a-inputs-v3-2026-09-20",
+      "result_tag": "relevance-259fe2e03a6cfd6a-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "relevance-0.1",
+      "index": "configs/completion/ablation_inputs_v3/relevance/44c559adaa067137.json",
+      "input_tag": "relevance-44c559adaa067137-inputs-v3-2026-09-20",
+      "result_tag": "relevance-44c559adaa067137-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "relevance-0.05",
+      "index": "configs/completion/ablation_inputs_v3/relevance/480aa1fb6e46d7e5.json",
+      "input_tag": "relevance-480aa1fb6e46d7e5-inputs-v3-2026-09-20",
+      "result_tag": "relevance-480aa1fb6e46d7e5-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "relevance-1.0",
+      "index": "configs/completion/ablation_inputs_v3/relevance/746c074a2f43dcdd.json",
+      "input_tag": "relevance-746c074a2f43dcdd-inputs-v3-2026-09-20",
+      "result_tag": "relevance-746c074a2f43dcdd-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "relevance-0.5",
+      "index": "configs/completion/ablation_inputs_v3/relevance/95eddf02ab1216cc.json",
+      "input_tag": "relevance-95eddf02ab1216cc-inputs-v3-2026-09-20",
+      "result_tag": "relevance-95eddf02ab1216cc-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "cylinder",
+      "index": "configs/completion/ablation_inputs_v3/cylinder/2b10bd30ced2700c.json",
+      "input_tag": "cylinder-2b10bd30ced2700c-inputs-v3-2026-09-20",
+      "result_tag": "cylinder-2b10bd30ced2700c-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "swapped-factor",
+      "index": "configs/completion/ablation_inputs_v3/swapped/e829e3c3dc554a90.json",
+      "input_tag": "swapped-factor-e829e3c3dc554a90-inputs-v3-2026-09-20",
+      "result_tag": "swapped-factor-e829e3c3dc554a90-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 35
+    },
+    {
+      "name": "small-network",
+      "index": "configs/completion/ablation_inputs_v3/small_network/91d5ad7e3327b2b6.json",
+      "input_tag": "small-network-91d5ad7e3327b2b6-inputs-v3-2026-09-20",
+      "result_tag": "small-network-91d5ad7e3327b2b6-metrics-v3-2026-09-20",
+      "expected_unique_profiles": 120
+    }
+  ]
+}

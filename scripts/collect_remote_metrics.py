@@ -31,14 +31,16 @@ def sha256(path):
         return hashlib.file_digest(stream, "sha256").hexdigest()
 
 
-def _download(tag, cache, patterns):
+def _download(tag, cache, patterns, allow_empty=False):
     if not TAG.fullmatch(tag):
         raise ValueError(f"Unsafe release tag: {tag}")
     cache.mkdir(parents=True, exist_ok=True)
     command = ["gh", "release", "download", tag, "--dir", str(cache), "--skip-existing"]
     for pattern in patterns:
         command.extend(["--pattern", pattern])
-    subprocess.run(command, check=True)
+    result = subprocess.run(command, text=True, capture_output=True)
+    if result.returncode and not (allow_empty and "no assets match" in result.stderr.lower()):
+        raise subprocess.CalledProcessError(result.returncode, command, result.stdout, result.stderr)
 
 
 def _record(index, run_id):
@@ -164,7 +166,7 @@ def collect(repo, index_path, input_tag, result_tag, cache, install=True, exclud
     analysis_data = input_cache / index["analysis_data"]["asset"]
     if sha256(analysis_data) != index["analysis_data"]["sha256"]:
         raise ValueError("Downloaded analysis archive checksum mismatch")
-    _download(result_tag, result_cache, ["status-*.json", "metrics-*.tar.gz"])
+    _download(result_tag, result_cache, ["status-*.json", "metrics-*.tar.gz"], allow_empty=True)
     provenance = metric_provenance(analysis_data)
     excluded = set(excluded)
     expected = {row["run_id"] for row in index["runs"]} - excluded
