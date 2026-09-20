@@ -1,0 +1,77 @@
+{
+  "config": {
+    "base": {
+      "dataset_id": "794d2c79097d89ec",
+      "architecture": "CNN",
+      "width": 16,
+      "classes": 3,
+      "centered": true,
+      "target_loss": 0.2,
+      "pooling": "separable_adaptive_mean_v2"
+    },
+    "gammas": [
+      0.125,
+      0.5,
+      1.0,
+      4.0,
+      16.0,
+      64.0,
+      128.0
+    ],
+    "calibration_steps": 1000,
+    "multipliers": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "seed": 900
+  },
+  "selection": {
+    "0.125": {
+      "lr": 0.00625,
+      "reached": false,
+      "loss": 0.9781024280635789,
+      "step": 1000
+    },
+    "0.5": {
+      "lr": 0.1,
+      "reached": false,
+      "loss": 0.9154480813563555,
+      "step": 1000
+    },
+    "1.0": {
+      "lr": 0.4,
+      "reached": false,
+      "loss": 0.8578086463884376,
+      "step": 1000
+    },
+    "4.0": {
+      "lr": 0.4,
+      "reached": false,
+      "loss": 0.8692551016807556,
+      "step": 1000
+    },
+    "16.0": {
+      "lr": 1.6,
+      "reached": false,
+      "loss": 0.8862948371076036,
+      "step": 1000
+    },
+    "64.0": {
+      "lr": 3.2,
+      "reached": false,
+      "loss": 0.9343787708501706,
+      "step": 1000
+    },
+    "128.0": {
+      "lr": 4.525483399593905,
+      "reached": false,
+      "loss": 0.9691443306276168,
+      "step": 1000
+    }
+  }
+}
