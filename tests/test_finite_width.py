@@ -1,7 +1,11 @@
 import numpy as np
 import pandas as pd
 
-from research_ext.finite_width import evaluate_gate, fit_width_curve, select_gate_rows
+from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
+from research_ext.finite_width import (_gate_profile_ids, evaluate_gate,
+                                       fit_width_curve, select_gate_rows)
+from research_ext.io import digest
+from src.training.checkpoints import fingerprint
 
 
 def specification(repeats=80):
@@ -89,3 +93,11 @@ def test_metric_layer_numbering_is_one_indexed():
                 relevance=0.,nuisance_condition='iid',depth=4)
     rows=pd.DataFrame([{**shared,'layer':3},{**shared,'layer':4}])
     assert select_gate_rows(rows,'primary','ablation').layer.tolist()==[4]
+
+
+def test_gate_uses_canonical_catalog_profile_ids_not_directory_fingerprints():
+    primary, ablation = _gate_profile_ids()
+    assert primary == digest(PRODUCTION)
+    assert ablation == digest(ABLATION_PRODUCTION)
+    assert primary != fingerprint(PRODUCTION)
+    assert ablation != fingerprint(ABLATION_PRODUCTION)

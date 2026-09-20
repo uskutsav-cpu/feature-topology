@@ -9,8 +9,18 @@ import pandas as pd
 from scipy.optimize import least_squares
 
 from .catalog import ABLATION_PRODUCTION, PRODUCTION, load_catalog, matched_risk
-from .io import atomic_json, file_digest, read_json
-from src.training.checkpoints import fingerprint
+from .io import atomic_json, digest, file_digest, read_json
+
+
+def _gate_profile_ids() -> tuple[str, str]:
+    """Return the canonical catalog IDs for the two frozen metric profiles.
+
+    Metric directories use the upstream 16-character fingerprint, while the
+    catalog deliberately identifies profiles by the full canonical content
+    hash.  Gate selection operates on catalog rows and therefore must use the
+    latter IDs.
+    """
+    return digest(PRODUCTION), digest(ABLATION_PRODUCTION)
 
 
 def _aicc(residuals: np.ndarray, parameter_count: int) -> float | None:
@@ -197,8 +207,7 @@ def analyze_width_scaling(roots, output, specification_path, profile=None) -> di
             expanded_roots.extend(sorted(root.glob("*/runs")))
     if not expanded_roots:
         raise FileNotFoundError("No supplied width-scaling result root exists")
-    primary_profile = fingerprint(PRODUCTION)
-    ablation_profile = fingerprint(ABLATION_PRODUCTION)
+    primary_profile, ablation_profile = _gate_profile_ids()
     specification_path = Path(specification_path)
     specification = read_json(specification_path)
     catalog = load_catalog(expanded_roots, profile=profile)
