@@ -35,7 +35,7 @@ def groups(report,study):
     return result,excluded
 
 
-def prepare(repo,output,study):
+def prepare(repo,output,study,index_output=None):
     report=inventory(repo,check_tensors=True)
     conditions,excluded=groups(report,study)
     output=Path(output)
@@ -48,6 +48,15 @@ def prepare(repo,output,study):
                 excluded_diverged=excluded,
                 scope='Training inputs only; full production metrics remain required')
     atomic_json(output/'study_index.json',result)
+    if index_output is not None:
+        index_output=Path(index_output)
+        portable=[]
+        for row in indexes:
+            source=output/row['index']
+            destination=index_output/f"{row['condition']}.json"
+            atomic_json(destination,json.loads(source.read_text()))
+            portable.append({**row,'index':destination.name})
+        atomic_json(index_output/'study_index.json',{**result,'conditions':portable})
     return result
 
 
@@ -56,5 +65,6 @@ if __name__=='__main__':
     parser.add_argument('--repo',default='.')
     parser.add_argument('--output',required=True)
     parser.add_argument('--study',choices=STUDIES,required=True)
+    parser.add_argument('--index-output',help='Optional directory for portable committed index copies')
     args=parser.parse_args()
-    print(json.dumps(prepare(args.repo,args.output,args.study)))
+    print(json.dumps(prepare(args.repo,args.output,args.study,args.index_output)))
