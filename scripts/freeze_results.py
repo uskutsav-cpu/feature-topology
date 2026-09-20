@@ -3,6 +3,7 @@ import argparse
 import json
 import math
 from pathlib import Path
+import re
 import sys
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -123,6 +124,61 @@ def production_queue_paths(repo):
                 or report.get('missing')!=[] or report.get('invalid')!=[]):
             raise ValueError(f'Collector ledger incomplete: {name}')
         paths.append(report_path)
+    return paths
+
+
+def cifar_hosted_paths(repo):
+    """Require complete source-bound hosted ledgers for both CIFAR studies."""
+    repo=Path(repo)
+    completion=repo/'results/completion'
+    specification_path=repo/'configs/completion/cifar_sources_v3.json'
+    specification=json.loads(specification_path.read_text())
+    if specification.get('schema')!='feature-topology.cifar-sources.v1':
+        raise ValueError('Invalid frozen CIFAR source specification')
+    provenance=json.loads((completion/'dataset_provenance.json').read_text())
+    provenance_by_name={Path(row['path']).name:row for row in provenance.get('sources',[])}
+    paths=[specification_path]
+    for dataset in ('CIFAR10','CIFAR100'):
+        source=specification['datasets'][dataset]
+        bound=provenance_by_name.get(source['archive'])
+        if (bound is None or bound.get('bytes')!=source['bytes']
+                or bound.get('sha256')!=source['sha256']
+                or bound.get('source_identity')!=source['source_identity']):
+            raise ValueError(f'CIFAR source specification/provenance mismatch: {dataset}')
+        key=dataset.lower()
+        state_path=completion/f'{key}_remote_queue_v3.json'
+        state=json.loads(state_path.read_text())
+        commit=state.get('source_commit')
+        if (state.get('schema')!='feature-topology.remote-cifar-queue.v1'
+                or not isinstance(commit,str) or not re.fullmatch(r'[0-9a-f]{40}',commit)):
+            raise ValueError(f'Invalid hosted CIFAR queue ledger: {dataset}')
+        for attempt in state.get('attempts',[]):
+            if (attempt.get('dataset')!=dataset or attempt.get('stage') not in {'calibration','production'}
+                    or not str(attempt.get('workflow_run','')).isdigit()
+                    or not str(attempt.get('url','')).startswith('https://github.com/')
+                    or not attempt.get('cell_ids') or len(attempt['cell_ids'])>64
+                    or any(not re.fullmatch(r'[0-9a-f]{16}',value) for value in attempt['cell_ids'])
+                    or 'started' not in attempt or 'finished' not in attempt
+                    or not attempt.get('conclusion')):
+                raise ValueError(f'Incomplete hosted CIFAR attempt provenance: {dataset}')
+        stages=state.get(dataset,{})
+        for stage,expected in [('calibration',49),('production',35)]:
+            row=stages.get(stage,{})
+            if (row.get('expected')!=expected or row.get('complete')!=expected
+                    or row.get('missing')!=0 or row.get('invalid')!=[]):
+                raise ValueError(f'Hosted CIFAR stage incomplete: {dataset}/{stage}')
+            report_path=completion/'remote_collections'/f'{key}_{stage}.json'
+            report=json.loads(report_path.read_text())
+            if (report.get('schema')!='feature-topology.remote-cifar-collection.v1'
+                    or report.get('source_commit')!=commit
+                    or report.get('source_specification')!='configs/completion/cifar_sources_v3.json'
+                    or report.get('source_specification_sha256')!=sha256(specification_path)
+                    or report.get('expected')!=expected
+                    or len(report.get('complete',{}))!=expected
+                    or report.get('missing')!=[] or report.get('invalid')!=[]):
+                raise ValueError(f'Hosted CIFAR collection incomplete: {dataset}/{stage}')
+            paths.append(report_path)
+        paths.append(state_path)
     return paths
 
 
@@ -298,6 +354,10 @@ def readiness(repo):
         paths.update(production_queue_paths(repo))
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_metrics',error=str(exc)))
+    try:
+        paths.update(cifar_hosted_paths(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='hosted_cifar',error=str(exc)))
     try:
         paths.update(calibration_artifact_paths(repo))
     except (ValueError,KeyError,OSError) as exc:

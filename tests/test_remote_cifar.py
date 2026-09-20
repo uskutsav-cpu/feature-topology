@@ -96,7 +96,8 @@ def test_restore_uses_newest_cumulative_attempt(tmp_path):
 
 def test_collector_validates_and_installs_complete_archive(tmp_path,monkeypatch):
     cell=calibration_cell(); work=tmp_path/"work"; data=tmp_path/"data"; cache=tmp_path/"cache"
-    source=tmp_path/"sources.json"; archive=data/"fixture"; archive.parent.mkdir(); archive.write_bytes(b"x")
+    repo=tmp_path/"repo"; source=repo/"configs/completion/sources.json"; source.parent.mkdir(parents=True)
+    archive=data/"fixture"; archive.parent.mkdir(); archive.write_bytes(b"x")
     atomic_json(source,{"schema":"feature-topology.cifar-sources.v1","datasets":{
         "CIFAR10":{"archive":archive.name,"bytes":1,"sha256":remote_cifar.sha256(archive)}}})
     directory=remote_cifar.run_directory(work,cell); directory.mkdir(parents=True)
@@ -107,7 +108,6 @@ def test_collector_validates_and_installs_complete_archive(tmp_path,monkeypatch)
     (directory/"final.pt").write_bytes(b"checkpoint")
     remote_cifar.pack(work,data,cache,cell,"job-3",source)
     monkeypatch.setattr(collect_remote_cifar,"download",lambda tag,path:None)
-    repo=tmp_path/"repo"; repo.mkdir()
     result=collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,install=True)
     assert len(result["complete"])==1 and not result["invalid"]
     installed=repo/"results"/"cifar10"/"calibration"/directory.name/"final.pt"

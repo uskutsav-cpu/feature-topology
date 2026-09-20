@@ -5,7 +5,7 @@ import gzip
 import io
 import tarfile
 from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
-                                    calibration_artifact_paths,production_queue_paths,
+                                    calibration_artifact_paths,cifar_hosted_paths,production_queue_paths,
                                     validate_numeric_circle_quotient,
                                     validate_ood_evaluation_row,verify_manifest)
 from scripts.pack_release import pack
@@ -91,6 +91,47 @@ def test_hosted_queue_provenance_is_complete(tmp_path):
     atomic_json(completion/'production_queue_ablation_v3.json',state)
     with pytest.raises(ValueError,match='Hosted cohort incomplete'):
         production_queue_paths(tmp_path)
+
+
+def test_hosted_cifar_provenance_is_source_bound(tmp_path):
+    config=tmp_path/'configs/completion';config.mkdir(parents=True)
+    completion=tmp_path/'results/completion';collections=completion/'remote_collections'
+    collections.mkdir(parents=True)
+    source_rows={}
+    provenance=[]
+    for dataset,archive in [('CIFAR10','cifar-10-python.tar.gz'),
+                            ('CIFAR100','cifar-100-python.tar.gz')]:
+        row={'archive':archive,'bytes':10,'sha256':dataset.lower()*4,
+             'source_identity':{'algorithm':'md5','value':dataset}}
+        source_rows[dataset]=row
+        provenance.append({'path':'data/cifar/'+archive,'bytes':row['bytes'],
+                           'sha256':row['sha256'],'source_identity':row['source_identity']})
+    spec=config/'cifar_sources_v3.json'
+    atomic_json(spec,{'schema':'feature-topology.cifar-sources.v1','datasets':source_rows})
+    atomic_json(completion/'dataset_provenance.json',{'sources':provenance})
+    commit='a'*40
+    for dataset in ('CIFAR10','CIFAR100'):
+        key=dataset.lower()
+        state={'schema':'feature-topology.remote-cifar-queue.v1','source_commit':commit,
+               'attempts':[{'dataset':dataset,'stage':'calibration','workflow_run':'123',
+                            'url':'https://github.com/o/r/actions/runs/123','cell_ids':['b'*16],
+                            'started':1.,'finished':2.,'conclusion':'success'}],
+               dataset:{'calibration':{'expected':49,'complete':49,'missing':0,'invalid':[]},
+                        'production':{'expected':35,'complete':35,'missing':0,'invalid':[]}}}
+        atomic_json(completion/f'{key}_remote_queue_v3.json',state)
+        for stage,count in [('calibration',49),('production',35)]:
+            atomic_json(collections/f'{key}_{stage}.json',{
+                'schema':'feature-topology.remote-cifar-collection.v1','source_commit':commit,
+                'source_specification':'configs/completion/cifar_sources_v3.json',
+                'source_specification_sha256':hashlib.sha256(spec.read_bytes()).hexdigest(),
+                'expected':count,'complete':{str(i):'asset' for i in range(count)},
+                'missing':[],'invalid':[]})
+    assert len(cifar_hosted_paths(tmp_path))==7
+    report=json.loads((collections/'cifar10_production.json').read_text())
+    report['source_commit']='c'*40
+    atomic_json(collections/'cifar10_production.json',report)
+    with pytest.raises(ValueError,match='collection incomplete'):
+        cifar_hosted_paths(tmp_path)
 
 
 def test_ood_evaluation_must_be_finite_before_freeze():

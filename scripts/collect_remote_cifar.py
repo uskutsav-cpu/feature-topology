@@ -129,6 +129,7 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
     source_specification = Path(source_specification)
     if not source_specification.is_absolute():
         source_specification = repo/source_specification
+    specification_sha256 = sha256(source_specification)
     normalized = [parse_cell(cell) for cell in cells]
     expected = {cell_id(cell): cell for cell in normalized}
     if len(expected) != len(normalized):
@@ -169,6 +170,8 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
                 installed[identifier] = install_archive(repo, archive, report)
     return {"schema": "feature-topology.remote-cifar-collection.v1", "result_tag": tag,
             "source_commit": expected_commit,
+            "source_specification": source_specification.relative_to(repo).as_posix(),
+            "source_specification_sha256": specification_sha256,
             "expected": len(expected), "complete": complete, "partial": partial,
             "missing": sorted(set(expected)-set(complete)), "invalid": invalid,
             "installed_files": installed}
