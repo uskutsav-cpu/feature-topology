@@ -29,7 +29,9 @@ def nonfinite_paths(value,path=""):
 
 def readiness(repo):
     repo=Path(repo).resolve()
-    result=inventory(repo)
+    # A freeze must independently replay the strict checkpoint-tensor audit;
+    # it must not rely on a separately generated inventory report.
+    result=inventory(repo,check_tensors=True)
     problems=list(result['failures'])
     expected_counts=dict(main=130,width=175,depth=140,relevance=210,swapped=35,cylinder=35,
                          small_network=120,ood=140)

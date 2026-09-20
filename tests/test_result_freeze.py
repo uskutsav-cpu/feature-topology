@@ -16,6 +16,17 @@ def test_missing_studies_cannot_be_frozen(tmp_path):
     assert any(p.get('study')=='design' for p in report['problems'])
 
 
+def test_freeze_invokes_tensor_validation(tmp_path,monkeypatch):
+    import scripts.freeze_results as freezer
+    called={}
+    def fake_inventory(repo,check_tensors=False):
+        called['check_tensors']=check_tensors
+        return {'failures':[],'studies':{},'validated_runs':[]}
+    monkeypatch.setattr(freezer,'inventory',fake_inventory)
+    freezer.readiness(tmp_path)
+    assert called['check_tensors'] is True
+
+
 def test_nonfinite_metric_paths_are_never_silent():
     value={'ok':1.,'bad':None,'nested':[2.,float('inf')]}
     assert nonfinite_paths(value)==['bad','nested[1]']
