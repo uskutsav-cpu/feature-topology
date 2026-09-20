@@ -10,6 +10,7 @@ from src.training.checkpoints import fingerprint,atomic_json
 from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
 from scripts.image_statistics import summarize_images
 from scripts.ood_statistics import summarize_nuisance_shift
+from scripts.relevance_statistics import summarize_relevance
 
 
 def main(args):
@@ -21,6 +22,7 @@ def main(args):
     if output.exists() and any(output.iterdir()):
         raise ValueError('Final analysis output must be empty to exclude stale artifacts')
     reports=[]
+    relevance_groups=[]
     plan=json.loads((repo/'configs/completion/analysis_plan.json').read_text())
     primary_index=json.loads((repo/'configs/completion/primary_inputs_v3.json').read_text())
     primary_ids={row['run_id'] for row in primary_index['runs']}
@@ -41,7 +43,8 @@ def main(args):
                 groups.append(dict(path=str(path),gammas=sorted({r['gamma'] for r in group['runs']}),
                                    seeds=sorted({r['seed'] for r in group['runs']}),run_ids=sorted(run_ids),
                                    profile=PRODUCTION if shared else ABLATION_PRODUCTION,
-                                   source='shared_primary' if shared else 'ablation'))
+                                   source='shared_primary' if shared else 'ablation',
+                                   data_condition=group['condition']))
         for group in groups:
             destination=output/name/(Path(group['path']).name if group['source']!='shared_primary'
                                      else 'shared_primary')
@@ -51,12 +54,15 @@ def main(args):
             reports.append(dict(study=name,group=Path(group['path']).name,source=group['source'],
                                 run_count=len(group['run_ids']),profile=fingerprint(group['profile']),
                                 output=destination.relative_to(repo).as_posix()))
+            if name=='relevance':
+                relevance_groups.append((group['data_condition']['relevance'],destination))
     summarize_images(repo,output/'images')
+    relevance_statistics=summarize_relevance(relevance_groups,output/'relevance_dependence')
     ood_statistics=summarize_nuisance_shift(repo/'results/ood_evaluation/manifest.json',output/'ood_evaluation')
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
-                ood_statistics=ood_statistics,
+                relevance_statistics=relevance_statistics,ood_statistics=ood_statistics,
                 frozen_manifest_sha256=sha256(Path(args.manifest)),files=files,
                 frozen_input_files=len(manifest['files']),
                 scope='Separate condition-level seed analyses and distinct image-study schemas; exact certificates retain their own domain-specific claims.'))
