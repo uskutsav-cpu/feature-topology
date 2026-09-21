@@ -6,6 +6,9 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 from research_ext.io import atomic_json, atomic_text
 from research_ext.report import METRICS
@@ -65,6 +68,29 @@ def summarize_relevance(groups, output, repeats=2000):
                                       **paired_contrast(a,b,repeats=repeats)))
     atomic_text(output/'relevance_seed_confidence_intervals.csv',pd.DataFrame(summaries).to_csv(index=False))
     atomic_json(output/'relevance_paired_contrasts.json',contrasts)
+    summary=pd.DataFrame(summaries)
+    primary_metrics=['fiber_local_normalized_minimum','fiber_global_normalized_minimum',
+                     'mlp_nuisance_cosine','test_accuracy']
+    last_layer=int(frame.layer.max())
+    fig,axes=plt.subplots(2,2,figsize=(10,7),layout='constrained')
+    for ax,metric in zip(axes.flat,primary_metrics):
+        part=summary[(summary.layer==last_layer)&(summary.metric==metric)]
+        for relevance,group in part.groupby('relevance'):
+            group=group.sort_values('gamma')
+            ax.plot(group.gamma,group['mean'],marker='o',label=f'λ={relevance:g}')
+            band=group[group.lower.notna()&group.upper.notna()]
+            if not band.empty:
+                ax.fill_between(band.gamma.to_numpy(float),band.lower.to_numpy(float),
+                                band.upper.to_numpy(float),alpha=.12)
+        ax.set_xscale('log',base=2)
+        ax.set_xlabel('Output scale γ')
+        ax.set_title(metric.replace('_',' '))
+        ax.grid(alpha=.2)
+    axes.flat[-1].legend(frameon=False,fontsize=8,ncol=2)
+    fig.suptitle(f'Relevance dependence at last hidden layer (L{last_layer})')
+    for suffix in ['png','pdf','svg']:
+        fig.savefig(output/f'relevance_regime_map.{suffix}',dpi=220)
+    plt.close(fig)
     result=dict(schema='feature-topology.relevance-statistics.v1',
                 relevance_levels=levels,runs=int(frame.run_id.nunique()),rows=len(frame),
                 bootstrap_repeats=repeats,replicate_unit='training seed',
@@ -73,4 +99,3 @@ def summarize_relevance(groups, output, repeats=2000):
                 scope='Matched-risk relevance dependence; geometry and predictive effects remain distinct.')
     atomic_json(output/'relevance_analysis_scope.json',result)
     return result
-

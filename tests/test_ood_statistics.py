@@ -27,3 +27,4 @@ def test_nuisance_shift_statistics_preserve_seed_pairing(tmp_path):
     contrasts=json.loads((tmp_path/'out/ood_adjacent_gamma_contrasts.json').read_text())
     accuracy=next(row for row in contrasts if row['evaluation_environment']=='iid' and row['metric']=='accuracy')
     assert accuracy['paired_seeds']==[0,1] and abs(accuracy['mean']-.05)<1e-12
+    assert (tmp_path/'out/ood_intervention_shifts.svg').is_file()

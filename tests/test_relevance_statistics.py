@@ -24,3 +24,4 @@ def test_relevance_statistics_preserve_seed_pairing(tmp_path):
     row=next(x for x in contrasts if x['comparison']=='baseline' and x['relevance_right']==1.
              and x['gamma']==.5 and x['metric']=='test_accuracy')
     assert row['paired_seeds']==[0,1] and abs(row['mean']-2.)<1e-12
+    assert (tmp_path/'out/relevance_regime_map.svg').is_file()
