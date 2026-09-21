@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from scripts.final_analysis import verify_consumed_inputs
+from scripts.final_analysis import verify_consumed_inputs, verify_frozen_paths
 
 
 def digest(path):
@@ -42,3 +42,22 @@ def test_consumed_analysis_inputs_reject_changed_or_external_files(tmp_path):
     input_hashes.write_text(json.dumps({str(external):digest(external)}))
     with pytest.raises(ValueError,match='escapes repository'):
         verify_consumed_inputs(tmp_path,frozen,input_hashes)
+
+
+def test_direct_analysis_inputs_must_be_frozen_and_unchanged(tmp_path):
+    source=tmp_path/'results/image/runs/run/summary.json'
+    source.parent.mkdir(parents=True)
+    source.write_text('{"status": "complete"}\n')
+    expected=digest(source)
+    frozen={'files':{'results/image/runs/run/summary.json':expected}}
+    assert verify_frozen_paths(tmp_path,frozen,[source])=={
+        'results/image/runs/run/summary.json':expected}
+
+    extra=source.parent/'metrics.json'
+    extra.write_text('{}\n')
+    with pytest.raises(ValueError,match='absent from frozen manifest'):
+        verify_frozen_paths(tmp_path,frozen,[extra])
+
+    source.write_text('{"status": "changed"}\n')
+    with pytest.raises(ValueError,match='changed frozen input'):
+        verify_frozen_paths(tmp_path,frozen,[source])

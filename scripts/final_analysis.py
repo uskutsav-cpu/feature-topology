@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from scripts.freeze_results import verify_manifest, sha256
+from scripts.freeze_results import exact_control_paths, verify_manifest, sha256
 from research_ext.report import analyze
 from src.training.checkpoints import fingerprint,atomic_json
 from research_ext.catalog import ABLATION_PRODUCTION, PRODUCTION
@@ -33,6 +33,33 @@ def verify_consumed_inputs(repo, manifest, input_hashes_path):
     return consumed
 
 
+def verify_frozen_paths(repo, manifest, paths):
+    """Require each directly consumed analysis input to be freeze-bound.
+
+    The generic synthetic report records its own input hashes.  The image,
+    OOD, certification, and study-discovery paths are read by smaller helpers,
+    so they pass through this explicit guard instead.  This also rejects an
+    otherwise valid-looking unlisted run dropped into a globbed directory
+    after the results freeze.
+    """
+    repo=Path(repo).resolve()
+    frozen=manifest.get('files',{})
+    verified={}
+    for supplied in paths:
+        source=Path(supplied).resolve()
+        if not source.is_relative_to(repo):
+            raise ValueError(f'Analysis input escapes repository: {supplied}')
+        relative=source.relative_to(repo).as_posix()
+        expected=frozen.get(relative)
+        if expected is None:
+            raise ValueError(f'Analysis consumed input absent from frozen manifest: {relative}')
+        observed=sha256(source) if source.is_file() else None
+        if observed!=expected:
+            raise ValueError(f'Analysis consumed changed frozen input: {relative}')
+        verified[relative]=observed
+    return verified
+
+
 def main(args):
     repo=Path(args.repo).resolve()
     manifest=verify_manifest(repo,args.manifest)
@@ -45,6 +72,8 @@ def main(args):
     relevance_groups=[]
     plan=json.loads((repo/'configs/completion/analysis_plan.json').read_text())
     primary_index=json.loads((repo/'configs/completion/primary_inputs_v3.json').read_text())
+    verify_frozen_paths(repo,manifest,[repo/'configs/completion/analysis_plan.json',
+                                      repo/'configs/completion/primary_inputs_v3.json'])
     primary_ids={row['run_id'] for row in primary_index['runs']}
     for name in [*plan['synthetic_studies'], 'ood']:
         study=repo/'results'/name
@@ -53,7 +82,9 @@ def main(args):
                          run_ids=sorted(primary_ids),profile=PRODUCTION,source='primary')]
         else:
             groups=[]
-            for group in json.loads((study/'manifest.json').read_text()):
+            study_manifest=study/'manifest.json'
+            verify_frozen_paths(repo,manifest,[study_manifest])
+            for group in json.loads(study_manifest.read_text()):
                 run_ids={row['run_id'] for row in group['runs']}
                 shared=run_ids & primary_ids
                 if shared and shared != run_ids:
@@ -77,11 +108,33 @@ def main(args):
                                 output=destination.relative_to(repo).as_posix()))
             if name=='relevance':
                 relevance_groups.append((group['data_condition']['relevance'],destination))
+    image_inputs=[]
+    for study in ['rotated_digits','dsprites','cifar10','cifar100']:
+        for summary_path in sorted((repo/'results'/study).glob('runs/*/summary.json')):
+            image_inputs.append(summary_path)
+            if json.loads(summary_path.read_text()).get('status')!='diverged':
+                image_inputs.append(summary_path.parent/'metrics.json')
+    verify_frozen_paths(repo,manifest,image_inputs)
     summarize_images(repo,output/'images')
     relevance_statistics=summarize_relevance(relevance_groups,output/'relevance_dependence')
-    ood_statistics=summarize_nuisance_shift(repo/'results/ood_evaluation/manifest.json',output/'ood_evaluation')
+    ood_manifest=repo/'results/ood_evaluation/manifest.json'
+    verify_frozen_paths(repo,manifest,[ood_manifest])
+    ood_statistics=summarize_nuisance_shift(ood_manifest,output/'ood_evaluation')
+    trained_manifest=repo/'results/exact_trained_circles/manifest.json'
+    circle_manifest=repo/'results/circle_quotient/manifest.json'
+    certification_inputs=[*exact_control_paths(repo),trained_manifest,circle_manifest,
+                          repo/'results/completion/formal/formal_status.json']
+    certification_inputs.extend(
+        repo/'results/exact_trained_circles'/row['certificate_file']
+        for row in json.loads(trained_manifest.read_text())['records'])
+    certification_inputs.extend(
+        repo/'results/circle_quotient/runs'/row['run_id']/'quotient.json'
+        for row in json.loads(circle_manifest.read_text()))
+    verify_frozen_paths(repo,manifest,certification_inputs)
     certification=summarize_certification(repo,output/'certification')
-    width_gate=json.loads((repo/'results/analysis/width_scaling_gate.json').read_text())
+    width_gate_path=repo/'results/analysis/width_scaling_gate.json'
+    verify_frozen_paths(repo,manifest,[width_gate_path])
+    width_gate=json.loads(width_gate_path.read_text())
     if (width_gate.get('schema')!='feature-topology.width-scaling-result.v1'
             or width_gate.get('status')!='complete'):
         raise ValueError('Frozen finite-width terminology result is incomplete')
