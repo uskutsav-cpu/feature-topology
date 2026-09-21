@@ -112,10 +112,25 @@ python scripts/pack_release.py --manifest results/frozen_manifest.json \
   --output release-assets
 ```
 
+When retaining all compressed parts would exceed local free space, first create
+the final GitHub release at the already-pushed frozen tag, then use the bounded-
+space publication mode:
+
+```sh
+python scripts/pack_release.py --manifest results/frozen_manifest.json \
+  --analysis-manifest results/final_analysis/analysis_manifest.json \
+  --output release-assets --upload-release production-v3-frozen
+```
+
+Each part is uploaded without clobbering, checked against GitHub's server-side
+SHA-256 digest, and only then removed locally. Source results, checkpoints,
+caches, the package index, and the frozen manifests are never deleted.
+
 The freeze requires every design, production trajectory, image study, trained
 certificate and formal audit. Final statistics/figures require verified frozen
 inputs. The release packer creates deterministic gzip/tar parts of at most 1 GiB,
-with checksums, and refuses changed frozen inputs. Final image-study synthesis
+with checksums, and refuses changed frozen inputs or conflicting remote assets.
+Final image-study synthesis
 and the paper remain dependent on completed experiments and the results freeze.
 
 GitHub Actions checks Python tests and the Lean build/audit. Successful CI is an

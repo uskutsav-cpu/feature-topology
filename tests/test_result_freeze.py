@@ -8,7 +8,7 @@ from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readines
                                     calibration_artifact_paths,cifar_hosted_paths,production_queue_paths,
                                     validate_numeric_circle_quotient,
                                     validate_ood_evaluation_row,verify_manifest)
-from scripts.pack_release import pack
+from scripts.pack_release import GithubReleaseUploader,pack
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
 from research_ext.cli import exact_controls
@@ -210,6 +210,39 @@ def test_release_parts_reconstruct_and_are_reproducible(tmp_path):
     payload=b''.join((tmp_path/'first'/p['file']).read_bytes() for p in first['parts'])
     with tarfile.open(fileobj=io.BytesIO(gzip.decompress(payload)),mode='r:') as archive:
         assert archive.extractfile('feature-topology/measurement.txt').read()==source.read_bytes()
+
+
+def test_release_parts_can_be_streamed_after_verified_callback(tmp_path):
+    source=tmp_path/'measurement.txt'
+    source.write_text('actual measured output\n')
+    value=dict(schema='feature-topology.frozen-results.v1',ready=True,
+               files={'measurement.txt':hashlib.sha256(source.read_bytes()).hexdigest()})
+    manifest=tmp_path/'frozen.json'
+    manifest.write_text(json.dumps(value))
+    uploaded={}
+    def publish(path,record):
+        payload=path.read_bytes()
+        assert len(payload)==record['bytes']
+        assert hashlib.sha256(payload).hexdigest()==record['sha256']
+        uploaded[record['file']]=payload
+    output=tmp_path/'streamed'
+    result=pack(tmp_path,manifest,output,part_bytes=100,
+                on_part=publish,retain_parts=False)
+    assert not list(output.glob('feature-topology.tar.gz.part*'))
+    payload=b''.join(uploaded[row['file']] for row in result['parts'])
+    with tarfile.open(fileobj=io.BytesIO(gzip.decompress(payload)),mode='r:') as archive:
+        assert archive.extractfile('feature-topology/measurement.txt').read()==source.read_bytes()
+
+
+def test_remote_release_digest_match_is_fail_closed():
+    record={'file':'part000','bytes':3,'sha256':hashlib.sha256(b'abc').hexdigest()}
+    row={'name':'part000','size':3,'state':'uploaded',
+         'digest':'sha256:'+record['sha256']}
+    assert GithubReleaseUploader._matches(row,record)
+    assert not GithubReleaseUploader._matches({**row,'size':4},record)
+    assert not GithubReleaseUploader._matches({**row,'digest':None},record)
+    with pytest.raises(ValueError,match='Unsafe GitHub release tag'):
+        GithubReleaseUploader('../not-a-tag')
 
 
 def test_release_binds_derived_artifacts_to_freeze(tmp_path):

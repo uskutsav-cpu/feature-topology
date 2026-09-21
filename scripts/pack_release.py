@@ -5,6 +5,8 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import re
+import subprocess
 import sys
 import tarfile
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -13,9 +15,10 @@ from src.training.checkpoints import atomic_json
 
 
 class Parts:
-    def __init__(self,root,limit):
+    def __init__(self,root,limit,on_part=None,retain_parts=True):
         self.root,self.limit=Path(root),limit
         self.root.mkdir(parents=True,exist_ok=True)
+        self.on_part,self.retain_parts=on_part,retain_parts
         self.stream=None
         self.records=[]
         self.size=0
@@ -23,7 +26,12 @@ class Parts:
     def finish_part(self):
         if self.stream is not None:
             self.stream.close()
-            self.records.append(dict(file=self.path.name,bytes=self.size,sha256=self.hash.hexdigest()))
+            record=dict(file=self.path.name,bytes=self.size,sha256=self.hash.hexdigest())
+            if self.on_part is not None:
+                self.on_part(self.path,record)
+            self.records.append(record)
+            if not self.retain_parts:
+                self.path.unlink()
             self.stream=None
 
     def write(self,data):
@@ -48,7 +56,42 @@ class Parts:
             self.stream.flush()
 
 
-def pack(repo,manifest_path,output,part_bytes=1024**3,analysis_manifest=None):
+class GithubReleaseUploader:
+    """Idempotently publish a part and verify GitHub's server-side digest."""
+    def __init__(self,tag):
+        if not re.fullmatch(r"[0-9A-Za-z._-]+",tag):
+            raise ValueError("Unsafe GitHub release tag")
+        self.tag=tag
+        self.assets=self._assets()
+
+    def _assets(self):
+        result=subprocess.run(
+            ["gh","release","view",self.tag,"--json","assets"],
+            check=True,text=True,capture_output=True)
+        return {row["name"]:row for row in json.loads(result.stdout)["assets"]}
+
+    @staticmethod
+    def _matches(row,record):
+        return (row.get("state")=="uploaded"
+                and row.get("size")==record["bytes"]
+                and row.get("digest")==f"sha256:{record['sha256']}")
+
+    def __call__(self,path,record):
+        path=Path(path)
+        existing=self.assets.get(record["file"])
+        if existing is not None:
+            if not self._matches(existing,record):
+                raise ValueError(f"Conflicting release asset: {record['file']}")
+            return
+        subprocess.run(["gh","release","upload",self.tag,str(path)],check=True)
+        self.assets=self._assets()
+        uploaded=self.assets.get(record["file"])
+        if uploaded is None or not self._matches(uploaded,record):
+            raise ValueError(f"Uploaded release asset failed digest verification: {record['file']}")
+
+
+def pack(repo,manifest_path,output,part_bytes=1024**3,analysis_manifest=None,
+         on_part=None,retain_parts=True):
     repo=Path(repo).resolve()
     manifest=verify_manifest(repo,manifest_path)
     files=dict(manifest['files'])
@@ -70,7 +113,7 @@ def pack(repo,manifest_path,output,part_bytes=1024**3,analysis_manifest=None):
                 raise ValueError(f'Analysis artifact missing, changed, or conflicting: {relative}')
             files[relative]=expected
         files[analysis_path.relative_to(repo).as_posix()]=hashlib.sha256(analysis_path.read_bytes()).hexdigest()
-    sink=Parts(output,part_bytes)
+    sink=Parts(output,part_bytes,on_part=on_part,retain_parts=retain_parts)
     with gzip.GzipFile(filename='',mode='wb',fileobj=sink,mtime=0,compresslevel=6) as zipped:
         with tarfile.open(fileobj=zipped,mode='w|',format=tarfile.PAX_FORMAT) as archive:
             for relative in sorted(files):
@@ -100,5 +143,15 @@ if __name__=='__main__':
     parser.add_argument('--manifest',required=True)
     parser.add_argument('--output',required=True)
     parser.add_argument('--analysis-manifest')
+    parser.add_argument('--upload-release',
+                        help='Upload each verified part to this existing GitHub release')
     args=parser.parse_args()
-    print(json.dumps(pack(args.repo,args.manifest,args.output,analysis_manifest=args.analysis_manifest),indent=2))
+    uploader=GithubReleaseUploader(args.upload_release) if args.upload_release else None
+    result=pack(args.repo,args.manifest,args.output,
+                analysis_manifest=args.analysis_manifest,on_part=uploader,
+                retain_parts=uploader is None)
+    if uploader is not None:
+        index=Path(args.output)/'release_parts.json'
+        uploader(index,dict(file=index.name,bytes=index.stat().st_size,
+                            sha256=hashlib.sha256(index.read_bytes()).hexdigest()))
+    print(json.dumps(result,indent=2))
