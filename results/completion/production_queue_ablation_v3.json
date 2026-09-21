@@ -420,7 +420,9 @@
         "915c71ab4889efee",
         "93327b67ea1a8f1a"
       ],
-      "started": 1789942205.4771671
+      "started": 1789942205.4771671,
+      "finished": 1789945841.0,
+      "conclusion": "success"
     },
     {
       "cohort": "relevance-0.25",
