@@ -12,6 +12,7 @@ from scripts.image_statistics import summarize_images
 from scripts.ood_statistics import summarize_nuisance_shift
 from scripts.relevance_statistics import summarize_relevance
 from scripts.certification_statistics import summarize_certification
+from scripts.width_statistics import plot_width_gate
 
 
 def verify_consumed_inputs(repo, manifest, input_hashes_path):
@@ -140,6 +141,7 @@ def main(args):
         raise ValueError('Frozen finite-width terminology result is incomplete')
     width_scaling={key:width_gate[key] for key in [
         'metric','terminology','phase_transition_language_allowed','clauses','scaling','scope']}
+    plot_width_gate(width_gate,output/'width_scaling')
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
