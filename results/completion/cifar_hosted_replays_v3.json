@@ -1,0 +1,12 @@
+{
+  "schema": "feature-topology.cifar-hosted-replays.v1",
+  "audit_tag": "cifar-replay-audit-v3-7a81b65",
+  "audit_commit": "7a81b6536e1e5ea2d223c34cc4f31101af4d62b6",
+  "records": [
+    {
+      "run_id": "9de89f2accce69ff",
+      "path": "results/completion/cifar_hosted_replays/replay-9de89f2accce69ff-35631951852.json",
+      "sha256": "140dd6ed1e754edd5287d328b075ff89bd601b3c7c8a82e5c7f0216efcc549ce"
+    }
+  ]
+}

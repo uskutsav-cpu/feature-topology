@@ -56,6 +56,40 @@
         "small_network_invalid": 0,
         "retry_workflow": "35584757035"
       }
+    },
+    {
+      "recorded_at_utc": "2026-09-21T18:13:23Z",
+      "classification": "numerical",
+      "summary": "A macOS CPU replay of one CIFAR100 checkpoint differed from the saved Linux production accuracy by one prediction among 10,000 test examples while reproducing the saved loss within 4.79e-7.",
+      "affected_run": {
+        "run_id": "9de89f2accce69ff",
+        "dataset": "CIFAR100",
+        "gamma": 1.0,
+        "seed": 1,
+        "saved_test_loss": 2.643527918243408,
+        "saved_correct": 4266,
+        "local_macos_test_loss": 2.643527439880371,
+        "local_macos_correct": 4265,
+        "local_correct_delta": -1,
+        "minimum_local_top2_margin": 9.5367431640625e-06,
+        "minimum_margin_sample_index": 5486
+      },
+      "diagnosis": "The discrepancy reproduced identically with one, two, and four local PyTorch CPU threads and is a cross-platform near-tie, not a stale checkpoint, corrupt archive, or nondeterministic local thread schedule.",
+      "hosted_workflow_impact": "none",
+      "scientific_protocol_impact": "none",
+      "recovery": "An independent GitHub-hosted Linux x86_64 replay in workflow 35631951852 exactly reproduced the saved correct count (4266/10000) and reproduced the saved loss within 4.39e-8. The local discrepancy remains recorded as a portability diagnostic. No saved metric was overwritten, no tolerance was widened, and no scientific setting changed.",
+      "independent_source_platform_replay": {
+        "workflow_run": "35631951852",
+        "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35631951852",
+        "audit_release": "cifar-replay-audit-v3-7a81b65",
+        "report": "results/completion/cifar_hosted_replays/replay-9de89f2accce69ff-35631951852.json",
+        "report_sha256": "140dd6ed1e754edd5287d328b075ff89bd601b3c7c8a82e5c7f0216efcc549ce",
+        "replayed_test_loss": 2.643527962112427,
+        "replayed_correct": 4266,
+        "correct_count_delta": 0,
+        "loss_delta": 4.386901863995263e-08
+      },
+      "duplicate_computation_detected": false
     }
   ]
 }
