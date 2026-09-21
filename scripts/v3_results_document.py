@@ -171,6 +171,9 @@ def render(repo: Path, output: Path, frozen_manifest_sha256: str, reports: list[
         "No additional monotonicity or architecture-universality decision rule is introduced "
         "after observing v3; full curves and paired contrasts remain the evidence.",
     ]
+    scaling = width_scaling["scaling"]
+    relevance_levels = ", ".join(
+        f"{float(value):g}" for value in relevance_statistics["relevance_levels"])
     text = """# Frozen v3 scientific results
 
 This document is generated deterministically from the immutable v3 result manifest and
@@ -190,8 +193,12 @@ otherwise.
 
 The frozen gate returns **{width_scaling['terminology']}**. Phase-transition language is
 `{str(width_scaling['phase_transition_language_allowed']).lower()}`. This decision is
-mechanical and was not changed in response to the result. The complete clause values and
-scaling estimates are recorded in `analysis_manifest.json` and visualized in
+mechanical and was not changed in response to the result. Transition-width shrink support
+is {scaling['bootstrap_shrink_support']:.3f}; stable-center support is
+{scaling['bootstrap_stable_center_support']:.3f}; and the largest-to-smallest fitted
+transition-width ratio is {scaling['largest_to_smallest_transition_width_ratio']:.3f}.
+The fitted transition width therefore broadened rather than sharpened. The complete clause
+values and scaling estimates are recorded in `analysis_manifest.json` and visualized in
 [`width_scaling/finite_width_gate.png`](width_scaling/finite_width_gate.png).
 
 ## Primary endpoint effect sizes
@@ -205,7 +212,7 @@ are shown here.
 
 ## Relevance and nuisance interventions
 
-All {relevance_statistics['relevance_levels']} relevance levels are reported with training-
+All frozen relevance levels ({relevance_levels}) are reported with training-
 seed intervals and fixed-gamma paired contrasts in `relevance_dependence/`. The OOD analysis
 contains {ood_statistics['runs']} checkpoint-hash-bound runs and reports intervention-minus-
 IID effects in `ood_evaluation/`. These predictive contrasts do not establish representation
