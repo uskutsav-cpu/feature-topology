@@ -5,6 +5,7 @@ CPU and reproduces its held-out test evaluation, in addition to checking the
 frozen calibration and every required gamma/seed cell.
 """
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -23,6 +24,14 @@ GAMMAS = [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0]
 SEEDS = range(5)
 
 
+def sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
 def finite_number(value):
     return isinstance(value, (float, int)) and math.isfinite(value)
 
@@ -35,7 +44,17 @@ def finite_tree(value):
     return value is None or finite_number(value) or isinstance(value, str)
 
 
-def validate_dataset(repo, name):
+def cached_replay(cache, key, binding):
+    row = cache.get("records", {}).get(key)
+    if row is None or any(row.get(name) != value for name, value in binding.items()):
+        return None
+    replayed = row.get("replayed_test", {})
+    if not all(finite_number(replayed.get(name)) for name in ("loss", "accuracy")):
+        raise ValueError(f"Non-finite cached CIFAR replay: {key}")
+    return replayed
+
+
+def validate_dataset(repo, name, cache, cache_path):
     root = repo / "results" / name.lower()
     frozen_path = root / "gamma_to_lr.json"
     if not frozen_path.is_file():
@@ -82,15 +101,29 @@ def validate_dataset(repo, name):
                 raise ValueError(f"Unexpected layer metric shape: {run}")
             if not finite_tree(metric) or not all(finite_number(saved.get(key)) for key in ("loss", "accuracy")):
                 raise ValueError(f"Non-finite saved test metric: {run}")
-            state = torch.load(run / "final.pt", map_location="cpu", weights_only=True)
-            torch.manual_seed(seed)
-            model = ScaledModel(CIFARResNet(classes), gamma).cpu()
-            model.network.load_state_dict(state["network"])
-            replayed = evaluate(model, data["test"], "cpu")
+            binding = {
+                "dataset": name, "run_id": record["run_id"],
+                "checkpoint_sha256": record["final_sha256"],
+                "metrics_sha256": sha256(metric_path),
+                "representations_sha256": sha256(reps_path),
+                "saved_test": saved,
+            }
+            key = f"{name}/{record['run_id']}"
+            replayed = cached_replay(cache, key, binding)
+            if replayed is None:
+                state = torch.load(run / "final.pt", map_location="cpu", weights_only=True)
+                torch.manual_seed(seed)
+                model = ScaledModel(CIFARResNet(classes), gamma).cpu()
+                model.network.load_state_dict(state["network"])
+                replayed = evaluate(model, data["test"], "cpu")
+                cache["records"][key] = {**binding, "replayed_test": replayed}
+                atomic_json(cache_path, cache)
             if abs(replayed["loss"] - saved["loss"]) > 1e-4 or abs(replayed["accuracy"] - saved["accuracy"]) > 1e-8:
                 raise ValueError(f"Held-out replay mismatch: {run}")
             records.append(dict(run_id=record["run_id"], gamma=gamma, seed=seed,
                                 status=record["status"], checkpoint_sha256=record["final_sha256"],
+                                metrics_sha256=binding["metrics_sha256"],
+                                representations_sha256=binding["representations_sha256"],
                                 saved_test=saved, replayed_test=replayed))
     return dict(dataset=name, expected_runs=35, validated_runs=len(records), records=records)
 
@@ -99,11 +132,35 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--cache", default="results/completion/cifar_validation_progress.json")
     args = parser.parse_args()
     repo = Path(args.repo).resolve()
-    datasets = [validate_dataset(repo, name) for name in ("CIFAR10", "CIFAR100")]
+    cache_path = Path(args.cache)
+    if not cache_path.is_absolute():
+        cache_path = repo / cache_path
+    verifier_sha256 = sha256(Path(__file__))
+    if cache_path.exists():
+        cache = json.loads(cache_path.read_text())
+        if (cache.get("schema") != "feature-topology.cifar-validation-progress.v1"
+                or cache.get("verifier_sha256") != verifier_sha256
+                or not isinstance(cache.get("records"), dict)):
+            raise ValueError("CIFAR validation cache does not match this verifier")
+    else:
+        cache = {"schema": "feature-topology.cifar-validation-progress.v1",
+                 "verifier_sha256": verifier_sha256, "complete": False, "records": {}}
+    # A restarted audit is incomplete until every current artifact binding has
+    # been revisited, even when all expensive replay values remain reusable.
+    cache["complete"] = False
+    cache.pop("validated_runs", None)
+    atomic_json(cache_path, cache)
+    datasets = [validate_dataset(repo, name, cache, cache_path)
+                for name in ("CIFAR10", "CIFAR100")]
+    cache.update(complete=True, validated_runs=sum(x["validated_runs"] for x in datasets))
+    atomic_json(cache_path, cache)
     result = dict(schema="feature-topology.cifar-validation.v1", complete=True,
                   datasets=datasets,
+                  replay_cache=cache_path.relative_to(repo).as_posix(),
+                  replay_cache_sha256=sha256(cache_path),
                   scope="CIFAR robustness study only; it makes no latent-manifold, injectivity, or topology claim.")
     atomic_json(Path(args.output), result)
     print(json.dumps({"complete": True, "validated_runs": sum(x["validated_runs"] for x in datasets)}))

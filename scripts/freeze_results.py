@@ -557,18 +557,39 @@ def image_replay_paths(repo):
     paths.append(dsprites_path)
     cifar_path=repo/'results/completion/cifar_validation.json'
     cifar=json.loads(cifar_path.read_text())
+    cache_path=repo/cifar.get('replay_cache','')
     datasets={row.get('dataset'):row for row in cifar.get('datasets',[])}
     if (cifar.get('schema')!='feature-topology.cifar-validation.v1' or not cifar.get('complete')
             or set(datasets)!={'CIFAR10','CIFAR100'}
             or any(row.get('validated_runs')!=35 or len(row.get('records',[]))!=35
-                   for row in datasets.values())):
+                   for row in datasets.values())
+            or not cache_path.resolve().is_relative_to(repo)
+            or not cache_path.is_file() or sha256(cache_path)!=cifar.get('replay_cache_sha256')):
         raise ValueError('CIFAR held-out replay incomplete')
+    cache=json.loads(cache_path.read_text())
+    if (cache.get('schema')!='feature-topology.cifar-validation-progress.v1'
+            or cache.get('complete') is not True or cache.get('validated_runs')!=70
+            or len(cache.get('records',{}))!=70
+            or sha256(repo/'scripts/verify_cifar.py')!=cache.get('verifier_sha256')):
+        raise ValueError('CIFAR held-out replay cache incomplete')
     for name,dataset in datasets.items():
         for row in dataset['records']:
-            checkpoint=repo/'results'/name.lower()/'runs'/row['run_id']/'final.pt'
-            if sha256(checkpoint)!=row.get('checkpoint_sha256'):
+            run=repo/'results'/name.lower()/'runs'/row['run_id']
+            checkpoint=run/'final.pt'
+            metric=run/'metrics.json'
+            representations=run/'representations.npz'
+            cached=cache['records'].get(f"{name}/{row['run_id']}",{})
+            if (sha256(checkpoint)!=row.get('checkpoint_sha256')
+                    or sha256(metric)!=row.get('metrics_sha256')
+                    or sha256(representations)!=row.get('representations_sha256')
+                    or cached.get('checkpoint_sha256')!=row.get('checkpoint_sha256')
+                    or cached.get('metrics_sha256')!=row.get('metrics_sha256')
+                    or cached.get('representations_sha256')!=row.get('representations_sha256')
+                    or cached.get('saved_test')!=row.get('saved_test')
+                    or cached.get('replayed_test')!=row.get('replayed_test')):
                 raise ValueError(f"CIFAR replay binding changed: {row['run_id']}")
-    paths.append(cifar_path)
+            paths.update([checkpoint,metric,representations])
+    paths.extend([cache_path,cifar_path])
     return paths
 
 
