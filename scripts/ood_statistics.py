@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.rcParams['svg.hashsalt']='feature-topology-v3'
 
 from research_ext.io import atomic_json, atomic_text
 from research_ext.statistics import bootstrap_mean, paired_contrast
@@ -116,7 +117,9 @@ def summarize_nuisance_shift(manifest_path, output, repeats=2000):
     axes[0,-1].legend(frameon=False,fontsize=8)
     fig.suptitle('Nuisance intervention effects with seed-bootstrap intervals')
     for suffix in ['png','pdf','svg']:
-        fig.savefig(output/f'ood_intervention_shifts.{suffix}',dpi=220)
+        metadata=({'CreationDate':None,'ModDate':None} if suffix=='pdf'
+                  else {'Date':None} if suffix=='svg' else None)
+        fig.savefig(output/f'ood_intervention_shifts.{suffix}',dpi=220,metadata=metadata)
     plt.close(fig)
     result = {
         "schema": "feature-topology.ood-statistics.v1",

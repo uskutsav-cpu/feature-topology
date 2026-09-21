@@ -25,3 +25,7 @@ def test_relevance_statistics_preserve_seed_pairing(tmp_path):
              and x['gamma']==.5 and x['metric']=='test_accuracy')
     assert row['paired_seeds']==[0,1] and abs(row['mean']-2.)<1e-12
     assert (tmp_path/'out/relevance_regime_map.svg').is_file()
+    summarize_relevance(groups,tmp_path/'out-repeat',repeats=20)
+    for suffix in ['png','pdf','svg']:
+        assert (tmp_path/f'out/relevance_regime_map.{suffix}').read_bytes()==(
+            tmp_path/f'out-repeat/relevance_regime_map.{suffix}').read_bytes()

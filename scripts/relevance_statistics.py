@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.rcParams['svg.hashsalt']='feature-topology-v3'
 
 from research_ext.io import atomic_json, atomic_text
 from research_ext.report import METRICS
@@ -89,7 +90,9 @@ def summarize_relevance(groups, output, repeats=2000):
     axes.flat[-1].legend(frameon=False,fontsize=8,ncol=2)
     fig.suptitle(f'Relevance dependence at last hidden layer (L{last_layer})')
     for suffix in ['png','pdf','svg']:
-        fig.savefig(output/f'relevance_regime_map.{suffix}',dpi=220)
+        metadata=({'CreationDate':None,'ModDate':None} if suffix=='pdf'
+                  else {'Date':None} if suffix=='svg' else None)
+        fig.savefig(output/f'relevance_regime_map.{suffix}',dpi=220,metadata=metadata)
     plt.close(fig)
     result=dict(schema='feature-topology.relevance-statistics.v1',
                 relevance_levels=levels,runs=int(frame.run_id.nunique()),rows=len(frame),

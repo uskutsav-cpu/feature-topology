@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.rcParams['svg.hashsalt']='feature-topology-v3'
 from src.analysis.statistics import bootstrap_mean
 from src.training.checkpoints import atomic_json
 
@@ -87,7 +88,9 @@ def summarize_images(repo,output):
         axes[-1].legend(frameon=False,fontsize=8)
         fig.suptitle(study+' — mean and pointwise 95% seed bootstrap intervals')
         for suffix in ['png','pdf','svg']:
-            fig.savefig(output/f'{study}_overview.{suffix}',dpi=220)
+            metadata=({'CreationDate':None,'ModDate':None} if suffix=='pdf'
+                      else {'Date':None} if suffix=='svg' else None)
+            fig.savefig(output/f'{study}_overview.{suffix}',dpi=220,metadata=metadata)
         plt.close(fig)
     atomic_json(output/'image_analysis_scope.json',dict(
         replicate_unit='Training seed; paired contrasts preserve seed pairing across gamma',
