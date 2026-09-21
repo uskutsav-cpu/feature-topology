@@ -234,6 +234,28 @@ def test_release_parts_can_be_streamed_after_verified_callback(tmp_path):
         assert archive.extractfile('feature-topology/measurement.txt').read()==source.read_bytes()
 
 
+def test_streamed_release_retry_replaces_only_failed_generated_part(tmp_path):
+    source=tmp_path/'measurement.txt'
+    source.write_text('retryable package')
+    manifest=tmp_path/'frozen.json'
+    manifest.write_text(json.dumps(dict(
+        schema='feature-topology.frozen-results.v1',ready=True,
+        files={'measurement.txt':hashlib.sha256(source.read_bytes()).hexdigest()})))
+    output=tmp_path/'streamed'
+    def fail_upload(path,record):
+        raise RuntimeError('upload interrupted')
+    with pytest.raises(RuntimeError,match='upload interrupted'):
+        pack(tmp_path,manifest,output,part_bytes=100,
+             on_part=fail_upload,retain_parts=False)
+    assert list(output.glob('feature-topology.tar.gz.part*'))
+    uploaded={}
+    pack(tmp_path,manifest,output,part_bytes=100,
+         on_part=lambda path,record: uploaded.setdefault(
+             record['file'],path.read_bytes()),retain_parts=False)
+    assert uploaded
+    assert not list(output.glob('feature-topology.tar.gz.part*'))
+
+
 def test_remote_release_digest_match_is_fail_closed():
     record={'file':'part000','bytes':3,'sha256':hashlib.sha256(b'abc').hexdigest()}
     row={'name':'part000','size':3,'state':'uploaded',

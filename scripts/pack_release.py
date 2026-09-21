@@ -39,7 +39,11 @@ class Parts:
         while data:
             if self.stream is None:
                 self.path=self.root/f'feature-topology.tar.gz.part{len(self.records):03d}'
-                self.stream=self.path.open('xb')
+                # Local packages fail closed on an occupied output path.  A
+                # streamed retry may replace only its own generated part left
+                # behind by a failed upload; source research artifacts never
+                # use this filename or pass through this branch.
+                self.stream=self.path.open('xb' if self.retain_parts else 'wb')
                 self.hash=hashlib.sha256()
                 self.size=0
             block=data[:self.limit-self.size]
