@@ -14,6 +14,25 @@ from scripts.relevance_statistics import summarize_relevance
 from scripts.certification_statistics import summarize_certification
 
 
+def verify_consumed_inputs(repo, manifest, input_hashes_path):
+    """Require every catalog input actually read to belong to the freeze."""
+    repo=Path(repo).resolve()
+    frozen=manifest.get('files',{})
+    consumed=json.loads(Path(input_hashes_path).read_text())
+    for name,observed in consumed.items():
+        supplied=Path(name)
+        source=(supplied if supplied.is_absolute() else repo/supplied).resolve()
+        if not source.is_relative_to(repo):
+            raise ValueError(f'Analysis input escapes repository: {name}')
+        relative=source.relative_to(repo).as_posix()
+        expected=frozen.get(relative)
+        if expected is None:
+            raise ValueError(f'Analysis consumed input absent from frozen manifest: {relative}')
+        if observed!=expected or sha256(source)!=expected:
+            raise ValueError(f'Analysis consumed changed frozen input: {relative}')
+    return consumed
+
+
 def main(args):
     repo=Path(args.repo).resolve()
     manifest=verify_manifest(repo,args.manifest)
@@ -52,6 +71,7 @@ def main(args):
             result=analyze([group['path']],destination,target=.1,profile=fingerprint(group['profile']),
                 gammas=group['gammas'],seeds=group['seeds'],repeats=2000,
                 transition_repeats=300,rules=[],make_plots=True,run_ids=group['run_ids'])
+            verify_consumed_inputs(repo,manifest,destination/'input_hashes.json')
             reports.append(dict(study=name,group=Path(group['path']).name,source=group['source'],
                                 run_count=len(group['run_ids']),profile=fingerprint(group['profile']),
                                 output=destination.relative_to(repo).as_posix()))
