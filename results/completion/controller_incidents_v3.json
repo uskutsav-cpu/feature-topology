@@ -25,6 +25,37 @@
         "relevance_0.25_expected": 35,
         "relevance_0.25_invalid": 0
       }
+    },
+    {
+      "recorded_at_utc": "2026-09-21T09:43:11Z",
+      "classification": "infrastructure",
+      "summary": "One small-network metric job received HTTP 500 while downloading its frozen input release asset from the GitHub API, before dependency installation or metric execution.",
+      "failed_operation": "gh release download small-network-91d5ad7e3327b2b6-inputs-v3-2026-09-20 --pattern 8df97a604053ae07.tar.gz --pattern analysis_data.npz",
+      "affected_local_controllers": [
+        "results/completion/production_queue_ablation_v3.json"
+      ],
+      "active_hosted_workflows": [
+        "35580982526"
+      ],
+      "failed_job": {
+        "run_id": "8df97a604053ae07",
+        "workflow_run": "35580982526",
+        "job_id": "106273661400",
+        "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35580982526/job/106273661400",
+        "conclusion": "failure",
+        "primary_error": "HTTP 500 from https://api.github.com/repos/uskutsav-cpu/feature-topology/releases/assets/576099089",
+        "log_retention": "GitHub Actions job log retained at the recorded URL"
+      },
+      "hosted_workflow_impact": "The affected job produced no metric artifact; the other 23 jobs in the batch produced valid artifacts.",
+      "scientific_protocol_impact": "none",
+      "recovery": "The collector retained and installed the 23 verified cells, reported 71/120 small-network profiles complete with zero invalid artifacts, and the controller redispatched only the failed/missing run IDs in workflow 35584757035. No metric option, checkpoint, input archive, or analysis rule changed.",
+      "duplicate_computation_detected": false,
+      "artifact_validation_after_recovery": {
+        "small_network_complete": 71,
+        "small_network_expected": 120,
+        "small_network_invalid": 0,
+        "retry_workflow": "35584757035"
+      }
     }
   ]
 }
