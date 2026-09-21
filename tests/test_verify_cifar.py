@@ -5,7 +5,9 @@ import pytest
 
 import scripts.verify_cifar as verifier
 from scripts.audit_cifar_replay import replay_comparison
-from scripts.verify_cifar import cached_replay,validate_dataset
+from scripts.verify_cifar import (REPLAY_CACHE_PREDECESSORS,cached_replay,
+                                  load_replay_cache,validate_dataset,
+                                  validate_hosted_adjudication)
 
 
 def test_cached_replay_requires_every_artifact_binding():
@@ -61,3 +63,33 @@ def test_hosted_replay_comparison_keeps_discrete_and_float_checks_separate():
     shifted=replay_comparison(saved,{'loss':2.5000001,'accuracy':.4265},10000)
     assert shifted['correct_count_delta']==-1
     assert not shifted['accuracy_exact']
+
+
+def test_replay_cache_migration_preserves_bound_measurements(tmp_path):
+    path=tmp_path/'cache.json'
+    predecessor=next(iter(REPLAY_CACHE_PREDECESSORS))
+    path.write_text(json.dumps({
+        'schema':'feature-topology.cifar-validation-progress.v1',
+        'verifier_sha256':predecessor,'complete':False,
+        'records':{'CIFAR10/run':{'replayed_test':{'loss':1.,'accuracy':.5}}},
+    }))
+    migrated=load_replay_cache(path,'f'*64)
+    assert migrated['verifier_sha256']=='f'*64
+    assert migrated['records']['CIFAR10/run']['replayed_test']['accuracy']==.5
+    assert migrated['verifier_history']==[{
+        'sha256':predecessor,
+        'reason':'Replay engine unchanged; successor adds hash-bound source-platform adjudication metadata.',
+    }]
+
+
+def test_hosted_adjudication_is_hash_bound():
+    binding={'run_id':'run','checkpoint_sha256':'a','metrics_sha256':'b',
+             'representations_sha256':'c'}
+    saved={'loss':1.,'accuracy':.5}
+    hosted={'path':'report.json','relative_path':'report.json','sha256':'d','report':{
+        **binding,'saved_test':saved,
+        'host':{'workflow_run':'123'},'comparison':{'accuracy_exact':True}}}
+    result=validate_hosted_adjudication(hosted,binding,saved)
+    assert result['workflow_run']=='123'
+    with pytest.raises(ValueError,match='binding mismatch'):
+        validate_hosted_adjudication(hosted,{**binding,'metrics_sha256':'changed'},saved)

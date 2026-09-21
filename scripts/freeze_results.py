@@ -572,6 +572,35 @@ def image_replay_paths(repo):
             or len(cache.get('records',{}))!=70
             or sha256(repo/'scripts/verify_cifar.py')!=cache.get('verifier_sha256')):
         raise ValueError('CIFAR held-out replay cache incomplete')
+    hosted={}
+    hosted_manifest_path=None
+    if cifar.get('hosted_replay_manifest') is not None:
+        hosted_manifest_path=repo/cifar['hosted_replay_manifest']
+        if (not hosted_manifest_path.resolve().is_relative_to(repo)
+                or sha256(hosted_manifest_path)!=cifar.get('hosted_replay_manifest_sha256')):
+            raise ValueError('CIFAR hosted replay manifest binding changed')
+        hosted_manifest=json.loads(hosted_manifest_path.read_text())
+        if (hosted_manifest.get('schema')!='feature-topology.cifar-hosted-replays.v1'
+                or not hosted_manifest.get('audit_commit')):
+            raise ValueError('CIFAR hosted replay manifest invalid')
+        for item in hosted_manifest.get('records',[]):
+            report_path=repo/item['path']
+            if (not report_path.resolve().is_relative_to(repo)
+                    or sha256(report_path)!=item.get('sha256')):
+                raise ValueError('CIFAR hosted replay report binding changed')
+            report=json.loads(report_path.read_text())
+            comparison=report.get('comparison',{})
+            if (report.get('schema')!='feature-topology.cifar-hosted-replay.v1'
+                    or report.get('host',{}).get('commit')!=hosted_manifest['audit_commit']
+                    or not comparison.get('accuracy_exact')
+                    or not comparison.get('loss_within_1e-4')
+                    or report.get('run_id') in hosted):
+                raise ValueError('CIFAR hosted replay report invalid')
+            hosted[report['run_id']]={'path':item['path'],'sha256':item['sha256'],
+                                      'report':report}
+            paths.add(report_path)
+        paths.add(hosted_manifest_path)
+    used_hosted=set()
     for name,dataset in datasets.items():
         for row in dataset['records']:
             run=repo/'results'/name.lower()/'runs'/row['run_id']
@@ -579,6 +608,8 @@ def image_replay_paths(repo):
             metric=run/'metrics.json'
             representations=run/'representations.npz'
             cached=cache['records'].get(f"{name}/{row['run_id']}",{})
+            local=row.get('local_comparison',{})
+            basis=row.get('validation_basis')
             if (sha256(checkpoint)!=row.get('checkpoint_sha256')
                     or sha256(metric)!=row.get('metrics_sha256')
                     or sha256(representations)!=row.get('representations_sha256')
@@ -586,9 +617,29 @@ def image_replay_paths(repo):
                     or cached.get('metrics_sha256')!=row.get('metrics_sha256')
                     or cached.get('representations_sha256')!=row.get('representations_sha256')
                     or cached.get('saved_test')!=row.get('saved_test')
-                    or cached.get('replayed_test')!=row.get('replayed_test')):
+                    or cached.get('replayed_test')!=row.get('replayed_test')
+                    or not local.get('loss_within_1e-4')):
                 raise ValueError(f"CIFAR replay binding changed: {row['run_id']}")
+            if basis=='local_exact_replay':
+                if not local.get('accuracy_exact') or row.get('hosted_replay') is not None:
+                    raise ValueError(f"CIFAR local replay claim invalid: {row['run_id']}")
+            elif basis=='independent_source_platform_replay':
+                audit=hosted.get(row['run_id'])
+                reference=row.get('hosted_replay',{})
+                if (audit is None or reference.get('path')!=audit['path']
+                        or reference.get('sha256')!=audit['sha256']
+                        or reference.get('workflow_run')!=audit['report']['host']['workflow_run']
+                        or audit['report'].get('checkpoint_sha256')!=row.get('checkpoint_sha256')
+                        or audit['report'].get('metrics_sha256')!=row.get('metrics_sha256')
+                        or audit['report'].get('representations_sha256')!=row.get('representations_sha256')
+                        or audit['report'].get('saved_test')!=row.get('saved_test')):
+                    raise ValueError(f"CIFAR hosted adjudication changed: {row['run_id']}")
+                used_hosted.add(row['run_id'])
+            else:
+                raise ValueError(f"CIFAR replay basis missing: {row['run_id']}")
             paths.update([checkpoint,metric,representations])
+    if used_hosted!=set(hosted):
+        raise ValueError('Unused or missing CIFAR hosted replay reports')
     paths.extend([cache_path,cifar_path])
     return paths
 

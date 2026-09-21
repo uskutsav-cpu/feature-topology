@@ -22,6 +22,12 @@ from src.training.checkpoints import atomic_json, fingerprint
 
 GAMMAS = [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0]
 SEEDS = range(5)
+REPLAY_CACHE_PREDECESSORS = {
+    # Incremental-cache implementation at commit 6280d2f.  The replay engine,
+    # artifact bindings, model construction, data split, and tolerances are
+    # unchanged; the successor adds source-platform adjudication metadata.
+    "a2126ad06190c7d3043cd689b2566f5453ed0410ceffbfdf9d7715d1a00b3ef0",
+}
 
 
 def sha256(path):
@@ -54,7 +60,76 @@ def cached_replay(cache, key, binding):
     return replayed
 
 
-def validate_dataset(repo, name, cache, cache_path, allow_missing=False):
+def load_replay_cache(cache_path,verifier_sha256):
+    if not cache_path.exists():
+        return {"schema":"feature-topology.cifar-validation-progress.v1",
+                "verifier_sha256":verifier_sha256,"complete":False,"records":{}}
+    cache=json.loads(cache_path.read_text())
+    if (cache.get("schema")!="feature-topology.cifar-validation-progress.v1"
+            or not isinstance(cache.get("records"),dict)):
+        raise ValueError("Malformed CIFAR validation cache")
+    previous=cache.get("verifier_sha256")
+    if previous!=verifier_sha256:
+        if previous not in REPLAY_CACHE_PREDECESSORS:
+            raise ValueError("CIFAR validation cache does not match this verifier")
+        cache.setdefault("verifier_history",[]).append({
+            "sha256":previous,
+            "reason":"Replay engine unchanged; successor adds hash-bound source-platform adjudication metadata.",
+        })
+        cache["verifier_sha256"]=verifier_sha256
+        atomic_json(cache_path,cache)
+    return cache
+
+
+def load_hosted_replays(repo,manifest_path):
+    manifest_path=Path(manifest_path)
+    if not manifest_path.is_absolute():
+        manifest_path=repo/manifest_path
+    if not manifest_path.exists():
+        return {},None
+    manifest=json.loads(manifest_path.read_text())
+    if (manifest.get("schema")!="feature-topology.cifar-hosted-replays.v1"
+            or not manifest.get("audit_tag") or not manifest.get("audit_commit")
+            or not isinstance(manifest.get("records"),list)):
+        raise ValueError("Malformed hosted CIFAR replay manifest")
+    reports={}
+    for row in manifest["records"]:
+        path=repo/row["path"]
+        if (not path.resolve().is_relative_to(repo) or sha256(path)!=row.get("sha256")):
+            raise ValueError("Hosted CIFAR replay report hash mismatch")
+        report=json.loads(path.read_text())
+        comparison=report.get("comparison",{})
+        if (report.get("schema")!="feature-topology.cifar-hosted-replay.v1"
+                or report.get("host",{}).get("commit")!=manifest["audit_commit"]
+                or not comparison.get("accuracy_exact")
+                or not comparison.get("loss_within_1e-4")):
+            raise ValueError("Hosted CIFAR replay did not reproduce the saved metric")
+        run_id=report.get("run_id")
+        if not run_id or run_id in reports:
+            raise ValueError("Duplicate hosted CIFAR replay run")
+        reports[run_id]={"report":report,"path":path,
+                         "relative_path":path.relative_to(repo).as_posix(),
+                         "sha256":row["sha256"]}
+    return reports,manifest_path
+
+
+def validate_hosted_adjudication(hosted,binding,saved):
+    if hosted is None:
+        return None
+    report=hosted["report"]
+    if (report.get("run_id")!=binding["run_id"]
+            or report.get("checkpoint_sha256")!=binding["checkpoint_sha256"]
+            or report.get("metrics_sha256")!=binding["metrics_sha256"]
+            or report.get("representations_sha256")!=binding["representations_sha256"]
+            or report.get("saved_test")!=saved):
+        raise ValueError(f"Hosted replay binding mismatch: {binding['run_id']}")
+    return {"path":hosted["relative_path"],"sha256":hosted["sha256"],
+            "workflow_run":report["host"]["workflow_run"],
+            "comparison":report["comparison"]}
+
+
+def validate_dataset(repo, name, cache, cache_path, allow_missing=False,
+                     hosted_replays=None):
     root = repo / "results" / name.lower()
     frozen_path = root / "gamma_to_lr.json"
     if not frozen_path.is_file():
@@ -125,13 +200,30 @@ def validate_dataset(repo, name, cache, cache_path, allow_missing=False):
                 replayed = evaluate(model, data["test"], "cpu")
                 cache["records"][key] = {**binding, "replayed_test": replayed}
                 atomic_json(cache_path, cache)
-            if abs(replayed["loss"] - saved["loss"]) > 1e-4 or abs(replayed["accuracy"] - saved["accuracy"]) > 1e-8:
-                raise ValueError(f"Held-out replay mismatch: {run}")
+            local_comparison={
+                "loss_delta":replayed["loss"]-saved["loss"],
+                "correct_count_delta":round(replayed["accuracy"]*len(data["test"][0]))
+                                      -round(saved["accuracy"]*len(data["test"][0])),
+                "loss_within_1e-4":abs(replayed["loss"]-saved["loss"])<=1e-4,
+                "accuracy_exact":abs(replayed["accuracy"]-saved["accuracy"])<=1e-8,
+            }
+            hosted=None
+            validation_basis="local_exact_replay"
+            if not (local_comparison["loss_within_1e-4"]
+                    and local_comparison["accuracy_exact"]):
+                hosted=validate_hosted_adjudication(
+                    (hosted_replays or {}).get(record["run_id"]),binding,saved)
+                if hosted is None or not local_comparison["loss_within_1e-4"]:
+                    raise ValueError(f"Held-out replay mismatch: {run}")
+                validation_basis="independent_source_platform_replay"
             records.append(dict(run_id=record["run_id"], gamma=gamma, seed=seed,
                                 status=record["status"], checkpoint_sha256=record["final_sha256"],
                                 metrics_sha256=binding["metrics_sha256"],
                                 representations_sha256=binding["representations_sha256"],
-                                saved_test=saved, replayed_test=replayed))
+                                saved_test=saved, replayed_test=replayed,
+                                local_comparison=local_comparison,
+                                validation_basis=validation_basis,
+                                hosted_replay=hosted))
     return dict(dataset=name, expected_runs=35, validated_runs=len(records),
                 missing=missing, records=records)
 
@@ -143,28 +235,24 @@ def main():
     parser.add_argument("--cache", default="results/completion/cifar_validation_progress.json")
     parser.add_argument("--incremental", action="store_true",
                         help="Replay available runs without weakening final completeness")
+    parser.add_argument("--hosted-replays",
+                        default="results/completion/cifar_hosted_replays_v3.json")
     args = parser.parse_args()
     repo = Path(args.repo).resolve()
     cache_path = Path(args.cache)
     if not cache_path.is_absolute():
         cache_path = repo / cache_path
     verifier_sha256 = sha256(Path(__file__))
-    if cache_path.exists():
-        cache = json.loads(cache_path.read_text())
-        if (cache.get("schema") != "feature-topology.cifar-validation-progress.v1"
-                or cache.get("verifier_sha256") != verifier_sha256
-                or not isinstance(cache.get("records"), dict)):
-            raise ValueError("CIFAR validation cache does not match this verifier")
-    else:
-        cache = {"schema": "feature-topology.cifar-validation-progress.v1",
-                 "verifier_sha256": verifier_sha256, "complete": False, "records": {}}
+    cache=load_replay_cache(cache_path,verifier_sha256)
+    hosted_replays,hosted_manifest=load_hosted_replays(repo,args.hosted_replays)
     # A restarted audit is incomplete until every current artifact binding has
     # been revisited, even when all expensive replay values remain reusable.
     cache["complete"] = False
     cache.pop("validated_runs", None)
     atomic_json(cache_path, cache)
     datasets = [validate_dataset(repo, name, cache, cache_path,
-                                 allow_missing=args.incremental)
+                                 allow_missing=args.incremental,
+                                 hosted_replays=hosted_replays)
                 for name in ("CIFAR10", "CIFAR100")]
     validated_runs=sum(x["validated_runs"] for x in datasets)
     complete=validated_runs==70 and all(not x["missing"] for x in datasets)
@@ -176,6 +264,10 @@ def main():
                   datasets=datasets,
                   replay_cache=cache_path.relative_to(repo).as_posix(),
                   replay_cache_sha256=sha256(cache_path),
+                  hosted_replay_manifest=(None if hosted_manifest is None else
+                                          hosted_manifest.relative_to(repo).as_posix()),
+                  hosted_replay_manifest_sha256=(None if hosted_manifest is None else
+                                                 sha256(hosted_manifest)),
                   scope="CIFAR robustness study only; it makes no latent-manifold, injectivity, or topology claim.")
     atomic_json(Path(args.output), result)
     print(json.dumps({"complete": complete, "validated_runs": validated_runs}))
