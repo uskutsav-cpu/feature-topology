@@ -4,6 +4,7 @@ import numpy as np
 import pytest
 
 import scripts.verify_cifar as verifier
+from scripts.audit_cifar_replay import replay_comparison
 from scripts.verify_cifar import cached_replay,validate_dataset
 
 
@@ -51,3 +52,12 @@ def test_incremental_validation_reports_missing_without_claiming_completion(tmp_
     assert len(result['missing'])==35
     with pytest.raises(ValueError,match='Missing CIFAR run'):
         validate_dataset(tmp_path,'CIFAR10',cache,tmp_path/'cache.json')
+
+
+def test_hosted_replay_comparison_keeps_discrete_and_float_checks_separate():
+    saved={'loss':2.5,'accuracy':.4266}
+    same=replay_comparison(saved,{'loss':2.5000001,'accuracy':.4266},10000)
+    assert same['accuracy_exact'] and same['loss_within_1e-4']
+    shifted=replay_comparison(saved,{'loss':2.5000001,'accuracy':.4265},10000)
+    assert shifted['correct_count_delta']==-1
+    assert not shifted['accuracy_exact']
