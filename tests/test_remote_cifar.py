@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import tarfile
 
@@ -119,6 +120,37 @@ def test_collector_validates_and_installs_complete_archive(tmp_path,monkeypatch)
     assert not (installed.parent/"resume.pt").exists()
     assert collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,install=True)[
         "installed_files"][remote_cifar.cell_id(cell)]==0
+
+
+def test_bounded_collector_streams_once_and_reuses_validation_ledger(tmp_path,monkeypatch):
+    cell=calibration_cell(); work=tmp_path/"work"; data=tmp_path/"data"
+    remote=tmp_path/"remote"; cache=tmp_path/"cache"; cache.mkdir()
+    repo=tmp_path/"repo"; source=repo/"configs/completion/sources.json"; source.parent.mkdir(parents=True)
+    dataset=data/"fixture"; dataset.parent.mkdir(); dataset.write_bytes(b"x")
+    atomic_json(source,{"schema":"feature-topology.cifar-sources.v1","datasets":{
+        "CIFAR10":{"archive":dataset.name,"bytes":1,"sha256":remote_cifar.sha256(dataset)}}})
+    directory=remote_cifar.run_directory(work,cell); directory.mkdir(parents=True)
+    config=remote_cifar.config_for(cell)
+    atomic_json(directory/"config.json",config)
+    atomic_json(directory/"summary.json",{
+        "config":config,"run_id":directory.name,"status":"budget_exhausted","history":[]})
+    (directory/"final.pt").write_bytes(b"checkpoint")
+    remote_cifar.pack(work,data,remote,cell,"job-4",source)
+    for status in remote.glob("status-*.json"):
+        shutil.copy2(status,cache/status.name)
+    calls=[]
+    monkeypatch.setattr(collect_remote_cifar,"download_statuses",lambda tag,path:None)
+    def copy_asset(tag,name,destination):
+        calls.append(name); target=Path(destination)/name; shutil.copy2(remote/name,target); return target
+    monkeypatch.setattr(collect_remote_cifar,"download_asset",copy_asset)
+    result=collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,
+                                        install=True,bounded_cache=True)
+    assert len(result["complete"])==1 and not result["invalid"] and len(calls)==1
+    assert not list(cache.glob("*.tar.gz"))
+    assert (cache/"validated_transport.json").is_file()
+    again=collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,
+                                       install=True,bounded_cache=True)
+    assert not again["invalid"] and len(calls)==1
 
 
 def test_cifar_status_poll_retries_transient_read_only_failure(monkeypatch):

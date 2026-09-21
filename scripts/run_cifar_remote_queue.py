@@ -124,12 +124,13 @@ def resume_unfinished_attempts(state: dict, state_path: Path, poll_seconds: int)
 
 def finish_stage(repo: Path, dataset: str, stage: str, cells: list[dict], tag: str,
                  state: dict, state_path: Path, poll_seconds: int, max_stalled: int,
-                 cache_root: Path) -> None:
+                 cache_root: Path, bounded_cache: bool = False) -> None:
     cache=cache_root/tag
     stalled=0
     while True:
         report=collect(repo,tag,cells,cache,repo/"configs/completion/cifar_sources_v3.json",
-                       install=True,expected_commit=state["source_commit"])
+                       install=True,expected_commit=state["source_commit"],
+                       bounded_cache=bounded_cache)
         atomic_json(repo/"results/completion/remote_collections"/f"{dataset.lower()}_{stage}.json",report)
         state[dataset][stage]={"expected":report["expected"],"complete":len(report["complete"]),
                                "missing":len(report["missing"]),"invalid":report["invalid"]}
@@ -157,7 +158,8 @@ def finish_stage(repo: Path, dataset: str, stage: str, cells: list[dict], tag: s
                 atomic_json(state_path,state);break
             time.sleep(poll_seconds)
         after=collect(repo,tag,cells,cache,repo/"configs/completion/cifar_sources_v3.json",
-                      install=True,expected_commit=state["source_commit"])
+                      install=True,expected_commit=state["source_commit"],
+                      bounded_cache=bounded_cache)
         stalled=stalled+1 if len(after["complete"])<=before else 0
         if stalled>=max_stalled:
             raise RuntimeError(f"No verified hosted CIFAR progress: {dataset}/{stage}")
@@ -172,6 +174,8 @@ def main() -> None:
     parser.add_argument("--poll-seconds",type=int,default=30)
     parser.add_argument("--max-stalled-attempts",type=int,default=3)
     parser.add_argument("--cache",default="results/completion/remote_cifar_cache")
+    parser.add_argument("--bounded-cache",action="store_true",
+                        help="Stream unseen release archives through bounded temporary storage")
     args=parser.parse_args();repo=Path(args.repo).resolve();state_path=repo/args.state
     state=json.loads(state_path.read_text()) if state_path.exists() else {
         "schema":"feature-topology.remote-cifar-queue.v1","attempts":[]}
@@ -185,11 +189,11 @@ def main() -> None:
         cache_root=repo/cache_root
     calibration=calibration_cells(args.dataset)
     finish_stage(repo,args.dataset,"calibration",calibration,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts,cache_root)
+                 args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
     frozen=finalize_calibration(repo,args.dataset)
     production=production_cells(args.dataset,frozen)
     finish_stage(repo,args.dataset,"production",production,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts,cache_root)
+                 args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
     print(json.dumps({"status":"complete","dataset":args.dataset,"runs":len(production)}),flush=True)
 
 

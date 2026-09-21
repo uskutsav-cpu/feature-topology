@@ -33,6 +33,33 @@ def download(tag: str, cache: str | Path) -> None:
         raise subprocess.CalledProcessError(result.returncode, command, result.stdout, result.stderr)
 
 
+def download_statuses(tag: str, cache: str | Path) -> None:
+    """Retain small status manifests without bulk-downloading every archive."""
+    if not TAG.fullmatch(tag):
+        raise ValueError("Unsafe CIFAR result tag")
+    cache = Path(cache); cache.mkdir(parents=True, exist_ok=True)
+    command = ["gh", "release", "download", tag, "--dir", str(cache),
+               "--skip-existing", "--pattern", "status-*.json"]
+    result = subprocess.run(command, text=True, capture_output=True)
+    message = (result.stdout+result.stderr).lower()
+    if result.returncode and "no assets" not in message:
+        raise subprocess.CalledProcessError(result.returncode, command, result.stdout, result.stderr)
+
+
+def download_asset(tag: str, name: str, destination: str | Path) -> Path:
+    """Download one exact release asset into a temporary transport directory."""
+    if not TAG.fullmatch(tag) or Path(name).name != name or not name.endswith(".tar.gz"):
+        raise ValueError("Unsafe CIFAR release asset")
+    destination = Path(destination); destination.mkdir(parents=True, exist_ok=True)
+    command = ["gh", "release", "download", tag, "--dir", str(destination),
+               "--pattern", name]
+    subprocess.run(command, check=True, text=True, capture_output=True)
+    target = destination/name
+    if not target.is_file():
+        raise FileNotFoundError(f"Downloaded CIFAR asset is missing: {name}")
+    return target
+
+
 def _equal_manifest(status: dict, report: dict) -> bool:
     return all(status.get(key) == report.get(key) for key in [
         "schema", "cell", "cell_id", "config", "run_id", "complete",
@@ -128,9 +155,43 @@ def install_archive(repo: str | Path, archive: str | Path, report: dict) -> int:
     return written
 
 
+def _installed_complete(repo: Path, report: dict) -> bool:
+    """Check that a streamed terminal archive was already installed exactly."""
+    if not report.get("complete"):
+        return False
+    for name, expected in report.get("files", {}).items():
+        if Path(name).name == "resume.pt":
+            continue
+        target = repo/"results"/name
+        if not target.is_file() or sha256(target) != expected:
+            return False
+    return True
+
+
+def _load_transport_ledger(path: Path) -> dict:
+    if not path.exists():
+        return {"schema": "feature-topology.remote-cifar-transport.v1", "records": {}}
+    value = json.loads(path.read_text())
+    if value.get("schema") != "feature-topology.remote-cifar-transport.v1" \
+            or not isinstance(value.get("records"), dict):
+        raise ValueError(f"Invalid CIFAR transport validation ledger: {path}")
+    return value
+
+
+def _validated_transport(record: dict | None, status_path: Path, status: dict,
+                         specification_sha256: str, expected_commit: str | None) -> bool:
+    return bool(record
+                and record.get("status_sha256") == sha256(status_path)
+                and record.get("archive_sha256") == status.get("archive_sha256")
+                and record.get("source_specification_sha256") == specification_sha256
+                and record.get("source_commit") == expected_commit
+                and record.get("cell_id") == status.get("cell_id")
+                and record.get("complete") == status.get("complete"))
+
+
 def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
             source_specification: str | Path, install: bool = True,
-            expected_commit: str | None = None) -> dict:
+            expected_commit: str | None = None, bounded_cache: bool = False) -> dict:
     repo = Path(repo).resolve(); cache = Path(cache)
     source_specification = Path(source_specification)
     if not source_specification.is_absolute():
@@ -140,7 +201,12 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
     expected = {cell_id(cell): cell for cell in normalized}
     if len(expected) != len(normalized):
         raise ValueError("Duplicate requested CIFAR cells")
-    download(tag, cache)
+    if bounded_cache:
+        download_statuses(tag, cache)
+    else:
+        download(tag, cache)
+    transport_path = cache/"validated_transport.json"
+    transport = _load_transport_ledger(transport_path) if bounded_cache else None
     statuses: dict[str, list[tuple[Path, dict]]] = {}
     invalid = []
     for path in sorted(cache.glob("status-*.json")):
@@ -159,21 +225,54 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
         candidates = statuses.get(identifier, [])
         accepted = []
         for path, status in candidates:
-            archive = cache/f"cifar-{identifier}-{path.name[len('status-'+identifier+'-'):-5]}.tar.gz"
+            archive_name = f"cifar-{identifier}-{path.name[len('status-'+identifier+'-'):-5]}.tar.gz"
+            archive = cache/archive_name
             try:
-                report = validate_archive(archive, status, cell, source_specification,
-                                          expected_commit=expected_commit)
+                record = transport["records"].get(path.name) if transport is not None else None
+                reused = (bounded_cache and not archive.exists()
+                          and _validated_transport(record, path, status,
+                                                   specification_sha256, expected_commit)
+                          and (not status.get("complete") or not install
+                               or _installed_complete(repo, status)))
+                written = 0
+                if reused:
+                    report = status
+                elif bounded_cache and not archive.exists():
+                    with tempfile.TemporaryDirectory(prefix="cifar-transfer-",
+                                                     dir=cache.parent) as temporary:
+                        transfer = download_asset(tag, archive_name, temporary)
+                        report = validate_archive(transfer, status, cell, source_specification,
+                                                  expected_commit=expected_commit)
+                        if report.get("complete") and install:
+                            written = install_archive(repo, transfer, report)
+                else:
+                    report = validate_archive(archive, status, cell, source_specification,
+                                              expected_commit=expected_commit)
+                    if bounded_cache and report.get("complete") and install:
+                        written = install_archive(repo, archive, report)
+                if transport is not None and not reused:
+                    transport["records"][path.name] = {
+                        "status_sha256": sha256(path),
+                        "archive_sha256": status.get("archive_sha256"),
+                        "source_specification_sha256": specification_sha256,
+                        "source_commit": expected_commit,
+                        "cell_id": identifier,
+                        "complete": bool(report.get("complete")),
+                    }
+                    atomic_json(transport_path, transport)
                 if report["complete"]:
-                    accepted.append((path, archive, report))
+                    accepted.append((path, archive_name, report, written))
                 else:
                     partial.setdefault(identifier, []).append(path.name)
             except (OSError, ValueError, KeyError, tarfile.TarError) as exc:
                 invalid.append({"status": path.name, "archive": archive.name, "error": str(exc)})
         if accepted:
-            _, archive, report = sorted(accepted, key=lambda item: item[0].name)[-1]
-            complete[identifier] = archive.name
+            _, archive_name, report, streamed_writes = sorted(
+                accepted, key=lambda item: item[0].name)[-1]
+            complete[identifier] = archive_name
             if install:
-                installed[identifier] = install_archive(repo, archive, report)
+                installed[identifier] = (sum(item[3] for item in accepted) if bounded_cache
+                                         else install_archive(repo, cache/archive_name, report))
     return {"schema": "feature-topology.remote-cifar-collection.v1", "result_tag": tag,
             "source_commit": expected_commit,
             "source_specification": source_specification.relative_to(repo).as_posix(),
