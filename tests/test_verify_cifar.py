@@ -1,6 +1,10 @@
+import json
+
+import numpy as np
 import pytest
 
-from scripts.verify_cifar import cached_replay
+import scripts.verify_cifar as verifier
+from scripts.verify_cifar import cached_replay,validate_dataset
 
 
 def test_cached_replay_requires_every_artifact_binding():
@@ -25,3 +29,25 @@ def test_cached_replay_rejects_nonfinite_measurement():
                                 "replayed_test": {"loss": None, "accuracy": .5}}}}
     with pytest.raises(ValueError, match="Non-finite cached"):
         cached_replay(cache, key, binding)
+
+
+def test_incremental_validation_reports_missing_without_claiming_completion(tmp_path,monkeypatch):
+    root=tmp_path/'results/cifar10'
+    root.mkdir(parents=True)
+    (root/'gamma_to_lr.json').write_text(json.dumps({
+        'selection':{str(gamma):{'lr':.1} for gamma in verifier.GAMMAS},
+        'calibration_steps':2000,
+    }))
+    monkeypatch.setattr(verifier,'load_data',lambda *args,**kwargs:{
+        'train':(np.empty((45000,0)),None),
+        'validation':(np.empty((5000,0)),None),
+        'test':(np.empty((10000,0)),None),
+    })
+    cache={'records':{}}
+    result=validate_dataset(tmp_path,'CIFAR10',cache,tmp_path/'cache.json',
+                            allow_missing=True)
+    assert result['expected_runs']==35
+    assert result['validated_runs']==0
+    assert len(result['missing'])==35
+    with pytest.raises(ValueError,match='Missing CIFAR run'):
+        validate_dataset(tmp_path,'CIFAR10',cache,tmp_path/'cache.json')
