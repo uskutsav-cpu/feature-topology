@@ -1,0 +1,55 @@
+{
+  "selection": {
+    "0.125": {
+      "lr": 0.00625,
+      "reached": false,
+      "loss": 4.0098291178385415,
+      "step": 2000
+    },
+    "0.5": {
+      "lr": 0.05,
+      "reached": false,
+      "loss": 1.220682841322157,
+      "step": 2000
+    },
+    "1.0": {
+      "lr": 0.1,
+      "reached": false,
+      "loss": 1.1651177412245008,
+      "step": 2000
+    },
+    "4.0": {
+      "lr": 1.6,
+      "reached": false,
+      "loss": 1.1655888831244574,
+      "step": 2000
+    },
+    "16.0": {
+      "lr": 3.2,
+      "reached": false,
+      "loss": 1.5213943094889324,
+      "step": 2000
+    },
+    "64.0": {
+      "lr": 6.4,
+      "reached": false,
+      "loss": 2.1002728769938153,
+      "step": 2000
+    },
+    "128.0": {
+      "lr": 9.05096679918781,
+      "reached": false,
+      "loss": 2.58608561062283,
+      "step": 2000
+    }
+  },
+  "calibration_steps": 2000,
+  "protocol": {
+    "classes": 100,
+    "dataset": "CIFAR100",
+    "batch_size": 128,
+    "target_loss": 0.2,
+    "eval_every": 500
+  },
+  "device": "cpu-hosted"
+}
