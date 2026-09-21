@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 
 from scripts.v3_results_document import endpoint_effects, render, threshold_audit
@@ -65,6 +67,38 @@ def test_render_writes_bound_scientific_report_without_upgrading_claims(tmp_path
     ]).to_csv(primary / "seed_bootstrap_ci.csv", index=False)
     pd.DataFrame([{"exact_collision_present": False}]).to_csv(
         certification_dir / "trained_circle_exact_certificates.csv", index=False)
+    relevance_dir = output / "relevance_dependence"
+    ood_dir = output / "ood_evaluation"
+    image_dir = output / "images"
+    relevance_dir.mkdir()
+    ood_dir.mkdir()
+    image_dir.mkdir()
+    relevance = []
+    for metric in METRICS:
+        relevance.append({
+            "gamma": 128., "layer": 4, "metric": metric,
+            "comparison": "baseline", "relevance_left": 0.,
+            "relevance_right": 1., "n_seeds": 3, "mean": .1,
+            "lower": .05, "upper": .15,
+        })
+    (relevance_dir / "relevance_paired_contrasts.json").write_text(
+        json.dumps(relevance))
+    pd.DataFrame([
+        {"training_condition": "iid", "gamma": 128.,
+         "evaluation_environment": environment, "metric": metric,
+         "n_seeds": 3, "mean": -.1 if metric == "accuracy" else .1,
+         "lower": -.15 if metric == "accuracy" else .05,
+         "upper": -.05 if metric == "accuracy" else .15}
+        for environment in ("concentrated", "spurious", "unseen")
+        for metric in ("accuracy", "loss")
+    ]).to_csv(ood_dir / "ood_environment_shift_confidence_intervals.csv", index=False)
+    pd.DataFrame([
+        {"study": "cifar10", "metric": metric, "layer": layer,
+         "gamma": 128., "reference_gamma": .125, "n_seeds": 3,
+         "mean": .1, "lower": .05, "upper": .15}
+        for metric, layer in (("test_accuracy", 0), ("cka_drift", 4),
+                              ("effective_rank", 4), ("test_loss", 0))
+    ]).to_csv(image_dir / "image_paired_contrasts.csv", index=False)
     certification = {
         "analytic_exact_controls": 7, "rational_trained_layer_certificates": 40,
         "exact_scope": "finite polygon", "numerical_scope": "sampled polygon",
@@ -83,5 +117,46 @@ def test_render_writes_bound_scientific_report_without_upgrading_claims(tmp_path
     assert audit["exact_continuum_task_quotient_established"] is False
     assert "**crossover**" in text
     assert "broadened rather than sharpened" in text
+    assert "Controlled image validation" in text
     assert (output / "headline_endpoint_effects.csv").is_file()
+    assert (output / "headline_relevance_effects.csv").is_file()
+    assert (output / "headline_ood_effects.csv").is_file()
+    assert (output / "headline_image_effects.csv").is_file()
     assert (output / "claim_audit.json").is_file()
+
+
+def test_image_headline_uses_maximal_estimable_gamma_per_metric_layer(tmp_path):
+    from research_ext.report import METRICS
+    from scripts.v3_results_document import _write_headline_tables
+
+    output = tmp_path
+    (output / "relevance_dependence").mkdir()
+    (output / "ood_evaluation").mkdir()
+    (output / "images").mkdir()
+    (output / "relevance_dependence/relevance_paired_contrasts.json").write_text(
+        json.dumps([
+            {"gamma": 128., "layer": 4, "metric": metric,
+             "comparison": "baseline", "relevance_left": 0.,
+             "relevance_right": 1., "n_seeds": 2, "mean": 0.,
+             "lower": 0., "upper": 0.}
+            for metric in METRICS
+        ]))
+    pd.DataFrame([
+        {"training_condition": "iid", "gamma": 128.,
+         "evaluation_environment": "unseen", "metric": "accuracy",
+         "n_seeds": 2, "mean": 0., "lower": 0., "upper": 0.},
+    ]).to_csv(output / "ood_evaluation/ood_environment_shift_confidence_intervals.csv",
+              index=False)
+    pd.DataFrame([
+        {"study": "cifar10", "metric": "test_accuracy", "layer": 0,
+         "gamma": gamma, "reference_gamma": .125, "n_seeds": 2,
+         "mean": 0., "lower": 0., "upper": 0.}
+        for gamma in (64., 128.)
+    ] + [
+        {"study": "cifar10", "metric": "cka_drift", "layer": 4,
+         "gamma": 64., "reference_gamma": .125, "n_seeds": 2,
+         "mean": 0., "lower": 0., "upper": 0.}
+    ]).to_csv(output / "images/image_paired_contrasts.csv", index=False)
+    _, _, images = _write_headline_tables(output)
+    assert images.set_index("metric").loc["test_accuracy", "gamma"] == 128.
+    assert images.set_index("metric").loc["cka_drift", "gamma"] == 64.

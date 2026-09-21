@@ -23,6 +23,19 @@ PRIMARY_LABELS = {
     "ph_h2_top1": "supporting H2 persistence",
 }
 
+RELEVANCE_LABELS = {
+    "fiber_global_normalized_minimum": "sampled global fiber margin M",
+    "fiber_collision_pairs": "sampled collision-pair count Q",
+    "mlp_nuisance_cosine": "nonlinear nuisance decodability D_F",
+    "test_accuracy": "test accuracy R",
+}
+
+IMAGE_LABELS = {
+    "test_accuracy": "test accuracy",
+    "cka_drift": "geometry deformation (1 - CKA)",
+    "effective_rank": "effective rank",
+}
+
 
 def _finite(value):
     return value is not None and np.isfinite(value)
@@ -99,6 +112,117 @@ def threshold_audit(primary_ci: pd.DataFrame, exact_certificates: pd.DataFrame,
     }
 
 
+def _write_headline_tables(output: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Apply fixed endpoint extraction rules to already-derived v3 summaries.
+
+    Every underlying curve remains available in its source artifact.  The concise
+    report uses the maximal predeclared gamma, maximal relevance contrast, and
+    final available representation layer; it never selects an extremum by effect
+    size or confidence interval.
+    """
+    relevance = pd.DataFrame(json.loads(
+        (output / "relevance_dependence/relevance_paired_contrasts.json").read_text()))
+    if relevance.empty:
+        raise ValueError("Missing relevance contrasts")
+    relevance_headline = relevance[
+        (relevance.comparison == "baseline")
+        & (relevance.relevance_right == relevance.relevance_right.max())
+        & (relevance.gamma == relevance.gamma.max())
+        & (relevance.layer == relevance.layer.max())
+    ].copy().sort_values("metric")
+    if set(relevance_headline.metric) != set(METRICS):
+        raise ValueError("Headline relevance extraction does not cover every frozen metric")
+    atomic_text(output / "headline_relevance_effects.csv",
+                relevance_headline.to_csv(index=False))
+
+    ood = pd.read_csv(output / "ood_evaluation/ood_environment_shift_confidence_intervals.csv")
+    if ood.empty:
+        raise ValueError("Missing OOD intervention contrasts")
+    ood_headline = ood[ood.gamma == ood.gamma.max()].copy().sort_values(
+        ["training_condition", "evaluation_environment", "metric"])
+    expected_ood = (ood.training_condition.nunique()
+                    * ood.evaluation_environment.nunique()
+                    * ood.metric.nunique())
+    if len(ood_headline) != expected_ood:
+        raise ValueError("Headline OOD extraction has missing maximal-gamma cells")
+    atomic_text(output / "headline_ood_effects.csv", ood_headline.to_csv(index=False))
+
+    images = pd.read_csv(output / "images/image_paired_contrasts.csv")
+    if images.empty:
+        raise ValueError("Missing image-study contrasts")
+    maxima = images.groupby(["study", "metric", "layer"], as_index=False).gamma.max().rename(
+        columns={"gamma": "headline_gamma"})
+    image_headline = images.merge(
+        maxima, on=["study", "metric", "layer"], validate="many_to_one")
+    image_headline = image_headline[
+        image_headline.gamma == image_headline.headline_gamma].copy().sort_values(
+            ["study", "metric", "layer"])
+    observed = set(map(tuple, image_headline[["study", "metric", "layer"]].to_numpy()))
+    expected = set(map(tuple, images[["study", "metric", "layer"]].drop_duplicates().to_numpy()))
+    if observed != expected:
+        raise ValueError("Headline image extraction does not cover every metric/layer")
+    atomic_text(output / "headline_image_effects.csv", image_headline.to_csv(index=False))
+    return relevance_headline, ood_headline, image_headline
+
+
+def _effect_interval(row) -> str:
+    return _interval(row)
+
+
+def _relevance_table(frame: pd.DataFrame) -> str:
+    rows = [
+        "| Frozen metric | λ contrast | γ | paired right-minus-left [95% CI] | seeds |",
+        "|---|---:|---:|---:|---:|",
+    ]
+    for metric, label in RELEVANCE_LABELS.items():
+        selected = frame[frame.metric == metric]
+        if len(selected) != 1:
+            raise ValueError(f"Missing headline relevance metric: {metric}")
+        row = selected.iloc[0]
+        rows.append(
+            f"| {label} | {row.relevance_left:g} → {row.relevance_right:g} | "
+            f"{row.gamma:g} | {_effect_interval(row)} | {int(row.n_seeds)} |"
+        )
+    return "\n".join(rows)
+
+
+def _ood_table(frame: pd.DataFrame) -> str:
+    rows = [
+        "| Training condition | Intervention | γ | accuracy shift vs IID [95% CI] | seeds |",
+        "|---|---|---:|---:|---:|",
+    ]
+    selected = frame[frame.metric == "accuracy"]
+    for row in selected.itertuples(index=False):
+        rows.append(
+            f"| {row.training_condition} | {row.evaluation_environment} | {row.gamma:g} | "
+            f"{_effect_interval(row._asdict())} | {int(row.n_seeds)} |"
+        )
+    return "\n".join(rows)
+
+
+def _image_table(frame: pd.DataFrame) -> str:
+    rows = [
+        "| Study | Frozen metric | layer | γ contrast | high-minus-low [95% CI] | seeds |",
+        "|---|---|---:|---:|---:|---:|",
+    ]
+    for study, part in frame.groupby("study", sort=True):
+        for metric, label in IMAGE_LABELS.items():
+            candidates = part[part.metric == metric]
+            if candidates.empty:
+                raise ValueError(f"Missing headline image metric: {study}/{metric}")
+            target_layer = 0 if metric == "test_accuracy" else int(candidates.layer.max())
+            selected = candidates[candidates.layer == target_layer]
+            if len(selected) != 1:
+                raise ValueError(f"Ambiguous headline image metric: {study}/{metric}")
+            row = selected.iloc[0]
+            rows.append(
+                f"| {study} | {label} | {int(row.layer)} | "
+                f"{row.reference_gamma:g} → {row.gamma:g} | {_effect_interval(row)} | "
+                f"{int(row.n_seeds)} |"
+            )
+    return "\n".join(rows)
+
+
 def render(repo: Path, output: Path, frozen_manifest_sha256: str, reports: list[dict],
            relevance_statistics: dict, ood_statistics: dict,
            certification: dict, width_scaling: dict) -> dict:
@@ -116,6 +240,7 @@ def render(repo: Path, output: Path, frozen_manifest_sha256: str, reports: list[
                             thresholds["geometry_deformed"],
                             thresholds["near_singular_normalized_margin"])
     atomic_json(output / "claim_audit.json", audit)
+    relevance_headline, ood_headline, image_headline = _write_headline_tables(output)
 
     effect_rows = effects[effects.metric.isin(PRIMARY_LABELS)].copy()
     effect_rows["order"] = effect_rows.metric.map(
@@ -212,13 +337,33 @@ are shown here.
 
 ## Relevance and nuisance interventions
 
-All frozen relevance levels ({relevance_levels}) are reported with training-
-seed intervals and fixed-gamma paired contrasts in `relevance_dependence/`. The OOD analysis
-contains {ood_statistics['runs']} checkpoint-hash-bound runs and reports intervention-minus-
-IID effects in `ood_evaluation/`. These predictive contrasts do not establish representation
-causality. Major figures are
+All frozen relevance levels ({relevance_levels}) are reported with training-seed intervals
+and fixed-gamma paired contrasts in `relevance_dependence/`. The fixed headline rule below
+uses maximal frozen γ and compares maximal λ with the λ=0 baseline; all frozen metrics,
+including those not displayed, are retained in `headline_relevance_effects.csv`.
+
+{_relevance_table(relevance_headline)}
+
+The OOD analysis contains {ood_statistics['runs']} checkpoint-hash-bound runs. The table
+below gives every maximal-γ intervention-minus-IID accuracy effect; losses and all γ values
+remain in `ood_evaluation/` and `headline_ood_effects.csv`. These predictive contrasts do
+not establish representation causality. Major figures are
 [`relevance_regime_map.png`](relevance_dependence/relevance_regime_map.png) and
 [`ood_intervention_shifts.png`](ood_evaluation/ood_intervention_shifts.png).
+
+{_ood_table(ood_headline)}
+
+## Controlled image validation
+
+The same fixed endpoint rule is applied separately to each frozen image-study schema. The
+table reports the three measures selected for the pre-existing overview figures at output
+or final-representation layer as appropriate. Each metric/layer uses its maximal estimable
+frozen γ; an earlier endpoint therefore exposes, rather than imputes, a structurally
+undefined metric. Every image metric/layer endpoint is retained in
+`headline_image_effects.csv`; the complete trajectories and structural CKA exclusions remain
+in `images/`.
+
+{_image_table(image_headline)}
 
 ## Exact, certified, and empirical scopes
 
