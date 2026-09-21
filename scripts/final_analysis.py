@@ -13,6 +13,7 @@ from scripts.ood_statistics import summarize_nuisance_shift
 from scripts.relevance_statistics import summarize_relevance
 from scripts.certification_statistics import summarize_certification
 from scripts.width_statistics import plot_width_gate
+from scripts.v3_results_document import render as render_v3_results
 
 
 def verify_consumed_inputs(repo, manifest, input_hashes_path):
@@ -142,11 +143,15 @@ def main(args):
     width_scaling={key:width_gate[key] for key in [
         'metric','terminology','phase_transition_language_allowed','clauses','scaling','scope']}
     plot_width_gate(width_gate,output/'width_scaling')
+    claim_audit=render_v3_results(repo,output,sha256(Path(args.manifest)),reports,
+                                  relevance_statistics,ood_statistics,
+                                  certification,width_scaling)
     verify_manifest(repo,args.manifest)
     files={p.relative_to(repo).as_posix():sha256(p) for p in sorted(output.rglob('*')) if p.is_file()}
     atomic_json(output/'analysis_manifest.json',dict(schema='feature-topology.final-analysis.v1',reports=reports,
                 relevance_statistics=relevance_statistics,ood_statistics=ood_statistics,
                 certification=certification,width_scaling=width_scaling,
+                claim_audit=claim_audit,
                 frozen_manifest_sha256=sha256(Path(args.manifest)),files=files,
                 frozen_input_files=len(manifest['files']),
                 scope='Separate condition-level seed analyses and distinct image-study schemas; exact certificates retain their own domain-specific claims.'))
