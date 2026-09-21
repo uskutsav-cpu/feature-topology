@@ -5,6 +5,7 @@ import pytest
 
 import scripts.verify_cifar as verifier
 from scripts.audit_cifar_replay import replay_comparison
+from scripts.collect_cifar_replays import validate_report
 from scripts.verify_cifar import (REPLAY_CACHE_PREDECESSORS,cached_replay,
                                   load_replay_cache,validate_dataset,
                                   validate_hosted_adjudication)
@@ -93,3 +94,17 @@ def test_hosted_adjudication_is_hash_bound():
     assert result['workflow_run']=='123'
     with pytest.raises(ValueError,match='binding mismatch'):
         validate_hosted_adjudication(hosted,{**binding,'metrics_sha256':'changed'},saved)
+
+
+def test_hosted_replay_collector_rejects_failed_or_misbound_report(tmp_path):
+    commit='a'*40
+    path=tmp_path/('replay-'+'b'*16+'-123.json')
+    value={'schema':'feature-topology.cifar-hosted-replay.v1','run_id':'b'*16,
+           'host':{'commit':commit,'workflow_run':'123'},
+           'comparison':{'accuracy_exact':True,'loss_within_1e-4':True}}
+    path.write_text(json.dumps(value))
+    assert validate_report(path,commit)['run_id']=='b'*16
+    value['comparison']['accuracy_exact']=False
+    path.write_text(json.dumps(value))
+    with pytest.raises(ValueError,match='Invalid hosted'):
+        validate_report(path,commit)
