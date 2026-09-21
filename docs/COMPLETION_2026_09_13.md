@@ -187,3 +187,13 @@ The final freeze requires complete 49-cell calibration and 35-cell production
 ledgers for both CIFAR-10 and CIFAR-100, a single source commit per result tag,
 source-specification agreement with the local dataset-provenance record, and the
 existing full CPU held-out replay of all 70 production checkpoints.
+
+Repeated hosted resume waves should run the controller with `--bounded-cache`
+when retaining another full local copy of every immutable release archive would
+threaten the free-space guard. In this mode, small status manifests and a
+hash-bound transport-validation ledger remain local. Each previously unseen
+archive is downloaded into a one-archive temporary directory, validated against
+its status, source specification, source commit and member hashes, and terminal
+outputs are installed additively before the temporary transfer is discarded.
+The authoritative archive remains on the immutable GitHub work-in-progress
+release. Existing local cache archives are never removed by this mode.
