@@ -1,6 +1,6 @@
 import pandas as pd
 
-from scripts.v3_results_document import endpoint_effects, threshold_audit
+from scripts.v3_results_document import endpoint_effects, render, threshold_audit
 
 
 def test_endpoint_effects_pair_training_seeds_and_cover_every_metric(tmp_path):
@@ -34,3 +34,54 @@ def test_threshold_audit_never_upgrades_sampled_margin_to_exact_claim():
     assert result["near_singular_cells"] == [
         {"gamma": 2., "metric": "fiber_local_normalized_minimum"}]
     assert result["exact_continuum_task_quotient_established"] is False
+
+
+def test_render_writes_bound_scientific_report_without_upgrading_claims(tmp_path):
+    from research_ext.report import METRICS
+    config = tmp_path / "configs"
+    config.mkdir()
+    (config / "analysis_plan_v2.json").write_text(
+        '{"descriptive_thresholds":{"geometry_deformed":0.05,'
+        '"near_singular_normalized_margin":0.001}}')
+    output = tmp_path / "results/final_analysis"
+    primary = output / "main/main"
+    certification_dir = output / "certification"
+    primary.mkdir(parents=True)
+    certification_dir.mkdir()
+    matched = []
+    for gamma in (.125, 128.):
+        for seed in range(3):
+            row = {"seed": seed, "gamma": gamma, "layer": 4}
+            row.update({metric: gamma / 128 + seed / 100 for metric in METRICS})
+            matched.append(row)
+    pd.DataFrame(matched).to_csv(primary / "matched_risk.csv", index=False)
+    pd.DataFrame([
+        {"layer": 4, "metric": "cka_drift", "gamma": 128.,
+         "lower": .1, "upper": .2},
+        {"layer": 4, "metric": "fiber_global_normalized_minimum", "gamma": 128.,
+         "lower": .01, "upper": .02},
+        {"layer": 4, "metric": "fiber_local_normalized_minimum", "gamma": 128.,
+         "lower": .01, "upper": .02},
+    ]).to_csv(primary / "seed_bootstrap_ci.csv", index=False)
+    pd.DataFrame([{"exact_collision_present": False}]).to_csv(
+        certification_dir / "trained_circle_exact_certificates.csv", index=False)
+    certification = {
+        "analytic_exact_controls": 7, "rational_trained_layer_certificates": 40,
+        "exact_scope": "finite polygon", "numerical_scope": "sampled polygon",
+        "formal_scope": "abstract graph layer",
+    }
+    width = {
+        "terminology": "crossover", "phase_transition_language_allowed": False,
+        "scaling": {"bootstrap_shrink_support": 0.,
+                    "bootstrap_stable_center_support": .989,
+                    "largest_to_smallest_transition_width_ratio": 3.334},
+    }
+    audit = render(tmp_path, output, "f" * 64, [{}],
+                   {"relevance_levels": [0., 1.]}, {"runs": 140},
+                   certification, width)
+    text = (output / "V3_RESULTS.md").read_text()
+    assert audit["exact_continuum_task_quotient_established"] is False
+    assert "**crossover**" in text
+    assert "broadened rather than sharpened" in text
+    assert (output / "headline_endpoint_effects.csv").is_file()
+    assert (output / "claim_audit.json").is_file()
