@@ -6,7 +6,8 @@ import sys
 
 import pytest
 
-from scripts.cifar_provenance import expected_cell_ids, merge_collection_reports
+from scripts.cifar_provenance import (expected_cell_ids, merge_collection_reports,
+                                      validate_transport_audit)
 from scripts.finalize_cifar_queue import promote, promote_multisource
 from scripts.remote_cifar import GAMMAS
 from src.training.checkpoints import atomic_json
@@ -18,6 +19,14 @@ def test_cifar_provenance_cli_is_directly_executable():
                             text=True, capture_output=True)
     assert result.returncode == 0
     assert "--dataset" in result.stdout and "--source" in result.stdout
+
+
+def test_repository_lr_transport_audit_reconstructs_frozen_cells():
+    repo = Path(__file__).resolve().parents[1]
+    audit = validate_transport_audit(
+        repo, repo / "results/completion/cifar10_lr_transport_audit_v3.json")
+    assert len(audit["records"]) == 5
+    assert {row["seed"] for row in audit["records"]} == set(range(5))
 
 
 def fixture(tmp_path, *, production_complete=35):

@@ -121,6 +121,11 @@
         "archive_sha256": "a6874361cb31d449edd7f38354adcbf1a01451ba07bc8e439c4556b87bc847e0",
         "disposition": "preserved on the immutable original release but excluded from installation, validation, and scientific analysis"
       },
+      "complete_scope_audit": {
+        "path": "results/completion/cifar10_lr_transport_audit_v3.json",
+        "sha256": "0e9730e9956910806216faa55c415d449733ad9a540e141c8a809e9bfe13f80a",
+        "records": 5
+      },
       "hosted_workflow_impact": "Five original gamma=128 jobs used a non-frozen learning rate and are scientifically invalid. Their unexpected cell IDs cause the fail-closed collector to ignore them. All completed expected-fingerprint jobs remain valid and are not rerun.",
       "scientific_protocol_impact": "none; the corrective cohort uses the already-frozen learning rate with no metric, hypothesis, endpoint, or analysis change",
       "recovery": "Commit 8816fc099e3d5135f191597ff50764ad87d80af0 changed only the transport encoding: production rates are emitted as exact hexadecimal IEEE-754 strings and decoded before fingerprinting. Immutable tag cifar10-v3-exact-lr-8816fc0 was bound to that commit, and workflow 35672289571 dispatched only the five affected frozen gamma=128 cells. The original workflow and malformed artifacts were retained for audit.",

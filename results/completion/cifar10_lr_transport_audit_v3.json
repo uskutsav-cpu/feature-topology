@@ -1,0 +1,78 @@
+{
+  "schema": "feature-topology.cifar-lr-transport-audit.v1",
+  "dataset": "CIFAR10",
+  "stage": "production",
+  "gamma": 128.0,
+  "expected_learning_rate": 4.525483399593905,
+  "observed_learning_rate": 4.5254833995939,
+  "original_source_commit": "d06123ebdc4a23e8d4bec976e2fe92793b9795a0",
+  "original_result_tag": "cifar10-v3-hosted-d06123e",
+  "workflow_run": "35562419981",
+  "workflow_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35562419981",
+  "disposition": "All observed cells are preserved on the original immutable release but excluded from installation, replay validation, canonical collection reports, and scientific analysis.",
+  "records": [
+    {
+      "seed": 0,
+      "expected_cell_id": "8ff922a62ffb2382",
+      "expected_run_id": "6d18a2ff01070c78",
+      "observed_cell_id": "abe9c4a9f2c644c0",
+      "observed_run_id": "464365fb512053f7",
+      "complete": true,
+      "status_asset": "status-abe9c4a9f2c644c0-35562419981-1.json",
+      "status_sha256": "e8b7cbdd41c200f33b45830e37554b12b28812e71b6433ccf94ef8af8585a46a",
+      "archive_asset": "cifar-abe9c4a9f2c644c0-35562419981-1.tar.gz",
+      "archive_sha256": "41843ba0835e46390f8d148b024facabc632604c929c4bfd37010e5e784d96e9"
+    },
+    {
+      "seed": 1,
+      "expected_cell_id": "54054066c6815642",
+      "expected_run_id": "adcd7779bc886230",
+      "observed_cell_id": "77a606ed644717ec",
+      "observed_run_id": "a6163fce3b4d432d",
+      "complete": false,
+      "status_asset": "status-77a606ed644717ec-35562419981-1.json",
+      "status_sha256": "1bbb264776e5b9f26ef4f95e262ddf69ebf6897c318aee5aea851c71fa4bc8a0",
+      "archive_asset": "cifar-77a606ed644717ec-35562419981-1.tar.gz",
+      "archive_sha256": "f5d9b7e79774a1bac1a80cc55eddb0e875c4b76dc420d32d5145f75f0681c99a"
+    },
+    {
+      "seed": 2,
+      "expected_cell_id": "b54684eb24600ca9",
+      "expected_run_id": "2030d781ce9995f8",
+      "observed_cell_id": "fcbf6fdfde0d6c8c",
+      "observed_run_id": "a44e68ced1190063",
+      "complete": true,
+      "status_asset": "status-fcbf6fdfde0d6c8c-35562419981-1.json",
+      "status_sha256": "6eaa2c00cc85bff1f7d53f4d0f3810dc990631176901ebca43e4aedc3e38adb5",
+      "archive_asset": "cifar-fcbf6fdfde0d6c8c-35562419981-1.tar.gz",
+      "archive_sha256": "723fff0961d9d387cd96646553618c9989e3c64c2ad38166b7dbad7b627dba0f"
+    },
+    {
+      "seed": 3,
+      "expected_cell_id": "7fdb41fbb8423d2a",
+      "expected_run_id": "75ad558e7fab039f",
+      "observed_cell_id": "b1739adc250f848e",
+      "observed_run_id": "fac38041e76d7b28",
+      "complete": true,
+      "status_asset": "status-b1739adc250f848e-35562419981-1.json",
+      "status_sha256": "d40bb0ad92cb6e0c346549b9611f9222afd6f0a644126807a80f50e234a20494",
+      "archive_asset": "cifar-b1739adc250f848e-35562419981-1.tar.gz",
+      "archive_sha256": "0329d5fa46d086f9578120393282bc23b72f542ae883d27d1963036665db5f62"
+    },
+    {
+      "seed": 4,
+      "expected_cell_id": "6d4d9d938a84d1b4",
+      "expected_run_id": "4fed6350ad2b0e66",
+      "observed_cell_id": "fc62ce28e2993adc",
+      "observed_run_id": "d02fbe4f28ac42f0",
+      "complete": true,
+      "status_asset": "status-fc62ce28e2993adc-35562419981-1.json",
+      "status_sha256": "af07c0bb9db634e6d7372a77060547787d9367bdc483c374f441976868db6671",
+      "archive_asset": "cifar-fc62ce28e2993adc-35562419981-1.tar.gz",
+      "archive_sha256": "a6874361cb31d449edd7f38354adcbf1a01451ba07bc8e439c4556b87bc847e0"
+    }
+  ],
+  "corrective_source_commit": "8816fc099e3d5135f191597ff50764ad87d80af0",
+  "corrective_result_tag": "cifar10-v3-exact-lr-8816fc0",
+  "corrective_workflow_run": "35672289571"
+}

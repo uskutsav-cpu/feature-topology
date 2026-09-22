@@ -14,7 +14,8 @@ import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from scripts.cifar_provenance import sha256, validate_collection_report
+from scripts.cifar_provenance import (sha256, validate_collection_report,
+                                      validate_transport_audit)
 from src.training.checkpoints import atomic_json
 
 
@@ -152,6 +153,13 @@ def promote_multisource(repo: Path, dataset: str, sources: list[Path],
         "sources": sorted(bound, key=lambda row: row["path"]),
         "stages": stages,
     }
+    audit_path = repo / "results/completion/cifar10_lr_transport_audit_v3.json"
+    if dataset == "CIFAR10" and audit_path.exists():
+        validate_transport_audit(repo, audit_path)
+        state["transport_audit"] = {
+            "path": audit_path.relative_to(repo).as_posix(),
+            "sha256": sha256(audit_path),
+        }
     output = output.resolve()
     if not output.is_relative_to(repo):
         raise ValueError("Canonical CIFAR queue ledger must be inside the repository")

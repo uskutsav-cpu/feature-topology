@@ -212,6 +212,10 @@ such output was installed or analyzed. Production learning rates are now carried
 through the matrix as hexadecimal IEEE-754 strings. Only the five affected cells
 were dispatched again from immutable tag `cifar10-v3-exact-lr-8816fc0`; all
 unaffected completed cells remain bound to their original tag and commit.
+`results/completion/cifar10_lr_transport_audit_v3.json` enumerates all five
+unexpected cell/run fingerprints and binds their status and archive SHA-256
+values; the canonical multi-source ledger binds that audit but none of its
+quarantined outputs.
 
 Because that minimal correction gives CIFAR-10 two legitimate immutable source
 cohorts, finalization must not pretend that the dataset has one source commit.

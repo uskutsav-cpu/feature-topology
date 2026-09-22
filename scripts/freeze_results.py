@@ -13,7 +13,7 @@ from research_ext.image_audit import audit_images
 from research_ext.exact import verify_box_certificate,verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
 from scripts.dataset_provenance import verify_provenance
-from scripts.cifar_provenance import validate_collection_report
+from scripts.cifar_provenance import validate_collection_report,validate_transport_audit
 
 
 def nonfinite_paths(value,path=""):
@@ -236,6 +236,15 @@ def cifar_hosted_paths(repo):
                 paths.extend(report_paths)
             if used_commits!=bound_commits:
                 raise ValueError(f'Hosted CIFAR source/cohort mismatch: {dataset}')
+            if state.get('transport_audit') is not None:
+                audit_row=state['transport_audit']
+                audit_path=repo/str(audit_row.get('path',''))
+                if (not audit_path.resolve().is_relative_to(repo.resolve())
+                        or not audit_path.is_file()
+                        or sha256(audit_path)!=audit_row.get('sha256')):
+                    raise ValueError(f'Hosted CIFAR transport-audit mismatch: {dataset}')
+                validate_transport_audit(repo,audit_path)
+                paths.append(audit_path)
             paths.append(state_path)
             continue
         commit=state.get('source_commit')

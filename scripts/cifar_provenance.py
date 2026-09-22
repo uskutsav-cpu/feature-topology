@@ -9,9 +9,9 @@ import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from scripts.remote_cifar import cell_id
+from scripts.remote_cifar import cell_id, config_for
 from scripts.run_cifar_remote_queue import calibration_cells, production_cells
-from src.training.checkpoints import atomic_json
+from src.training.checkpoints import atomic_json, fingerprint
 
 
 COMMIT = re.compile(r"[0-9a-f]{40}")
@@ -38,6 +38,54 @@ def expected_cell_ids(repo: str | Path, dataset: str, stage: str) -> set[str]:
     else:
         raise ValueError(f"Unknown CIFAR stage: {stage}")
     return {cell_id(cell) for cell in cells}
+
+
+def validate_transport_audit(repo: str | Path, audit_path: str | Path) -> dict:
+    """Validate the complete audit of the quarantined rounded-LR cohort."""
+    repo = Path(repo).resolve()
+    audit_path = _inside(repo, Path(audit_path), "CIFAR transport audit")
+    audit = json.loads(audit_path.read_text())
+    frozen = json.loads((repo / "results/cifar10/gamma_to_lr.json").read_text())
+    expected_lr = frozen["selection"]["128.0"]["lr"]
+    expected = {
+        cell["seed"]: (cell_id(cell), fingerprint(config_for(cell)))
+        for cell in production_cells("CIFAR10", frozen) if cell["gamma"] == 128
+    }
+    rows = audit.get("records", [])
+    if (audit.get("schema") != "feature-topology.cifar-lr-transport-audit.v1"
+            or audit.get("dataset") != "CIFAR10" or audit.get("stage") != "production"
+            or audit.get("gamma") != 128.0
+            or audit.get("expected_learning_rate") != expected_lr
+            or audit.get("observed_learning_rate") == expected_lr
+            or not COMMIT.fullmatch(str(audit.get("original_source_commit", "")))
+            or not COMMIT.fullmatch(str(audit.get("corrective_source_commit", "")))
+            or not TAG.fullmatch(str(audit.get("original_result_tag", "")))
+            or not TAG.fullmatch(str(audit.get("corrective_result_tag", "")))
+            or not str(audit.get("workflow_run", "")).isdigit()
+            or not str(audit.get("corrective_workflow_run", "")).isdigit()
+            or not str(audit.get("workflow_url", "")).startswith("https://github.com/")
+            or not audit.get("disposition") or len(rows) != 5
+            or {row.get("seed") for row in rows} != set(expected)):
+        raise ValueError("Invalid CIFAR learning-rate transport audit")
+    observed = set()
+    for row in rows:
+        seed = row["seed"]
+        identifier = str(row.get("observed_cell_id", ""))
+        run_id = str(row.get("observed_run_id", ""))
+        status = str(row.get("status_asset", ""))
+        archive = str(row.get("archive_asset", ""))
+        if (tuple([row.get("expected_cell_id"), row.get("expected_run_id")]) != expected[seed]
+                or not CELL.fullmatch(identifier) or identifier in expected_cell_ids(
+                    repo, "CIFAR10", "production")
+                or not CELL.fullmatch(run_id) or identifier in observed
+                or status != f"status-{identifier}-{audit['workflow_run']}-1.json"
+                or archive != f"cifar-{identifier}-{audit['workflow_run']}-1.tar.gz"
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("status_sha256", "")))
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("archive_sha256", "")))
+                or not isinstance(row.get("complete"), bool)):
+            raise ValueError(f"Invalid CIFAR learning-rate audit row: seed={seed}")
+        observed.add(identifier)
+    return audit
 
 
 def _inside(repo: Path, path: Path, label: str) -> Path:
