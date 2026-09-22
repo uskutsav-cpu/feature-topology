@@ -6,7 +6,9 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.remote_cifar import cell_id
 from scripts.run_cifar_remote_queue import calibration_cells, production_cells
 from src.training.checkpoints import atomic_json

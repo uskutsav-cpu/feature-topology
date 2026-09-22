@@ -1,5 +1,8 @@
 import hashlib
 import json
+from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -7,6 +10,14 @@ from scripts.cifar_provenance import expected_cell_ids, merge_collection_reports
 from scripts.finalize_cifar_queue import promote, promote_multisource
 from scripts.remote_cifar import GAMMAS
 from src.training.checkpoints import atomic_json
+
+
+def test_cifar_provenance_cli_is_directly_executable():
+    script = Path(__file__).resolve().parents[1] / "scripts/cifar_provenance.py"
+    result = subprocess.run([sys.executable, str(script), "--help"],
+                            text=True, capture_output=True)
+    assert result.returncode == 0
+    assert "--dataset" in result.stdout and "--source" in result.stdout
 
 
 def fixture(tmp_path, *, production_complete=35):
