@@ -13,6 +13,7 @@ from research_ext.image_audit import audit_images
 from research_ext.exact import verify_box_certificate,verify_polygon_certificate
 from src.training.checkpoints import atomic_json, fingerprint
 from scripts.dataset_provenance import verify_provenance
+from scripts.cifar_provenance import validate_collection_report
 
 
 def nonfinite_paths(value,path=""):
@@ -176,6 +177,67 @@ def cifar_hosted_paths(repo):
         key=dataset.lower()
         state_path=completion/f'{key}_remote_queue_v3.json'
         state=json.loads(state_path.read_text())
+        if state.get('schema')=='feature-topology.remote-cifar-queue.v2':
+            if state.get('dataset')!=dataset or not state.get('sources'):
+                raise ValueError(f'Invalid hosted CIFAR queue ledger: {dataset}')
+            bound_commits=set()
+            for source_row in state['sources']:
+                source_path=repo/str(source_row.get('path',''))
+                if (not source_path.resolve().is_relative_to(repo.resolve())
+                        or not source_path.is_file()
+                        or sha256(source_path)!=source_row.get('sha256')):
+                    raise ValueError(f'Hosted CIFAR source-ledger hash mismatch: {dataset}')
+                source_state=json.loads(source_path.read_text())
+                commit=source_state.get('source_commit')
+                if (source_state.get('schema')!=source_row.get('schema')
+                        or commit!=source_row.get('source_commit')
+                        or not isinstance(commit,str)
+                        or not re.fullmatch(r'[0-9a-f]{40}',commit)):
+                    raise ValueError(f'Hosted CIFAR source-ledger mismatch: {dataset}')
+                if source_state['schema']=='feature-topology.remote-cifar-queue.v1':
+                    attempts=source_state.get('attempts',[])
+                elif source_state['schema']=='feature-topology.remote-cifar-correction.v1':
+                    attempts=[source_state]
+                else:
+                    raise ValueError(f'Invalid hosted CIFAR source-ledger schema: {dataset}')
+                workflow_runs=[]
+                for attempt in attempts:
+                    if (attempt.get('dataset')!=dataset
+                            or attempt.get('stage') not in {'calibration','production'}
+                            or not str(attempt.get('workflow_run','')).isdigit()
+                            or not str(attempt.get('url','')).startswith('https://github.com/')
+                            or not attempt.get('cell_ids')
+                            or any(not re.fullmatch(r'[0-9a-f]{16}',value)
+                                   for value in attempt['cell_ids'])
+                            or 'started' not in attempt or 'finished' not in attempt
+                            or not attempt.get('conclusion')):
+                        raise ValueError(f'Incomplete hosted CIFAR attempt provenance: {dataset}')
+                    workflow_runs.append(str(attempt['workflow_run']))
+                if workflow_runs!=source_row.get('workflow_runs'):
+                    raise ValueError(f'Hosted CIFAR workflow provenance mismatch: {dataset}')
+                bound_commits.add(commit)
+                paths.append(source_path)
+            used_commits=set()
+            for stage,expected in [('calibration',49),('production',35)]:
+                row=state.get('stages',{}).get(stage,{})
+                report_path=repo/str(row.get('collection_report',''))
+                if (row.get('expected')!=expected or row.get('complete')!=expected
+                        or row.get('missing')!=0 or row.get('invalid')!=[]
+                        or not report_path.resolve().is_relative_to(repo.resolve())
+                        or not report_path.is_file()
+                        or sha256(report_path)!=row.get('collection_report_sha256')):
+                    raise ValueError(f'Hosted CIFAR stage incomplete: {dataset}/{stage}')
+                report,report_paths=validate_collection_report(
+                    repo,dataset,stage,report_path,bound_commits)
+                if report['schema']=='feature-topology.remote-cifar-collection.v1':
+                    used_commits.add(report['source_commit'])
+                else:
+                    used_commits.update(item['source_commit'] for item in report['components'])
+                paths.extend(report_paths)
+            if used_commits!=bound_commits:
+                raise ValueError(f'Hosted CIFAR source/cohort mismatch: {dataset}')
+            paths.append(state_path)
+            continue
         commit=state.get('source_commit')
         if (state.get('schema')!='feature-topology.remote-cifar-queue.v1'
                 or not isinstance(commit,str) or not re.fullmatch(r'[0-9a-f]{40}',commit)):

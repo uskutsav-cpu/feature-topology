@@ -90,6 +90,54 @@
         "loss_delta": 4.386901863995263e-08
       },
       "duplicate_computation_detected": false
+    },
+    {
+      "recorded_at_utc": "2026-09-22T00:31:07Z",
+      "classification": "code",
+      "summary": "The GitHub Actions matrix expression engine rounded the frozen CIFAR10 gamma=128 learning rate from 4.525483399593905 to 4.5254833995939, changing every affected cell and run fingerprint.",
+      "affected_scope": {
+        "dataset": "CIFAR10",
+        "stage": "production",
+        "gamma": 128.0,
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "expected_learning_rate": 4.525483399593905,
+        "transported_learning_rate": 4.5254833995939,
+        "expected_seed4_cell_id": "6d4d9d938a84d1b4",
+        "observed_seed4_cell_id": "fc62ce28e2993adc",
+        "observed_seed4_run_id": "d02fbe4f28ac42f0"
+      },
+      "diagnosis": "The production planner emitted the rate as a JSON number. GitHub's matrix expression round-trip did not preserve the exact IEEE-754 value. A complete scope audit found no other affected frozen rate: all CIFAR10 gamma<128 rates and every CIFAR100 rate round-trip exactly.",
+      "preserved_malformed_artifact": {
+        "workflow_run": "35562419981",
+        "job_id": "106217735082",
+        "status_asset": "status-fc62ce28e2993adc-35562419981-1.json",
+        "archive_asset": "cifar-fc62ce28e2993adc-35562419981-1.tar.gz",
+        "archive_sha256": "a6874361cb31d449edd7f38354adcbf1a01451ba07bc8e439c4556b87bc847e0",
+        "disposition": "preserved on the immutable original release but excluded from installation, validation, and scientific analysis"
+      },
+      "hosted_workflow_impact": "Five original gamma=128 jobs used a non-frozen learning rate and are scientifically invalid. Their unexpected cell IDs cause the fail-closed collector to ignore them. All completed expected-fingerprint jobs remain valid and are not rerun.",
+      "scientific_protocol_impact": "none; the corrective cohort uses the already-frozen learning rate with no metric, hypothesis, endpoint, or analysis change",
+      "recovery": "Commit 8816fc099e3d5135f191597ff50764ad87d80af0 changed only the transport encoding: production rates are emitted as exact hexadecimal IEEE-754 strings and decoded before fingerprinting. Immutable tag cifar10-v3-exact-lr-8816fc0 was bound to that commit, and workflow 35672289571 dispatched only the five affected frozen gamma=128 cells. The original workflow and malformed artifacts were retained for audit.",
+      "corrective_workflow": {
+        "workflow_run": "35672289571",
+        "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35672289571",
+        "source_commit": "8816fc099e3d5135f191597ff50764ad87d80af0",
+        "result_tag": "cifar10-v3-exact-lr-8816fc0",
+        "cell_ids": [
+          "8ff922a62ffb2382",
+          "54054066c6815642",
+          "b54684eb24600ca9",
+          "7fdb41fbb8423d2a",
+          "6d4d9d938a84d1b4"
+        ]
+      },
+      "duplicate_computation_detected": false
     }
   ]
 }

@@ -197,3 +197,23 @@ its status, source specification, source commit and member hashes, and terminal
 outputs are installed additively before the temporary transfer is discarded.
 The authoritative archive remains on the immutable GitHub work-in-progress
 release. Existing local cache archives are never removed by this mode.
+
+One CIFAR-10 production transport defect was detected before final promotion:
+the GitHub matrix expression engine rounded the frozen gamma-128 learning rate,
+which changed the cell fingerprints. The unexpected fingerprints were rejected
+by the collector, the malformed release assets were retained for audit, and no
+such output was installed or analyzed. Production learning rates are now carried
+through the matrix as hexadecimal IEEE-754 strings. Only the five affected cells
+were dispatched again from immutable tag `cifar10-v3-exact-lr-8816fc0`; all
+unaffected completed cells remain bound to their original tag and commit.
+
+Because that minimal correction gives CIFAR-10 two legitimate immutable source
+cohorts, finalization must not pretend that the dataset has one source commit.
+`scripts/cifar_provenance.py` merges disjoint complete collection reports while
+retaining the component report hash, release tag, source commit, and exact cell
+IDs for every output. `scripts/finalize_cifar_queue.py` then emits the canonical
+v2 queue ledger from both source ledgers and the full stage reports. The freeze
+checker independently reconstructs the expected frozen cell IDs, verifies every
+component and source-ledger hash, and rejects overlaps, gaps, unbound commits, or
+flattened provenance. The original single-source v1 contract remains valid for
+CIFAR-100.
