@@ -216,4 +216,7 @@ v2 queue ledger from both source ledgers and the full stage reports. The freeze
 checker independently reconstructs the expected frozen cell IDs, verifies every
 component and source-ledger hash, and rejects overlaps, gaps, unbound commits, or
 flattened provenance. The original single-source v1 contract remains valid for
-CIFAR-100.
+CIFAR-100. When resuming the original CIFAR-10 release, each correction-cohort
+fingerprint is passed through `--exclude-production-cell-id`; the controller
+validates every exclusion against the frozen 35-cell plan and dispatches only
+the complement.

@@ -58,6 +58,18 @@ def test_plan_transports_production_rate_without_decimal_rounding():
     assert remote_cifar.cell_id(transported)==remote_cifar.cell_id(cell)
 
 
+def test_production_retry_exclusion_is_exact_and_fail_closed():
+    frozen={"selection":{str(gamma):{"lr":.01} for gamma in remote_cifar.GAMMAS}}
+    cells=run_cifar_remote_queue.production_cells("CIFAR10",frozen)
+    excluded=[remote_cifar.cell_id(cell) for cell in cells if cell["gamma"]==128]
+    selected=run_cifar_remote_queue.exclude_production_cells(cells,excluded)
+    assert len(selected)==30 and all(cell["gamma"]<128 for cell in selected)
+    with pytest.raises(ValueError,match="Unknown excluded"):
+        run_cifar_remote_queue.exclude_production_cells(cells,["0"*16])
+    with pytest.raises(ValueError,match="Duplicate excluded"):
+        run_cifar_remote_queue.exclude_production_cells(cells,[excluded[0],excluded[0]])
+
+
 @pytest.mark.parametrize("lr_hex",["not-a-float","nan","inf","-0x1p+0"])
 def test_invalid_hex_rate_fails_closed(lr_hex):
     cell={"stage":"production","dataset":"CIFAR10","gamma":128.,"seed":4,

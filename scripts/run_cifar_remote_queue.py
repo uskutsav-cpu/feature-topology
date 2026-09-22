@@ -60,6 +60,21 @@ def production_cells(dataset: str, frozen: dict) -> list[dict]:
             for gamma in GAMMAS for seed in range(5)]
 
 
+def exclude_production_cells(cells: list[dict], excluded: list[str]) -> list[dict]:
+    """Return the frozen subset not assigned to a separately audited cohort."""
+    identifiers = [cell_id(cell) for cell in cells]
+    requested = set(excluded)
+    if len(requested) != len(excluded):
+        raise ValueError("Duplicate excluded CIFAR production cell ID")
+    unknown = requested - set(identifiers)
+    if unknown:
+        raise ValueError(f"Unknown excluded CIFAR production cells: {sorted(unknown)}")
+    selected = [cell for cell in cells if cell_id(cell) not in requested]
+    if not selected:
+        raise ValueError("CIFAR production exclusion removed every frozen cell")
+    return selected
+
+
 def workflow_state(run_id: str, retries: int = 6, initial_delay: float = 2) -> dict:
     """Read workflow state with bounded retries for transient API failures.
 
@@ -176,6 +191,8 @@ def main() -> None:
     parser.add_argument("--cache",default="results/completion/remote_cifar_cache")
     parser.add_argument("--bounded-cache",action="store_true",
                         help="Stream unseen release archives through bounded temporary storage")
+    parser.add_argument("--exclude-production-cell-id",action="append",default=[],
+                        help="Exact frozen cell fingerprint assigned to another audited cohort")
     args=parser.parse_args();repo=Path(args.repo).resolve();state_path=repo/args.state
     state=json.loads(state_path.read_text()) if state_path.exists() else {
         "schema":"feature-topology.remote-cifar-queue.v1","attempts":[]}
@@ -192,6 +209,7 @@ def main() -> None:
                  args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
     frozen=finalize_calibration(repo,args.dataset)
     production=production_cells(args.dataset,frozen)
+    production=exclude_production_cells(production,args.exclude_production_cell_id)
     finish_stage(repo,args.dataset,"production",production,args.tag,state,state_path,
                  args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
     print(json.dumps({"status":"complete","dataset":args.dataset,"runs":len(production)}),flush=True)
