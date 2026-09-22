@@ -149,6 +149,28 @@
       "scientific_protocol_impact": "none",
       "recovery": "Commit fb5d2352261620103c099cc480ab531d1a0629b7 resolves annotated tags through refs/tags/<tag>^{} and retains lightweight-tag support. Unit tests cover both forms. The monitor was restarted from the unchanged state ledger and attached to the existing workflow without redispatch.",
       "duplicate_computation_detected": false
+    },
+    {
+      "recorded_at_utc": "2026-09-22T03:08:04Z",
+      "classification": "infrastructure",
+      "summary": "A failed CIFAR100 gamma=128 seed-0 worker uploaded its partial status manifest but the referenced resume archive was absent from the immutable work-in-progress release.",
+      "affected_run": {
+        "cell_id": "57818f84688c3d33",
+        "run_id": "b8fe3d712ea79c24",
+        "workflow_run": "35568165832",
+        "job_id": "106234126709",
+        "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35568165832/job/106234126709",
+        "status_asset": "status-57818f84688c3d33-35568165832-1.json",
+        "status_sha256": "c341abf875207ff03a3eb6a22fe8bc1e0e1c00c3e0b4add65248383301e17f00",
+        "missing_archive_asset": "cifar-57818f84688c3d33-35568165832-1.tar.gz",
+        "declared_archive_sha256": "c99e8e6cb17bcaf692b8121c6cdbe26a6025acf1bd6afee510d4cb9fd514d2c6",
+        "job_conclusion": "failure"
+      },
+      "diagnosis": "The status is explicitly nonterminal (`complete: false`) and the job failed after publishing it. No checkpoint, metric, representation, or terminal claim was accepted. The final job log remains retained at the recorded URL and becomes downloadable when the enclosing workflow closes.",
+      "hosted_workflow_impact": "One resumable checkpoint transfer is unavailable; the exact frozen cell must restart rather than resume from this attempt.",
+      "scientific_protocol_impact": "none",
+      "recovery": "Commit d16fe99bcd9c82520ecdb83d6741f96c7fd14e53 records an unavailable nonterminal transfer separately, keeps the cell missing, and lets the controller retry that exact fingerprint from scratch. A terminal completion with a missing archive still fails closed as invalid. No completed result is rerun.",
+      "duplicate_computation_detected": false
     }
   ]
 }
