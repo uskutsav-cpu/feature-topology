@@ -45,6 +45,27 @@ def test_plan_rejects_duplicates_and_oversize():
         remote_cifar.plan(json.dumps([dict(cell,multiplier=.125) for _ in range(65)]))
 
 
+def test_plan_transports_production_rate_without_decimal_rounding():
+    cell={"stage":"production","dataset":"CIFAR10","gamma":128.,"seed":4,
+          "lr":4.525483399593905}
+    transported=remote_cifar.plan(json.dumps([cell]))[0]
+    assert "lr" not in transported
+    assert transported["lr_hex"]==float(cell["lr"]).hex()
+    # Simulate the JSON round trip through the GitHub matrix expression engine:
+    # the rate remains a string and reconstructs the exact frozen float.
+    reconstructed=remote_cifar.parse_cell(json.loads(json.dumps(transported)))
+    assert reconstructed==cell
+    assert remote_cifar.cell_id(transported)==remote_cifar.cell_id(cell)
+
+
+@pytest.mark.parametrize("lr_hex",["not-a-float","nan","inf","-0x1p+0"])
+def test_invalid_hex_rate_fails_closed(lr_hex):
+    cell={"stage":"production","dataset":"CIFAR10","gamma":128.,"seed":4,
+          "lr_hex":lr_hex}
+    with pytest.raises(ValueError):
+        remote_cifar.parse_cell(cell)
+
+
 def test_pack_and_restore_checksum_bound_resume(tmp_path):
     cell=calibration_cell()
     work=tmp_path/"work"; data=tmp_path/"data"; outgoing=tmp_path/"outgoing"

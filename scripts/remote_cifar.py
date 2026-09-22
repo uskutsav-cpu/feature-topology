@@ -65,11 +65,19 @@ def parse_cell(raw: str | dict) -> dict:
             raise ValueError("Malformed CIFAR calibration cell")
         normalized["multiplier"] = float(multiplier)
     else:
-        seed, lr = cell.get("seed"), cell.get("lr")
+        seed = cell.get("seed")
+        exact_hex = cell.get("lr_hex")
+        try:
+            lr = (float.fromhex(exact_hex) if isinstance(exact_hex, str)
+                  else cell.get("lr"))
+        except ValueError as exc:
+            raise ValueError("Malformed CIFAR production learning rate") from exc
+        expected_keys = ({"stage", "dataset", "gamma", "seed", "lr_hex"}
+                         if exact_hex is not None else
+                         {"stage", "dataset", "gamma", "seed", "lr"})
         if (not isinstance(seed, int) or isinstance(seed, bool) or seed not in range(5)
                 or not isinstance(lr, (int, float)) or isinstance(lr, bool)
-                or not math.isfinite(lr) or lr <= 0 or set(cell) != {
-                    "stage", "dataset", "gamma", "seed", "lr"}):
+                or not math.isfinite(lr) or lr <= 0 or set(cell) != expected_keys):
             raise ValueError("Malformed CIFAR production cell")
         normalized.update(seed=seed, lr=float(lr))
     return normalized
@@ -246,7 +254,13 @@ def plan(raw_cells: str) -> list[dict]:
     ids = [cell_id(value) for value in cells]
     if len(ids) != len(set(ids)):
         raise ValueError("Hosted CIFAR cells must be unique")
-    return cells
+    # GitHub's matrix expression engine rounds some JSON numbers (observed for
+    # the frozen CIFAR10 gamma=128 rate), which changes both the configuration
+    # and run fingerprint.  Carry production rates as exact IEEE-754 hex strings
+    # through the matrix and decode them only inside the worker.
+    return [({**{key: value for key, value in cell.items() if key != "lr"},
+              "lr_hex": cell["lr"].hex()}
+             if cell["stage"] == "production" else cell) for cell in cells]
 
 
 def main() -> int:
