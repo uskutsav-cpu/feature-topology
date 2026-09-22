@@ -138,6 +138,17 @@
         ]
       },
       "duplicate_computation_detected": false
+    },
+    {
+      "recorded_at_utc": "2026-09-22T02:51:11Z",
+      "classification": "code",
+      "summary": "The local correction-cohort monitor initially rejected a valid annotated Git tag because it compared the tag-object SHA rather than the peeled commit SHA.",
+      "failed_operation": "verification of cifar10-v3-exact-lr-8816fc0 before attaching the local controller",
+      "diagnosis": "git ls-remote returned annotated tag object 4fc3f63057eb4cde53c6553185aff366cc163fb3 and peeled commit 8816fc099e3d5135f191597ff50764ad87d80af0; the checker read only the first record.",
+      "hosted_workflow_impact": "none; workflow 35672289571 remained active and no dispatch or artifact operation occurred during the failed local check",
+      "scientific_protocol_impact": "none",
+      "recovery": "Commit fb5d2352261620103c099cc480ab531d1a0629b7 resolves annotated tags through refs/tags/<tag>^{} and retains lightweight-tag support. Unit tests cover both forms. The monitor was restarted from the unchanged state ledger and attached to the existing workflow without redispatch.",
+      "duplicate_computation_detected": false
     }
   ]
 }
