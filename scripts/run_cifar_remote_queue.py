@@ -123,14 +123,25 @@ def dispatch(cells: list[dict], tag: str) -> tuple[str,str]:
     return match.group(1),output
 
 
+def remote_tag_commit(output: str, tag: str) -> str | None:
+    """Resolve either a lightweight tag or an annotated tag's peeled commit."""
+    references = {}
+    for line in output.splitlines():
+        fields = line.split()
+        if len(fields) == 2:
+            references[fields[1]] = fields[0]
+    base = f"refs/tags/{tag}"
+    return references.get(base + "^{}") or references.get(base)
+
+
 def ensure_release(tag: str, commit: str) -> None:
     result=subprocess.run(["gh","release","view",tag],text=True,capture_output=True)
     if result.returncode:
         run(["gh","release","create",tag,"--target",commit,"--prerelease",
              "--title",f"Frozen v3 hosted CIFAR work: {tag}",
              "--notes","Immutable in-progress hosted artifacts for the frozen v3 CIFAR study; not a final research release."])
-    remote=run(["git","ls-remote","origin",f"refs/tags/{tag}"]).split()
-    if not remote or remote[0]!=commit:
+    remote=run(["git","ls-remote","origin",f"refs/tags/{tag}*"])
+    if remote_tag_commit(remote,tag)!=commit:
         raise ValueError(f"CIFAR result tag is not bound to source commit {commit}")
 
 

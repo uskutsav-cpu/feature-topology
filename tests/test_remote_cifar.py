@@ -214,3 +214,13 @@ def test_cifar_status_poll_exhausts_bounded_retries(monkeypatch):
     monkeypatch.setattr(run_cifar_remote_queue.time,"sleep",lambda _:None)
     with pytest.raises(subprocess.CalledProcessError):
         run_cifar_remote_queue.workflow_state("123",retries=2,initial_delay=0)
+
+
+def test_remote_tag_commit_peels_annotated_tags():
+    tag="result-tag"
+    commit="a"*40
+    tag_object="b"*40
+    annotated=f"{tag_object}\trefs/tags/{tag}\n{commit}\trefs/tags/{tag}^{{}}"
+    lightweight=f"{commit}\trefs/tags/{tag}"
+    assert run_cifar_remote_queue.remote_tag_commit(annotated,tag)==commit
+    assert run_cifar_remote_queue.remote_tag_commit(lightweight,tag)==commit
