@@ -47,8 +47,6 @@ def validate_complete_ledger(repo: Path, dataset: str, source: Path) -> dict:
                 or not attempt.get("conclusion")):
             raise ValueError("Incomplete hosted CIFAR attempt provenance")
     stages = state.get(dataset, {})
-    specification = repo / "configs/completion/cifar_sources_v3.json"
-    specification_hash = sha256(specification)
     key = dataset.lower()
     for stage, expected in EXPECTED.items():
         row = stages.get(stage, {})
@@ -57,15 +55,8 @@ def validate_complete_ledger(repo: Path, dataset: str, source: Path) -> dict:
             raise ValueError(f"Hosted CIFAR stage incomplete: {dataset}/{stage}")
         report_path = (repo / "results/completion/remote_collections"
                        / f"{key}_{stage}.json")
-        report = json.loads(report_path.read_text())
-        if (report.get("schema") != "feature-topology.remote-cifar-collection.v1"
-                or report.get("source_commit") != commit
-                or report.get("source_specification")
-                    != "configs/completion/cifar_sources_v3.json"
-                or report.get("source_specification_sha256") != specification_hash
-                or report.get("expected") != expected
-                or len(report.get("complete", {})) != expected
-                or report.get("missing") != [] or report.get("invalid") != []):
+        report, _ = validate_collection_report(repo, dataset, stage, report_path, {commit})
+        if report.get("expected") != expected:
             raise ValueError(f"Hosted CIFAR collection incomplete: {dataset}/{stage}")
     return state
 

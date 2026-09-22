@@ -28,6 +28,9 @@ def fixture(tmp_path, *, production_complete=35):
     specification = config / "cifar_sources_v3.json"
     atomic_json(specification, {"schema": "feature-topology.cifar-sources.v1"})
     specification_hash = hashlib.sha256(specification.read_bytes()).hexdigest()
+    frozen_dir = tmp_path / "results/cifar10"; frozen_dir.mkdir(parents=True)
+    atomic_json(frozen_dir / "gamma_to_lr.json", {
+        "selection": {str(gamma): {"lr": .01} for gamma in GAMMAS}})
     commit = "a" * 40
     state = {
         "schema": "feature-topology.remote-cifar-queue.v1",
@@ -46,13 +49,16 @@ def fixture(tmp_path, *, production_complete=35):
     atomic_json(source, state)
     for stage, expected in (("calibration", 49), ("production", 35)):
         complete = expected if stage == "calibration" else production_complete
+        identifiers = sorted(expected_cell_ids(tmp_path, "CIFAR10", stage))[:complete]
         atomic_json(collections / f"cifar10_{stage}.json", {
             "schema": "feature-topology.remote-cifar-collection.v1",
+            "result_tag": "source-tag",
             "source_commit": commit,
             "source_specification": "configs/completion/cifar_sources_v3.json",
             "source_specification_sha256": specification_hash,
             "expected": expected,
-            "complete": {str(index): "asset" for index in range(complete)},
+            "complete": {identifier: f"cifar-{identifier}.tar.gz"
+                         for identifier in identifiers},
             "missing": [] if complete == expected else ["missing"], "invalid": [],
         })
     return source, state

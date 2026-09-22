@@ -258,16 +258,11 @@ def cifar_hosted_paths(repo):
                     or row.get('missing')!=0 or row.get('invalid')!=[]):
                 raise ValueError(f'Hosted CIFAR stage incomplete: {dataset}/{stage}')
             report_path=completion/'remote_collections'/f'{key}_{stage}.json'
-            report=json.loads(report_path.read_text())
-            if (report.get('schema')!='feature-topology.remote-cifar-collection.v1'
-                    or report.get('source_commit')!=commit
-                    or report.get('source_specification')!='configs/completion/cifar_sources_v3.json'
-                    or report.get('source_specification_sha256')!=sha256(specification_path)
-                    or report.get('expected')!=expected
-                    or len(report.get('complete',{}))!=expected
-                    or report.get('missing')!=[] or report.get('invalid')!=[]):
+            report,report_paths=validate_collection_report(
+                repo,dataset,stage,report_path,{commit})
+            if report.get('expected')!=expected:
                 raise ValueError(f'Hosted CIFAR collection incomplete: {dataset}/{stage}')
-            paths.append(report_path)
+            paths.extend(report_paths)
         paths.append(state_path)
     return paths
 

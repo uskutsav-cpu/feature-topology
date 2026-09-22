@@ -9,6 +9,8 @@ from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readines
                                     validate_numeric_circle_quotient,
                                     validate_ood_evaluation_row,verify_manifest)
 from scripts.pack_release import GithubReleaseUploader,pack
+from scripts.cifar_provenance import expected_cell_ids
+from scripts.remote_cifar import GAMMAS
 from scripts.completion_inventory import inspect_run
 from src.training.checkpoints import atomic_json, fingerprint
 from research_ext.cli import exact_controls
@@ -130,6 +132,8 @@ def test_hosted_cifar_provenance_is_source_bound(tmp_path):
     commit='a'*40
     for dataset in ('CIFAR10','CIFAR100'):
         key=dataset.lower()
+        frozen=tmp_path/'results'/key/'gamma_to_lr.json';frozen.parent.mkdir(parents=True,exist_ok=True)
+        atomic_json(frozen,{'selection':{str(gamma):{'lr':.01} for gamma in GAMMAS}})
         state={'schema':'feature-topology.remote-cifar-queue.v1','source_commit':commit,
                'attempts':[{'dataset':dataset,'stage':'calibration','workflow_run':'123',
                             'url':'https://github.com/o/r/actions/runs/123','cell_ids':['b'*16],
@@ -138,17 +142,20 @@ def test_hosted_cifar_provenance_is_source_bound(tmp_path):
                         'production':{'expected':35,'complete':35,'missing':0,'invalid':[]}}}
         atomic_json(completion/f'{key}_remote_queue_v3.json',state)
         for stage,count in [('calibration',49),('production',35)]:
+            identifiers=sorted(expected_cell_ids(tmp_path,dataset,stage))
             atomic_json(collections/f'{key}_{stage}.json',{
                 'schema':'feature-topology.remote-cifar-collection.v1','source_commit':commit,
+                'result_tag':f'{key}-tag',
                 'source_specification':'configs/completion/cifar_sources_v3.json',
                 'source_specification_sha256':hashlib.sha256(spec.read_bytes()).hexdigest(),
-                'expected':count,'complete':{str(i):'asset' for i in range(count)},
+                'expected':count,'complete':{identifier:f'cifar-{identifier}.tar.gz'
+                                             for identifier in identifiers},
                 'missing':[],'invalid':[]})
     assert len(cifar_hosted_paths(tmp_path))==9
     report=json.loads((collections/'cifar10_production.json').read_text())
     report['source_commit']='c'*40
     atomic_json(collections/'cifar10_production.json',report)
-    with pytest.raises(ValueError,match='collection incomplete'):
+    with pytest.raises(ValueError,match='Unbound hosted CIFAR source commit'):
         cifar_hosted_paths(tmp_path)
 
 
