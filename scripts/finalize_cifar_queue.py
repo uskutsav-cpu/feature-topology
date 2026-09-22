@@ -14,8 +14,7 @@ import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from scripts.cifar_provenance import validate_collection_report
-from scripts.freeze_results import sha256
+from scripts.cifar_provenance import sha256, validate_collection_report
 from src.training.checkpoints import atomic_json
 
 
