@@ -193,6 +193,34 @@ def test_bounded_collector_streams_once_and_reuses_validation_ledger(tmp_path,mo
     assert not again["invalid"] and len(calls)==1
 
 
+def test_missing_partial_archive_is_recorded_and_remains_retryable(tmp_path,monkeypatch):
+    cell=calibration_cell(); work=tmp_path/"work"; data=tmp_path/"data"
+    remote=tmp_path/"remote"; cache=tmp_path/"cache"; cache.mkdir()
+    repo=tmp_path/"repo"; source=repo/"configs/completion/sources.json"; source.parent.mkdir(parents=True)
+    dataset=data/"fixture"; dataset.parent.mkdir(); dataset.write_bytes(b"x")
+    atomic_json(source,{"schema":"feature-topology.cifar-sources.v1","datasets":{
+        "CIFAR10":{"archive":dataset.name,"bytes":1,"sha256":remote_cifar.sha256(dataset)}}})
+    directory=remote_cifar.run_directory(work,cell); directory.mkdir(parents=True)
+    (directory/"resume.pt").write_bytes(b"partial")
+    remote_cifar.pack(work,data,remote,cell,"job-missing",source)
+    status=next(remote.glob("status-*.json")); shutil.copy2(status,cache/status.name)
+    monkeypatch.setattr(collect_remote_cifar,"download_statuses",lambda tag,path:None)
+    def missing(*args,**kwargs):
+        raise subprocess.CalledProcessError(1,["gh","release","download"],
+                                            stderr="release asset not found")
+    monkeypatch.setattr(collect_remote_cifar,"download_asset",missing)
+    result=collect_remote_cifar.collect(repo,"test-tag",[cell],cache,source,
+                                        install=True,bounded_cache=True)
+    identifier=remote_cifar.cell_id(cell)
+    assert result["missing"]==[identifier] and not result["invalid"]
+    assert result["partial"]=={identifier:[status.name]}
+    assert result["unavailable_partial"]==[{
+        "status":status.name,
+        "archive":next(remote.glob("cifar-*.tar.gz")).name,
+        "error":"release asset not found",
+    }]
+
+
 def test_cifar_status_poll_retries_transient_read_only_failure(monkeypatch):
     calls=[]
     def fake_run(command):

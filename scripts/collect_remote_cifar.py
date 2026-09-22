@@ -221,6 +221,7 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             invalid.append({"status": path.name, "error": str(exc)})
     complete, partial, installed = {}, {}, {}
+    unavailable_partial = []
     for identifier, cell in expected.items():
         candidates = statuses.get(identifier, [])
         accepted = []
@@ -264,6 +265,20 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
                     accepted.append((path, archive_name, report, written))
                 else:
                     partial.setdefault(identifier, []).append(path.name)
+            except subprocess.CalledProcessError as exc:
+                error = (exc.stderr or exc.stdout or str(exc)).strip()
+                record = {"status": path.name, "archive": archive.name, "error": error}
+                if status.get("complete"):
+                    invalid.append(record)
+                else:
+                    # A failed worker can upload its small status before the
+                    # larger resume archive transfer fails.  Preserve that
+                    # infrastructure failure, but keep the cell missing so the
+                    # controller can retry the exact frozen fingerprint from
+                    # scratch.  A terminal completion without its archive is
+                    # never recoverable this way and remains invalid above.
+                    partial.setdefault(identifier, []).append(path.name)
+                    unavailable_partial.append(record)
             except (OSError, ValueError, KeyError, tarfile.TarError) as exc:
                 invalid.append({"status": path.name, "archive": archive.name, "error": str(exc)})
         if accepted:
@@ -279,6 +294,7 @@ def collect(repo: str | Path, tag: str, cells: list[dict], cache: str | Path,
             "source_specification_sha256": specification_sha256,
             "expected": len(expected), "complete": complete, "partial": partial,
             "missing": sorted(set(expected)-set(complete)), "invalid": invalid,
+            "unavailable_partial": unavailable_partial,
             "installed_files": installed}
 
 
