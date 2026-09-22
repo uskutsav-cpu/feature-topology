@@ -198,6 +198,12 @@ outputs are installed additively before the temporary transfer is discarded.
 The authoritative archive remains on the immutable GitHub work-in-progress
 release. Existing local cache archives are never removed by this mode.
 
+If a failed worker publishes a nonterminal status but its resume archive never
+reaches the release, bounded collection records the unavailable transfer and
+keeps that exact cell missing. The controller may then retry the cell from
+scratch. A terminal completion without its archive remains invalid and blocks
+promotion; this recovery rule never substitutes for a completed result.
+
 One CIFAR-10 production transport defect was detected before final promotion:
 the GitHub matrix expression engine rounded the frozen gamma-128 learning rate,
 which changed the cell fingerprints. The unexpected fingerprints were rejected
