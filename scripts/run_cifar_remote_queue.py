@@ -75,6 +75,21 @@ def exclude_production_cells(cells: list[dict], excluded: list[str]) -> list[dic
     return selected
 
 
+def include_production_cells(cells: list[dict], included: list[str]) -> list[dict]:
+    """Return an explicitly fingerprinted frozen production cohort."""
+    identifiers = [cell_id(cell) for cell in cells]
+    requested = set(included)
+    if len(requested) != len(included):
+        raise ValueError("Duplicate included CIFAR production cell ID")
+    unknown = requested - set(identifiers)
+    if unknown:
+        raise ValueError(f"Unknown included CIFAR production cells: {sorted(unknown)}")
+    selected = [cell for cell in cells if cell_id(cell) in requested]
+    if not selected:
+        raise ValueError("CIFAR production inclusion selected no frozen cells")
+    return selected
+
+
 def workflow_state(run_id: str, retries: int = 6, initial_delay: float = 2) -> dict:
     """Read workflow state with bounded retries for transient API failures.
 
@@ -139,14 +154,17 @@ def resume_unfinished_attempts(state: dict, state_path: Path, poll_seconds: int)
 
 def finish_stage(repo: Path, dataset: str, stage: str, cells: list[dict], tag: str,
                  state: dict, state_path: Path, poll_seconds: int, max_stalled: int,
-                 cache_root: Path, bounded_cache: bool = False) -> None:
+                 cache_root: Path, bounded_cache: bool = False,
+                 report_path: Path | None = None) -> None:
     cache=cache_root/tag
+    report_path=(report_path or repo/"results/completion/remote_collections"/
+                 f"{dataset.lower()}_{stage}.json")
     stalled=0
     while True:
         report=collect(repo,tag,cells,cache,repo/"configs/completion/cifar_sources_v3.json",
                        install=True,expected_commit=state["source_commit"],
                        bounded_cache=bounded_cache)
-        atomic_json(repo/"results/completion/remote_collections"/f"{dataset.lower()}_{stage}.json",report)
+        atomic_json(report_path,report)
         state[dataset][stage]={"expected":report["expected"],"complete":len(report["complete"]),
                                "missing":len(report["missing"]),"invalid":report["invalid"]}
         atomic_json(state_path,state)
@@ -191,8 +209,15 @@ def main() -> None:
     parser.add_argument("--cache",default="results/completion/remote_cifar_cache")
     parser.add_argument("--bounded-cache",action="store_true",
                         help="Stream unseen release archives through bounded temporary storage")
-    parser.add_argument("--exclude-production-cell-id",action="append",default=[],
-                        help="Exact frozen cell fingerprint assigned to another audited cohort")
+    selection=parser.add_mutually_exclusive_group()
+    selection.add_argument("--exclude-production-cell-id",action="append",default=[],
+                           help="Exact frozen cell fingerprint assigned to another audited cohort")
+    selection.add_argument("--include-production-cell-id",action="append",default=[],
+                           help="Exact frozen cell fingerprint assigned to this audited cohort")
+    parser.add_argument("--production-only",action="store_true",
+                        help="Use an existing frozen rate map and skip calibration collection")
+    parser.add_argument("--production-report",
+                        help="Noncanonical collection report path for a source subcohort")
     args=parser.parse_args();repo=Path(args.repo).resolve();state_path=repo/args.state
     state=json.loads(state_path.read_text()) if state_path.exists() else {
         "schema":"feature-topology.remote-cifar-queue.v1","attempts":[]}
@@ -204,14 +229,27 @@ def main() -> None:
     cache_root=Path(args.cache)
     if not cache_root.is_absolute():
         cache_root=repo/cache_root
-    calibration=calibration_cells(args.dataset)
-    finish_stage(repo,args.dataset,"calibration",calibration,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
-    frozen=finalize_calibration(repo,args.dataset)
+    if args.production_only:
+        frozen=json.loads((repo/"results"/args.dataset.lower()/"gamma_to_lr.json").read_text())
+    else:
+        calibration=calibration_cells(args.dataset)
+        finish_stage(repo,args.dataset,"calibration",calibration,args.tag,state,state_path,
+                     args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
+        frozen=finalize_calibration(repo,args.dataset)
     production=production_cells(args.dataset,frozen)
+    if args.include_production_cell_id:
+        production=include_production_cells(production,args.include_production_cell_id)
     production=exclude_production_cells(production,args.exclude_production_cell_id)
+    report_path=None
+    if args.production_report:
+        report_path=Path(args.production_report)
+        if not report_path.is_absolute():
+            report_path=repo/report_path
+        if not report_path.resolve().is_relative_to(repo):
+            raise ValueError("CIFAR production report must be inside the repository")
     finish_stage(repo,args.dataset,"production",production,args.tag,state,state_path,
-                 args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache)
+                 args.poll_seconds,args.max_stalled_attempts,cache_root,args.bounded_cache,
+                 report_path=report_path)
     print(json.dumps({"status":"complete","dataset":args.dataset,"runs":len(production)}),flush=True)
 
 

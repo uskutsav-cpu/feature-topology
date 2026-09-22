@@ -69,6 +69,13 @@ def test_production_retry_exclusion_is_exact_and_fail_closed():
     with pytest.raises(ValueError,match="Duplicate excluded"):
         run_cifar_remote_queue.exclude_production_cells(cells,[excluded[0],excluded[0]])
 
+    included=run_cifar_remote_queue.include_production_cells(cells,excluded)
+    assert len(included)==5 and all(cell["gamma"]==128 for cell in included)
+    with pytest.raises(ValueError,match="Unknown included"):
+        run_cifar_remote_queue.include_production_cells(cells,["f"*16])
+    with pytest.raises(ValueError,match="Duplicate included"):
+        run_cifar_remote_queue.include_production_cells(cells,[excluded[0],excluded[0]])
+
 
 @pytest.mark.parametrize("lr_hex",["not-a-float","nan","inf","-0x1p+0"])
 def test_invalid_hex_rate_fails_closed(lr_hex):

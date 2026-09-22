@@ -220,3 +220,9 @@ CIFAR-100. When resuming the original CIFAR-10 release, each correction-cohort
 fingerprint is passed through `--exclude-production-cell-id`; the controller
 validates every exclusion against the frozen 35-cell plan and dispatches only
 the complement.
+
+The complementary correction controller uses `--production-only` with the five
+exact `--include-production-cell-id` fingerprints and writes a distinct
+`--production-report`. This lets partial corrective jobs resume on their own
+immutable tag without recollecting calibration, touching the original cohort,
+or racing on a shared collection ledger.
