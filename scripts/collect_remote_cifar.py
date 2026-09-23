@@ -96,8 +96,13 @@ def validate_archive(archive: str | Path, status: dict, cell: dict,
         for name, expected in report["files"].items():
             relative = Path(name)
             member = tar.getmember(name)
+            in_run = relative.parts[:len(run_prefix.parts)] == run_prefix.parts
+            in_ph_cache = (len(relative.parts) == 3
+                           and relative.parts[0] == "ph_cache"
+                           and re.fullmatch(r"[0-9a-f]{64}", relative.parts[1])
+                           and re.fullmatch(r"repeat_[0-9]{3}\.npz", relative.parts[2]))
             if (relative.is_absolute() or ".." in relative.parts or not member.isfile()
-                    or relative.parts[:len(run_prefix.parts)] != run_prefix.parts):
+                    or not (in_run or in_ph_cache)):
                 raise ValueError(f"Unsafe hosted CIFAR member: {name}")
             payload = tar.extractfile(member).read()
             if hashlib.sha256(payload).hexdigest() != expected:

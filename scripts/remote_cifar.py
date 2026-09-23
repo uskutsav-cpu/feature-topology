@@ -212,10 +212,19 @@ def pack(work: str | Path, data_root: str | Path, output: str | Path, cell: dict
     _, dataset_sha = verify_dataset(data_root, cell["dataset"], specification)
     directory = run_directory(work, cell)
     complete = _complete(directory, cell)
+    work = Path(work)
     paths = (sorted(path for path in directory.rglob("*")
                     if path.is_file() and not (complete and path.name == "resume.pt"))
              if directory.exists() else [])
-    files = {path.relative_to(Path(work)).as_posix(): sha256(path) for path in paths}
+    # PH repeats are written atomically outside the run directory so they can
+    # be reused by metrics runs sharing identical representations. Hosted
+    # workers are otherwise ephemeral: include the content-addressed cache in
+    # every checkpoint archive so a timeout resumes completed repeats rather
+    # than recomputing them.
+    cache_root = work/"ph_cache"
+    if cache_root.exists():
+        paths.extend(sorted(path for path in cache_root.rglob("*") if path.is_file()))
+    files = {path.relative_to(work).as_posix(): sha256(path) for path in paths}
     report = {
         "schema": "feature-topology.remote-cifar.v1", "cell": cell,
         "cell_id": cell_id(cell), "config": config_for(cell),
