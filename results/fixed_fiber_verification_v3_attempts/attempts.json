@@ -1,0 +1,222 @@
+{
+  "schema": "feature-topology.fixed-fiber-attempts.v3",
+  "workflow_run": "39493171088",
+  "attempts": 16,
+  "candidate_positives": 16,
+  "standalone_replay_passed": 13,
+  "unaccepted_candidates": 3,
+  "complete_verified_collection": false,
+  "protocol_sha256": "2c6f912938f59d4e9bf02b2db961d091a0a645b95b12220b3f0359e7329d25f1",
+  "failure_log_sha256": "2ee7a0e5d9849cf7e559fbbc0b77348c05b44d469244aeee0ae7f8ff3bc1e364",
+  "records": [
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "0e83ee7328255eea92571b6d13270f12314702532c5bdcc855c38cbcb3dececa",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "3cfedeb134fda445487c1c3eeecb389eff60bae24abfec68661bf35d2106b40a"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "5a109f7af1a6613dcd1767f7774e342d7bd40a2b119342218824ce2ed6e19186",
+      "standalone_replay_passed": false,
+      "accepted_certificate": false,
+      "failure": "Replayed separation factor mismatch; candidate not accepted"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "b384d09b23d4a1c988f5ac9563fd80631ad02bd57ae5bb6e9e5565b7d8f5fea2",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "02d414e8c244b272cbebcf6fba8a7e3f68977165df1ed56aee2128c27b6f6671"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "e91f565db9a83b1866188adc7bac0b254e13e13557c864dd5f5ec9e69a552219",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "94ffbd024057a775e4f3ec4e9d1a34d09fea91a371d3204a4c8de6e9eb9d6552"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "4998b8830c3b9cb977dcbddc0ef4b3ce539e2797a4489e74a2d3f77cfa34cb31",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "386a5fb4a03201a2817c0f225748a8c55bf5b2c63f3226633fb8fdfacb72b536"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "72bea692f0152056c8fbcf90a87718ccf4c1ec1adeecbdef9309a7a7b8bed08f",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "0911d3344c3798a09c3e83c7d9cce46e86fc8165f3e4b6fe3d84ea9699c18687"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "4051b53a2e4db3d629d557032d295332a5de0bb6564e13e7646a5e1ab14b63b0",
+      "standalone_replay_passed": false,
+      "accepted_certificate": false,
+      "failure": "Replayed separation factor mismatch; candidate not accepted"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "bc84c9477999fc11fc649bf1a0f5df16b2205eca5487c6f144e4a6ad164da549",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "a3e965154b5b482ec765d452851cc56a82ebf6475f52e06d39900c0f92c5c11d"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "6c5aa42459a1eb7b23d4c575af466892c0d130a25652741286665bd9a484b47a",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "8170ba5e2610310b390b188e1ab1a7ab3ea21f18f89a979b67ddacd2f6712917"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "5ddfbd2ea7e4d914bdd971b5626010105c5bd0e92ea5ea8a689f373fc88c67ce",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "bb8f96e0df15b32836a26cff7042c607b4e4b291462c20690c6ecec26b9a8120"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "daa4b0852f07ad7ea600e7e1a544bcd9664f345f40b004350118aea56cc2b9f7",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "06504d1e830c5e103947870527fa12ef59d550c30bab7ec88e886cda9a742877"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "d811922a9330d38c3191ed054659d3949f84e2721599f62cbac71091e12fd442",
+      "standalone_replay_passed": false,
+      "accepted_certificate": false,
+      "failure": "Replayed separation factor mismatch; candidate not accepted"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "87fac8b6402a8f943aead0bc0cbe364fc8bb120a9d1c948f9c4c25fdef71773a",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "8f254a7987cf4522916ecd64cd7759c018bace7c50c8bc0857ea9349e3913f6c"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "80bef1a1bca4b9ca1411e4dcb0f5d36702bf96f207cb251b35b39b880f2e2282",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "ddca8474d9bb4a6c539bf089fb67d742c0cee3a46e3ca41d55548aed0432c60d"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "2d7d22ffcc9ff1527be1a5713981f5d50a404a989360efeaa3d0d6200c99f72d",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "f8fe48a168c4f333602b389caa7b624244809a88a36d2821402e7f0e6d27a049"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "candidate_status": "certified_fixed_nuisance_circle",
+      "result_sha256": "9a1f82618ca8c5d14b561dfc8bd38980b05c727d0b335e6a277e24181ad5fbd2",
+      "standalone_replay_passed": true,
+      "accepted_certificate": true,
+      "replay_sha256": "1cca43cf45763cc5fb2d3fe9d80a63c611570d22425c280542f686a0e04cf9cb"
+    }
+  ],
+  "scope": "Retained generation and replay attempts. Three missing successful replay receipts prevent acceptance of all sixteen candidates. V4 changes proof-bound encoding; no witness refitting."
+}

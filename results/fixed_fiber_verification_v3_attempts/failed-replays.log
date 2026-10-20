@@ -1,0 +1,69 @@
+verify (0.5, 5)	Recompute every positive certificate in a separate process	﻿2026-10-20T20:42:23.1229000Z ##[group]Run python scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 0.5 --theta-numerator 5 --replay
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1230004Z ^[[36;1mpython scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 0.5 --theta-numerator 5 --replay^[[0m
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1292980Z shell: /usr/bin/bash -e {0}
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1293246Z env:
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1293446Z   OPENBLAS_NUM_THREADS: 2
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1293701Z   OMP_NUM_THREADS: 2
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1293992Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1294437Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1294876Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1295257Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1295642Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1296039Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:42:23.1296555Z ##[endgroup]
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3878497Z Traceback (most recent call last):
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3891117Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 132, in <module>
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3892036Z     result=execute(args.repo,args.output,args.gamma,args.theta_numerator,args.replay)
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3892932Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 102, in execute
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3893572Z     replay_circle(network,result)
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3893839Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3894430Z   File "/home/runner/work/feature-topology/feature-topology/src/metrics/fixed_fiber_verifier.py", line 93, in replay_circle
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3917923Z ##[error]    raise ValueError('Replayed separation factor mismatch')
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.3925637Z ValueError: Replayed separation factor mismatch
+verify (0.5, 5)	Recompute every positive certificate in a separate process	2026-10-20T20:43:27.7290235Z ##[error]Process completed with exit code 1.
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	﻿2026-10-20T20:37:58.5259824Z ##[group]Run python scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 0.03125 --theta-numerator 3 --replay
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5260880Z ^[[36;1mpython scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 0.03125 --theta-numerator 3 --replay^[[0m
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5328982Z shell: /usr/bin/bash -e {0}
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5329248Z env:
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5329450Z   OPENBLAS_NUM_THREADS: 2
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5329693Z   OMP_NUM_THREADS: 2
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5329993Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5330449Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5330899Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5331280Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5331680Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5332059Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:37:58.5332417Z ##[endgroup]
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0085080Z Traceback (most recent call last):
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0097988Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 132, in <module>
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0099646Z     result=execute(args.repo,args.output,args.gamma,args.theta_numerator,args.replay)
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0100709Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 102, in execute
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0101495Z     replay_circle(network,result)
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0101855Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0102622Z   File "/home/runner/work/feature-topology/feature-topology/src/metrics/fixed_fiber_verifier.py", line 93, in replay_circle
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0127400Z ##[error]    raise ValueError('Replayed separation factor mismatch')
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.0135279Z ValueError: Replayed separation factor mismatch
+verify (0.03125, 3)	Recompute every positive certificate in a separate process	2026-10-20T20:39:11.2879346Z ##[error]Process completed with exit code 1.
+verify (1, 7)	Recompute every positive certificate in a separate process	﻿2026-10-20T20:46:55.5321546Z ##[group]Run python scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 1 --theta-numerator 7 --replay
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5322297Z ^[[36;1mpython scripts/remote_joint_fiber_verifier.py --output fixed-fiber-verification --gamma 1 --theta-numerator 7 --replay^[[0m
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5378444Z shell: /usr/bin/bash -e {0}
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5378654Z env:
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5378821Z   OPENBLAS_NUM_THREADS: 2
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5379014Z   OMP_NUM_THREADS: 2
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5379242Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5379609Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5379955Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5380245Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5380530Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5380820Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:46:55.5381101Z ##[endgroup]
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3498004Z Traceback (most recent call last):
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3504843Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 132, in <module>
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3505889Z     result=execute(args.repo,args.output,args.gamma,args.theta_numerator,args.replay)
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3506957Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_joint_fiber_verifier.py", line 102, in execute
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3507624Z     replay_circle(network,result)
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3507912Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3508579Z   File "/home/runner/work/feature-topology/feature-topology/src/metrics/fixed_fiber_verifier.py", line 93, in replay_circle
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3530921Z ##[error]    raise ValueError('Replayed separation factor mismatch')
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.3539526Z ValueError: Replayed separation factor mismatch
+verify (1, 7)	Recompute every positive certificate in a separate process	2026-10-20T20:47:37.6470680Z ##[error]Process completed with exit code 1.
