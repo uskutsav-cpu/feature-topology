@@ -32,6 +32,40 @@ replay receipts for every positive candidate. It cannot silently exclude failed
 cases. Existing result directories are immutable; use new paths for separate
 campaigns and explicitly update a protocol before changing the scientific design.
 
+## Recorded independent-seed replication
+
+The second cohort uses the same four gamma values and every remaining original
+primary training seed, 1 through 9. The prospectively recorded design is
+`configs/fiber_replication_v1.json`. All 36 fixed-readout screens are retained
+in `results/fiber_replication_screens_v1`, including 29 failed screens. Fixed
+hexadecimal witnesses are inputs to the certificate replay; rebuilding them on
+another platform may yield different floating-point fitting coefficients and
+must not overwrite the recorded witnesses.
+
+The recorded worker checks one domain and replays it in a new process:
+
+```sh
+python scripts/remote_fiber_replication.py --repo . --output work/replication-gamma1-seed2-theta1 --gamma 1 --seed 2 --theta-numerator 1
+python scripts/remote_fiber_replication.py --repo . --output work/replication-gamma1-seed2-theta1 --gamma 1 --seed 2 --theta-numerator 1 --replay
+```
+
+All 144 planned circles receive a classifier decision check, including models
+with failed retention screens. Retention proofs are attempted only for the seven
+eligible fixed readouts. A failed screen or inconclusive bound is not a proof of
+noninjectivity. Collect the complete recorded workflow without dropping cases:
+
+```sh
+python scripts/collect_fiber_replication.py --repo . --artifacts work/downloaded-replication-artifacts --output results/fiber_replication_verification_v1 --workflow-run 39512823384 --source-commit 1531aa945dfa85eaf23d16d0d86c6a37a6a3fc10
+```
+
+The combined gate requires all 36 physical source checkpoints and all 144
+source-bound outcomes/receipts. Final additional analysis writes per-model and
+per-domain CSV tables and a seed-by-gamma figure. Certification counts describe
+the fixed witness/verification procedure, not the prevalence of true information
+retention. The nine seed identifiers are the replication units; four circles and
+four gamma configurations per seed do not increase that count. The seed-zero
+discovery cohort and the separate five-seed predictive comparison stay distinct.
+
 ## Full study and additional evidence freeze
 
 The separate complete-classifier check uses exactly the same sixteen declared

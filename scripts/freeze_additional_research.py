@@ -157,6 +157,40 @@ def decision_paths(repo, original_files):
         scope=stored['scope'], negative_scope=stored['negative_scope'], replay_scope=stored['replay_scope'])
 
 
+def replication_paths(repo, original_files):
+    """Require all 144 planned outcomes, not only successful new-seed witnesses."""
+    from scripts.collect_fiber_replication import collect
+    from scripts.validate_fiber_replication_screens import validate
+
+    screens=repo/'results/fiber_replication_screens_v1'
+    witnesses=validate(repo,screens)
+    root=repo/'results/fiber_replication_verification_v1'
+    stored=load_json((root/'collection.json').read_bytes())
+    if collect(repo,root)!=stored:
+        raise ValueError('Replication collection differs from checked artifacts')
+    index=load_json((repo/'configs/completion/primary_inputs_v3.json').read_bytes())
+    arrays=repo/'results/continuous_fiber_inputs/analysis_data.npz'
+    if not arrays.is_file() or digest(arrays)!=index['analysis_data']['sha256']:
+        raise ValueError('Physical replication embedding is missing or changed')
+    paths=set(screens.rglob('*.json'))|set(root.rglob('*.json'))|{arrays}
+    for row in witnesses['records']:
+        checkpoint=repo/'results/main/runs'/row['run_id']/row['checkpoint']
+        if (not checkpoint.resolve().is_relative_to(repo)
+                or original_files.get(checkpoint.relative_to(repo).as_posix())!=row['checkpoint_sha256']
+                or digest(checkpoint)!=row['checkpoint_sha256']):
+            raise ValueError('Replication checkpoint is outside the original full freeze')
+        paths.add(checkpoint)
+    paths.update(repo/name for name in ['scripts/collect_fiber_replication.py',
+        'configs/fiber_replication_v1.json','docs/FIBER_REPLICATION_PROTOCOL.md'])
+    summary={key:stored[key] for key in ['complete_models','complete_domains','training_seeds',
+        'eligible_fixed_witnesses','failed_fixed_witnesses','attempted_retention_domains',
+        'retention_certificates','correct_decision_certificates','decision_counterexamples',
+        'inconclusive_decision_domains','joint_certificates','all_four_joint_models','by_gamma',
+        'source_commit','workflow_run','scope','interpretation']}
+    summary['source_bound_standalone_replays_checked']=True
+    return paths,summary
+
+
 def close_replay(actual, expected, path='result'):
     """Compare all replay fields, allowing only cross-platform floating roundoff."""
     if isinstance(actual, dict) and isinstance(expected, dict):
@@ -240,6 +274,8 @@ def freeze(repo, original_manifest, evidence, output,
     paths.update(fiber_paths)
     classifier_paths, classifier_summary = decision_paths(repo, original['files'])
     paths.update(classifier_paths)
+    replication_inputs, replication_summary = replication_paths(repo, original['files'])
+    paths.update(replication_inputs)
     files = dict(original['files'])
     for path in paths:
         if not path.resolve().is_relative_to(repo):
@@ -259,6 +295,7 @@ def freeze(repo, original_manifest, evidence, output,
                                                        for row in result['contrasts']},
                         fixed_continuous_fibers=fiber_summary,
                         nuisance_decisions=classifier_summary,
+                        fiber_replication=replication_summary,
                         scope='Complete additional evidence audit; no novelty/acceptance guarantee'))
     output = Path(output)
     if not output.resolve().is_relative_to(repo):

@@ -10,6 +10,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 from scripts.final_analysis import verify_frozen_paths
 from scripts.freeze_results import verify_manifest
@@ -46,10 +47,13 @@ def summarize(repo, manifest):
     additional = manifest.get('additional_research', {})
     fiber_audit = additional.get('fixed_continuous_fibers', {})
     decision_audit = additional.get('nuisance_decisions', {})
+    replication_audit = additional.get('fiber_replication', {})
     if (not manifest.get('ready') or fiber_audit.get('attempts') != 16
             or fiber_audit.get('source_bound_standalone_replays_checked') is not True
             or decision_audit.get('attempts') != 16
             or decision_audit.get('source_bound_standalone_replays_checked') is not True
+            or replication_audit.get('complete_domains') != 144
+            or replication_audit.get('source_bound_standalone_replays_checked') is not True
             or additional.get('analysis_replay_passed') is not True):
         raise ValueError('A complete combined additional-research freeze is required')
     index_path = repo/'configs/completion/primary_inputs_v3.json'
@@ -57,9 +61,10 @@ def summarize(repo, manifest):
     circle_root = repo/'results/fixed_fiber_verification_v4'
     decision_root = repo/'results/nuisance_decision_verification_v1'
     comparison_path = repo/additional['comparison_path']/'comparison.json'
+    replication_path = repo/'results/fiber_replication_verification_v1/collection.json'
     consumed = verify_frozen_paths(repo, manifest, [index_path, witness_root/'manifest.json',
         circle_root/'collection.json', decision_root/'collection.json',
-        comparison_path, repo/'scripts/analyze_additional_research.py'])
+        comparison_path, replication_path, repo/'scripts/analyze_additional_research.py'])
     index = load_json(index_path.read_bytes())
     witnesses = load_json((witness_root/'manifest.json').read_bytes())['runs']
     collection = load_json((circle_root/'collection.json').read_bytes())
@@ -110,6 +115,7 @@ def summarize(repo, manifest):
         row['specified_classifier_attempts'] = classifier_attempts
         rows.append(row)
     comparison = load_json(comparison_path.read_bytes())
+    replication = load_json(replication_path.read_bytes())
     return dict(schema='feature-topology.additional-research-summary.v1', models=rows,
         predictive_contrasts=comparison['contrasts'], independent_prediction_seeds=5,
         screening_models=13, eligible_models=sum(row['empirical_screen_passed'] for row in rows),
@@ -120,7 +126,8 @@ def summarize(repo, manifest):
         inconclusive_decision_attempts=decisions['inconclusive'],
         joint_retention_and_correct_decision=decisions['joint_retention_and_correct_decision'],
         decision_replay_audit=decision_audit,
-        scope='Descriptive exploratory seed-zero circle evidence and a separately specified five-seed predictive comparison; no universal-theta, full-torus, independent-verifier or high-novelty claim')
+        replication=replication, replication_freeze_audit=replication_audit,
+        scope='Exploratory seed-zero discovery, separately recorded nine-seed verification replication, and a distinct five-seed predictive comparison; no universal-theta, full-torus, independent-verifier or high-novelty claim')
 
 
 def fraction_float(encoded):
@@ -155,6 +162,26 @@ def figures(result, output):
     axes[1].legend(fontsize=8)
     for suffix in ['png', 'svg']:
         fig.savefig(output/f'continuous_fiber_audit.{suffix}', dpi=180)
+    plt.close(fig)
+    replication=result['replication']
+    gammas=[.03125,.5,1.,8.]
+    seed_grid=np.full((9,4),np.nan)
+    for model in replication['models']:
+        seed_grid[model['seed']-1,gammas.index(model['gamma'])]=model['joint_certificates']
+    if not np.isfinite(seed_grid).all():
+        raise ValueError('Incomplete replication seed/model grid')
+    fig,ax=plt.subplots(figsize=(7.5,6),constrained_layout=True)
+    ax.imshow(seed_grid,cmap='Blues',vmin=0,vmax=4,aspect='auto')
+    for row in range(9):
+        for col in range(4):
+            ax.text(col,row,f'{int(seed_grid[row,col])}/4',ha='center',va='center',
+                color='white' if seed_grid[row,col]>=3 else '#222222')
+    ax.set(xticks=range(4),xticklabels=[f'{gamma:g}' for gamma in gammas],
+        yticks=range(9),yticklabels=range(1,10),xlabel='Fixed output scaling gamma',
+        ylabel='Additional original training seed',title='Joint certificates on the four specified circles')
+    fig.supxlabel('Nine replication seeds; the seed-zero discovery cohort is separate.\nZero means no accepted joint certificate, not proven information loss.',fontsize=9)
+    for suffix in ['png','svg']:
+        fig.savefig(output/f'fiber_replication_audit.{suffix}',dpi=180)
     plt.close(fig)
     from matplotlib.colors import ListedColormap
     statuses = {'certified_correct_class_circle':0, 'target_class_violation':1, 'inconclusive':2}
@@ -204,9 +231,12 @@ def main(repo, manifest_path, output):
     if not output.is_relative_to(repo) or (output.exists() and any(output.iterdir())):
         raise ValueError('Additional analysis needs a new empty directory inside the repository')
     output.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(result['replication']['models']).to_csv(output/'replication_models.csv',index=False)
+    pd.DataFrame(result['replication']['records']).to_csv(output/'replication_domains.csv',index=False)
     figures(result, output)
     result['combined_freeze_sha256'] = digest(manifest_path)
-    result['figure_sha256'] = {path.name: digest(path) for path in sorted(output.iterdir()) if path.is_file()}
+    result['figure_sha256'] = {path.name: digest(path) for path in sorted(output.iterdir()) if path.suffix in {'.png','.svg'}}
+    result['table_sha256'] = {path.name: digest(path) for path in sorted(output.glob('*.csv'))}
     verify_manifest(repo, manifest_path)
     atomic_json(output/'analysis.json', result)
     return {key: result[key] for key in ['screening_models', 'eligible_models', 'positive_circle_certificates']}
