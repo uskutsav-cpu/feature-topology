@@ -65,3 +65,14 @@ head's invariance, correctness under distribution shift, information after
 observation noise, or the native floating-point program. The same implementation
 replays every leaf in a separate process. It is not an independent implementation
 or a Lean soundness proof of the network encoding.
+
+There is one additional qualitative interpretation under the primary study's
+independent uniform latent law. A certified positive separation at a single
+theta excludes complete exact almost-sure phi erasure by the jointly continuous
+hidden representation: continuity extends a positive pair difference to an
+open set of angle triples, which has positive product measure. The proof is in
+`THEORY.md`. This does not extend the circle injectivity certificate to every
+theta or establish unconditional/noisy phi recoverability. Exact finite-valued
+class-center collapse also faces a separate connectedness obstruction under a
+full-support continuum law; that observation is structural and not a claimed
+empirical contribution.
