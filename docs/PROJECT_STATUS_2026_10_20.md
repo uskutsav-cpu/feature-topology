@@ -38,6 +38,13 @@ status record, not a claim of complete research or established high novelty.
   reader. The refreshed 140-cell comparison has identical numerical outputs;
   its updated snapshot is `additional_diagnostic_comparison_portable_v2`.
   The refreshed full physical-input audit still has only the four CIFAR gaps.
+- Explicit image-outcome accounting confirms that 33/35 dSprites production
+  runs exhausted their frozen training budget and only 2/35 converged. Its
+  gamma-level mean test accuracy ranges approximately from 0.310 to 0.497,
+  against uniform random three-class accuracy 1/3. These limitations are not
+  hidden by reporting only endpoint accuracy differences. Final image tables
+  retain every run's target, last logged loss, status and absolute test outcome;
+  finite budget-exhausted runs remain in metric summaries.
 - All sixteen complete centered-classifier checks pass, with all sixteen
   separate-process Linux replays. Every same-source domain therefore has both
   a hidden-retention certificate and a correct-class certificate. The recorded

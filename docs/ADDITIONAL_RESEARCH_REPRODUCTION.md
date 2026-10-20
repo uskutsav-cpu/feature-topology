@@ -158,3 +158,12 @@ declared circles, and the five-seed predictive comparison.
 Circle bounds are descriptive exploratory evidence; they do not increase the
 number of independent training seeds. The recorded negative predictive result
 and the limits in `CONTINUOUS_FIBER_CRITERION_AUDIT.md` remain part of the report.
+
+The original final image analysis also writes `images/image_run_accounting.csv`
+and `images/image_run_status_counts.csv`. These include every production run,
+even divergence and training-budget exhaustion. Finite nonconverged runs remain
+in numerical metric summaries; missing divergent test scores are never imputed.
+Per-run targets and last recorded losses make the actual achieved optimization
+risks visible. A last finite log from a divergent run is not its loss at divergence.
+The scientific result record displays counts and absolute gamma-level mean
+accuracies alongside endpoint contrasts, including the weak dSprites control.

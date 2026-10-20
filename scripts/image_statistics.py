@@ -11,6 +11,49 @@ from src.analysis.statistics import bootstrap_mean
 from src.training.checkpoints import atomic_json
 
 
+def image_run_accounting(repo):
+    """Retain every production outcome, including runs without finite metrics."""
+    rows=[]
+    classes={'rotated_digits':10,'dsprites':3,'cifar10':10,'cifar100':100}
+    for study, class_count in classes.items():
+        for path in sorted((Path(repo)/'results'/study).glob('runs/*/summary.json')):
+            summary=json.loads(path.read_text()); config=summary['config']
+            status=summary['status']
+            if status not in {'converged','budget_exhausted','diverged'}:
+                raise ValueError('Unfinished or unknown image-run status: '+status)
+            history=summary.get('history',[])
+            last=history[-1] if history else {}
+            loss=last.get('training_loss')
+            finite_loss=isinstance(loss,(int,float)) and not isinstance(loss,bool) and np.isfinite(loss)
+            target=config['target_loss']
+            if (not isinstance(target,(int,float)) or isinstance(target,bool)
+                    or not np.isfinite(target) or target<=0):
+                raise ValueError('Invalid frozen image training-loss target')
+            if status!='diverged' and not finite_loss:
+                raise ValueError('Finite image outcome has no finite recorded training loss')
+            reached=bool(loss<=target) if finite_loss else None
+            if status=='converged' and reached is not True:
+                raise ValueError('Converged image status contradicts its recorded training loss')
+            accuracy=test_loss=None
+            if status!='diverged':
+                metrics=json.loads((path.parent/'metrics.json').read_text())
+                accuracy=metrics['test_accuracy'] if study=='rotated_digits' else metrics['test']['accuracy']
+                test_loss=metrics['test_loss'] if study=='rotated_digits' else metrics['test']['loss']
+                if (not np.isfinite(accuracy) or not 0<=accuracy<=1
+                        or not np.isfinite(test_loss) or test_loss<0):
+                    raise ValueError('Invalid finite held-out image outcome')
+            rows.append(dict(study=study,run_id=path.parent.name,gamma=config['gamma'],seed=config['seed'],
+                status=status,last_recorded_step=last.get('step'),
+                last_recorded_training_loss=float(loss) if finite_loss else None,
+                target_loss=float(target),last_recorded_loss_le_target=reached,
+                finite_metrics_included=status!='diverged',test_accuracy=accuracy,test_loss=test_loss,
+                uniform_random_accuracy=1/class_count))
+    frame=pd.DataFrame(rows)
+    if frame.empty or frame.duplicated(['study','gamma','seed']).any():
+        raise ValueError('Missing or duplicate image production outcomes')
+    return frame
+
+
 def image_rows(repo):
     rows=[]; exclusions=[]
     for study in ['rotated_digits','dsprites','cifar10','cifar100']:
@@ -52,6 +95,10 @@ def image_rows(repo):
 def summarize_images(repo,output):
     output=Path(output)
     output.mkdir(parents=True,exist_ok=True)
+    accounting=image_run_accounting(repo)
+    accounting.to_csv(output/'image_run_accounting.csv',index=False)
+    accounting.groupby(['study','gamma','status']).size().rename('runs').reset_index().to_csv(
+        output/'image_run_status_counts.csv',index=False)
     frame,exclusions=image_rows(repo)
     frame.to_csv(output/'image_metrics_long.csv',index=False)
     exclusions.to_csv(output/'image_metric_exclusions.csv',index=False)
@@ -96,6 +143,7 @@ def summarize_images(repo,output):
         replicate_unit='Training seed; paired contrasts preserve seed pairing across gamma',
         intervals='Pointwise percentile bootstrap, 2000 resamples; not simultaneous intervals',
         risk='Final stopping-threshold comparison; actual training losses retained, not identical-risk matching',
-        nonconvergence='All finite nondiverged runs retained with status; divergent outcomes remain in frozen run summaries',
+        nonconvergence='Every production outcome, including divergent and budget-exhausted runs, is listed in image_run_accounting.csv and image_run_status_counts.csv. Finite nondiverged runs remain in metric summaries regardless of whether they reached their training-loss target. Divergent runs have no imputed test outcomes.',
+        achieved_risk='Per-run configured target and last recorded training loss/step are explicit. For a divergent run, the last finite log is not its loss at divergence.',
         undefined_metrics='Mathematically undefined CKA from an exactly zero-variance representation is retained as a structural outcome, excluded from numeric CKA summaries only, and listed in image_metric_exclusions.csv; per-cell n is reported.',
         limitations='Image schemas remain separate. No latent-manifold topology claim for CIFAR. dSprites orientation uses shape-specific symmetry harmonics.'))
