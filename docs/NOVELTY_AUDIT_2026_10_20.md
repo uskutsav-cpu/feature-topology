@@ -23,7 +23,7 @@ not establish novelty by themselves.
 | [Puthawala et al., ICML 2022](https://proceedings.mlr.press/v162/puthawala22a.html) | Studies manifold and density approximation with injective flows, including embedding-dependent topological obstructions. | Manifold embeddings and topology in injective network architectures are established; these are different from auditing ordinary trained representations. |
 | [Shaw et al., TAG-DS 2026](https://proceedings.mlr.press/v334/shaw26a.html) | Studies layer-wise persistent homology and a compression/reconstruction tradeoff in predictive-coding networks, with matched MLP comparisons. | Layer-wise PH and model-capacity comparisons are existing empirical approaches; the restricted continuum evidence must supply the more specific distinction here. |
 
-Two additional primary sources directly constrain the paired classifier claim:
+Further primary sources directly constrain the paired classifier claim:
 
 - [Jacobsen, Smeulders and Oyallon, ICLR 2018](https://arxiv.org/abs/1802.07088)
   retains invertibility up to the final class projection in i-RevNet and
@@ -36,6 +36,12 @@ Two additional primary sources directly constrain the paired classifier claim:
   invariant operations. Distinguishing changing intermediate representations
   from invariant outputs is established; this ordinary MLP audit introduces no
   new invariant architecture.
+- [Balunovic et al., NeurIPS 2019](https://proceedings.neurips.cc/paper_files/paper/2019/hash/f7fa6aca028e7ff4ef62d75ed025fe76-Abstract.html)
+  introduces DeepG to certify geometric transformations using sound linear
+  relaxations. Certification of classifier robustness under continuous geometric
+  variation is established. The correct-class circle checks are supporting
+  evidence paired with hidden-retention checks, not a new general geometric
+  robustness-verification method.
 
 The statements above summarize the inspected versions. They are not assertions
 that an exhaustive literature search proves the absence of every related result.
@@ -106,6 +112,15 @@ The current [TorchLean verification documentation](https://lean-dojo.github.io/T
 also describes interval directional derivatives and distinguishes executable
 artifact acceptance from semantic soundness theorems. A derivative verifier or
 successful Lean compilation alone cannot be presented as the novelty here.
+
+The separately recorded remaining-seed replication retains 36 planned model
+configurations across nine shared seed identifiers. Seven fixed readouts pass
+their sampled screen and 29 fail. This narrows the coverage of the particular
+witness procedure; it is not evidence that the other models lose information.
+All 144 classifier domains and the eligible retention attempts are being checked.
+The seed-zero successes were selected using the discovery screen, so they cannot
+be compared with this new screen proportion as two unselected random cohorts.
+Replication outcomes and the full-study freeze remain pending.
 
 These sources narrow the defensible claim to the particular calibrated empirical
 study, its negative diagnostic comparison, and any successfully checked
