@@ -49,3 +49,14 @@ The additional comparison is specified in
 `configs/strengthening_diagnostic_protocol_v1.json`. It is prospective for that
 new comparison, but it is not a preregistration of the original project: pilot
 results, the continuation study, and the finite-width result were already known.
+
+## Completed additional comparison
+
+All 140 cells have been evaluated, including the VCI baseline and an exact
+checkpoint-alias tensor audit. The recorded nested held-out-seed comparison
+finds no incremental predictive benefit from adding the fiber diagnostics on
+any of its three outcomes. Spurious-shift prediction is worse in all five
+held-out seeds. The design-only baseline has the lowest mean error for every
+outcome. See `docs/ADDITIONAL_DIAGNOSTIC_FINDINGS.md` and the retained numerical
+results. This finding is preserved; it does not establish the proposed diagnostic
+novelty, and the protocol is not revised to force a positive result.
