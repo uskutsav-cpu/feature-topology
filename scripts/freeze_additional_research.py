@@ -110,7 +110,7 @@ def close_replay(actual, expected, path='result'):
 
 
 def freeze(repo, original_manifest, evidence, output,
-           comparison='results/additional_diagnostic_comparison'):
+           comparison='results/additional_diagnostic_comparison_portable_v2'):
     repo = Path(repo).resolve()
     original_manifest = Path(original_manifest).resolve()
     comparison_root = Path(comparison)
@@ -199,7 +199,7 @@ if __name__ == '__main__':
     parser.add_argument('--original-manifest', required=True)
     parser.add_argument('--evidence', required=True)
     parser.add_argument('--output', required=True)
-    parser.add_argument('--comparison',default='results/additional_diagnostic_comparison',
+    parser.add_argument('--comparison',default='results/additional_diagnostic_comparison_portable_v2',
                         help='Source-bound comparison directory; use a new path to retain earlier snapshots')
     args = parser.parse_args()
     print(json.dumps(freeze(args.repo,args.original_manifest,args.evidence,args.output,args.comparison)))

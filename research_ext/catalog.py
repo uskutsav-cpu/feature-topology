@@ -10,7 +10,7 @@ from typing import Any, Iterable
 import math
 import numpy as np
 import pandas as pd
-from .io import read_json, digest, original_fingerprint, file_digest
+from .io import read_json_with_hash, digest, original_fingerprint
 
 PRODUCTION = dict(jacobian_points=10000, ntk_points=128, ph_size=500,
                   ph_repeats=20, ph_maxdim=2, probe_train=5000,
@@ -54,6 +54,15 @@ class Catalog:
     rows: list[dict] = field(default_factory=list)
     runs: list[dict] = field(default_factory=list)
     issues: list[dict] = field(default_factory=list)
+    input_hashes: dict[str, str] = field(default_factory=dict)
+
+    def read(self, path: Path) -> Any:
+        value, observed = read_json_with_hash(path)
+        name = str(path)
+        if name in self.input_hashes and self.input_hashes[name] != observed:
+            raise ValueError(f"Catalog input changed during reading: {path}")
+        self.input_hashes[name] = observed
+        return value
 
     def issue(self, code: str, path: Path, detail: str, severity: str = "error") -> None:
         self.issues.append(dict(code=code, path=str(path), detail=detail, severity=severity))
@@ -139,7 +148,7 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                 continue
             seen.add(resolved)
             try:
-                config = read_json(run / "config.json")
+                config = out.read(run / "config.json")
                 rid = original_fingerprint(config)
                 info = {"run_id": rid, "directory": str(run), "gamma": config["gamma"],
                         "seed": config["seed"], "condition": condition_id(config), "status": "invalid",
@@ -157,7 +166,7 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                     info["status"] = "incomplete"
                     out.issue("missing_summary", run, "Training is not recorded complete", "warning")
                     continue
-                summary = read_json(run/"summary.json")
+                summary = out.read(run/"summary.json")
                 info["status"] = summary["status"]
                 if summary.get("config", config) != config or summary.get("run_id", rid) != rid:
                     out.issue("summary_identity_mismatch", run, "Summary does not match config")
@@ -179,7 +188,7 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                 for directory in sorted((run/"metrics").glob("*")):
                     if not directory.is_dir() or not (directory/"options.json").exists():
                         continue
-                    options = read_json(directory/"options.json")
+                    options = out.read(directory/"options.json")
                     pid = digest(options)
                     pinfo = {"id": pid, "directory_name": directory.name, "options": options,
                              **production_profile(options), "metric_files": 0, "missing_checkpoints": []}
@@ -195,7 +204,7 @@ def load_catalog(roots: Iterable[str | Path], *, profile: str | None = None) -> 
                     for path in sorted(directory.glob("*.json")):
                         if path.name == "options.json":
                             continue
-                        record = read_json(path)
+                        record = out.read(path)
                         step = int(record["step"])
                         if record.get("gamma") != config["gamma"] or record.get("seed") != config["seed"]:
                             out.issue("metric_identity_mismatch", path, "Metric gamma/seed differs from config")

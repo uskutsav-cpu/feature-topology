@@ -33,6 +33,11 @@ status record, not a claim of complete research or established high novelty.
   `results/fixed_fiber_local_replays_v4`. Their component integration check
   passes against the four physical checkpoints and unchanged embedding asset.
 - The latest integration CI passes 311 Python tests and the Lean audit.
+- The subsequent catalog-input accounting fix passes 315 local tests. On the
+  real primary data, all 4,356 selected metric rows are identical to the previous
+  reader. The refreshed 140-cell comparison has identical numerical outputs;
+  its updated snapshot is `additional_diagnostic_comparison_portable_v2`.
+  The refreshed full physical-input audit still has only the four CIFAR gaps.
 
 ## Required before the research completion gate can pass
 

@@ -1,7 +1,7 @@
 from pathlib import Path
 import math
 import pytest
-from research_ext.io import atomic_json,read_json,exclusive_lock,digest
+from research_ext.io import atomic_json,read_json,read_json_with_hash,exclusive_lock,digest,file_digest
 from research_ext.bridge import export_checkpoint
 from research_ext.exact import Layer,forward,stored_float
 
@@ -12,6 +12,19 @@ def test_strict_json(tmp_path):
     path.write_text('{"x":NaN}')
     with pytest.raises(ValueError): read_json(path)
     with pytest.raises(ValueError): atomic_json(path,{'x':float('inf')})
+
+
+def test_hashed_json_preserves_exact_bytes_and_strict_parsing(tmp_path):
+    path=tmp_path/'source.json'
+    path.write_bytes(b'{"value":1}\r\n')
+    value,observed=read_json_with_hash(path)
+    assert value=={'value':1} and observed==file_digest(path)
+    path.write_bytes(b'{ "value": 1 }\n')
+    same,new_hash=read_json_with_hash(path)
+    assert same==value and new_hash!=observed
+    for invalid in ['{"x":1,"x":2}','{"x":NaN}']:
+        path.write_text(invalid)
+        with pytest.raises(ValueError):read_json_with_hash(path)
 
 def test_lock_never_stolen(tmp_path):
     path=tmp_path/'lock'

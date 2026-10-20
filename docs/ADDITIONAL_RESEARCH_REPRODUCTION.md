@@ -98,11 +98,11 @@ for name, target in targets.items():
     else:
         alias.symlink_to(relative, target_is_directory=True)
 PY
-python scripts/diagnostic_comparison.py --repo . --evidence results/additional_source_map --ood results/ood_evaluation --variability results/additional_variability --aliases results/checkpoint_aliases --output results/additional_diagnostic_comparison_portable_v1
+python scripts/diagnostic_comparison.py --repo . --evidence results/additional_source_map --ood results/ood_evaluation --variability results/additional_variability --aliases results/checkpoint_aliases --output results/additional_diagnostic_comparison_portable_v2
 ```
 
 ```sh
-python scripts/freeze_additional_research.py --repo . --original-manifest results/completion/frozen_results_20261020.json --evidence results/additional_source_map --comparison results/additional_diagnostic_comparison_portable_v1 --output results/completion/combined_research_freeze_20261020.json
+python scripts/freeze_additional_research.py --repo . --original-manifest results/completion/frozen_results_20261020.json --evidence results/additional_source_map --comparison results/additional_diagnostic_comparison_portable_v2 --output results/completion/combined_research_freeze_20261020.json
 python scripts/final_analysis.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --output results/final_analysis_20261020
 python scripts/analyze_additional_research.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --output results/additional_final_analysis_20261020
 ```

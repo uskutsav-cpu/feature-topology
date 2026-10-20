@@ -360,6 +360,10 @@ def readiness(repo):
     catalog=load_catalog(roots) if roots else None
     if catalog:
         problems.extend(i for i in catalog.issues if i['severity']=='error')
+        # The catalog audits every discovered profile's options and, in this
+        # unfiltered readiness pass, its JSON records. Bind those actual reads
+        # as well as the required production arrays/checkpoints below.
+        paths.update(Path(name) for name in catalog.input_hashes)
         info={r['run_id']:r for r in catalog.runs}
     else:
         info={}
