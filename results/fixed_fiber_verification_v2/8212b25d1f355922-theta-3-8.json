@@ -1,0 +1,48 @@
+{
+  "theta_fraction": [
+    3,
+    8
+  ],
+  "scope": "Specified theta nuisance circle only; no universal-theta or full-torus injectivity claim",
+  "status": "inconclusive",
+  "continuous_certificate": false,
+  "checked_boxes": 34,
+  "certified_leaves": 10,
+  "unresolved_intervals": 14,
+  "elapsed_seconds": 1.0841965529999982,
+  "schema": "feature-topology.fixed-fiber-verification.v2",
+  "binding": {
+    "run_id": "8212b25d1f355922",
+    "gamma": 0.5,
+    "seed": 0,
+    "checkpoint_sha256": "1635d4db5f12e25dd7084b1b93f1a34ad276df74e8e3d3aa1273b894dc3c7808",
+    "input_archive_sha256": "3122b33f7c1cfae4ddc65e18ec6fc98ad715e423028f1db639cf1d74ed1f8fbf",
+    "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+    "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+    "witness_sha256": "94a58d451d7c5e5c20af538c36fdc30104f8bbc5fe5ae6ce3287c83e5bd2b95a",
+    "protocol_sha256": "c8066f724d344cd8d56bbbe1bf3f6dcef9ab15fc33ca95a59b41fa9f13978aa8",
+    "theta_fraction": [
+      3,
+      8
+    ],
+    "source_sha256": {
+      "scripts/remote_fixed_fiber_verifier.py": "5ebbad71dfa4ccf9f07eafe9ab96eff2ae5b4f05adcc109ffdd0d72b0fceee6c",
+      "src/metrics/fixed_fiber_verifier.py": "17e16f402acc6f79d4936013d665a8b6462df52e916549bd43bccf7432d87c71",
+      "src/metrics/continuous_fiber_affine_verifier.py": "ad3007293764aaddf7ca23d14abf4535a1616a99c628242a08e5ad4a9f3e0a27",
+      "src/metrics/continuous_fiber_verifier.py": "8017df0541801db95720870db1a81530e43911ab37ba45795edb3d6221284afa",
+      "docs/CONTINUOUS_FIBER_CRITERION.md": "8fec36b34c23308182098346f4a7f332531371f001bbb3d3363db74566ec3ae3",
+      "docs/CONTINUOUS_FIBER_AFFINE_EXTENSION.md": "72d524b03755ab5a40d64b8f26b1910f6a2b65cb87d1f09ae1373e73d9343650",
+      "configs/fixed_fiber_verifier_v2.json": "c8066f724d344cd8d56bbbe1bf3f6dcef9ab15fc33ca95a59b41fa9f13978aa8"
+    }
+  },
+  "arithmetic": {
+    "python_flint": "0.9.0",
+    "precision_bits": 128
+  },
+  "host": {
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "source_commit": "fe0a87e6cc28f541775f47eddf2077cb528372b9",
+    "workflow_run": "39490607190"
+  }
+}
