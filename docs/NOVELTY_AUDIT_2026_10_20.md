@@ -16,6 +16,9 @@ not establish novelty by themselves.
 | [Puthawala et al., JMLR 2022](https://www.jmlr.org/papers/v23/21-0282.html) | Global injectivity of ReLU networks and inverse stability already have substantial theory. | Elementary lower-Lipschitz injectivity arguments are supporting lemmas, not a standalone theoretical advance. |
 | [Xu and Liu, ICML 2023](https://proceedings.mlr.press/v202/xu23k.html) | Variability Collapse Index is invariant to invertible linear transformations and studied as an indicator of transferability. | A comparison restricted to CKA and effective rank would omit a particularly relevant baseline. |
 | [Tirer et al., ICML 2023](https://proceedings.mlr.press/v202/tirer23a.html) | Near-collapse theory studies nonzero residual within-class variability. | Small within-class spread does not establish complete nuisance deletion. |
+| [Shen, 2018](https://arxiv.org/html/1811.10304v1), section 5 | Uses quotient topology to describe task-specific nuisance invariance in representation learning. | Task-conditioned nuisance quotients are not a new conceptual framework here. |
+| [Lin and Kriegeskorte, PNAS 2024](https://arxiv.org/abs/2309.11028v3) | Separates geometry-sensitive and topology-sensitive descriptions of representations, with simulation and fMRI comparisons. | A broad proposal to study both representation geometry and topology is already established. |
+| [Dahl, Entropy 2026](https://www.mdpi.com/1099-4300/28/7/796) | Compares category compression with target and nuisance information in synthetic settings and pretrained visual representations. | The general distinction between compression and target preservation is prior art; category-map entropy is a different object from exact fiber injectivity. |
 
 The statements above summarize the inspected versions. They are not assertions
 that an exhaustive literature search proves the absence of every related result.
@@ -33,17 +36,12 @@ The existing width result is a negative finite-width finding: its frozen gate
 returns crossover. It must not be relabeled a phase transition to strengthen
 the perceived novelty.
 
-## Evidence still needed
+## Evidence checklist and present outcome
 
-1. Reconcile all archived numerical inputs and finish the seven CIFAR cells.
-2. Complete source-bound predictive evaluation of all 140 frozen nuisance-shift
-   cells using the existing checkpoint and data rules.
-3. Compare the fiber diagnostics against relevant conventional and VCI baselines
-   with held-out training seeds, keeping fitting and evaluation separate.
-4. Explain any apparent compression with raw/normalized quantities and the
-   existing amplification controls before asserting actual identification.
-5. Report whether the incremental diagnostic claim succeeds, fails, or remains
-   uncertain. New experiments must address a concrete unresolved explanation.
+All 845 synthetic profiles and the 140-cell predictive/baseline comparison are
+now recovered and checked. Seven unchanged CIFAR continuations and the final
+physical-input freeze remain pending. Raw versus normalized quantities and
+amplification controls remain necessary for interpreting compression.
 
 The additional comparison is specified in
 `configs/strengthening_diagnostic_protocol_v1.json`. It is prospective for that
@@ -60,3 +58,29 @@ held-out seeds. The design-only baseline has the lowest mean error for every
 outcome. See `docs/ADDITIONAL_DIAGNOSTIC_FINDINGS.md` and the retained numerical
 results. This finding is preserved; it does not establish the proposed diagnostic
 novelty, and the protocol is not revised to force a positive result.
+
+## Continuous-fiber strengthening: contribution still to assess
+
+The remaining empirical candidate is a source-bound comparison of sampled
+geometric contraction with rigorous retention on explicitly specified continuous
+nuisance circles in the same saved models. The full-torus attempt was
+inconclusive. Narrower protocols retain every attempt and declare their scope;
+they do not replace the original study or validate its failed predictive claim.
+The sixteen-case V4 generation/replay campaign is pending. It covers four
+seed-zero models at four fixed task coordinates, so it cannot establish a
+population-wide training-seed result.
+
+The separation inequality is an elementary perturbation argument. Global ReLU
+injectivity and inverse stability are established, as are the DeepZ affine
+relaxation and activation-vertex bounding principles used by the implementation.
+The current [TorchLean verification documentation](https://lean-dojo.github.io/TorchLean/blueprint/Verification-and-Certificates/Neural-Network-Verification/)
+also describes interval directional derivatives and distinguishes executable
+artifact acceptance from semantic soundness theorems. A derivative verifier or
+successful Lean compilation alone cannot be presented as the novelty here.
+
+These sources narrow the defensible claim to the particular calibrated empirical
+study, its negative diagnostic comparison, and any successfully checked
+domain-specific retention evidence. Whether that combination is a sufficiently
+substantial advance remains a scientific judgment after final synthesis. The
+search does not establish an exhaustive absence of related work, and the project
+is not currently labeled highly novel or ready for journal submission.

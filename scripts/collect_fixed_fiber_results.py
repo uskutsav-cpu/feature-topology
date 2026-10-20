@@ -12,8 +12,8 @@ from src.metrics.fixed_fiber_verifier import SCOPE,check_circle_cover
 from src.metrics.rational_fixed_fiber_verifier import exact_bound,EPSILON_BITS,FACTOR_BITS
 
 
-def collect(repo,artifacts,output):
-    repo,artifacts,output=Path(repo).resolve(),Path(artifacts),Path(output)
+def collect(repo,artifacts,output=None):
+    repo,artifacts=Path(repo).resolve(),Path(artifacts)
     index_path=repo/'configs/completion/primary_inputs_v3.json'
     index=load_json(index_path.read_bytes())
     records={row['run_id']:row for row in index['runs']}
@@ -36,7 +36,8 @@ def collect(repo,artifacts,output):
         seen.add(key)
         record,witness=records[rid],eligible[rid]
         if (result.get('schema')!='feature-topology.fixed-fiber-verification.v4'
-                or binding.get('gamma')!=witness['gamma'] or record['seed']!=0
+                or binding.get('gamma')!=witness['gamma'] or record['gamma']!=witness['gamma']
+                or binding.get('seed')!=0 or record['seed']!=0
                 or binding.get('checkpoint_sha256')!=witness['checkpoint_sha256']
                 or binding['checkpoint_sha256']!=record['files'][witness['checkpoint']]
                 or binding.get('input_archive_sha256')!=record['archive_sha256']
@@ -86,7 +87,8 @@ def collect(repo,artifacts,output):
         scope='Specified sixteen circles in four real-valued saved-weight models; no universal-theta/full-torus or statistical replication claim',
         replay_scope='Every positive certificate replayed in a separate process using the same interval implementation; not a Lean proof')
     files['collection.json']=(json.dumps(manifest,indent=2,allow_nan=False)+'\n').encode()
-    publish(output,files)
+    if output is not None:
+        publish(Path(output),files)
     return manifest
 
 

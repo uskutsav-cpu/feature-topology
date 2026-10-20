@@ -20,6 +20,47 @@ from scripts.recover_release_evidence import digest, load_json, publish
 from scripts.remote_nuisance_evaluation import evaluation_plan
 
 
+def fixed_fiber_paths(repo, original_files):
+    """Check the source-bound circle collection and its physical frozen inputs."""
+    from scripts.collect_fixed_fiber_results import collect
+
+    index = load_json((repo/'configs/completion/primary_inputs_v3.json').read_bytes())
+    arrays = repo/'results/continuous_fiber_inputs/analysis_data.npz'
+    if not arrays.is_file() or digest(arrays) != index['analysis_data']['sha256']:
+        raise ValueError('Physical continuous-fiber embedding input is missing or changed')
+    root = repo/'results/fixed_fiber_verification_v4'
+    replayed_collection = collect(repo, root)
+    stored = load_json((root/'collection.json').read_bytes())
+    if replayed_collection != stored:
+        raise ValueError('Fixed-fiber collection differs from the checked artifacts')
+    witnesses = load_json((repo/'results/continuous_fiber_feasibility/manifest.json').read_bytes())['runs']
+    paths = {arrays}
+    for row in witnesses:
+        if not row['empirical_screen_passed']:
+            continue
+        checkpoint = repo/'results/main/runs'/row['run_id']/row['checkpoint']
+        relative = checkpoint.relative_to(repo).as_posix()
+        if (not checkpoint.resolve().is_relative_to(repo)
+                or original_files.get(relative) != row['checkpoint_sha256']
+                or digest(checkpoint) != row['checkpoint_sha256']):
+            raise ValueError('Fixed-fiber checkpoint is outside the original full freeze')
+        for name, expected in row['source_sha256'].items():
+            if digest(repo/name) != expected:
+                raise ValueError('Fixed-fiber witness-construction source changed: '+name)
+    for name in ['continuous_fiber_feasibility', 'continuous_fiber_verification_v1',
+                 'fixed_fiber_verification_v2', 'fixed_fiber_verification_v3_attempts',
+                 'fixed_fiber_verification_v4']:
+        directory = repo/'results'/name
+        if not directory.is_dir() or not any(directory.iterdir()):
+            raise ValueError('Missing retained continuous-fiber attempt directory: '+name)
+        paths.update(path for path in directory.rglob('*') if path.is_file())
+    return paths, dict(protocol_version=4, attempts=16,
+                       positive_certificates=stored['positive_certificates'],
+                       trained_models=4, training_seeds=[0],
+                       source_bound_standalone_replays_checked=True,
+                       scope=stored['scope'], replay_scope=stored['replay_scope'])
+
+
 def close_replay(actual, expected, path='result'):
     """Compare all replay fields, allowing only cross-platform floating roundoff."""
     if isinstance(actual, dict) and isinstance(expected, dict):
@@ -99,6 +140,8 @@ def freeze(repo, original_manifest, evidence, output,
         close_replay(value, result[key], key)
     paths.update(aliases.rglob('*.json'))
     paths.update(comparison_root.rglob('*.json'))
+    fiber_paths, fiber_summary = fixed_fiber_paths(repo, original['files'])
+    paths.update(fiber_paths)
     files = dict(original['files'])
     for path in paths:
         if not path.resolve().is_relative_to(repo):
@@ -116,6 +159,7 @@ def freeze(repo, original_manifest, evidence, output,
                         exact_checkpoint_alias_audits=140, analysis_replay_passed=True,
                         incremental_benefit_supported={row['outcome']: row['incremental_benefit_supported']
                                                        for row in result['contrasts']},
+                        fixed_continuous_fibers=fiber_summary,
                         scope='Complete additional evidence audit; no novelty/acceptance guarantee'))
     output = Path(output)
     if not output.resolve().is_relative_to(repo):
