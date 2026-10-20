@@ -1,0 +1,36 @@
+{
+  "schema": "feature-topology.nuisance-shift-evaluation.v1",
+  "run_id": "6d9bfddfc276fa03",
+  "status": "evaluated",
+  "training_nuisance_condition": "unseen",
+  "gamma": 16.0,
+  "seed": 1,
+  "target_loss": 0.1,
+  "selected_step": 256,
+  "actual_training_loss": 0.07986436805725097,
+  "checkpoint": "step_0000256.pt",
+  "checkpoint_sha256": "fc01126209cce1afbf1ca80eaf3b15d5f287721ad47dbd1ff3922c2ca42ef58b",
+  "environments": {
+    "iid": {
+      "loss": 0.09379426879882813,
+      "accuracy": 0.9622,
+      "samples": 5000
+    },
+    "concentrated": {
+      "loss": 0.0745183120727539,
+      "accuracy": 0.968,
+      "samples": 5000
+    },
+    "spurious": {
+      "loss": 0.07235673065185547,
+      "accuracy": 0.969,
+      "samples": 5000
+    },
+    "unseen": {
+      "loss": 0.10236663055419921,
+      "accuracy": 0.9574,
+      "samples": 5000
+    }
+  },
+  "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+}

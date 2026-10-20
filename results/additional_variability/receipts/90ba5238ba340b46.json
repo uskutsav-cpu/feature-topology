@@ -1,0 +1,34 @@
+{
+  "schema": "feature-topology.additional-variability-receipt.v1",
+  "run_id": "90ba5238ba340b46",
+  "input_tag": "ood-475bfb0e8e0812fa-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/475bfb0e8e0812fa.json",
+  "input_index_sha256": "0fa1e0e447cecb444f227191e0a078a9e3a7930bc1d5f290ab465526abeb3213",
+  "input_archive_sha256": "c5f086daea30b6ef9c0f2cd4a987c4e88a4641026eb16ac62a0ed3c126e47ceb",
+  "source_member_sha256": {
+    "config.json": "f8e00834aab802c245827ac8fbae5930fe962e5d3eb58baf0c76e424e8749d74",
+    "final.pt": "8553ba6e7879499c2ff26dbcc6c9db852b17ae7b89ec89f72e52751ed38f61fe",
+    "step_0000000.pt": "bafa141e08d33eb8adf589b5222fb67d4aae444008ecffc1fae14a76321197c2",
+    "step_0000001.pt": "9d38fd886e0f0a3d3f5e5d7d8f8ec60a2505d8d3fdd5cd288d97d3029263b4bb",
+    "step_0000002.pt": "50b85bce584ea0119d9adae1dd83c1b5a015e01e76e3681e769e98bc868bed8d",
+    "step_0000004.pt": "48a8a047e77eda8b8e4997204bada3fbd01a2aecc98000250d8cc1b410c07f56",
+    "step_0000008.pt": "d95bfd75a728393114169229c30a98fb4deb2f1ee59204fc4144d197c957ea32",
+    "summary.json": "c9db95a9832e84084e051500b1bd49f76ec61536ad94c89a136214f2302675c1"
+  },
+  "analysis_data_sha256": "29d87f16c1f80d237f31a464e8fabe8f6330af5edc8419c6e8307ddb7e69fcd2",
+  "protocol_sha256": "454659db781509d54e55e333eb503144e9781a2c4b1c352bf0369cfd1a8c8467",
+  "evaluation_sha256": "86ccedea3d17a3e329aba4114c7e31c71d294e396119a987eb3bbfd7ae3dfc7f",
+  "source_commit": "6e295d542ffe6a66ae17f06eec848ab3e8dde330",
+  "workflow_run": "39484210356",
+  "source_sha256": {
+    "scripts/remote_variability_baselines.py": "14a3082132edb20f1c76f155325415aec97e190bf4735b0dd6000a7c04b74f94",
+    "src/metrics/variability.py": "4f0637cea0bc1b135dfca3549ea88dbc54dd95f6b2605a232eea3ccd3d291620",
+    "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82"
+  },
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.5.3"
+  }
+}

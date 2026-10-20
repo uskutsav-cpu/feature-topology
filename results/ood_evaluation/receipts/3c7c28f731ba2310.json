@@ -1,0 +1,32 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "3c7c28f731ba2310",
+  "input_tag": "primary-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/primary_inputs_v3.json",
+  "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+  "input_archive_sha256": "0e736a09773a3c85a98225ea37d74d3b7f6edb67a14b5b3bc8b982cd7488d5cc",
+  "source_member_sha256": {
+    "config.json": "fce7479dc457cfd987573a335109332e333e9385d9b890b28c96bb356b287bce",
+    "final.pt": "58ca2140e1152cc702045a2d6045341690cb7bbfdcd08412d49ac696b322f3d4",
+    "step_0000000.pt": "dfb4f73ebc2251ce8645deba5e18d62247c765efd29a10bc3cc0368f71ae3852",
+    "step_0000001.pt": "d2a4f68b30e995daab9486a8b24eb6d5aeb8377ccc2dca17c4706b9c4d6a5e8a",
+    "step_0000002.pt": "983076cc2af8b62312b9742eda830838f6b1140ae2ab8f00fa41795dba41f69f",
+    "step_0000004.pt": "d1c11b113062ae5ac3f38c0b36838b5d449c43615ea837b2e60f31d147bef080",
+    "step_0000008.pt": "a6ba68090cd778f7e19fa15fe2286770a7dba238a32950b7f8cd613823181158",
+    "step_0000016.pt": "a64976e9f6b60625243cb5eaf0e2ad69ffe400fcb9407913913036df1a837561",
+    "step_0000032.pt": "213193579793e390eb7c679cc1277e082e6a44a307c2ec7d34150e2206826889",
+    "step_0000064.pt": "4dd0fb32faa24ba9926960b846fe149fefcec80e1bd1311b615f826416b61fe7",
+    "step_0000128.pt": "5a4845208681acbf506042540e735c7e0e10b56da701d71eebd07e32eea3d0d9",
+    "summary.json": "272b5bbd0ed9d9d3c0496579ec3e8a0d67955e97ed287a5aaf5fdbf9b1cf92d7"
+  },
+  "evaluation_sha256": "2d0f0ace08293e18739346d6358531de5bea49df7d7e717dd8bd26c7ed085a1d",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

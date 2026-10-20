@@ -1,0 +1,32 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "1df07b713b386d46",
+  "input_tag": "ood-553ac91d740aab4e-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/553ac91d740aab4e.json",
+  "input_index_sha256": "e9b96f90f643225dff8df602af292df8020403e5629e894250a294f118a1d13c",
+  "input_archive_sha256": "a3a44fccd9b6b501901595756cc44818f761dd6b787eaa9025596061af3e3f9e",
+  "source_member_sha256": {
+    "config.json": "e926d5fe581c48d2c57669d72cb03fc75fa8220442c11b7fc08e57ff99151897",
+    "final.pt": "a177e4528003a26dc6b5e9ea3adf9cb06a03c3cabb03e47c0267b2cbe51432c0",
+    "step_0000000.pt": "2589d8b8198b4166552760fb20b34144ebbeb474465903968d30c27c726bc606",
+    "step_0000001.pt": "31f3439d69a584b79ea372156f6785b15ca49ea4e3a0e9248feae609bc21a782",
+    "step_0000002.pt": "320aacefd9ee4eb412dd1912cc8a2cd0d359b4261d02b2d937b92a7d5f0d77f8",
+    "step_0000004.pt": "4d485315675a9076adde34024e0b257e4d906d62fb494aa13bfd678c9c957ede",
+    "step_0000008.pt": "cbae7a826661289c39bc0151834a0ad6d7607d1042f3af1421c64b71fe702d42",
+    "step_0000016.pt": "55e69ea61bda141d231ea74b9d654418e3d7eea42f897d53d05ac000ed2afcb2",
+    "step_0000032.pt": "d68e09ed4f3c1b3f0c73bf71379c013690723f0e1d72909eea4e358a06ca5a42",
+    "step_0000064.pt": "2f22536782ca13f2007e62e9509fa82db77640b380936f69d2a22e834356a386",
+    "step_0000128.pt": "18b62448e85582f67d97251575db780b5cb78cab4c99dfeead6801f623a5323a",
+    "summary.json": "6c4050f537ee0c9ae01b25b178187a1a3b0675d72a447aba0321ecd6441c33b7"
+  },
+  "evaluation_sha256": "690676a8c9573273bdd26b3821f4316ed3b1516c77df1c94a9eae44f16c9274d",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

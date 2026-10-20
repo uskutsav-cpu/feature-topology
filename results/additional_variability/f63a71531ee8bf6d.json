@@ -1,0 +1,30 @@
+{
+  "schema": "feature-topology.additional-variability-baselines.v1",
+  "run_id": "f63a71531ee8bf6d",
+  "gamma": 64.0,
+  "seed": 1,
+  "training_nuisance_condition": "iid",
+  "selected_step": 256,
+  "actual_training_loss": 0.045615949249267575,
+  "checkpoint": "step_0000256.pt",
+  "checkpoint_sha256": "57bc11dd47a0252dad7a92f3fa4382bc3043b1544283e6ab9f04be34e9dd7d05",
+  "layer": 4,
+  "metrics": {
+    "status": "defined",
+    "vci": 0.004324964645762042,
+    "within_to_between_covariance_trace_ratio": 0.10981737478491357,
+    "rank_between": 3,
+    "rank_total": 228,
+    "trace_within": 2481.585077023855,
+    "trace_between": 22597.381169275308,
+    "relative_eigenvalue_cutoff": 1e-10,
+    "smallest_retained_total_eigenvalue": 1.453147719714904e-06,
+    "largest_total_eigenvalue": 12279.291390093613,
+    "classes": 4,
+    "samples": 10000,
+    "dimension": 256,
+    "weighting": "Equal class weights; population within-class covariance"
+  },
+  "protocol_sha256": "454659db781509d54e55e333eb503144e9781a2c4b1c352bf0369cfd1a8c8467",
+  "scope": "Last trainable hidden representation on the frozen IID grid; no training"
+}

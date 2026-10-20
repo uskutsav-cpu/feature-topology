@@ -1,0 +1,38 @@
+{
+  "schema": "feature-topology.additional-variability-receipt.v1",
+  "run_id": "192b10da1b3cc56f",
+  "input_tag": "primary-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/primary_inputs_v3.json",
+  "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+  "input_archive_sha256": "08ccb26552ca0773ef77ce49ba8dae61652d7b7459aa1526929ab4229bbb59de",
+  "source_member_sha256": {
+    "config.json": "58ab5ce7d9ee46d9d28eed3db7af7119178086cf50bb3773df202828c1deba57",
+    "final.pt": "72eb5e1fd75cecba7102c455b3775b0a5aca765262df5b78e6a796fce29def93",
+    "step_0000000.pt": "df554922c2765d5700cee14aa3d6865460b666db209944ab057280d7a4446237",
+    "step_0000001.pt": "fe4078c370955d81670b85b02877dc0bede9ab941b8c08334dcdd44589b1273c",
+    "step_0000002.pt": "05094038cf0fb64542450875e1b2d84f5bfbfc2e9e9c8492b51694327fc8d6e1",
+    "step_0000004.pt": "805ff2d94769cf08fe82158a778efefda2f0cd6f19f1ca66cc7f1d669757c7d6",
+    "step_0000008.pt": "81748b899259ba82ac870137770b2d2ecb61b865376aa4795d5a5f26091b9232",
+    "step_0000016.pt": "bec5703fefc79839d7f807e44e0c6fe12287d04caa4d181f922a7b9939b98cff",
+    "step_0000032.pt": "069519d4b66ae4bf03b1d406e8c4b0a8ee7eb7a40b5b52392f8ca21680f04879",
+    "step_0000064.pt": "680f9c705f811909c8dc95bd5ecf47130cc9613c825bbab3a43d1a9d15eedddd",
+    "step_0000128.pt": "0d07daa8e3b814909e25993b6d836376cd8c048a13c6ad234e7f53dc961fa637",
+    "summary.json": "f228a36bc1bddd6c76902eda7bfbbe581886fff296ef1139f4509c435444f298"
+  },
+  "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+  "protocol_sha256": "454659db781509d54e55e333eb503144e9781a2c4b1c352bf0369cfd1a8c8467",
+  "evaluation_sha256": "e627a5a94e9045ac5843dd25f65420cccd8b53e303c8667eb3e96ea89666c4f8",
+  "source_commit": "6e295d542ffe6a66ae17f06eec848ab3e8dde330",
+  "workflow_run": "39484210356",
+  "source_sha256": {
+    "scripts/remote_variability_baselines.py": "14a3082132edb20f1c76f155325415aec97e190bf4735b0dd6000a7c04b74f94",
+    "src/metrics/variability.py": "4f0637cea0bc1b135dfca3549ea88dbc54dd95f6b2605a232eea3ccd3d291620",
+    "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82"
+  },
+  "host": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.5.3"
+  }
+}

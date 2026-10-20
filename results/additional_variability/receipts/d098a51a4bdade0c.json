@@ -1,0 +1,36 @@
+{
+  "schema": "feature-topology.additional-variability-receipt.v1",
+  "run_id": "d098a51a4bdade0c",
+  "input_tag": "primary-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/primary_inputs_v3.json",
+  "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+  "input_archive_sha256": "e65839a33d389868d0eaa8c73cf8cdef06b6244954e53693bbfe0c278f7ab2e8",
+  "source_member_sha256": {
+    "config.json": "d6be33be0104eeb5010d4b0c1bda537453541c6f3dea74602ae22fa377c4cfcd",
+    "final.pt": "2376ee256ec97660442975592e13a3bdbcee6f4d8f1f9fa4fcc3f6fe0941322c",
+    "step_0000000.pt": "d721ae358d0a799bd55d9d1dcd95821be55d45ba08e92d6771e4acf95b6aaad5",
+    "step_0000001.pt": "b3fee2ab83f7da02972884c0a9a23ce25129dac1aba10dea379f5978fddbe85a",
+    "step_0000002.pt": "221ac59d9b607fef82ae49e8d5ebc4ae86e5428a445aa1ce088eaba5937d150c",
+    "step_0000004.pt": "a5ba6df915852ff392f42f5a6201d47cb959d31bef05e3c39286fa753a85bdb3",
+    "step_0000008.pt": "953365d72fe314df8856c08325c776eb6efa494e72935c8d70bb79935763d000",
+    "step_0000016.pt": "f2551b5df784ef6a88877f1a01c54569fc19e2706bf21e18f801bc8bcaadf6ed",
+    "step_0000032.pt": "0ecf56a10753277a66b6bc6267c36e05cb360fc7aec2b5b8c5709b7cfaa9c877",
+    "summary.json": "4836b141ed96aaeef9b6121844749356a991f47eb55ab477a5dc3db55b46ff32"
+  },
+  "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+  "protocol_sha256": "454659db781509d54e55e333eb503144e9781a2c4b1c352bf0369cfd1a8c8467",
+  "evaluation_sha256": "b3545f31b349be82b1a6b744d38c595b00faf6487bff144615d833a3fe7f3839",
+  "source_commit": "6e295d542ffe6a66ae17f06eec848ab3e8dde330",
+  "workflow_run": "39484210356",
+  "source_sha256": {
+    "scripts/remote_variability_baselines.py": "14a3082132edb20f1c76f155325415aec97e190bf4735b0dd6000a7c04b74f94",
+    "src/metrics/variability.py": "4f0637cea0bc1b135dfca3549ea88dbc54dd95f6b2605a232eea3ccd3d291620",
+    "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82"
+  },
+  "host": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.5.3"
+  }
+}

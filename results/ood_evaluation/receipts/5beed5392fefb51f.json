@@ -1,0 +1,32 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "5beed5392fefb51f",
+  "input_tag": "ood-75e591f003a01877-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/75e591f003a01877.json",
+  "input_index_sha256": "6998822ff756d258199ac5a4bee0cfe74222880c98302a0a2a80ddf6047beb71",
+  "input_archive_sha256": "0207c82d598059ced3aba3667334b895885f8cc8b8471ca521dabbe16fb08ac3",
+  "source_member_sha256": {
+    "config.json": "8fdf4277e7a80f7bf035002782983d101c8cea437d42095398136451faeb98f4",
+    "final.pt": "0c7202f11a78782a1562d79b5857d6d3270069a1f673e61cc810c1d59c7a29cf",
+    "step_0000000.pt": "a1de99891b144bc139e492861e3d0397a5e7023dbd38742fa546b8e9aec7ac5c",
+    "step_0000001.pt": "8ff1200ba8841419531670988843303873709500a554b40988e904b49037915d",
+    "step_0000002.pt": "afd571e8035d9b811a92efe0ad145c490b89cf3194f693b99bc803483b7b7722",
+    "step_0000004.pt": "17ff8ac1900c295d1624d088e20be82a13d537559115ffc23f375d1edc712af5",
+    "step_0000008.pt": "775c7847d2d66c339f458e4f66dd57b62c30c058688dd2a9ac361ce2cc300a7c",
+    "step_0000016.pt": "00601147a71547bed267e172f4f760956f41650cf8ce1045ee419c945da56638",
+    "step_0000032.pt": "6c2c39a15de5540f0919c346cfdf56ae1c89cf6659774015d8a0906f5c6efdaf",
+    "step_0000064.pt": "32f7dd76d4b4566650969131cda747ff5b88a2f955ab05902e5c7f009d2525a0",
+    "step_0000128.pt": "c8938ef4cf36565ffa1ec84926b36a572b1b4f844af3b0fac1546489e4ea7bc2",
+    "summary.json": "741444a098fd1b542a2a093bd42ad80d15af1d366fff250cf12643aaf248d8af"
+  },
+  "evaluation_sha256": "3f833a15303e048680dc923cdfc62364c05e80511ec1f45f90861cf0b5cf7b12",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

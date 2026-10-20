@@ -1,0 +1,33 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "df7d1f3023e524fe",
+  "input_tag": "ood-75e591f003a01877-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/75e591f003a01877.json",
+  "input_index_sha256": "6998822ff756d258199ac5a4bee0cfe74222880c98302a0a2a80ddf6047beb71",
+  "input_archive_sha256": "8a52395088c92548bdadde3816b69fa814764f734fe8f4faf807526629c056c1",
+  "source_member_sha256": {
+    "config.json": "e6966c0425927b50ab48ef0ef66ce6ba8985100a5ca0166c9d75858e65386206",
+    "final.pt": "8e393c30c015d3ff62654f4e3eaad1135754df6f23f8c22886787556d08b4c8d",
+    "step_0000000.pt": "4da2d9caae87dce9f14335b711f6d879c30ad7be206c8a48d3d87e9bb81b5844",
+    "step_0000001.pt": "8ae239bbf8a13d0dbc97b5eb0d159aefaa9c8699ac2766d12e7f80b8be91bdf8",
+    "step_0000002.pt": "ddaff32b8fc77c517c54b0f061db7f99ac274d4e24911b6f138d1899848f80aa",
+    "step_0000004.pt": "5480c35cc42c6471299effe4bf3f09aa1a3b33888d5a0b7cce675eedbaa87361",
+    "step_0000008.pt": "1521acdd99dbe7fb8701afa69afd9a5272ce26139aa1a6b339684085aeb6d855",
+    "step_0000016.pt": "7feed6ebd7e9bcdac5531246d340afae010019e4e73576a50c1f263c2770c081",
+    "step_0000032.pt": "cec80fbd8cc07098a4f269b19ee5db571fe81cf6427dd977782ebd14b9a8c64b",
+    "step_0000064.pt": "979477dec501f9e6ec33153d475f6f777bd76f6f17ddbc0959afdd46ec09cbf6",
+    "step_0000128.pt": "14fad4153baa68551131f263c1dfd410d19d4eb30345b3145b8c1c9290545c78",
+    "step_0000256.pt": "c76ed6838c27bf4aa8effb2f50dd5d93bd397dcd275d2118d7973dc114e0fd89",
+    "summary.json": "313f281d9363d34fe889a41970da775ec5c08b981310d0a8af8faa3969ec63be"
+  },
+  "evaluation_sha256": "13761c09f1361e32a1f18d3243e41f1470aac757fda964c8caa9f26403eac7be",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}
