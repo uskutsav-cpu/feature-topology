@@ -54,6 +54,35 @@ The portable comparison directory contains the unchanged 140-cell comparison
 recomputed from those internal paths. It must have been produced by the current
 `scripts/diagnostic_comparison.py`, including analysis-source hashes.
 
+After recovering the original run JSONs in their canonical study directories,
+create that map without copying data or changing existing aliases:
+
+```sh
+python - <<'PY'
+import json, os
+from pathlib import Path
+repo = Path('.').resolve()
+root = repo/'results/additional_source_map'
+root.mkdir(exist_ok=True)
+registry = json.loads((repo/'configs/completion/production_cohorts_v3.json').read_text())
+for cohort in registry['cohorts']:
+    if cohort['name'] not in {'primary','ood-spurious','ood-concentrated','ood-unseen'}:
+        continue
+    target = (repo/'results/main' if cohort['name']=='primary'
+              else repo/'results/ood'/Path(cohort['index']).stem)
+    assert target.is_dir() and target.resolve().is_relative_to(repo)
+    alias = root/cohort['name']
+    relative = os.path.relpath(target, root)
+    if alias.is_symlink():
+        assert os.readlink(alias)==relative, 'Different existing source alias'
+    elif alias.exists():
+        raise ValueError('Source alias path already contains another object')
+    else:
+        alias.symlink_to(relative, target_is_directory=True)
+PY
+python scripts/diagnostic_comparison.py --repo . --evidence results/additional_source_map --ood results/ood_evaluation --variability results/additional_variability --aliases results/checkpoint_aliases --output results/additional_diagnostic_comparison_portable_v1
+```
+
 ```sh
 python scripts/freeze_additional_research.py --repo . --original-manifest results/completion/frozen_results_20261020.json --evidence results/additional_source_map --comparison results/additional_diagnostic_comparison_portable_v1 --output results/completion/combined_research_freeze_20261020.json
 python scripts/final_analysis.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --output results/final_analysis_20261020

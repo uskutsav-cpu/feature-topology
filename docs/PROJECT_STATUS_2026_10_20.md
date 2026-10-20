@@ -59,3 +59,7 @@ metric contraction and actual identification. The elementary separation lemma,
 affine ReLU relaxation, and activation-vertex bounding principles are supporting
 tools with prior art. Neither software test counts nor a larger experiment grid
 establish scientific novelty. See the [novelty audit](NOVELTY_AUDIT_2026_10_20.md).
+The relevance-sweep measurements concern the original phi factor; for positive
+lambda it is no longer a pure nuisance. The
+[coordinate audit](RELEVANCE_FIBER_SCOPE.md) explains that distinction without
+relabeling the stored measurements as task-preserving fiber evaluations.
