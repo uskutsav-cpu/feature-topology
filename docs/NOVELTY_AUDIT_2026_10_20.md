@@ -19,6 +19,9 @@ not establish novelty by themselves.
 | [Shen, 2018](https://arxiv.org/html/1811.10304v1), section 5 | Uses quotient topology to describe task-specific nuisance invariance in representation learning. | Task-conditioned nuisance quotients are not a new conceptual framework here. |
 | [Lin and Kriegeskorte, PNAS 2024](https://arxiv.org/abs/2309.11028v3) | Separates geometry-sensitive and topology-sensitive descriptions of representations, with simulation and fMRI comparisons. | A broad proposal to study both representation geometry and topology is already established. |
 | [Dahl, Entropy 2026](https://www.mdpi.com/1099-4300/28/7/796) | Compares category compression with target and nuisance information in synthetic settings and pretrained visual representations. | The general distinction between compression and target preservation is prior art; category-map entropy is a different object from exact fiber injectivity. |
+| [Zhan et al., ICLR 2026](https://arxiv.org/html/2604.06701v1), section 3.1 | Characterizes injectivity on compact domains using separation at every positive distance threshold and uses a sampled separation regularizer for autoencoders. | Pairwise separation and the distinction between local differential constraints, sampled noncollision, and global injectivity are not new. The present audit concerns a posteriori certificates on restricted domains of unchanged classifier representations, not a new injectivity training regularizer. |
+| [Puthawala et al., ICML 2022](https://proceedings.mlr.press/v162/puthawala22a.html) | Studies manifold and density approximation with injective flows, including embedding-dependent topological obstructions. | Manifold embeddings and topology in injective network architectures are established; these are different from auditing ordinary trained representations. |
+| [Shaw et al., TAG-DS 2026](https://proceedings.mlr.press/v334/shaw26a.html) | Studies layer-wise persistent homology and a compression/reconstruction tradeoff in predictive-coding networks, with matched MLP comparisons. | Layer-wise PH and model-capacity comparisons are existing empirical approaches; the restricted continuum evidence must supply the more specific distinction here. |
 
 The statements above summarize the inspected versions. They are not assertions
 that an exhaustive literature search proves the absence of every related result.
@@ -68,8 +71,9 @@ inconclusive. Narrower protocols retain every attempt and declare their scope;
 they do not replace the original study or validate its failed predictive claim.
 All sixteen V4 cases now pass source-bound generation and separate-process
 hosted replay. They cover four seed-zero models at four fixed task coordinates,
-so they cannot establish a population-wide training-seed result. Additional
-local replays and the final combined physical-input freeze remain required.
+so they cannot establish a population-wide training-seed result. All sixteen
+additional local replays also pass. The final combined physical-input freeze
+and complete research synthesis remain required.
 
 The separation inequality is an elementary perturbation argument. Global ReLU
 injectivity and inverse stability are established, as are the DeepZ affine

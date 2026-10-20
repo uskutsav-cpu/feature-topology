@@ -28,22 +28,22 @@ status record, not a claim of complete research or established high novelty.
   check. See the [encoding incident](FIXED_FIBER_V3_ENCODING_INCIDENT.md).
 - All sixteen V4 fixed-circle attempts now pass generation, source checks, and
   separate-process hosted replay. The full collection is retained in
-  `results/fixed_fiber_verification_v4`. Additional source-bound execution of
-  every positive certificate on the local Mac is in progress.
+  `results/fixed_fiber_verification_v4`. All sixteen additional source-bound
+  replays on the local Mac also pass and are retained in
+  `results/fixed_fiber_local_replays_v4`. Their component integration check
+  passes against the four physical checkpoints and unchanged embedding asset.
+- The latest integration CI passes 311 Python tests and the Lean audit.
 
 ## Required before the research completion gate can pass
 
 1. Collect the seven unchanged CIFAR continuations. Current production coverage
    is 33/35 for CIFAR-10 and 30/35 for CIFAR-100, with 63/70 held-out replays checked.
    All source-cohort ledgers and the final 70-run replay must be complete.
-2. Finish the additional local V4 replays against the recovered physical inputs.
-   The hosted sixteen-case collection is complete. Every result, input grid,
-   readout, checkpoint, source and protocol identity must remain bound through
-   the combined freeze, including previous failed/inconclusive attempts.
-3. Pass the original full physical-input freeze. The additional freeze cannot
+2. Pass the original full physical-input freeze. The additional freeze cannot
    bypass it. Then regenerate final statistics and figures using only frozen
-   inputs, and pass the combined evidence audit.
-4. Complete the scientific synthesis and update the comparison with closest
+   inputs, and pass the combined evidence audit. That audit must retain every
+   certificate/input/receipt binding and all previous failed/inconclusive attempts.
+3. Complete the scientific synthesis and update the comparison with closest
    primary literature. The existing diagnostic novelty proposal failed its
    recorded comparison; a different positive claim must have its own evidence.
 
