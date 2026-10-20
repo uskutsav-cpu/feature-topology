@@ -56,9 +56,16 @@ H(Y\mid Z)-H(Y\mid X)=I(Y;X\mid Z)\ge0.
 \(H(Y\mid X,Z)=H(Y\mid X)\).  Substitute this into
 \(I(Y;X\mid Z)=H(Y\mid Z)-H(Y\mid X,Z)\). \(\square\)
 
-Merging a pure nuisance orbit can therefore have zero information cost, while
-merging points with different target conditionals makes the right side positive.
+Merging a pure nuisance orbit can therefore have zero information cost.  Strict
+positivity requires that the representation lose target-relevant information on
+a set of positive probability; an isolated collision between two zero-mass
+points does not establish positive conditional mutual information.
 This identity does not imply that finite probes recover all retained information.
+
+For the sector-classification experiment, the quotient that removes only the
+nuisance circle retains the continuous task coordinate.  It is not the minimal
+target-law quotient, which also identifies theta values within each label
+sector.  The manuscript distinguishes these two equivalence relations.
 
 ## Theorem 4: feature change need not destroy nuisance information
 
