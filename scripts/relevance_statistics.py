@@ -72,9 +72,12 @@ def summarize_relevance(groups, output, repeats=2000):
     summary=pd.DataFrame(summaries)
     primary_metrics=['fiber_local_normalized_minimum','fiber_global_normalized_minimum',
                      'mlp_nuisance_cosine','test_accuracy']
+    labels=['Sampled local phi-coordinate margin / RMS',
+            'Sampled global phi-coordinate margin / RMS',
+            'Nonlinear phi-coordinate decodability','Test accuracy']
     last_layer=int(frame.layer.max())
     fig,axes=plt.subplots(2,2,figsize=(10,7),layout='constrained')
-    for ax,metric in zip(axes.flat,primary_metrics):
+    for ax,metric,label in zip(axes.flat,primary_metrics,labels):
         part=summary[(summary.layer==last_layer)&(summary.metric==metric)]
         for relevance,group in part.groupby('relevance'):
             group=group.sort_values('gamma')
@@ -85,7 +88,7 @@ def summarize_relevance(groups, output, repeats=2000):
                                 band.upper.to_numpy(float),alpha=.12)
         ax.set_xscale('log',base=2)
         ax.set_xlabel('Output scale γ')
-        ax.set_title(metric.replace('_',' '))
+        ax.set_title(label)
         ax.grid(alpha=.2)
     axes.flat[-1].legend(frameon=False,fontsize=8,ncol=2)
     fig.suptitle(f'Relevance dependence at last hidden layer (L{last_layer})')
@@ -99,6 +102,6 @@ def summarize_relevance(groups, output, repeats=2000):
                 bootstrap_repeats=repeats,replicate_unit='training seed',
                 contrast='right relevance minus left relevance at fixed gamma and layer',
                 multiple_comparisons='Descriptive pointwise intervals; no p-values or familywise claims.',
-                scope='Matched-risk relevance dependence; geometry and predictive effects remain distinct.')
+                scope='Matched-risk relevance dependence of the original phi coordinate. Phi is a pure nuisance only at lambda zero; fixed-theta phi curves are not task-preserving nuisance fibers at positive lambda. Geometry and predictive effects remain distinct.')
     atomic_json(output/'relevance_analysis_scope.json',result)
     return result

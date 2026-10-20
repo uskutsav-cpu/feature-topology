@@ -24,9 +24,9 @@ PRIMARY_LABELS = {
 }
 
 RELEVANCE_LABELS = {
-    "fiber_global_normalized_minimum": "sampled global fiber margin M",
+    "fiber_global_normalized_minimum": "sampled global phi-coordinate margin",
     "fiber_collision_pairs": "sampled collision-pair count Q",
-    "mlp_nuisance_cosine": "nonlinear nuisance decodability D_F",
+    "mlp_nuisance_cosine": "nonlinear phi-coordinate decodability",
     "test_accuracy": "test accuracy R",
 }
 
@@ -341,6 +341,10 @@ All frozen relevance levels ({relevance_levels}) are reported with training-seed
 and fixed-gamma paired contrasts in `relevance_dependence/`. The fixed headline rule below
 uses maximal frozen γ and compares maximal λ with the λ=0 baseline; all frozen metrics,
 including those not displayed, are retained in `headline_relevance_effects.csv`.
+These measurements follow the original phi coordinate at fixed theta. At positive
+lambda, phi enters the target rule and is no longer a pure nuisance. They are not
+measurements on task-preserving level sets of theta + lambda*sin(phi). The
+continuous-circle certificates apply only to the separate lambda=0 primary study.
 
 {_relevance_table(relevance_headline)}
 

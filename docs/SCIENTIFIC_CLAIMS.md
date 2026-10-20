@@ -66,8 +66,10 @@ certificates, or statements whose domain and proof status are explicit.
    degeneration, global separation, and actual equivalence-class formation.
 2. A theorem/counterexample package showing that a positive global margin gives
    fiberwise injectivity, while an everywhere-positive local margin does not.
-3. Matched-risk \((\gamma,\lambda)\) experiments testing how nuisance relevance
-   changes the cost and prevalence of compression or quotienting.
+3. Matched-risk \((\gamma,\lambda)\) experiments testing how relevance of the
+   original phi factor changes its retention and deformation. At positive lambda,
+   fixed-theta phi curves are no longer task-preserving nuisance fibers; those
+   recorded metrics do not measure compression along the changed task fibers.
 4. A link from the diagnosed regime to nuisance-shift generalization, tested with
    width scaling, exact restricted certificates, and factor-controlled images.
 
@@ -75,3 +77,7 @@ Contributions 1–2 now have analytic controls and executable tests.  Contributi
 3–4 remain hypotheses until the frozen production protocol passes.  The project
 will use "crossover" or "regime change" unless finite-width scaling supports the
 stronger phrase "phase transition."
+
+See `RELEVANCE_FIBER_SCOPE.md` for the coordinate distinction. The new continuous
+circle certificates concern only the lambda=0 primary study and explicitly
+specified theta values.
