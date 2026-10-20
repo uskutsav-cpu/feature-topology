@@ -74,6 +74,7 @@ def find_unique(root, name):
 
 
 def comparison_rows(repo, evidence, ood, variability, aliases, protocol):
+    repo = Path(repo).resolve()
     plan = evaluation_plan(repo)
     outcomes = load_json((Path(ood)/'manifest.json').read_bytes())['runs']
     baselines = load_json((Path(variability)/'manifest.json').read_bytes())['runs']
@@ -158,10 +159,14 @@ def comparison_rows(repo, evidence, ood, variability, aliases, protocol):
                 missing.append(dict(run_id=rid, field=name, value=row.get(name)))
         rows.append(row)
         for path in [config_path, summary_path, alias_path, *(p for p, _ in candidates)]:
-            hashes[str(path.resolve())] = digest(path)
+            resolved = path.resolve()
+            key = str(resolved.relative_to(repo)) if resolved.is_relative_to(repo) else str(resolved)
+            hashes[key] = digest(path)
     for root in [Path(ood), Path(variability)]:
         for path in root.rglob('*.json'):
-            hashes[str(path.resolve())] = digest(path)
+            resolved = path.resolve()
+            key = str(resolved.relative_to(repo)) if resolved.is_relative_to(repo) else str(resolved)
+            hashes[key] = digest(path)
     return rows, hashes, missing
 
 
