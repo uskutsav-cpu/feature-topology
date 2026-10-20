@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+2026-10-20T22:30:16.0210431Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_nuisance_decision_verifier.py", line 160, in <module>
+2026-10-20T22:30:16.0211514Z     result=execute(args.repo,args.output,args.gamma,args.theta_numerator,args.replay)
+2026-10-20T22:30:16.0212592Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_nuisance_decision_verifier.py", line 111, in execute
+2026-10-20T22:30:16.0213586Z     network=classifier_from_state(state,record,embedding,theta_numerator)
+2026-10-20T22:30:16.0214636Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_nuisance_decision_verifier.py", line 41, in classifier_from_state
+2026-10-20T22:30:16.0215780Z     depth,width,dimension=(config[name] for name in ['depth','width','dimension'])
+2026-10-20T22:30:16.0216200Z     ^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T22:30:16.0216801Z   File "/home/runner/work/feature-topology/feature-topology/scripts/remote_nuisance_decision_verifier.py", line 41, in <genexpr>
+2026-10-20T22:30:16.0217528Z     depth,width,dimension=(config[name] for name in ['depth','width','dimension'])
+2026-10-20T22:30:16.0217934Z                            ~~~~~~^^^^^^
+2026-10-20T22:30:16.0218193Z KeyError: 'dimension'
+2026-10-20T22:30:16.3109932Z 

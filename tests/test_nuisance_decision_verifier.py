@@ -100,3 +100,20 @@ def test_all_four_declared_targets_match_the_actual_primary_label_rule():
         network=classifier(theta_numerator=numerator)
         latent=np.array([[2*math.pi*numerator/8,phi] for phi in [0,.7,2.4,5.9]])
         assert set(labels(latent).tolist())=={network.target_class}
+
+
+def test_source_builder_defaults_are_supported_without_changing_saved_config():
+    import numpy as np
+    pytest.importorskip('torch')
+    from src.training.train import build
+    from src.data.torus import embedding
+    from scripts.remote_nuisance_decision_verifier import classifier_from_state
+
+    ctx.prec=128
+    config=dict(gamma=.5,centered=True,manifold='torus',swap=False,relevance=0.)
+    model=build(config,seed=19)
+    state=dict(config=config,model={k:v.detach().clone() for k,v in model.state_dict().items()})
+    encoded=classifier_from_state(state,{'config':config},embedding(),1)
+    assert encoded.current[0][0].ncols()==4 and len(encoded.current)==5
+    assert encoded.current[-1][0].nrows()==4
+    assert set(config)=={'gamma','centered','manifold','swap','relevance'}

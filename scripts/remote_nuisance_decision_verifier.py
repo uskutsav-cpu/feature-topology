@@ -27,6 +27,7 @@ def source_files(repo):
         'src/metrics/nuisance_decision_verifier.py',
         'src/metrics/continuous_fiber_verifier.py','src/metrics/fixed_fiber_verifier.py',
         'src/metrics/rational_fixed_fiber_verifier.py','src/models/mlp.py','src/data/torus.py',
+        'src/training/train.py',
         'scripts/evaluate_nuisance_shift.py','configs/nuisance_decision_verifier_v1.json',
         'docs/NUISANCE_DECISION_CERTIFICATION.md',
         '.github/workflows/nuisance_decision_verifier_v1.yml']]
@@ -38,7 +39,8 @@ def classifier_from_state(state,record,embedding,theta_numerator):
             or config.get('manifold','torus')!='torus' or config.get('swap',False) is not False
             or config.get('relevance',0)!=0):
         raise ValueError('Decision certificate requires the unchanged centered primary torus classifier')
-    depth,width,dimension=(config[name] for name in ['depth','width','dimension'])
+    # Match the original builder's defaults; historical configs omit dimension.
+    depth,width,dimension=(config.get('depth',4),config.get('width',256),config.get('dimension',16))
     model=state['model']
     expected=set()
     for branch in ['network','initial']:
