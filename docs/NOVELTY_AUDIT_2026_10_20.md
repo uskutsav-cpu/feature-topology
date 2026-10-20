@@ -23,6 +23,20 @@ not establish novelty by themselves.
 | [Puthawala et al., ICML 2022](https://proceedings.mlr.press/v162/puthawala22a.html) | Studies manifold and density approximation with injective flows, including embedding-dependent topological obstructions. | Manifold embeddings and topology in injective network architectures are established; these are different from auditing ordinary trained representations. |
 | [Shaw et al., TAG-DS 2026](https://proceedings.mlr.press/v334/shaw26a.html) | Studies layer-wise persistent homology and a compression/reconstruction tradeoff in predictive-coding networks, with matched MLP comparisons. | Layer-wise PH and model-capacity comparisons are existing empirical approaches; the restricted continuum evidence must supply the more specific distinction here. |
 
+Two additional primary sources directly constrain the paired classifier claim:
+
+- [Jacobsen, Smeulders and Oyallon, ICLR 2018](https://arxiv.org/abs/1802.07088)
+  retains invertibility up to the final class projection in i-RevNet and
+  demonstrates ImageNet classification alongside information retention and
+  geometric contraction. Correct classification without hidden information
+  deletion is already established. These paired certificates cannot be presented
+  as the first demonstration of that general possibility.
+- [Rath and Condurache, AISTATS 2023](https://proceedings.mlr.press/v206/rath23a.html)
+  enforces guaranteed invariances using equivariant representations followed by
+  invariant operations. Distinguishing changing intermediate representations
+  from invariant outputs is established; this ordinary MLP audit introduces no
+  new invariant architecture.
+
 The statements above summarize the inspected versions. They are not assertions
 that an exhaustive literature search proves the absence of every related result.
 
@@ -74,6 +88,16 @@ hosted replay. They cover four seed-zero models at four fixed task coordinates,
 so they cannot establish a population-wide training-seed result. All sixteen
 additional local replays also pass. The final combined physical-input freeze
 and complete research synthesis remain required.
+
+The separately recorded complete-classifier check now yields sixteen positive
+correct-class certificates and sixteen successful separate-process Linux
+replays on exactly the same retained domains. This establishes a paired
+retention/decision property for the four saved ordinary MLP models. It strengthens
+the particular a posteriori empirical audit; the general coexistence of
+information-preserving hidden representations and successful classification was
+already established by i-RevNet. The additional Mac replay uses explicitly weaker
+derived margins after a small enclosure mismatch; the original failure and
+the limits of same-implementation replay remain part of the evidence.
 
 The separation inequality is an elementary perturbation argument. Global ReLU
 injectivity and inverse stability are established, as are the DeepZ affine

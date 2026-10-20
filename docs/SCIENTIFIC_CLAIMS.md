@@ -73,11 +73,23 @@ certificates, or statements whose domain and proof status are explicit.
 4. A link from the diagnosed regime to nuisance-shift generalization, tested with
    width scaling, exact restricted certificates, and factor-controlled images.
 
-Contributions 1–2 now have analytic controls and executable tests.  Contributions
-3–4 remain hypotheses until the frozen production protocol passes.  The project
+Items 1–2 have analytic controls and executable tests; their definitions and
+elementary injectivity arguments are supporting material with prior art. The
+recorded additional comparison for item 4 is complete and finds no incremental
+predictive benefit over the specified conventional diagnostics. This negative
+finding is retained. The original full physical-input freeze remains pending.
+The project
 will use "crossover" or "regime change" unless finite-width scaling supports the
 stronger phrase "phase transition."
 
 See `RELEVANCE_FIBER_SCOPE.md` for the coordinate distinction. The new continuous
 circle certificates concern only the lambda=0 primary study and explicitly
 specified theta values.
+
+The additional classifier study certifies the correct top-one class for every
+nuisance angle on those same sixteen circles, while their current hidden branch
+is injective there. Both entire MLP branches and both heads belong to the
+centered predictor. This is a scoped empirical verification result in ordinary
+trained models, not a new general theorem that classification can coexist with
+information retention. Invertible classifiers already establish that general
+possibility; see the dated novelty audit. These four models all use seed zero.

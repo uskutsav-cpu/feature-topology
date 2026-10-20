@@ -45,22 +45,28 @@ def metric_row(record, witness, summary, metrics):
 def summarize(repo, manifest):
     additional = manifest.get('additional_research', {})
     fiber_audit = additional.get('fixed_continuous_fibers', {})
+    decision_audit = additional.get('nuisance_decisions', {})
     if (not manifest.get('ready') or fiber_audit.get('attempts') != 16
             or fiber_audit.get('source_bound_standalone_replays_checked') is not True
+            or decision_audit.get('attempts') != 16
+            or decision_audit.get('source_bound_standalone_replays_checked') is not True
             or additional.get('analysis_replay_passed') is not True):
         raise ValueError('A complete combined additional-research freeze is required')
     index_path = repo/'configs/completion/primary_inputs_v3.json'
     witness_root = repo/'results/continuous_fiber_feasibility'
     circle_root = repo/'results/fixed_fiber_verification_v4'
+    decision_root = repo/'results/nuisance_decision_verification_v1'
     comparison_path = repo/additional['comparison_path']/'comparison.json'
     consumed = verify_frozen_paths(repo, manifest, [index_path, witness_root/'manifest.json',
-        circle_root/'collection.json', comparison_path, repo/'scripts/analyze_additional_research.py'])
+        circle_root/'collection.json', decision_root/'collection.json',
+        comparison_path, repo/'scripts/analyze_additional_research.py'])
     index = load_json(index_path.read_bytes())
     witnesses = load_json((witness_root/'manifest.json').read_bytes())['runs']
     collection = load_json((circle_root/'collection.json').read_bytes())
+    decisions = load_json((decision_root/'collection.json').read_bytes())
     primary = {row['run_id']: row for row in index['runs'] if row['seed'] == 0}
     if (len(witnesses) != 13 or {row['run_id'] for row in witnesses} != set(primary)
-            or collection.get('complete_attempts') != 16):
+            or collection.get('complete_attempts') != 16 or decisions.get('complete_attempts') != 16):
         raise ValueError('Incomplete primary screening or fixed-circle collection')
     rows = []
     for witness in sorted(witnesses, key=lambda row: row['gamma']):
@@ -90,6 +96,18 @@ def summarize(repo, manifest):
                 'theta_fraction', 'status', 'continuous_certificate',
                 'epsilon_upper_rational', 'chord_lower_factor_rational']})
         row['specified_circle_attempts'] = certificates
+        classifier_attempts = []
+        for attempt in decisions['records']:
+            if attempt['run_id'] != rid:
+                continue
+            stem = rid+f"-theta-{attempt['theta_fraction'][0]}-8"
+            consumed.update(verify_frozen_paths(repo, manifest, [decision_root/(stem+'.json'),
+                                                                decision_root/(stem+'.replay.json')]))
+            classifier_attempts.append({key:attempt[key] for key in [
+                'theta_fraction', 'target_class', 'status', 'decision_certificate',
+                'counterexample_certificate', 'joint_retention_and_correct_decision',
+                'scaled_margin_lower_rational', 'point_margin_upper_rational']})
+        row['specified_classifier_attempts'] = classifier_attempts
         rows.append(row)
     comparison = load_json(comparison_path.read_bytes())
     return dict(schema='feature-topology.additional-research-summary.v1', models=rows,
@@ -97,6 +115,11 @@ def summarize(repo, manifest):
         screening_models=13, eligible_models=sum(row['empirical_screen_passed'] for row in rows),
         circle_models=4, circle_training_seeds=[0], specified_circles=16,
         positive_circle_certificates=collection['positive_certificates'], input_sha256=consumed,
+        correct_decision_certificates=decisions['decision_certificates'],
+        target_class_counterexamples=decisions['counterexample_certificates'],
+        inconclusive_decision_attempts=decisions['inconclusive'],
+        joint_retention_and_correct_decision=decisions['joint_retention_and_correct_decision'],
+        decision_replay_audit=decision_audit,
         scope='Descriptive exploratory seed-zero circle evidence and a separately specified five-seed predictive comparison; no universal-theta, full-torus, independent-verifier or high-novelty claim')
 
 
@@ -132,6 +155,29 @@ def figures(result, output):
     axes[1].legend(fontsize=8)
     for suffix in ['png', 'svg']:
         fig.savefig(output/f'continuous_fiber_audit.{suffix}', dpi=180)
+    plt.close(fig)
+    from matplotlib.colors import ListedColormap
+    statuses = {'certified_correct_class_circle':0, 'target_class_violation':1, 'inconclusive':2}
+    labels = ['Correct class\ncertified', 'Target-class\ncounterexample', 'Inconclusive']
+    eligible = [row for row in rows if row['empirical_screen_passed']]
+    matrix = np.full((len(eligible), 4), np.nan)
+    for model_index, row in enumerate(eligible):
+        for attempt in row['specified_classifier_attempts']:
+            matrix[model_index, [1,3,5,7].index(attempt['theta_fraction'][0])] = statuses[attempt['status']]
+    if not np.isfinite(matrix).all():
+        raise ValueError('Incomplete decision outcome grid')
+    fig, ax = plt.subplots(figsize=(8.8, 4.7), constrained_layout=True)
+    ax.imshow(matrix, cmap=ListedColormap(['#cde8dd','#f2cfc1','#e2e2e2']), vmin=-.5, vmax=2.5, aspect='auto')
+    for row_index in range(matrix.shape[0]):
+        for col in range(4):
+            ax.text(col, row_index, labels[int(matrix[row_index,col])], ha='center', va='center', fontsize=9)
+    ax.set(xticks=range(4), xticklabels=['pi/4','3pi/4','5pi/4','7pi/4'],
+        yticks=range(len(eligible)), yticklabels=[f"gamma {row['gamma']:g}" for row in eligible],
+        xlabel='Specified fixed task coordinate theta',
+        title='Complete classifier decisions on retention-certified circles')
+    fig.supxlabel('Every cell has a separate hidden-retention certificate. All four models share seed 0.\nCorrect-class certification covers every nuisance angle on that circle.', fontsize=9)
+    for suffix in ['png', 'svg']:
+        fig.savefig(output/f'nuisance_decision_audit.{suffix}', dpi=180)
     plt.close(fig)
     fig, axes = plt.subplots(1, 3, figsize=(11, 3.7), constrained_layout=True)
     for ax, row, label in zip(axes, result['predictive_contrasts'],

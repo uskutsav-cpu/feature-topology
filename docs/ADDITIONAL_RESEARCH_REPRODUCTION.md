@@ -34,6 +34,30 @@ campaigns and explicitly update a protocol before changing the scientific design
 
 ## Full study and additional evidence freeze
 
+The separate complete-classifier check uses exactly the same sixteen declared
+domains. Its recorded design is `configs/nuisance_decision_verifier_v1.json`.
+It checks both complete MLP branches, both heads and positive output scaling:
+
+```sh
+python scripts/remote_nuisance_decision_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/decision-gamma8-theta1
+python scripts/remote_nuisance_decision_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/decision-gamma8-theta1 --replay
+```
+
+Download every artifact from the recorded workflow, then collect all outcomes.
+Supply the exact workflow run and source commit obtained from the GitHub run
+metadata; the collector rejects different or mixed source runs:
+
+```sh
+python scripts/collect_nuisance_decision_results.py --repo . --artifacts work/downloaded-decision-artifacts --output results/nuisance_decision_verification_v1 --workflow-run 39509448706 --source-commit 8dac5ed77de82ea7fa43a0745579402028935031
+```
+
+Positive correct-class certificates, negative target-class point certificates,
+and inconclusive attempts remain distinct. A negative claim can pass its replay
+without becoming a correct-class certificate. Every joint hidden-retention and
+correct-decision statement requires both positive results to bind the same
+checkpoint, embedding and fixed theta. The initial source-format failure before
+any mathematical evaluation is retained in `results/nuisance_decision_preflight_v1`.
+
 The original physical inputs must first pass the existing full gate:
 
 ```sh
@@ -52,13 +76,27 @@ Replay the collected results against those already recovered physical inputs:
 
 ```sh
 python scripts/replay_fixed_fiber_collection.py --repo . --collection results/fixed_fiber_verification_v4 --output results/fixed_fiber_local_replays_v4
+python scripts/replay_nuisance_decision_collection_v2.py --repo . --collection results/nuisance_decision_verification_v1 --output results/nuisance_decision_local_replays_v2
 ```
 
 This recomputes every positive leaf and records the current host, exact source
 binding, result digest, and verifier digest. `--gamma` may select one of the four
 eligible models for disjoint parallel workers. These are additional executions
 of the same verifier, not independent implementations. All sixteen local receipts
-are required by the combined gate.
+are required by the combined gate for each of the retention and classifier
+collections. No claim is made that replaying the same implementation proves its
+semantic soundness independently.
+
+The classifier's additional Mac replay uses an explicitly derived weaker
+numerical margin: floor the original positive numerator divided by two, with
+the same denominator 2^64. This deterministic rule was recorded after the first
+Mac replay could not reproduce one hosted lower enclosure to approximately
+3.5e-16. It leaves the original artifacts, models, domains, covers, and strict
+correct-class property unchanged. Local derived claims are stored separately
+and linked by digest; they do not validate the original hosted numerical margin.
+The original replay source and failure are retained in
+`results/nuisance_decision_local_attempts_v1`. See
+`NUISANCE_DECISION_LOCAL_REPLAY_INCIDENT.md` for the trust boundary.
 
 The validation workspace uses internal aliases under
 `results/additional_source_map` to locate the original primary and OOD run JSONs.
@@ -109,12 +147,14 @@ python scripts/analyze_additional_research.py --repo . --manifest results/comple
 
 Use a new empty analysis output directory. The combined gate cannot bypass a
 failed original freeze. It replays the predictive comparison, checks circle
-collection bindings and hosted/additional-local receipts, and binds the original failed/inconclusive
+collection and complete-classifier bindings and hosted/additional-local receipts,
+and binds the original failed/inconclusive
 attempts as well as the physical embedding input. The final analyses reject
 consumed files absent from the freeze or changed after it.
 
 The additional figures explicitly separate sampled grid metrics, whole-circle
-bounds on four seed-zero models, and the five-seed predictive comparison.
+bounds on four seed-zero models, complete-classifier decisions on those same
+declared circles, and the five-seed predictive comparison.
 Circle bounds are descriptive exploratory evidence; they do not increase the
 number of independent training seeds. The recorded negative predictive result
 and the limits in `CONTINUOUS_FIBER_CRITERION_AUDIT.md` remain part of the report.

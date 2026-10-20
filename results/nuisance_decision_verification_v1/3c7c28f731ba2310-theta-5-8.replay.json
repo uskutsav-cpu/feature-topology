@@ -1,0 +1,15 @@
+{
+  "schema": "feature-topology.nuisance-decision-replay.v1",
+  "run_id": "3c7c28f731ba2310",
+  "theta_fraction": [
+    5,
+    8
+  ],
+  "target_class": 2,
+  "result_sha256": "acd254513dbd54d4e0bac90ae77328f7bd466f2b5cb3a4a2d23b3909c3c543b2",
+  "decision_certificate": true,
+  "counterexample_certificate": false,
+  "standalone_replay_passed": true,
+  "status": "passed",
+  "scope": "Separate-process execution of the same Arb verifier, not an independent implementation or Lean proof"
+}

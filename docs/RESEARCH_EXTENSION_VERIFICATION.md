@@ -87,13 +87,15 @@ The delivered Lean source has no proof placeholders or custom axioms. It contain
 logical injectivity/recovery lemmas, explicit control collisions, and an executable
 finite-graph checker. Generated graph examples use `by decide`, not a compiler-
 trusted native decision tactic. `check-formal` must successfully build the pinned
-project and audit all 14 named theorem dependencies before it reports success.
+project and audit all 17 named theorem dependencies before it reports success.
 Only the three ordinary logical axioms `propext`, `Classical.choice`, `Quot.sound`
 are permitted. Source scans are additional checks, not substitutes for building.
 
-**Lean was not available in the delivery environment. Compilation and kernel
-verification were not executed.** The bundled status says `lean_verified: false`.
-Syntax/library compatibility may still require repair on the pinned compiler.
+The preceding delivery originally lacked Lean and reported an unverified build.
+That historical limitation is superseded by the current pinned build and
+seventeen-theorem dependency audit, which pass in the hosted CI. The current
+audit includes the additional three quotient/sufficiency lemmas. Historical
+unverified status files describe their dated delivery, not the current source.
 
 Even after a successful build, the graph theorem checks the supplied abstract
 graph. It does not prove that Python extracted the correct image graph from a

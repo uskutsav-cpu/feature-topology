@@ -86,6 +86,77 @@ def fixed_fiber_paths(repo, original_files):
                        scope=stored['scope'], replay_scope=stored['replay_scope'])
 
 
+def decision_paths(repo, original_files):
+    """Require every recorded outcome and preserve its positive/negative distinction."""
+    from scripts.collect_nuisance_decision_results import collect
+    from scripts.replay_nuisance_decision_collection_v2 import derived_claim
+
+    root = repo/'results/nuisance_decision_verification_v1'
+    stored = load_json((root/'collection.json').read_bytes())
+    if collect(repo, root) != stored:
+        raise ValueError('Classifier decision collection differs from checked artifacts')
+    local = repo/'results/nuisance_decision_local_replays_v2'
+    names = {row['run_id']+f"-theta-{row['theta_fraction'][0]}-8.json" for row in stored['records']}
+    claim_names = {name[:-5]+'.local-claim.json' for name in names}
+    if {path.name for path in local.glob('*.json')} != names | claim_names:
+        raise ValueError('Additional local classifier replays are incomplete or duplicated')
+    paths, platforms = set(root.rglob('*.json')), set()
+    for row in stored['records']:
+        name = row['run_id']+f"-theta-{row['theta_fraction'][0]}-8.json"
+        result = load_json((root/name).read_bytes())
+        receipt = load_json((local/name).read_bytes())
+        claim_path = local/(name[:-5]+'.local-claim.json')
+        if load_json(claim_path.read_bytes()) != derived_claim(result, row['result_sha256']):
+            raise ValueError('Local classifier claim differs from the fixed half-margin derivation')
+        witness = load_json((repo/'results/continuous_fiber_feasibility'/(row['run_id']+'.json')).read_bytes())
+        checkpoint = repo/'results/main/runs'/row['run_id']/witness['checkpoint']
+        if (not checkpoint.resolve().is_relative_to(repo)
+                or original_files.get(checkpoint.relative_to(repo).as_posix()) != result['binding']['checkpoint_sha256']
+                or digest(checkpoint) != result['binding']['checkpoint_sha256']):
+            raise ValueError('Classifier checkpoint is outside the original full freeze')
+        positive, negative = row['decision_certificate'], row['counterexample_certificate']
+        certified = positive or negative
+        if (receipt.get('schema') != 'feature-topology.nuisance-decision-local-replay.v2'
+                or receipt.get('run_id') != row['run_id']
+                or receipt.get('theta_fraction') != row['theta_fraction']
+                or receipt.get('target_class') != row['target_class']
+                or receipt.get('binding') != result['binding']
+                or receipt.get('result_sha256') != row['result_sha256']
+                or receipt.get('local_claim_sha256') != digest(claim_path)
+                or receipt.get('hosted_numerical_margin_replay_claimed') is not False
+                or receipt.get('decision_certificate') is not positive
+                or receipt.get('counterexample_certificate') is not negative
+                or receipt.get('replay_passed') is not certified
+                or receipt.get('status') != ('passed' if certified else 'not_a_certificate')
+                or receipt.get('arithmetic') != {'python_flint':'0.9.0', 'precision_bits':128}
+                or receipt.get('verifier_sha256') != digest(repo/'scripts/replay_nuisance_decision_collection_v2.py')):
+            raise ValueError('Additional local classifier replay binding changed')
+        platforms.add(receipt['host']['system']+'/'+receipt['host']['machine'])
+        paths.add(local/name)
+        paths.add(claim_path)
+    preflight = repo/'results/nuisance_decision_preflight_v1'
+    if not (preflight/'attempt.json').is_file() or not (preflight/'failure_excerpt.log').is_file():
+        raise ValueError('Missing retained classifier source-format preflight failure')
+    paths.update(path for path in preflight.rglob('*') if path.is_file())
+    failed_local = repo/'results/nuisance_decision_local_attempts_v1'
+    if not (failed_local/'initial_margin_failure.json').is_file() or not (failed_local/'initial_replayer.py').is_file():
+        raise ValueError('Missing retained original Mac numerical-margin replay failure')
+    paths.update(path for path in failed_local.rglob('*') if path.is_file())
+    paths.update(repo/name for name in ['scripts/collect_nuisance_decision_results.py',
+        'scripts/replay_nuisance_decision_collection.py', 'scripts/replay_nuisance_decision_collection_v2.py',
+        'configs/nuisance_decision_verifier_v1.json'])
+    return paths, dict(protocol_version=1, attempts=stored['complete_attempts'],
+        decision_certificates=stored['decision_certificates'],
+        counterexample_certificates=stored['counterexample_certificates'],
+        inconclusive=stored['inconclusive'],
+        joint_retention_and_correct_decision=stored['joint_retention_and_correct_decision'],
+        trained_models=4, training_seeds=[0], source_bound_standalone_replays_checked=True,
+        additional_local_replays=16, local_replay_platforms=sorted(platforms),
+        local_replay_margin_policy='Fixed half-margin derivation, recorded after the initial Mac bound failure',
+        hosted_numerical_margin_validated_on_local_platform=False,
+        scope=stored['scope'], negative_scope=stored['negative_scope'], replay_scope=stored['replay_scope'])
+
+
 def close_replay(actual, expected, path='result'):
     """Compare all replay fields, allowing only cross-platform floating roundoff."""
     if isinstance(actual, dict) and isinstance(expected, dict):
@@ -167,6 +238,8 @@ def freeze(repo, original_manifest, evidence, output,
     paths.update(comparison_root.rglob('*.json'))
     fiber_paths, fiber_summary = fixed_fiber_paths(repo, original['files'])
     paths.update(fiber_paths)
+    classifier_paths, classifier_summary = decision_paths(repo, original['files'])
+    paths.update(classifier_paths)
     files = dict(original['files'])
     for path in paths:
         if not path.resolve().is_relative_to(repo):
@@ -185,6 +258,7 @@ def freeze(repo, original_manifest, evidence, output,
                         incremental_benefit_supported={row['outcome']: row['incremental_benefit_supported']
                                                        for row in result['contrasts']},
                         fixed_continuous_fibers=fiber_summary,
+                        nuisance_decisions=classifier_summary,
                         scope='Complete additional evidence audit; no novelty/acceptance guarantee'))
     output = Path(output)
     if not output.resolve().is_relative_to(repo):

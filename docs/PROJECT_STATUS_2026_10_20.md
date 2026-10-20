@@ -32,12 +32,22 @@ status record, not a claim of complete research or established high novelty.
   replays on the local Mac also pass and are retained in
   `results/fixed_fiber_local_replays_v4`. Their component integration check
   passes against the four physical checkpoints and unchanged embedding asset.
-- The latest integration CI passes 311 Python tests and the Lean audit.
+- Source commit 8dac5ed passes the hosted Python suite and the Lean audit.
 - The subsequent catalog-input accounting fix passes 315 local tests. On the
   real primary data, all 4,356 selected metric rows are identical to the previous
   reader. The refreshed 140-cell comparison has identical numerical outputs;
   its updated snapshot is `additional_diagnostic_comparison_portable_v2`.
   The refreshed full physical-input audit still has only the four CIFAR gaps.
+- All sixteen complete centered-classifier checks pass, with all sixteen
+  separate-process Linux replays. Every same-source domain therefore has both
+  a hidden-retention certificate and a correct-class certificate. The recorded
+  protocol, full results and counterexample-preserving collector are retained.
+  An additional Mac numerical-margin replay found a small enclosure difference;
+  the original failure is preserved and a separate deterministic weaker-margin
+  replay passes for all sixteen domains. The local derived claims and receipts
+  are retained in `results/nuisance_decision_local_replays_v2`. They validate
+  weaker positive margins, not the original hosted numerical margins.
+  See the [incident record](NUISANCE_DECISION_LOCAL_REPLAY_INCIDENT.md).
 
 ## Required before the research completion gate can pass
 
@@ -60,6 +70,11 @@ with exact dyadic weights. Sixteen circles are not sixteen independent training
 seeds. Same-implementation standalone replay is not an independent verifier or
 a Lean proof. No full-torus, every-theta, machine-floating-point injectivity,
 OOD robustness, or universally high-novelty claim follows.
+
+The matched certificates establish correct class decisions throughout the
+specified nuisance circles alongside injective retention in their current hidden
+branch. They do not certify constant logits, every-theta correctness, or the
+same behavior in independently trained seeds.
 
 The new verified separation evidence can support a precise distinction between
 metric contraction and actual identification. The elementary separation lemma,
