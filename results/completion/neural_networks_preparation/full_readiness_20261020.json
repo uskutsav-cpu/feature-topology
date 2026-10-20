@@ -1,0 +1,970 @@
+{
+  "ready": false,
+  "problems": [
+    {
+      "study": "cifar10",
+      "error": "Image coverage incomplete",
+      "audit": {
+        "schema": "feature-topology.image-audit.v1",
+        "artifact_completion": false,
+        "expected_runs": 35,
+        "observed_runs": 33,
+        "finished_runs": 33,
+        "measured_runs": 33,
+        "diverged_runs": 0,
+        "missing_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            4
+          ]
+        ],
+        "unexpected_pairs": [],
+        "missing_metrics_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            4
+          ]
+        ],
+        "issues": [],
+        "runs": [
+          {
+            "run_id": "06bc015242202541",
+            "gamma": 1.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7453,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "188d52dbed27ab2a",
+            "gamma": 1.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7612,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "2030d781ce9995f8",
+            "gamma": 128.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7988,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "26f370329802f974",
+            "gamma": 64.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.813,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "2d44a457887d852d",
+            "gamma": 0.125,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4475,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "42b16425d49402ea",
+            "gamma": 0.125,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.449,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "4429524647efe67c",
+            "gamma": 4.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7794,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "47f208a0b26c79c7",
+            "gamma": 0.5,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7069,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "4fed6350ad2b0e66",
+            "gamma": 128.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8083,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "61c65a807e97cc27",
+            "gamma": 16.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7904,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "64bb694d496c4809",
+            "gamma": 64.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8208,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "6d18a2ff01070c78",
+            "gamma": 128.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8124,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "6d1f6a6489fd4600",
+            "gamma": 64.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8124,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "7217fe03a810a8a4",
+            "gamma": 4.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7669,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "75928cbbf1c6fac0",
+            "gamma": 0.125,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4202,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "75ad558e7fab039f",
+            "gamma": 128.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8187,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "75da42a80395a074",
+            "gamma": 16.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7942,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "8487cdf3fcf6c57d",
+            "gamma": 16.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7978,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "87977f386298cd65",
+            "gamma": 0.5,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.747,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "92d05d3860fbdcf1",
+            "gamma": 1.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.76,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "9f474ff24983cdd6",
+            "gamma": 4.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7643,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "a2c9e00f97922735",
+            "gamma": 4.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8014,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "a32aabd849539de0",
+            "gamma": 1.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7373,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "adcd7779bc886230",
+            "gamma": 128.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7958,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b08a6b4edccc3844",
+            "gamma": 0.5,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7331,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b765caa713c59928",
+            "gamma": 4.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7915,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "bb691150219b46b9",
+            "gamma": 0.5,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7041,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "ce34a71531d39364",
+            "gamma": 0.5,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7322,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "cfb3292ae5a1f26f",
+            "gamma": 16.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8104,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "e0f224393b31dece",
+            "gamma": 16.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7902,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "e4f8e1f00c299665",
+            "gamma": 64.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8113,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "f5ac39f4be6a9bec",
+            "gamma": 1.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.7376,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "f8929beb0e954ada",
+            "gamma": 64.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.8154,
+            "explicit_undefined_metrics": []
+          }
+        ],
+        "input_hashes": {
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/06bc015242202541/config.json": "f419023ade2e7aa69a9fe6566cd4e0eebefd42546b1b308eef2716d086037eb6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/06bc015242202541/summary.json": "5480c1196c18e2d6ae5557ece88c9677af6e436b5d087ae89bf22b5894810cf0",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/06bc015242202541/metrics.json": "958b707e39ed8d0b55287fd1191cebfde43dfa5852d2a3e8d111040e7eb37b40",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/188d52dbed27ab2a/config.json": "2fdb14aaf82d30ebcf26baedec77b26a1e0340d854804016624205bc0ebe8bbc",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/188d52dbed27ab2a/summary.json": "71ad348e09e3051f453f7b4a743b0f1485b9cdafd9f1c38d88d598cc3beb4db6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/188d52dbed27ab2a/metrics.json": "9e8fbb04ea3fcc1015bd8b6814469f5836f4d0eacffffb2e282244ff16fc64e1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2030d781ce9995f8/config.json": "6a27e19cba1879f4549e0cce5f12960b4791295438e08383d8f8550dd14cddb6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2030d781ce9995f8/summary.json": "c4e9d7fecf1dc03afb08e62320ac0b09110333db23c4a623cd69139d15aa1483",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2030d781ce9995f8/metrics.json": "d48eadb7cbb2fe1eca528a335877a80b0b321feab6d2097f1fc0be5a7591ab40",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/26f370329802f974/config.json": "44d689c3b15bcc743e3c9026511144b54c33501208b7b2c10db490ba6a20abc9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/26f370329802f974/summary.json": "1167027bc9cd3a9f617b58d6cf22d6008482bf063f82d92e5c03d6427ac3639c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/26f370329802f974/metrics.json": "22507b19aaf2796847bb772dc864d562b156382e5cc4355e11d0d2deb6cf607d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2d44a457887d852d/config.json": "09c46982e8405b3d921043d80dd662217dd99ce6484cf17fe45251ba6b33db3e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2d44a457887d852d/summary.json": "0a64af71ec4608c37d77af9ec6fe8cf868cf4da89c8d6c404d1f74dd9b52727d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/2d44a457887d852d/metrics.json": "45872700b8052b4ea64a5c56136b85c53778c7c77e356f421c56cf4f5ada291e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/42b16425d49402ea/config.json": "ec6da138c3338479c7c9ddb53cc3e08de73d9cb361ed8bf4b220879ec4b12556",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/42b16425d49402ea/summary.json": "e3a3a451ccdf4d2a860b8cc21bc333944ac37554638e616858da55418d7cb204",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/42b16425d49402ea/metrics.json": "089250f27c40c015cadce76b66a2f32ecb3e52da80d1dce815efbf05bc03cf78",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4429524647efe67c/config.json": "8b132c823872e80e4a21e1222465a579c9a90b44440dabf1dd919a9d7c388664",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4429524647efe67c/summary.json": "9150adb5c32dca7063a8c4c0036c67b4fbfd7e5f2fc1883b4dc33ba9cb3e2672",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4429524647efe67c/metrics.json": "c85c74d566b61f8e1e2bd45f6e659afaf6079866bd0ee8569ca440ad6f9af83c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/47f208a0b26c79c7/config.json": "190615690b27ffe0da4f19b1b160d938a6c26b01a03bb2c3c94cf41ab067d76d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/47f208a0b26c79c7/summary.json": "7501859cf0148a8eda57e4a40f8db3572900da9e2a8ac9f3c9d3bbbc31e343e7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/47f208a0b26c79c7/metrics.json": "7af01627b0e0988f0926e81310b6bd4feddda900c71612bf0de50bf3ba79c8d4",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4fed6350ad2b0e66/config.json": "cbbed0a06191f348cbb21f30e6a8b32f6435aa78d9be606a124ae6b65aac9f6d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4fed6350ad2b0e66/summary.json": "e0f81d84c0aae72245bfe6d2b61ed740b1fb516b841d277c0270d4aa8ec1dc96",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/4fed6350ad2b0e66/metrics.json": "ef7cfba768b64dded680c13c850c864bf4441a5ac5a0783c9f188a82b4e8a742",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/61c65a807e97cc27/config.json": "bff35eeb8e13e93d3f64e003fb274fe98c847a0ca23ef4e8020b54762cef0954",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/61c65a807e97cc27/summary.json": "797c631a2f1a61d6ef1c5e0e471cd60ff4b18b9f02f1f482e4af9481e3613d99",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/61c65a807e97cc27/metrics.json": "d474391e0fa738b49b1d1b77a78abe7390ff3c0c02726dca55384c1c0cd2787d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/64bb694d496c4809/config.json": "c557112223c9b00e333a5a6a797e097fa886a319dcba8e3a1cc7191011949f3d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/64bb694d496c4809/summary.json": "ec2482b625dc04a686694376d15f7cf8c23d5fb2b7b3acb5cbbf617571f34d9a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/64bb694d496c4809/metrics.json": "5c32cabfe9b15060a43b2c61bf631ecd6176efea653f44d3c9e088198589798f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d18a2ff01070c78/config.json": "7c9a040a1773cf85950c7faa3b6c361852d32000d33c4c57b55eb9594be799b9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d18a2ff01070c78/summary.json": "890df04ee24d1b45021e2b0ad2053398cffac2c929caa0da995d1d6d720029e1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d18a2ff01070c78/metrics.json": "0bf95e07774e12d5d75fda6a6a96f9c755aba6f7eaa123feab301d004a80368a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d1f6a6489fd4600/config.json": "87f561eae9fcbabc17ef57702fc684908949071c4537dc90247bf11907743611",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d1f6a6489fd4600/summary.json": "20dfc6f63895677f077a45a2aa98b03fc062ed8c60be42c41f2b10141366aa67",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/6d1f6a6489fd4600/metrics.json": "5ec211891cff56ac5cfc74cb3a69656304fd618172d77e3df48af01107965c86",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/7217fe03a810a8a4/config.json": "271772f421f545deadcc53035af4aa25bc6f5b391aa3f81a16efadf859138480",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/7217fe03a810a8a4/summary.json": "b39f6a6403e78eac6277f3302ac6a0bb7f0905dac0598374ed248133bf80e8bf",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/7217fe03a810a8a4/metrics.json": "fc25efa4789191f72b7e46b3aee5cee356954779b0c903583aa5c9b2c549d560",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75928cbbf1c6fac0/config.json": "0196c4ca5e6f247e9939f1afb4bd51c70a6907b15653b95dcb2a8cf9f1461e9f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75928cbbf1c6fac0/summary.json": "d2f6c541dd6e0e0245f2982d1f475b4ab44f77da98921ccf9b7b8a5be8ef9449",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75928cbbf1c6fac0/metrics.json": "1b17fefe4fe30d7c4f37752e8a436bd622614edcf0383f83df2b820e4884666e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75ad558e7fab039f/config.json": "00066936919666cc04d51558c9c26990f8b93c61b1e28bde79f4b3cad70eca81",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75ad558e7fab039f/summary.json": "7f758145f3ed886cceafd4b38470e1f0a27d0c45b092f22af601e851e98823e5",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75ad558e7fab039f/metrics.json": "7d40d4ba5bebbaa591ec19c903caa46a7e3d2e201673ac6a4ba6e0f86a906ea6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75da42a80395a074/config.json": "7402d80fc33f856965b860187385d297d57de8a698f6e4d45be61e8a53e7d38c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75da42a80395a074/summary.json": "eb8bc77a397902e8eacd2d34e7a3e54bb8b984ceeb9a806be41674d957188dd7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/75da42a80395a074/metrics.json": "67ce206075d1c8d346e1ff03f896522b543d85c72cb62460bfca48db98f5fb44",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/8487cdf3fcf6c57d/config.json": "803e2b1449aa33bfadf97ea17d5abc38a836252f4a39dd379dc07e3621a57e25",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/8487cdf3fcf6c57d/summary.json": "7fa3e3c2e9f5e3318139d7006467313f73f3068135cf0bbfacf3fd5e8eb5875c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/8487cdf3fcf6c57d/metrics.json": "dba48b5f015a9364983c49b4f7f107d85feb9cff6cc07ce1bdb94c4ec199acae",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/87977f386298cd65/config.json": "d373b05796bac0c2193a9a9b66a156b094913b9fdad94e263dde174cdff672a1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/87977f386298cd65/summary.json": "99ec7e3620a65241fdb234a3538fa2c02aa28ba43142fd7e34e12563db84cc9d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/87977f386298cd65/metrics.json": "a6807dc08c7a5918fab7ff28af53614bea24a076722e9cda9bc170c82b297459",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/92d05d3860fbdcf1/config.json": "ca997dfe2bd38be7ea27c5d087269c75919cad200e153e404bb8aa276680390e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/92d05d3860fbdcf1/summary.json": "8bfc62387b747f581a83aa4ffd601fb6d848f1d544d4d823380b545ef4549879",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/92d05d3860fbdcf1/metrics.json": "86827e1fb88e7cc813dfcbdae88d6fb8c7e7f5115ca5cb83fb98bd8ded7b873d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/9f474ff24983cdd6/config.json": "051b1a75cb7de856f5837ec4ddbeb59051b8263793a3d91734c0efbcdbce3952",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/9f474ff24983cdd6/summary.json": "95519cde7f3614e920db610c7e6d79dfb9bcdf6d0b4bcf9bf5f96f03038141f4",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/9f474ff24983cdd6/metrics.json": "06d237eaa4b06cdf6fbe81a0691a0e70124d2ae5c48aade45379595eb29b0886",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a2c9e00f97922735/config.json": "456965d586a8d7993699f4519c6d5fcf016f4c832091cc8cb553f92b544c4942",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a2c9e00f97922735/summary.json": "970e2f43a1940b2b144e49bc332b4d171d2ed5aa42310103c77079b5564ba760",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a2c9e00f97922735/metrics.json": "a9e15b0e200d70e94ed4e2e85b976fe4bdad3313e163d55d5534ddfd286e58a8",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a32aabd849539de0/config.json": "5732b5940905e731c479b8eda995b5e101f8fada652f13ee2e5d260f3d87b70c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a32aabd849539de0/summary.json": "20e01877361ec13b11a53dd0cc02fa48f89cf744fe0ff4a9a6dae55478755444",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/a32aabd849539de0/metrics.json": "722509d95a878af9757ea00f85aa5020b9dfbe381011666889ce5abec06aa803",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/adcd7779bc886230/config.json": "ac305dc583cfc9e8c698366d295cdc61bda2a7ae9416bfd1bdc5630cf9275748",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/adcd7779bc886230/summary.json": "795c4fcbfdbfae14470b444811c2fd24c76b9206538c4f4efdbbef124442be7a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/adcd7779bc886230/metrics.json": "c9cf4ae35caadc9651ce8a94de1c278cc95054291ba1552f199b06cb24f6104f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b08a6b4edccc3844/config.json": "9c049a7e3dc4c9be5e0498edc0004265212899d5f0da8c36a9889204c4b13166",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b08a6b4edccc3844/summary.json": "f4defe4cb077318f409987a7e650f6f313861477801c21ca3d7298fd44fec2e7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b08a6b4edccc3844/metrics.json": "60a78b82a6a24e6651232f3c4485cf10bafbd07188097034cfb2977d02c031f8",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b765caa713c59928/config.json": "470da15684edfd9c3415523fcf184a07f6728e3997f983db704ce3078e3a521c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b765caa713c59928/summary.json": "76a7a4cbb616dcd4148b173eb1ebccdd5379a2e2462d2eefc6c026ae5557024f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/b765caa713c59928/metrics.json": "6eeb846dae77035d54290d1d1c4b5135ba98d22acca6b0768411aeda55d2000c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/bb691150219b46b9/config.json": "d3363f232f2883b541eff235a86a5d0ad0418e632ecfee0e35868972ef33229a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/bb691150219b46b9/summary.json": "b709b8b34c42e47e5fad03af720e9a39b04f6ca302def2135f90a997f9ff2044",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/bb691150219b46b9/metrics.json": "a8252dce81b6e0c96c2630cf0353f8d13cebae920e7df3f0d99f2b77d94efa9d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/ce34a71531d39364/config.json": "97b4655d2a07db941ba96f3792fae3f5bdfdcb9ea1a7d1ffdb2c632b9ba80058",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/ce34a71531d39364/summary.json": "9c0cd00de00ac7cb6aeff78253102abce41e062d275135e6b946de1c05c6d8d5",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/ce34a71531d39364/metrics.json": "a6f20c9be37a4199a3d60d27673ee148112d85bbd4e6f6fe23386e2543c199a9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/cfb3292ae5a1f26f/config.json": "d60bee9807b16b2d67e3c9f8504c04b61ecda26b97cb450cb7eec6d5b5c6a8a3",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/cfb3292ae5a1f26f/summary.json": "5cd3d1e22ec57cb3ef3cce6086d17b9ce77a0c019a6ce26e107f105570760fa9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/cfb3292ae5a1f26f/metrics.json": "d8004aa703191f0715c6dc0791ce9e837ed73dab22c3646c96b40eac08c77ff7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e0f224393b31dece/config.json": "fb30bbf99b486c12d4dda3b034e372ac7e342c2176b3a863519296daa0b9253e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e0f224393b31dece/summary.json": "be49d68b5ad518d7ecbd0fb10e60bc8c237ae5c2072a1e86c1af0aa3ff55be90",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e0f224393b31dece/metrics.json": "29c753b4a9b7ad61c60ad87d9444df18543361859ca70397f3d20bc2ab88e6e9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e4f8e1f00c299665/config.json": "58f23cf6365796568823f83fc2f05914fe554409b4524cf5deef3e866dbb15a1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e4f8e1f00c299665/summary.json": "5cfcec8681285786ec9360460101abcbb806a1f4f31f4aff756e5ca7307b65f7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/e4f8e1f00c299665/metrics.json": "1ad43faa269b67c932de92514242449b98feceeefdb78d28bedbafd706dcfa28",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f5ac39f4be6a9bec/config.json": "243b27058a5300a85611fa3665ba636a0061881aad2b0e1c216eebd2186c140a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f5ac39f4be6a9bec/summary.json": "ebd0ccce5b5476c8f7e1e43cf7e1ef056a81244c7a1df393931d4b061d4a05a2",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f5ac39f4be6a9bec/metrics.json": "b00847f2f30e113f4e74f2cd7a236817ddfe9bcfc4e1fd5020d49435df21b872",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f8929beb0e954ada/config.json": "244c2309f30d189a9c58fc7c55c5d8d317dc4b74c307533ede03dfc2ce87cbc5",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f8929beb0e954ada/summary.json": "a4ac830d048ecf79c082a47e2b387e516ec6a2d1cb59d3d898a66ca0d8128c7a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar10/runs/f8929beb0e954ada/metrics.json": "a521f846209a7b16c7e676bfba489dd93496f20ba4a095b081e56581734c4c52"
+        },
+        "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
+      }
+    },
+    {
+      "study": "cifar100",
+      "error": "Image coverage incomplete",
+      "audit": {
+        "schema": "feature-topology.image-audit.v1",
+        "artifact_completion": false,
+        "expected_runs": 35,
+        "observed_runs": 30,
+        "finished_runs": 30,
+        "measured_runs": 30,
+        "diverged_runs": 0,
+        "missing_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ]
+        ],
+        "unexpected_pairs": [],
+        "missing_metrics_pairs": [
+          [
+            0.125,
+            0
+          ],
+          [
+            0.125,
+            1
+          ],
+          [
+            0.125,
+            2
+          ],
+          [
+            0.125,
+            3
+          ],
+          [
+            0.125,
+            4
+          ]
+        ],
+        "issues": [],
+        "runs": [
+          {
+            "run_id": "036f837d94b23293",
+            "gamma": 16.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4875,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "07d9913b4f9d0937",
+            "gamma": 1.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.431,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "0e0b13fda5bc99fb",
+            "gamma": 16.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4918,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "111007e5d9d4c9dd",
+            "gamma": 128.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4848,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "177ae9feef38c92b",
+            "gamma": 64.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4943,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "2bff46ac44395bea",
+            "gamma": 1.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4105,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "3173ca3665425492",
+            "gamma": 4.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.5047,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "34ab7beb0d1c01cd",
+            "gamma": 128.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4628,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "3ca30cb93f2fcf9b",
+            "gamma": 16.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4924,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "459110264d049607",
+            "gamma": 1.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4434,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "48a178dbf2f1abbe",
+            "gamma": 64.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.489,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "4fbcfc30e53bd80a",
+            "gamma": 128.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4945,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "51878630bd997414",
+            "gamma": 0.5,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.3665,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "9684ea71d2901fc9",
+            "gamma": 64.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4765,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "9b22bb5abda2ce85",
+            "gamma": 0.5,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.3828,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "9c32c9ae704220a1",
+            "gamma": 4.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4972,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "9de89f2accce69ff",
+            "gamma": 1.0,
+            "seed": 1,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4266,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "a310828c91ec743d",
+            "gamma": 64.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4842,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b14e9212c8030e12",
+            "gamma": 0.5,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.3749,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b67e3c02d4e1ad90",
+            "gamma": 16.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.5027,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b682a00b3c98fa2f",
+            "gamma": 16.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4903,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "b8fe3d712ea79c24",
+            "gamma": 128.0,
+            "seed": 0,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4711,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "bcf5bf96da69456d",
+            "gamma": 0.5,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.3864,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "bdecd7e8b93584e5",
+            "gamma": 4.0,
+            "seed": 2,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.491,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "c1629e9b737073d4",
+            "gamma": 4.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4966,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "cf34bc961f7826cb",
+            "gamma": 64.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4824,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "d6e044c0e8835856",
+            "gamma": 4.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.5008,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "ed05e67113014ecf",
+            "gamma": 128.0,
+            "seed": 4,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4852,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "ee81122af3e2adab",
+            "gamma": 1.0,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.4382,
+            "explicit_undefined_metrics": []
+          },
+          {
+            "run_id": "f1c06b1eba03158c",
+            "gamma": 0.5,
+            "seed": 3,
+            "status": "converged",
+            "metrics_present": true,
+            "metric_schema": "cifar",
+            "test_accuracy": 0.3921,
+            "explicit_undefined_metrics": []
+          }
+        ],
+        "input_hashes": {
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/036f837d94b23293/config.json": "224fe1ebf8b2e15aacab8b1873eb8c6c9d9734f73628f83b893a8a7f49cfaef6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/036f837d94b23293/summary.json": "92e63b84f5e2f9dd1c5fb4bfa89975fc84706fad60c8fee6b8507f1ffd57ddce",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/036f837d94b23293/metrics.json": "2c0cd94af49ab28d8c59d96f5117bf66054119e4048eb1260e369308107749e0",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/07d9913b4f9d0937/config.json": "748ebe8c642878d606a10cb104ff547ea3adf2f615b0da4745bbf0288033d328",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/07d9913b4f9d0937/summary.json": "692a2435ed1f6799053f8e980ff46e84960c72ce5f8e89b31bf5fafe887250e9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/07d9913b4f9d0937/metrics.json": "75fbe15b88d0f9d3bc3ea642514751663d6b2e42fd8fe4a2be508fe5cfd08681",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/0e0b13fda5bc99fb/config.json": "cf606592ba0a1eed819f5f671b1084aa6127ff726fa9d1556e8112ceb1ede634",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/0e0b13fda5bc99fb/summary.json": "c7f0f55998fcb1fa44ac0cfad0195ebd16859e812ed6e9e1e44ffd7bc01bf597",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/0e0b13fda5bc99fb/metrics.json": "f200e80e33590d08d0262de8ff917f26e8f574df031fcfbc9aa6fcca40682734",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/111007e5d9d4c9dd/config.json": "d2259f798f92510961090bd67c5a0159d568b6d5e6275e30c40a3377148ac236",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/111007e5d9d4c9dd/summary.json": "c8f7db0c7cf7ec4ce8adc1622e8bfe7936f9a110f9f624c9c7f987822d635e7c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/111007e5d9d4c9dd/metrics.json": "6db0401c83b7b58a5b0ae10acb9cb9aaf0fb05ffca53a36f7c410c414df3a1aa",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/177ae9feef38c92b/config.json": "64259dd5194eec96d2017e5ce6c27229201b6b9bc00dc7699e03b2c930c00b1c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/177ae9feef38c92b/summary.json": "4efa0b12a1b222b1e1d5ccc78c1b6fecfd6da0438cd5ec74f5ecffac1c0ce180",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/177ae9feef38c92b/metrics.json": "635fef5ff0d13c6e42a591a337b320f0fdcbf3ce787bc6c020c081b58c183116",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/2bff46ac44395bea/config.json": "6e172e6cb9c21993d61ef4859315123b1a989f898926863e7423f45e3349e75c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/2bff46ac44395bea/summary.json": "6460afc0608c7eed6cc0569f6bc64bc5c1089c87615eb3551ae228162d819757",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/2bff46ac44395bea/metrics.json": "396761573be10dcf172533da3f8fc487fade14521183c17840de73f90c7322c2",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3173ca3665425492/config.json": "e7eff7fa55587bef5dad7069d49705e998a993a0bf25a19c0bdeb511a1f23f26",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3173ca3665425492/summary.json": "1a3f60c8af83249281811536b168c79223839caf341e7ce6a20fcc73ef0add0c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3173ca3665425492/metrics.json": "ba62b08ef34da18a12d0d0533a680ae14af81535ecd210f63e0bea8fb379ac4b",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/34ab7beb0d1c01cd/config.json": "409ece0a6a4920cbc857331d19641564320dc5e2c7f998cc4abc0e5fab147dbc",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/34ab7beb0d1c01cd/summary.json": "a3d7591d3a10f57b012b178b865cf9682037fc14e28fcd0e198f3811194ebe0e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/34ab7beb0d1c01cd/metrics.json": "c3719f993eccfc874decffdae347ad3db4eb9d3bff31ba21d097f42b88036216",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3ca30cb93f2fcf9b/config.json": "326b95ce22d89fab0ab8045515d8df8645c5d882928e0ec1e2420bfb85cba202",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3ca30cb93f2fcf9b/summary.json": "02f14a94f42f327397fd44c68cf7ba99951734a4bbb20282d737c8112eee077d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/3ca30cb93f2fcf9b/metrics.json": "64dbff98d7779e1397b3118d34f19cbedd05ad95e19656aabc3d840ba51cab90",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/459110264d049607/config.json": "8e00796ac4881947cbb261441457bfeffe460fb73391bacead57ee7772979ad1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/459110264d049607/summary.json": "039d2ef52fa0decba4488417c176908df4164923df1efb6864b58794caa7ecfa",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/459110264d049607/metrics.json": "f598c5d56590572638975f2fa9ffbb2b25336b17ec811162c2df8fc200e9b2a7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/48a178dbf2f1abbe/config.json": "41dd76ef6ebcb9d5db5c43e0612c9b019881bea1eab6167c021cc53553308bc9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/48a178dbf2f1abbe/summary.json": "074473dc8c7d400fe287626af17a759bd4e348bafed69be1507b82ccd2c313e5",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/48a178dbf2f1abbe/metrics.json": "acec0f266298e548b69cc408dcdbe7fe20d0a456423854756eddbafd31429cbb",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/4fbcfc30e53bd80a/config.json": "85b37f0669a41c3158e058270ecdb62575b4a3a887992ece5859e285d9ca8d71",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/4fbcfc30e53bd80a/summary.json": "c363d8b3b8b23e10a2b58441f8c2e665a745cf5489a240a8833114d94abeb569",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/4fbcfc30e53bd80a/metrics.json": "0908fb99a6b99d47cfdcf4df8a2f55bc3ec4764927f50bc8fb793c228fab4fc2",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/51878630bd997414/config.json": "7ef37a3771ca704f64582466a1e5c22a823c5fdf233e09696149c472741a8f98",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/51878630bd997414/summary.json": "5fe76d09d79c9c253afc3151640fea52035e03c90e79c9d19bba8660e47c942e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/51878630bd997414/metrics.json": "d9a5d22590c60c61b1c9f0cd6be0d65f4e26e7e952f3bc2ac5d747c074e384cc",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9684ea71d2901fc9/config.json": "424d3d8e3d74d814104326e5314cc65c4d0d4b0cbb8d4d6fb0439b1bd361f1d1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9684ea71d2901fc9/summary.json": "dfe780d04ecc7d45127e36ffa234ef8033aa91f5a4bbda1b2ee883831a6b10f2",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9684ea71d2901fc9/metrics.json": "26c53befc20517d83c102f2294a06d9cd2c13bc00b433a3e9eb6e39eb5ff018f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9b22bb5abda2ce85/config.json": "5c5d3b10dead3cef5f484a10915613a5d26a9fe5e77be305ac4024e1a713f645",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9b22bb5abda2ce85/summary.json": "cd104c0abfcf345ecded8b3fbfe18e425dd8664b281ecbb878fc93847b6427ba",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9b22bb5abda2ce85/metrics.json": "46977b096bba972f1bd6da88ca13a5a2631949d3a478dea3fd653e43b74eb7ce",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9c32c9ae704220a1/config.json": "7551e98e0efe063500e836df316b769b18bcdf152ef89810e4d463e5c07be5b0",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9c32c9ae704220a1/summary.json": "69516c46c89d5ef34c15b0ab2920355ea70db6dd2ccf94aa80ed6ef799db2a88",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9c32c9ae704220a1/metrics.json": "3542a5b5350835f6cd0e0308fe27d71b15ad807a63aa910257d617f4d39a9e2b",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9de89f2accce69ff/config.json": "65b50f774007d3933404ba11b3ac3cbb2075ba10ecbeef63bd26bb2d36247d36",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9de89f2accce69ff/summary.json": "9f7db9b1ff0e2352fcd89c85a3f3181a7462c9d8489ac9dd4d89278434241742",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/9de89f2accce69ff/metrics.json": "5bc36513c83cc08a05136fef14fc441da4cad3998741e2030e7bd4b26d684a73",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/a310828c91ec743d/config.json": "e3b58fc0429239305c5eb1cac639109b35d1c466e7c28d0be532c0a3570d51ba",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/a310828c91ec743d/summary.json": "f1ff5bf51fe8a5c5709682b9244a930432d5cf6192ed1f13048d0735f482ed4c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/a310828c91ec743d/metrics.json": "d5228dd21b4cb592c3840a489957b54f3c2951f683d0479dba0444eb9eb8872d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b14e9212c8030e12/config.json": "3f49d4cbb7dd5a15ca1bcacaed2b67a4aeddbb32fa3584742f176b4d4e0a1a9c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b14e9212c8030e12/summary.json": "b765069fc281498d93496220b1fef1fc41b6ea3f0f325a47f491d185dae56bf3",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b14e9212c8030e12/metrics.json": "a25ed65110c1498dce49545e3573f2e2d98f392526af4f76b3df61d3b4e26a9c",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b67e3c02d4e1ad90/config.json": "80f898d4e697989cba69032cea9d8d3b767d08be20ab4d0764c18e4d8c344187",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b67e3c02d4e1ad90/summary.json": "6c89c3bd13f4464f7b93de2abd05bbb1e9d26049a99f03b6282b0f4dfec1fc69",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b67e3c02d4e1ad90/metrics.json": "e37ba4e6d4be5c8a647fb4dfecff9b08b3d46477ce805e3a634a04d1c3177656",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b682a00b3c98fa2f/config.json": "c88f15e877c1223f48ccae3db5213243a549d838f15d4ec571bdc0633a371096",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b682a00b3c98fa2f/summary.json": "9b7730ebff4dc96ea920a3ddc84a38fe0b87a31d4507ecc238cb2d522d247b06",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b682a00b3c98fa2f/metrics.json": "e68cd33d233654e72b4fafc26a9a179b8795aaf9083befaa31b7e9214bfc9a2b",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b8fe3d712ea79c24/config.json": "16e27227403713337232fb9752fca569f70d528ca9d0b0ff5a5d4b73894e755d",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b8fe3d712ea79c24/summary.json": "8d413d992a5dc13ef7d77d0794f35b7517a4e927df35823c1ab36ac3b2ea0cd1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/b8fe3d712ea79c24/metrics.json": "734796a483b42cf6525dba61e597952db0bf7e331d756c09daa4c140934af7f9",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bcf5bf96da69456d/config.json": "866163e27b0d61fb39f365ea9c399b4821a3eb6343cc03f2db7667a9b4dccb17",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bcf5bf96da69456d/summary.json": "1857078bd00d5cf954d622fd0fc74bcce18faf5445e1cee758d9ba3cba7400d3",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bcf5bf96da69456d/metrics.json": "ff34fbb5a1ee35a5f46f75e96c67d549b24a43abf3bee59d874eee088273ef84",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bdecd7e8b93584e5/config.json": "0003fcb1de99092a92db5b25908c002333f46d6f6a6970faaee0a0ff62d79ae7",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bdecd7e8b93584e5/summary.json": "a4364855ce328d8df5d3dededca9f53e0ee0b7bf054da6c15e21eda523f6ef76",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/bdecd7e8b93584e5/metrics.json": "6378d988a06de6245291284257647877540d8fc8d28cc3b9b36668fd9e30c76a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/c1629e9b737073d4/config.json": "a5e493bdb0a6ecae237c3495411bff06e66c734c3f659a0693393ca38405df0a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/c1629e9b737073d4/summary.json": "a64c721077328bd12567dcbee7b5df22fc8cdb594872c336eb1ad375a194b456",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/c1629e9b737073d4/metrics.json": "a77166f14552fc6d43a03cbdfcb4f125362cb8e306fc1544f06e0e2c7c528517",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/cf34bc961f7826cb/config.json": "bae43b1b91785275e788067a1225806b8df026f8a87baf59316da2b44d905ff1",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/cf34bc961f7826cb/summary.json": "729d3d3a8eb34bb1b8c65989bf33f73f650394847b7514b1924f8e900fcab22a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/cf34bc961f7826cb/metrics.json": "b406408ca6feb90527678c97132566c5b3ad70f822ed1e632dd5265039406af0",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/d6e044c0e8835856/config.json": "0a2b9e3e849e3f0420a484b7299dda35d3d0656fadbc2b2f8ae92801af2ada34",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/d6e044c0e8835856/summary.json": "bcebad41ca954489dd7bc145030a4318e8e68c8c05ab7a48c38bc76e7144137f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/d6e044c0e8835856/metrics.json": "4aa27e4fd16178d72b96240bb2c1c610043fe6699cccfce0464653cfd899f6b6",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ed05e67113014ecf/config.json": "2b3e8b475e4addfe590083f775324a2183075a79422e993712bd1bfdbb1e1b6a",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ed05e67113014ecf/summary.json": "7549a2a5b54c30cf2bf670505456314e4c0fbc35eedb88183bdb69ec3251d535",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ed05e67113014ecf/metrics.json": "92747c4e4b33062653c1049892841b32309fd56139a65bbdc2a8c1dcfb059327",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ee81122af3e2adab/config.json": "cacadaafad354088327208fb26cff9a0c22de6de0100f50ceed4f56d159049b3",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ee81122af3e2adab/summary.json": "b49c34df73ddf1d225f9ccf51a56831429a886bc9ec01fdb6a9b489daa7ce94f",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/ee81122af3e2adab/metrics.json": "87dcab2b5ec44cd5eb34b640dae4a9e78fa2ab6d890c132e0d0d5dcdaff0fb59",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/f1c06b1eba03158c/config.json": "7ada7ee3dbae7d155577be05c830312f2150e38b83874a4633c3459649f1b558",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/f1c06b1eba03158c/summary.json": "5a7675aa04de71eacd14f653dab7a991e8c529658366feb13a9558b6b300f09e",
+          "/Volumes/FeatureTopologyValidation/repo/results/cifar100/runs/f1c06b1eba03158c/metrics.json": "ac371c4408cbfbea5bbf8681e4b157a311625752cb95360499221843a55b6b50"
+        },
+        "scope": "Native image artifact coverage only; no injectivity, continuum topology, or research-completion claim."
+      }
+    },
+    {
+      "study": "image_replay",
+      "error": "[Errno 2] No such file or directory: '/Volumes/FeatureTopologyValidation/repo/results/completion/cifar_validation.json'"
+    },
+    {
+      "study": "hosted_cifar",
+      "error": "[Errno 2] No such file or directory: '/Volumes/FeatureTopologyValidation/repo/results/completion/cifar10_remote_queue_v3.json'"
+    }
+  ],
+  "studies": {
+    "cylinder": {
+      "expected": 35,
+      "accounted": 35
+    },
+    "depth": {
+      "expected": 140,
+      "accounted": 140
+    },
+    "main": {
+      "expected": 130,
+      "accounted": 130
+    },
+    "ood": {
+      "expected": 140,
+      "accounted": 140
+    },
+    "relevance": {
+      "expected": 210,
+      "accounted": 210
+    },
+    "small_network": {
+      "expected": 120,
+      "accounted": 120
+    },
+    "swapped": {
+      "expected": 35,
+      "accounted": 35
+    },
+    "width": {
+      "expected": 175,
+      "accounted": 175
+    }
+  }
+}
