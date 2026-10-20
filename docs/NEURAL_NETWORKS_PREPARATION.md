@@ -1,8 +1,11 @@
 # Neural Networks preparation requirements
 
-Objective: complete the existing Feature Topology research and produce a verified,
-submission-ready Neural Networks manuscript and reproducibility package. Journal
-acceptance is an editorial decision and is not a completion claim.
+Objective: complete and strengthen the existing Feature Topology research, then
+prepare a verified Neural Networks manuscript and reproducibility package.
+The user explicitly clarified the sequence on 2026-10-20: finish the research
+project first, with a defensible high-novelty contribution; manuscript preparation
+comes afterward. Journal acceptance is an editorial decision and is not a
+completion claim.
 
 ## Evidence required for completion
 
@@ -31,6 +34,9 @@ acceptance is an editorial decision and is not a completion claim.
 - Training seeds are the independent statistical replicates. PH subsamples and
   noise repetitions do not increase the seed count.
 - Existing completed results are reused without overwriting or rerunning them.
+- New strengthening studies need an explicit protocol, independent evaluation,
+  and a comparison to the closest prior work. Positive findings and high novelty
+  are not assumed. Manuscript drafting waits for the research-completion audit.
 
 ## Current execution
 

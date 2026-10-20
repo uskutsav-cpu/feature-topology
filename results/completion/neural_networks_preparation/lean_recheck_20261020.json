@@ -1,0 +1,10 @@
+{
+  "schema": "feature-topology.preparation-lean-recheck.v1",
+  "source_status_sha256": "88821643c924ecf58bcae532425abe03c4fbfde662bde076009795de78ffa2c0",
+  "verified_declarations": 17,
+  "axiom_free": true,
+  "source_hashes_match_existing_audit": true,
+  "build": "lake build passed",
+  "audit": "lake env lean FeatureTopology/Audit.lean passed",
+  "scope": "Logical lemmas and the finite supplied-graph checker only."
+}
