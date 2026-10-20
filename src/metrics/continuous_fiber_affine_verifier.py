@@ -12,9 +12,12 @@ from src.metrics.continuous_fiber_verifier import CircularIntervalNetwork,angle_
 
 
 class AffineCircularIntervalNetwork(CircularIntervalNetwork):
-    def bound(self,code,point=False):
+    def parameters(self,code,point=False):
         i,j,depth=decode_box(code)
-        theta,phi=angle_box(i,depth,point),angle_box(j,depth,point)
+        return angle_box(i,depth,point),angle_box(j,depth,point)
+
+    def bound(self,code,point=False):
+        theta,phi=self.parameters(code,point)
         angle=self.winding*phi
         coordinates=arb_mat([[theta.cos()],[theta.sin()],[angle.cos()],[angle.sin()]])
         center=arb_mat([[coordinates[row,0].mid()] for row in range(4)])
