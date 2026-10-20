@@ -7,7 +7,7 @@ import tarfile
 from scripts.freeze_results import (exact_control_paths,nonfinite_paths,readiness,
                                     calibration_artifact_paths,cifar_hosted_paths,production_queue_paths,
                                     validate_numeric_circle_quotient,
-                                    validate_ood_evaluation_row,verify_manifest)
+                                    validate_ood_evaluation_row,verify_manifest,freeze_file_hashes)
 from scripts.pack_release import GithubReleaseUploader,pack
 from scripts.cifar_provenance import expected_cell_ids
 from scripts.remote_cifar import GAMMAS
@@ -20,6 +20,37 @@ def test_missing_studies_cannot_be_frozen(tmp_path):
     report,_=readiness(tmp_path)
     assert not report['ready']
     assert any(p.get('study')=='design' for p in report['problems'])
+
+
+def test_shared_primary_alias_is_bound_for_canonical_analysis_consumption(tmp_path):
+    from scripts.final_analysis import verify_consumed_inputs
+    canonical=tmp_path/'results/pilot/runs/example/summary.json'
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text('{"status":"converged"}')
+    alias=tmp_path/'results/main/runs/example'
+    alias.parent.mkdir(parents=True)
+    alias.symlink_to(canonical.parent,target_is_directory=True)
+    logical=alias/'summary.json'
+    files=freeze_file_hashes(tmp_path,[logical])
+    assert set(files)=={'results/main/runs/example/summary.json',
+                        'results/pilot/runs/example/summary.json'}
+    manifest=dict(schema='feature-topology.frozen-results.v1',ready=True,files=files)
+    manifest_path=tmp_path/'freeze.json';manifest_path.write_text(json.dumps(manifest))
+    assert verify_manifest(tmp_path,manifest_path)==manifest
+    consumed=tmp_path/'consumed.json'
+    consumed.write_text(json.dumps({str(logical):files['results/main/runs/example/summary.json']}))
+    assert verify_consumed_inputs(tmp_path,manifest,consumed)
+    canonical.write_text('{"status":"changed"}')
+    with pytest.raises(ValueError,match='Frozen file missing or changed'):
+        verify_manifest(tmp_path,manifest_path)
+
+
+def test_freeze_rejects_an_alias_pointing_outside_the_repository(tmp_path):
+    repo=tmp_path/'repo';repo.mkdir()
+    outside=tmp_path/'outside.json';outside.write_text('{}')
+    alias=repo/'input.json';alias.symlink_to(outside)
+    with pytest.raises(ValueError,match='escapes repository'):
+        freeze_file_hashes(repo,[alias])
 
 
 def test_freeze_invokes_tensor_validation(tmp_path,monkeypatch):

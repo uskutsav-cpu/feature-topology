@@ -6,6 +6,7 @@ additional research analysis and never substitutes for the full freeze gate.
 from __future__ import annotations
 import argparse
 import json
+import platform
 from pathlib import Path
 import sys
 
@@ -15,6 +16,7 @@ import numpy as np
 from scripts.recover_release_evidence import digest, load_json, publish
 from scripts.remote_nuisance_evaluation import evaluation_plan
 from research_ext.catalog import ENDPOINT_ONLY_FIELDS, _flatten
+import research_ext.catalog as catalog_module
 
 
 def grouped_folds(groups):
@@ -224,6 +226,10 @@ def main():
     result = dict(schema='feature-topology.diagnostic-comparison.v1', protocol_sha256=digest(protocol_path),
                   status='not_estimable' if missing else 'complete_additional_analysis',
                   cells=len(rows), missing=missing, input_sha256=hashes,
+                  analysis_source_sha256={
+                      'scripts/diagnostic_comparison.py':digest(Path(__file__)),
+                      'research_ext/catalog.py':digest(Path(catalog_module.__file__))},
+                  environment=dict(python=platform.python_version(),numpy=np.__version__),
                   scope='Additional source-bound analysis; full original-study freeze still required')
     if not missing:
         result.update(run_comparison(rows, protocol))

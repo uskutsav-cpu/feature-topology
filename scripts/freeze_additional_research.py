@@ -43,9 +43,16 @@ def close_replay(actual, expected, path='result'):
         raise ValueError('Analysis replay value differs: '+path)
 
 
-def freeze(repo, original_manifest, evidence, output):
+def freeze(repo, original_manifest, evidence, output,
+           comparison='results/additional_diagnostic_comparison'):
     repo = Path(repo).resolve()
     original_manifest = Path(original_manifest).resolve()
+    comparison_root = Path(comparison)
+    if not comparison_root.is_absolute():
+        comparison_root = repo/comparison_root
+    comparison_root = comparison_root.resolve()
+    if not comparison_root.is_relative_to(repo):
+        raise ValueError('Additional comparison must be inside the repository')
     original = verify_manifest(repo, original_manifest)
     plan = evaluation_plan(repo)
     protocol_path = repo/'configs/strengthening_diagnostic_protocol_v1.json'
@@ -75,7 +82,6 @@ def freeze(repo, original_manifest, evidence, output):
                                            repo/'results/additional_variability', aliases, protocol)
     if len(rows) != 140 or missing:
         raise ValueError('Additional comparison has missing cells or undefined predictors')
-    comparison_root = repo/'results/additional_diagnostic_comparison'
     result = load_json((comparison_root/'comparison.json').read_bytes())
     stored_rows = load_json((comparison_root/'comparison_rows.json').read_bytes())
     close_replay(rows, stored_rows, 'comparison_rows')
@@ -84,6 +90,10 @@ def freeze(repo, original_manifest, evidence, output):
             or result.get('cells') != 140 or result.get('missing') != []
             or result.get('input_sha256') != hashes):
         raise ValueError('Additional comparison is not bound to the complete current source table')
+    expected_analysis_sources={name:digest(repo/name) for name in [
+        'scripts/diagnostic_comparison.py','research_ext/catalog.py']}
+    if result.get('analysis_source_sha256')!=expected_analysis_sources:
+        raise ValueError('Additional analysis source provenance differs from frozen code')
     replay = run_comparison(rows, protocol)
     for key, value in replay.items():
         close_replay(value, result[key], key)
@@ -101,6 +111,7 @@ def freeze(repo, original_manifest, evidence, output):
     combined = dict(original)
     combined.update(files=files, original_freeze_sha256=digest(original_manifest),
                     additional_research=dict(schema='feature-topology.additional-research-freeze.v1',
+                        comparison_path=comparison_root.relative_to(repo).as_posix(),
                         protocol_sha256=digest(protocol_path), cells=140,
                         exact_checkpoint_alias_audits=140, analysis_replay_passed=True,
                         incremental_benefit_supported={row['outcome']: row['incremental_benefit_supported']
@@ -119,5 +130,7 @@ if __name__ == '__main__':
     parser.add_argument('--original-manifest', required=True)
     parser.add_argument('--evidence', required=True)
     parser.add_argument('--output', required=True)
+    parser.add_argument('--comparison',default='results/additional_diagnostic_comparison',
+                        help='Source-bound comparison directory; use a new path to retain earlier snapshots')
     args = parser.parse_args()
-    print(json.dumps(freeze(args.repo, args.original_manifest, args.evidence, args.output)))
+    print(json.dumps(freeze(args.repo,args.original_manifest,args.evidence,args.output,args.comparison)))

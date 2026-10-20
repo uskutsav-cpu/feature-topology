@@ -551,6 +551,32 @@ def readiness(repo):
                 studies={name:dict(expected=v['expected'],accounted=v['accounted']) for name,v in result['studies'].items()}),paths
 
 
+def freeze_file_hashes(repo,paths):
+    """Bind logical paths and their in-repository canonical targets.
+
+    Shared primary runs include symlinks into the pilot directory. Analyses
+    resolve consumed paths before checking the freeze, so both names must be
+    bound to identical bytes. An external symlink is never accepted.
+    """
+    repo=Path(repo).resolve()
+    files={}
+    for supplied in sorted(map(Path,paths)):
+        logical=supplied if supplied.is_absolute() else repo/supplied
+        canonical=logical.resolve(strict=True)
+        if (not logical.is_relative_to(repo) or not canonical.is_relative_to(repo)
+                or not canonical.is_file()):
+            raise ValueError(f'Frozen path escapes repository or is not a file: {supplied}')
+        observed=sha256(logical)
+        if canonical!=logical and sha256(canonical)!=observed:
+            raise ValueError(f'Frozen alias changed while hashing: {supplied}')
+        for path in {logical,canonical}:
+            relative=path.relative_to(repo).as_posix()
+            if relative in files and files[relative]!=observed:
+                raise ValueError(f'Conflicting frozen aliases: {relative}')
+            files[relative]=observed
+    return dict(sorted(files.items()))
+
+
 def verify_manifest(repo,path):
     repo=Path(repo).resolve()
     manifest=json.loads(Path(path).read_text())
@@ -720,7 +746,7 @@ if __name__=='__main__':
     report,paths=readiness(repo)
     if report['ready'] and not args.check_only:
         report.update(schema='feature-topology.frozen-results.v1',
-                      files={str(p.relative_to(repo)):sha256(p) for p in sorted(paths)})
+                      files=freeze_file_hashes(repo,paths))
     atomic_json(Path(args.output),report)
     print(json.dumps(dict(ready=report['ready'],problem_count=len(report['problems']),studies=report['studies']),indent=2))
     sys.exit(0 if report['ready'] else 2)
