@@ -58,6 +58,13 @@ status record, not a claim of complete research or established high novelty.
 
 ## Required before the research completion gate can pass
 
+The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
+addresses the remaining seed-zero limitation. All 36 planned screens are
+complete (7 eligible fixed readouts, 29 failed screens); the 144 specified
+circle outcomes and required replays must be collected and integrated. Screen
+failures are not negative injectivity certificates. The cohort and budgets are
+fixed in `configs/fiber_replication_v1.json`.
+
 1. Collect the seven unchanged CIFAR continuations. Current production coverage
    is 33/35 for CIFAR-10 and 30/35 for CIFAR-100, with 63/70 held-out replays checked.
    All source-cohort ledgers and the final 70-run replay must be complete.
