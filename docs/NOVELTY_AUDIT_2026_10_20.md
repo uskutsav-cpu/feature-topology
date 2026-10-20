@@ -66,9 +66,10 @@ geometric contraction with rigorous retention on explicitly specified continuous
 nuisance circles in the same saved models. The full-torus attempt was
 inconclusive. Narrower protocols retain every attempt and declare their scope;
 they do not replace the original study or validate its failed predictive claim.
-The sixteen-case V4 generation/replay campaign is pending. It covers four
-seed-zero models at four fixed task coordinates, so it cannot establish a
-population-wide training-seed result.
+All sixteen V4 cases now pass source-bound generation and separate-process
+hosted replay. They cover four seed-zero models at four fixed task coordinates,
+so they cannot establish a population-wide training-seed result. Additional
+local replays and the final combined physical-input freeze remain required.
 
 The separation inequality is an elementary perturbation argument. Global ReLU
 injectivity and inverse stability are established, as are the DeepZ affine

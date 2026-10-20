@@ -1,0 +1,367 @@
+{
+  "schema": "feature-topology.fixed-fiber-collection.v4",
+  "expected_attempts": 16,
+  "complete_attempts": 16,
+  "positive_certificates": 16,
+  "independent_trained_models": 4,
+  "training_seeds": [
+    0
+  ],
+  "protocol_sha256": "6bf48ee6c9c5d45ec9693e5e3c67ca23ad2b369e633ce2cb18cc2edeb1a86c52",
+  "records": [
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "seed": 0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "679ceed3293baf416c1853b76dd0f5242149555ababadbcac26d425cbfcd98f2",
+      "replay_sha256": "28c4854f49a05ff4ebaae82742bef77e50c8e9ca0e073a2f80f4ce1bcb415481",
+      "certified_intervals": 581,
+      "epsilon_upper_rational": {
+        "numerator": "649924",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "128048183981849494",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "seed": 0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "5c239bcfcbc6d798ef7c04d96159b81be48350e56dc33630d8796209e63a0df0",
+      "replay_sha256": "7a189de14dd99a25a0af798835f640b273db4dd49b977cae6e67d9be79e0bf7e",
+      "certified_intervals": 578,
+      "epsilon_upper_rational": {
+        "numerator": "616091",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "373916599819914901",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "seed": 0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "9caf72fd501bfe8e69b04b956efbb4b03a3fbaeb99e1be68df03ed817d3c1727",
+      "replay_sha256": "3ff585e09d860b5670c0641d3336554feb20dc2abd39617fc801794406973adf",
+      "certified_intervals": 550,
+      "epsilon_upper_rational": {
+        "numerator": "644367",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "168431560768186191",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "seed": 0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "a4ca8ba947e37f87c42108f0e1a15c81e81af0687780fa3276e9ca4e4a844bd7",
+      "replay_sha256": "85a51b73ba954aad41f0cdd185e8b7180afb46f689f9029581e628f0cef10004",
+      "certified_intervals": 575,
+      "epsilon_upper_rational": {
+        "numerator": "612874",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "397294919618663354",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "seed": 0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "6a1de5164f0ddf808cc2ea70904b809b21aeb142e14078f23e6c425031069ff8",
+      "replay_sha256": "310805e85c4e593c31a16f787939a8ceaec1caaa9c02515ac8ed506e1cac3627",
+      "certified_intervals": 570,
+      "epsilon_upper_rational": {
+        "numerator": "556271",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "592255267791898256",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "seed": 0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "1a3e77bf3a4e25fe600779b4c9d6596551ea2e2810c37649f9ee7fddae925f21",
+      "replay_sha256": "686ffcb1f357dfc017d9159f07bf464999855a21260746bd199cccc6b82c55c8",
+      "certified_intervals": 535,
+      "epsilon_upper_rational": {
+        "numerator": "522586",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "771544765248636325",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "seed": 0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "174877aea1140dd8b5221fa16b8e0d75d4b0f2ebb09fb143d233298b1c09f636",
+      "replay_sha256": "661c81418002a43455403995b7259c6e61e3dc69aa554948d851bb251f32f32d",
+      "certified_intervals": 533,
+      "epsilon_upper_rational": {
+        "numerator": "589722",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "414211242872042381",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "seed": 0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "2feb30d68d0d6bf99ea282354277765e2192ba115ef21f4fa4967b881823dab6",
+      "replay_sha256": "e6ed538731c1d556a2efacab2404f63495cd3c769073de7a3c19b9a610f2f84e",
+      "certified_intervals": 521,
+      "epsilon_upper_rational": {
+        "numerator": "619055",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "258085405588429562",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "seed": 0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "416b58754525c7d0306b14c057ffcb95a5201445285e0951209710f387388f3a",
+      "replay_sha256": "cbebcd371e421b1e6c0e8e3a373e58d5e160064fa708ae17d136d4067824c699",
+      "certified_intervals": 448,
+      "epsilon_upper_rational": {
+        "numerator": "513522",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1612603300415063011",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "seed": 0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "191eab5d60e799e53c750d2c9f8dba2b52847c77145251cc8aea478a05ecf194",
+      "replay_sha256": "a0ba7a2c693e1e71118ddd57421733971530ca966b2ee09ed4123c2d64d15a41",
+      "certified_intervals": 421,
+      "epsilon_upper_rational": {
+        "numerator": "569441",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1027134741288295575",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "seed": 0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "397eec97a0819b079955f71840155d1441eeae77a4ffa711517a78ccd03271e0",
+      "replay_sha256": "56bef81351994e609b3172b3f6e9eb177887ddad605232e827679dd85ead0b5f",
+      "certified_intervals": 363,
+      "epsilon_upper_rational": {
+        "numerator": "487553",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1884497164968488922",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "seed": 0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "f386dd5de4c4de5de133ba26dccdfc3c10eaad04053f530783b63039680e6159",
+      "replay_sha256": "bf0664847a435bc3a3652d4469e5e3395f3917d9bc2c31aece916cf6520c02ad",
+      "certified_intervals": 426,
+      "epsilon_upper_rational": {
+        "numerator": "589687",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "815160341744660433",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "seed": 0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "210e9e34b8054f90623421a37b0ee41346baae5be5b6a6268545b8507d2d2f29",
+      "replay_sha256": "f5320e70c5731c5ff8335488f9a90b1cac96e4c593dcaeed1d1c575ae822465c",
+      "certified_intervals": 221,
+      "epsilon_upper_rational": {
+        "numerator": "468646",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1712936258623107676",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "seed": 0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "748b51267dd3f855f5c730cbee724a64d4edf22d3fddad17a76a43f50f1ed92c",
+      "replay_sha256": "64e3df29998d83468c029a5043cf2f771be13d6d2889c4d8ce6e8087e10c2222",
+      "certified_intervals": 248,
+      "epsilon_upper_rational": {
+        "numerator": "515208",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1311938500535966656",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "seed": 0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "e44899d815e0317da71fa9377afe790222b676e6e650530b53e054ed6eb4a6de",
+      "replay_sha256": "1609cc5da9a22b37633e8981d485c2beb621bc97e1e664cc0fdd6b2fb6d20086",
+      "certified_intervals": 219,
+      "epsilon_upper_rational": {
+        "numerator": "591871",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "651707171807937533",
+        "denominator": "18446744073709551616"
+      }
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "seed": 0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "certified_fixed_nuisance_circle",
+      "continuous_certificate": true,
+      "result_sha256": "a96f83c04cb1f254e6c79452f97d9a38178df5926098a91c238c50a4fb9842d3",
+      "replay_sha256": "071030dbf98837d4397806a68c9d9175f3e0ddf532882e6b676e034061db4a56",
+      "certified_intervals": 231,
+      "epsilon_upper_rational": {
+        "numerator": "465193",
+        "denominator": "1048576"
+      },
+      "chord_lower_factor_rational": {
+        "numerator": "1742673925791075073",
+        "denominator": "18446744073709551616"
+      }
+    }
+  ],
+  "scope": "Specified sixteen circles in four real-valued saved-weight models; no universal-theta/full-torus or statistical replication claim",
+  "replay_scope": "Every positive certificate replayed in a separate process using the same interval implementation; not a Lean proof"
+}

@@ -48,6 +48,18 @@ from `primary-inputs-v3-2026-09-20` at
 `results/continuous_fiber_inputs/analysis_data.npz`; its identity is the SHA-256
 in `configs/completion/primary_inputs_v3.json`.
 
+Replay the collected results against those already recovered physical inputs:
+
+```sh
+python scripts/replay_fixed_fiber_collection.py --repo . --collection results/fixed_fiber_verification_v4 --output results/fixed_fiber_local_replays_v4
+```
+
+This recomputes every positive leaf and records the current host, exact source
+binding, result digest, and verifier digest. `--gamma` may select one of the four
+eligible models for disjoint parallel workers. These are additional executions
+of the same verifier, not independent implementations. All sixteen local receipts
+are required by the combined gate.
+
 The validation workspace uses internal aliases under
 `results/additional_source_map` to locate the original primary and OOD run JSONs.
 The portable comparison directory contains the unchanged 140-cell comparison
@@ -64,14 +76,20 @@ from pathlib import Path
 repo = Path('.').resolve()
 root = repo/'results/additional_source_map'
 root.mkdir(exist_ok=True)
-registry = json.loads((repo/'configs/completion/production_cohorts_v3.json').read_text())
-for cohort in registry['cohorts']:
-    if cohort['name'] not in {'primary','ood-spurious','ood-concentrated','ood-unseen'}:
+groups = json.loads((repo/'results/ood/manifest.json').read_text())
+targets = {'primary': repo/'results/main'}
+for group in groups:
+    condition = group['condition'].get('nuisance_condition', 'iid')
+    if condition == 'iid':
         continue
-    target = (repo/'results/main' if cohort['name']=='primary'
-              else repo/'results/ood'/Path(cohort['index']).stem)
+    assert condition in {'spurious', 'concentrated', 'unseen'}
+    name = 'ood-'+condition
+    assert name not in targets, 'Ambiguous OOD study condition'
+    targets[name] = repo/'results/ood'/Path(group['path']).name
+assert set(targets)=={'primary','ood-spurious','ood-concentrated','ood-unseen'}
+for name, target in targets.items():
     assert target.is_dir() and target.resolve().is_relative_to(repo)
-    alias = root/cohort['name']
+    alias = root/name
     relative = os.path.relpath(target, root)
     if alias.is_symlink():
         assert os.readlink(alias)==relative, 'Different existing source alias'
@@ -91,7 +109,7 @@ python scripts/analyze_additional_research.py --repo . --manifest results/comple
 
 Use a new empty analysis output directory. The combined gate cannot bypass a
 failed original freeze. It replays the predictive comparison, checks circle
-collection bindings and receipts, and binds the original failed/inconclusive
+collection bindings and hosted/additional-local receipts, and binds the original failed/inconclusive
 attempts as well as the physical embedding input. The final analyses reject
 consumed files absent from the freeze or changed after it.
 

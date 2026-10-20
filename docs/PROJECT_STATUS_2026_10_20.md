@@ -26,18 +26,20 @@ status record, not a claim of complete research or established high novelty.
   attempts were inconclusive and are retained. V3 produced sixteen candidates;
   thirteen passed separate-process replay and three failed the printed-bound
   check. See the [encoding incident](FIXED_FIBER_V3_ENCODING_INCIDENT.md).
-- The exact-bound V4 implementation passes controls and a separate-process
-  replay of the trained gamma 0.03125, theta = 3 pi/4 case. The full sixteen-case
-  hosted generation/replay campaign is running; its outcome is not assumed.
+- All sixteen V4 fixed-circle attempts now pass generation, source checks, and
+  separate-process hosted replay. The full collection is retained in
+  `results/fixed_fiber_verification_v4`. Additional source-bound execution of
+  every positive certificate on the local Mac is in progress.
 
 ## Required before the research completion gate can pass
 
 1. Collect the seven unchanged CIFAR continuations. Current production coverage
    is 33/35 for CIFAR-10 and 30/35 for CIFAR-100, with 63/70 held-out replays checked.
    All source-cohort ledgers and the final 70-run replay must be complete.
-2. Collect and validate every V4 fixed-circle attempt and required replay receipt,
-   with the exact input grid, readout coefficients, checkpoint, source, and
-   protocol identities. Retain previous failures and inconclusive attempts.
+2. Finish the additional local V4 replays against the recovered physical inputs.
+   The hosted sixteen-case collection is complete. Every result, input grid,
+   readout, checkpoint, source and protocol identity must remain bound through
+   the combined freeze, including previous failed/inconclusive attempts.
 3. Pass the original full physical-input freeze. The additional freeze cannot
    bypass it. Then regenerate final statistics and figures using only frozen
    inputs, and pass the combined evidence audit.

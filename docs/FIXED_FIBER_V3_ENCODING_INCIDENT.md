@@ -31,3 +31,8 @@ change the domain, or increase the budgets. All sixteen cases are attempted
 again. A successful run would establish only the declared fixed-theta circles
 in the real-valued continuation of saved weights. The trusted arithmetic and
 same-implementation replay boundary remain as recorded in the protocol.
+
+The subsequent V4 workflow 39498048922 completed all sixteen cases with positive
+certificates and successful separate-process replay receipts. The source-checked
+collection is retained in `results/fixed_fiber_verification_v4`. This is a new
+execution under V4; the three rejected V3 replay candidates remain unaccepted.

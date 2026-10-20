@@ -54,10 +54,35 @@ def fixed_fiber_paths(repo, original_files):
         if not directory.is_dir() or not any(directory.iterdir()):
             raise ValueError('Missing retained continuous-fiber attempt directory: '+name)
         paths.update(path for path in directory.rglob('*') if path.is_file())
+    local = repo/'results/fixed_fiber_local_replays_v4'
+    expected_names = {row['run_id']+f"-theta-{row['theta_fraction'][0]}-8.json"
+                      for row in stored['records']}
+    if {path.name for path in local.glob('*.json')} != expected_names:
+        raise ValueError('Additional local circle replays are incomplete or duplicated')
+    platforms = set()
+    for row in stored['records']:
+        name = row['run_id']+f"-theta-{row['theta_fraction'][0]}-8.json"
+        result = load_json((root/name).read_bytes())
+        receipt = load_json((local/name).read_bytes())
+        positive = row['continuous_certificate']
+        if (receipt.get('schema') != 'feature-topology.fixed-fiber-local-replay.v4'
+                or receipt.get('run_id') != row['run_id']
+                or receipt.get('theta_fraction') != row['theta_fraction']
+                or receipt.get('result_sha256') != row['result_sha256']
+                or receipt.get('binding') != result['binding']
+                or receipt.get('positive_certificate') is not positive
+                or receipt.get('replay_passed') is not positive
+                or receipt.get('status') != ('passed' if positive else 'not_a_positive_certificate')
+                or receipt.get('arithmetic') != {'python_flint':'0.9.0','precision_bits':128}
+                or receipt.get('verifier_sha256') != digest(repo/'scripts/replay_fixed_fiber_collection.py')):
+            raise ValueError('Additional local circle replay binding changed')
+        platforms.add(receipt['host']['system']+'/'+receipt['host']['machine'])
+        paths.add(local/name)
     return paths, dict(protocol_version=4, attempts=16,
                        positive_certificates=stored['positive_certificates'],
                        trained_models=4, training_seeds=[0],
                        source_bound_standalone_replays_checked=True,
+                       additional_local_replays=16, local_replay_platforms=sorted(platforms),
                        scope=stored['scope'], replay_scope=stored['replay_scope'])
 
 

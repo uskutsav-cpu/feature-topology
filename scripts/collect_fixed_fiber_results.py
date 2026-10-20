@@ -81,9 +81,10 @@ def collect(repo,artifacts,output=None):
             chord_lower_factor_rational=result.get('chord_lower_factor_rational')))
     if seen!=expected:
         raise ValueError(f'Fixed-circle collection incomplete: {len(seen)}/16')
+    summary.sort(key=lambda row:(row['gamma'],row['theta_fraction'][0]))
     manifest=dict(schema='feature-topology.fixed-fiber-collection.v4',expected_attempts=16,
         complete_attempts=16,positive_certificates=sum(row['continuous_certificate'] for row in summary),
-        independent_trained_models=4,training_seeds=[0],protocol_sha256=protocol_sha,records=summary,
+        trained_models=4,training_seeds=[0],protocol_sha256=protocol_sha,records=summary,
         scope='Specified sixteen circles in four real-valued saved-weight models; no universal-theta/full-torus or statistical replication claim',
         replay_scope='Every positive certificate replayed in a separate process using the same interval implementation; not a Lean proof')
     files['collection.json']=(json.dumps(manifest,indent=2,allow_nan=False)+'\n').encode()
@@ -99,4 +100,4 @@ if __name__=='__main__':
     parser.add_argument('--output',required=True)
     args=parser.parse_args()
     manifest=collect(args.repo,args.artifacts,args.output)
-    print(json.dumps({key:manifest[key] for key in ['complete_attempts','positive_certificates','independent_trained_models']}))
+    print(json.dumps({key:manifest[key] for key in ['complete_attempts','positive_certificates','trained_models']}))
