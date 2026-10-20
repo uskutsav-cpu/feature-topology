@@ -1,0 +1,17 @@
+{
+  "schema": "feature-topology.continuous-fiber-verifier-protocol.v1",
+  "date": "2026-10-20",
+  "context": "Exploratory verification attempt after the recorded numerical screen, which passed four of 13 fixed seed-zero witnesses. The screen remains explicitly noncertifying.",
+  "eligible_witnesses": "Exactly the four witnesses passing continuous_fiber_feasibility_v1: gamma 0.03125, 0.5, 1.0, 8.0. Readout coefficients are fixed to the saved hexadecimal float64 values; no refitting during verification.",
+  "domain": "The entire closed parameter square [0,2pi] by [0,2pi], with periodic boundaries identified. The result concerns injectivity within each fixed-theta nuisance circle only.",
+  "arithmetic": "python-flint 0.9.0 Arb balls, 128-bit midpoint precision; every network and embedding coefficient interpreted as its exact stored dyadic number. No approximate Arb matrix methods.",
+  "enclosure": "Forward ball enclosures of preactivations, conservative ReLU derivative masks, backward propagation of the fixed readout through interval masks, and exact trigonometric ball enclosures. Strict comparisons only can certify bounds.",
+  "domain_cover": "Deterministic quadtree, children ordered (theta_bit,phi_bit)=(0,0),(0,1),(1,0),(1,1), depth-first. Complete prefix-free leaf coverage with exact Kraft sum one is required for certification and checked during replay.",
+  "criterion": "Every leaf must rigorously bound the readout derivative residual below 2/pi. A positive global separation factor is then derived using the readout Frobenius norm as a conservative upper bound for its operator norm.",
+  "rejection": "A strict-activation point whose rigorously enclosed derivative residual is above 2/pi rejects this fixed witness. It does not refute underlying fiber injectivity.",
+  "budget": {"maximum_boxes": 20000, "maximum_depth": 16, "seconds_per_witness": 3300},
+  "failure_policy": "Any unresolved box, nonfinite enclosure, exhausted budget, failed source binding, or failed replay prevents a continuum certificate. Inconclusive and rejected results are retained.",
+  "replay": "A separate process recomputes every certified leaf and the complete domain cover from the bound source checkpoint and readout. This is standalone replay using the same interval implementation, not an independent implementation or a Lean proof.",
+  "trust_boundary": "The mathematical perturbation criterion, the encoding/cover implementation, Python, and the FLINT/Arb arithmetic library. Existing Lean audits do not certify this new verifier.",
+  "novelty": "Neither positive certificates nor a high-novelty contribution are presumed. Compare to existing ReLU injectivity, bounded-domain inversion, and neural-network verification literature before claiming novelty."
+}
