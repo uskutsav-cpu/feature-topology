@@ -7,7 +7,7 @@ import tarfile
 
 import pytest
 
-from scripts.recover_release_evidence import publish, verify_stream
+from scripts.recover_release_evidence import publish, validate_training_json, verify_stream
 
 
 def packed(entries):
@@ -64,3 +64,25 @@ def test_conflicting_evidence_is_never_replaced(tmp_path):
     with pytest.raises(ValueError, match='Conflicting'):
         publish(tmp_path, {'runs/config.json': b'{"seed": 2}'})
     assert json.loads((tmp_path/'runs/config.json').read_text()) == {'seed': 1}
+
+
+@pytest.mark.parametrize('status_in_index', [True, False])
+def test_training_identity_supports_primary_and_ablation_index_schemas(status_in_index):
+    config = {'gamma': 1, 'seed': 0}
+    record = {'run_id': 'record', 'config': config}
+    if status_in_index:
+        record['status'] = 'converged'
+    summary = {'run_id': 'record', 'config': config, 'status': 'converged'}
+    payloads = {'config.json': json.dumps(config).encode(),
+                'summary.json': json.dumps(summary).encode()}
+    assert validate_training_json(record, payloads) == (config, summary)
+
+
+def test_missing_index_status_does_not_allow_nonterminal_summary():
+    config = {'gamma': 1, 'seed': 0}
+    record = {'run_id': 'record', 'config': config}
+    payloads = {'config.json': json.dumps(config).encode(),
+                'summary.json': json.dumps({'run_id': 'record', 'config': config,
+                                            'status': 'running'}).encode()}
+    with pytest.raises(ValueError, match='Training JSON identity'):
+        validate_training_json(record, payloads)

@@ -130,6 +130,19 @@ def publish(root, files):
         os.replace(temporary_name, destination)
 
 
+def validate_training_json(record, input_files):
+    """Validate both historical index schemas without inventing a run status."""
+    config = load_json(input_files['config.json'])
+    summary = load_json(input_files['summary.json'])
+    status = summary.get('status')
+    if (config != record['config'] or summary.get('config') != config
+            or summary.get('run_id') != record['run_id']
+            or status not in {'converged', 'budget_exhausted', 'diverged'}
+            or ('status' in record and status != record['status'])):
+        raise ValueError(f'Training JSON identity mismatch: {record["run_id"]}')
+    return config, summary
+
+
 def recover_one(record, index, collector, catalog, root, local_sources=()):
     rid = record['run_id']
     receipt_path = root/'receipts'/f'{rid}.json'
@@ -162,11 +175,7 @@ def recover_one(record, index, collector, catalog, root, local_sources=()):
                                            lambda name: name.endswith('.json'))
         transferred += count
         input_files = {name.split('/', 1)[1]: value for name, value in kept.items()}
-    config = load_json(input_files['config.json'])
-    summary = load_json(input_files['summary.json'])
-    if (config != record['config'] or summary.get('config') != config
-            or summary.get('run_id') != rid or summary.get('status') != record['status']):
-        raise ValueError(f'Training JSON identity mismatch: {rid}')
+    config, summary = validate_training_json(record, input_files)
 
     archive_name = collector['complete'][rid]
     prefix = f'metrics-{rid}-'
