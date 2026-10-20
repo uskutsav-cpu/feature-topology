@@ -134,10 +134,16 @@ def fraction_float(encoded):
     return float(Fraction(int(encoded['numerator']), int(encoded['denominator'])))
 
 
+def save_figure(fig,output,stem):
+    for suffix in ['png','svg']:
+        metadata={'Date':None} if suffix=='svg' else None
+        fig.savefig(output/f'{stem}.{suffix}',dpi=180,metadata=metadata)
+
+
 def figures(result, output):
     rows = result['models']
     plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False,
-                         'svg.fonttype': 'none'})
+                         'svg.fonttype': 'none', 'svg.hashsalt':'feature-topology-additional-v1'})
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.3), constrained_layout=True)
     axes[0].plot([row['gamma'] for row in rows],
                  [row['sampled_normalized_fiber_margin'] for row in rows], 'o-', color='#285a83')
@@ -160,8 +166,7 @@ def figures(result, output):
         xlabel='Specified fixed task coordinate theta', ylabel='Certified raw chord separation lower factor',
         title='B  Whole-circle bounds, four saved models')
     axes[1].legend(fontsize=8)
-    for suffix in ['png', 'svg']:
-        fig.savefig(output/f'continuous_fiber_audit.{suffix}', dpi=180)
+    save_figure(fig,output,'continuous_fiber_audit')
     plt.close(fig)
     replication=result['replication']
     gammas=[.03125,.5,1.,8.]
@@ -180,8 +185,7 @@ def figures(result, output):
         yticks=range(9),yticklabels=range(1,10),xlabel='Fixed output scaling gamma',
         ylabel='Additional original training seed',title='Joint certificates on the four specified circles')
     fig.supxlabel('Nine replication seeds; the seed-zero discovery cohort is separate.\nZero means no accepted joint certificate, not proven information loss.',fontsize=9)
-    for suffix in ['png','svg']:
-        fig.savefig(output/f'fiber_replication_audit.{suffix}',dpi=180)
+    save_figure(fig,output,'fiber_replication_audit')
     plt.close(fig)
     from matplotlib.colors import ListedColormap
     statuses = {'certified_correct_class_circle':0, 'target_class_violation':1, 'inconclusive':2}
@@ -203,8 +207,7 @@ def figures(result, output):
         xlabel='Specified fixed task coordinate theta',
         title='Complete classifier decisions on retention-certified circles')
     fig.supxlabel('Every cell has a separate hidden-retention certificate. All four models share seed 0.\nCorrect-class certification covers every nuisance angle on that circle.', fontsize=9)
-    for suffix in ['png', 'svg']:
-        fig.savefig(output/f'nuisance_decision_audit.{suffix}', dpi=180)
+    save_figure(fig,output,'nuisance_decision_audit')
     plt.close(fig)
     fig, axes = plt.subplots(1, 3, figsize=(11, 3.7), constrained_layout=True)
     for ax, row, label in zip(axes, result['predictive_contrasts'],
@@ -219,8 +222,7 @@ def figures(result, output):
         ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
     axes[0].set_ylabel('Conventional MSE minus fiber-augmented MSE')
     fig.supxlabel('Negative values favor conventional predictors; dots are five held-out seeds.\nIntervals: seed bootstrap with Bonferroni adjustment for three outcomes.', fontsize=9)
-    for suffix in ['png', 'svg']:
-        fig.savefig(output/f'additional_prediction_comparison.{suffix}', dpi=180)
+    save_figure(fig,output,'additional_prediction_comparison')
     plt.close(fig)
 
 

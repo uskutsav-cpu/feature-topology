@@ -23,6 +23,16 @@ def test_replay_tolerance_allows_roundoff_but_rejects_changed_conclusions():
         close_replay({'supported': False}, {'supported': True})
 
 
+def test_original_freeze_outside_repository_cannot_become_unavailable_release_provenance(tmp_path):
+    repo=tmp_path/'repo';repo.mkdir()
+    source=repo/'measurement.txt';source.write_text('original study input')
+    original=tmp_path/'outside.json'
+    original.write_text(json.dumps(dict(schema='feature-topology.frozen-results.v1',ready=True,
+        files={'measurement.txt':hashlib.sha256(source.read_bytes()).hexdigest()})))
+    with pytest.raises(ValueError,match='Original freeze must be inside'):
+        freeze(repo,original,repo/'evidence',repo/'combined.json')
+
+
 def test_fiber_gate_requires_the_actual_embedding_input(tmp_path):
     pytest.importorskip('flint')
     index = tmp_path/'configs/completion/primary_inputs_v3.json'

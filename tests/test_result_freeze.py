@@ -248,6 +248,7 @@ def test_release_parts_reconstruct_and_are_reproducible(tmp_path):
     payload=b''.join((tmp_path/'first'/p['file']).read_bytes() for p in first['parts'])
     with tarfile.open(fileobj=io.BytesIO(gzip.decompress(payload)),mode='r:') as archive:
         assert archive.extractfile('feature-topology/measurement.txt').read()==source.read_bytes()
+        assert archive.extractfile('feature-topology/frozen_manifest.json').read()==manifest.read_bytes()
 
 
 def test_release_parts_can_be_streamed_after_verified_callback(tmp_path):
@@ -323,6 +324,9 @@ def test_release_binds_derived_artifacts_to_freeze(tmp_path):
     payload=b''.join((tmp_path/'release'/p['file']).read_bytes() for p in result['parts'])
     with tarfile.open(fileobj=io.BytesIO(payload),mode='r:gz') as archive:
         assert archive.extractfile('feature-topology/figure.svg').read()==figure.read_bytes()
+        frozen_payload=archive.extractfile('feature-topology/frozen_manifest.json').read()
+        restored_analysis=json.loads(archive.extractfile('feature-topology/analysis_manifest.json').read())
+        assert hashlib.sha256(frozen_payload).hexdigest()==result['frozen_manifest_sha256']==restored_analysis['frozen_manifest_sha256']
     figure.write_text('changed figure')
     with pytest.raises(ValueError,match='artifact missing, changed'):
         pack(tmp_path,frozen,tmp_path/'bad',analysis_manifest=analysis)

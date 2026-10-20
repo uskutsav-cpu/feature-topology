@@ -225,10 +225,14 @@ def freeze(repo, original_manifest, evidence, output,
     if not comparison_root.is_relative_to(repo):
         raise ValueError('Additional comparison must be inside the repository')
     original = verify_manifest(repo, original_manifest)
+    if not original_manifest.is_relative_to(repo):
+        raise ValueError('Original freeze must be inside the repository for complete release provenance')
+    if original.get('additional_research') is not None:
+        raise ValueError('Original study freeze cannot already be an additional-research freeze')
     plan = evaluation_plan(repo)
     protocol_path = repo/'configs/strengthening_diagnostic_protocol_v1.json'
     protocol = load_json(protocol_path.read_bytes())
-    paths = set()
+    paths = {original_manifest}
     for kind, folder in [('ood', 'ood_evaluation'), ('variability', 'additional_variability')]:
         root = repo/'results'/folder
         collection = load_json((root/'collection.json').read_bytes())
@@ -287,6 +291,7 @@ def freeze(repo, original_manifest, evidence, output,
             raise ValueError('Additional analysis consumed an input outside the combined freeze: '+name)
     combined = dict(original)
     combined.update(files=files, original_freeze_sha256=digest(original_manifest),
+                    original_freeze_path=original_manifest.relative_to(repo).as_posix(),
                     additional_research=dict(schema='feature-topology.additional-research-freeze.v1',
                         comparison_path=comparison_root.relative_to(repo).as_posix(),
                         protocol_sha256=digest(protocol_path), cells=140,

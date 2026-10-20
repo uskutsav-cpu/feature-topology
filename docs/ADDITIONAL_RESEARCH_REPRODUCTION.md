@@ -201,3 +201,31 @@ Per-run targets and last recorded losses make the actual achieved optimization
 risks visible. A last finite log from a divergent run is not its loss at divergence.
 The scientific result record displays counts and absolute gamma-level mean
 accuracies alongside endpoint contrasts, including the weak dSprites control.
+
+## Complete research release
+
+After both final analyses and their visual checks pass, include both output sets
+in the size-bounded release. The additional analysis manifest is its `analysis.json`:
+
+```sh
+python scripts/pack_release.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --analysis-manifest results/final_analysis_20261020/analysis_manifest.json --additional-analysis-manifest results/additional_final_analysis_20261020/analysis.json --output /path/to/adequate-storage/release-parts
+```
+
+The package preserves the exact combined manifest bytes as `frozen_manifest.json`
+and includes its referenced original-study manifest. Thus both final analyses'
+freeze checksums remain valid after restoration. Every source member is hashed
+while it is added to the archive, and both analysis output maps are checked.
+`release_parts.json` records the part sizes, SHA-256 identities and member hashes.
+Check those part identities before concatenating parts in the recorded order and
+extracting to a new empty directory. The restored source/data tree can then be
+checked using `scripts.freeze_results.verify_manifest` and its exact packaged
+`frozen_manifest.json`.
+
+Use sufficient storage for the complete frozen input set. The existing
+`--upload-release EXISTING_TAG` mode can stream one bounded part at a time to an
+existing draft release, verify GitHub's returned size/digest, and remove that
+generated local part only after upload verification. It does not remove source
+data. No full-study package is created from an incomplete freeze. The new PNG/SVG
+exports omit changing timestamps and fix SVG identifiers for reproducibility
+within the locked plotting environment; this is not a promise of identical font
+rendering across arbitrary platforms.
