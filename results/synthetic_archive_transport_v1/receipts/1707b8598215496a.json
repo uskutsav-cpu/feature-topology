@@ -1,0 +1,53 @@
+{
+  "schema": "feature-topology.json-evidence-recovery.v1",
+  "run_id": "1707b8598215496a",
+  "input_archive_sha256": "884450d392a9350fab2ea5d03d480fb08ee287f0ab0e905890238877448ba12b",
+  "input_validation": "full_archive_hash_and_members",
+  "metric_archive": "metrics-1707b8598215496a-35572877774-1.tar.gz",
+  "metric_archive_sha256": "3a4e3bbdb29c3b1d536366e1873ca00292a75cfaa438b37d0388b9240bc192cd",
+  "metric_provenance": {
+    "analysis_data_sha256": "23e315f0abd9120a84fdce7b43c2ba21d70de3f44ccd3273f5a58be1ca60f663",
+    "packages": {
+      "numpy": "2.5.3",
+      "ripser": "0.6.15",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1",
+      "torch": "2.14.0"
+    },
+    "python": "3.13.5",
+    "sources": {
+      "scripts/compute_metrics.py": "4aa0418b3ec1dfba9e8184d4a8926f46d3089e8fd50a5265ae84920abc5231f6",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "src/metrics/__init__.py": "f3e0112bb4359afef89586245225001335c377dfd9fa37e9b3e6747a15415b4e",
+      "src/metrics/fiber_survival.py": "3569371b733b22eeecb2dbfb85649ebc1a68db616458bf9a14cbfcede54e91f9",
+      "src/metrics/fibers.py": "cfbe86ff732b45010cf79eb9e2adce033c51c37d50cc4175da055712148477a8",
+      "src/metrics/geometry.py": "d783367a97dfbe5dcc52d68b9ec140820d7989f0adee971b762eefb6a11a02ab",
+      "src/metrics/injectivity.py": "c87c66943d9b44c4f19170b21caf90f893cc9ed5f6419869ac1b7ffa058e8ea8",
+      "src/metrics/jacobian.py": "292921f09ce50a3576d2359ea679f53016cbb1fcf86c4a4d7531383ca58c0f3a",
+      "src/metrics/ntk.py": "e06a39a6b7124a10bf0a468177c0c50f55f1d0f6606dcb99f5472779900c28f4",
+      "src/metrics/nulls.py": "f84e1bad3ce802610ea4333199c5ffdda3c34264a4634406fa72cded84fc80ca",
+      "src/metrics/persistence.py": "adea119804a275e3f2f8328be5237bd2139c0ba65a24a3f8a404dcb06f3d87bd",
+      "src/metrics/probes.py": "090c0e44b1211c3cd9605cbf38ef5519ff9523279df28b1d0a4486944b83deb4",
+      "src/metrics/quotient.py": "5d298719dff0743729a4b9c24c9b31a47aad5a38c6f84b086e701e58c77d2ea4",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/training/checkpoints.py": "360c3453f71c545d7a2a7ddae2d201a1c2af89893fda7ecd6ebb8f40a3c94563",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c"
+    }
+  },
+  "required_checkpoints": [
+    "final",
+    "step_0000000"
+  ],
+  "transferred_bytes": 598898,
+  "retained_files": {
+    "runs/1707b8598215496a/config.json": "5531e72c70c179ca0017cf44f451348d3133491e028c1aabcd80538c6055cd38",
+    "runs/1707b8598215496a/summary.json": "116636bda54b9f37938831524f33e2bdc9c884d50a08e1cf4e79e6075de9c2e1",
+    "runs/1707b8598215496a/metrics/d345cef9cb0313ed/final.json": "4fa9bac5b56454c93f73a1c2ffede2ebd70b1007a16b8119d56f96d7fafff23b",
+    "runs/1707b8598215496a/metrics/d345cef9cb0313ed/options.json": "246971ada6d6eafe93b3d338a3f8e8a26d1284e3b17903936438c3067c846d15",
+    "runs/1707b8598215496a/metrics/d345cef9cb0313ed/provenance/execution.json": "06a8c316dd5bf61d20d005664e63c49242f99bdb35db350fb6389422b8f5835e",
+    "runs/1707b8598215496a/metrics/d345cef9cb0313ed/provenance/host.json": "d15ea7a4af37f28d2dbae4abbea7315d9dfe2fca7bba6f835fe80c28e5bff5cb",
+    "runs/1707b8598215496a/metrics/d345cef9cb0313ed/step_0000000.json": "4dfb2a6aa2535e903fa6ba2bd896d9beaa72d797dced34b59794929113603c48",
+    "statuses/status-1707b8598215496a-35572877774-1.json": "7d3e4a9937668236a50b9327457c8f188034891aa034607b82743194500fac39"
+  },
+  "scope": "JSON analysis mirror; not tensor validation or a full results freeze"
+}

@@ -7,6 +7,10 @@ status record, not a claim of complete research or established high novelty.
 
 - All 845 unique requested synthetic production profiles were recovered and
   checked against archived release indices and member hashes.
+  A subsequent [complete archive transport audit](PRIMARY_ARCHIVE_AUDIT_20261021.md)
+  closes the 56 primary JSON-only receipt gaps: all 845 now have full
+  compressed-archive/member receipts, with all 7,719 retained hashes rechecked.
+  This remains separate from the final physical tensor/input freeze.
 - All 140 nuisance-shift evaluations, 140 VCI/conventional baseline evaluations,
   and 140 exact selected-checkpoint alias audits are retained.
 - The recorded nested comparison across held-out training seeds finds no added

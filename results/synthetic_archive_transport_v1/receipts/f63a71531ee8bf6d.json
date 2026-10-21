@@ -1,0 +1,71 @@
+{
+  "schema": "feature-topology.json-evidence-recovery.v1",
+  "run_id": "f63a71531ee8bf6d",
+  "input_archive_sha256": "65e52f82cb34e92846b220d368ed2054058879e7ebf6638df5ffcf89f258e4b2",
+  "input_validation": "full_archive_hash_and_members",
+  "metric_archive": "metrics-f63a71531ee8bf6d-35528413881-1.tar.gz",
+  "metric_archive_sha256": "d1ea2cbf2b20af09cc584298cdfd6f98e1c89920420637a1e1a83a04d323a7e0",
+  "metric_provenance": {
+    "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+    "packages": {
+      "numpy": "2.5.3",
+      "ripser": "0.6.15",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1",
+      "torch": "2.14.0"
+    },
+    "python": "3.13.5",
+    "sources": {
+      "scripts/compute_metrics.py": "4aa0418b3ec1dfba9e8184d4a8926f46d3089e8fd50a5265ae84920abc5231f6",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "src/metrics/__init__.py": "f3e0112bb4359afef89586245225001335c377dfd9fa37e9b3e6747a15415b4e",
+      "src/metrics/fiber_survival.py": "3569371b733b22eeecb2dbfb85649ebc1a68db616458bf9a14cbfcede54e91f9",
+      "src/metrics/fibers.py": "cfbe86ff732b45010cf79eb9e2adce033c51c37d50cc4175da055712148477a8",
+      "src/metrics/geometry.py": "d783367a97dfbe5dcc52d68b9ec140820d7989f0adee971b762eefb6a11a02ab",
+      "src/metrics/injectivity.py": "c87c66943d9b44c4f19170b21caf90f893cc9ed5f6419869ac1b7ffa058e8ea8",
+      "src/metrics/jacobian.py": "292921f09ce50a3576d2359ea679f53016cbb1fcf86c4a4d7531383ca58c0f3a",
+      "src/metrics/ntk.py": "e06a39a6b7124a10bf0a468177c0c50f55f1d0f6606dcb99f5472779900c28f4",
+      "src/metrics/nulls.py": "f84e1bad3ce802610ea4333199c5ffdda3c34264a4634406fa72cded84fc80ca",
+      "src/metrics/persistence.py": "adea119804a275e3f2f8328be5237bd2139c0ba65a24a3f8a404dcb06f3d87bd",
+      "src/metrics/probes.py": "090c0e44b1211c3cd9605cbf38ef5519ff9523279df28b1d0a4486944b83deb4",
+      "src/metrics/quotient.py": "5d298719dff0743729a4b9c24c9b31a47aad5a38c6f84b086e701e58c77d2ea4",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/training/checkpoints.py": "360c3453f71c545d7a2a7ddae2d201a1c2af89893fda7ecd6ebb8f40a3c94563",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c"
+    }
+  },
+  "required_checkpoints": [
+    "final",
+    "step_0000000",
+    "step_0000001",
+    "step_0000002",
+    "step_0000004",
+    "step_0000008",
+    "step_0000016",
+    "step_0000032",
+    "step_0000064",
+    "step_0000128",
+    "step_0000256"
+  ],
+  "transferred_bytes": 22986037,
+  "retained_files": {
+    "runs/f63a71531ee8bf6d/config.json": "d1e877f00288f198af4a18a49014fba48fc6e7b23107dce138a660cd1efb84d6",
+    "runs/f63a71531ee8bf6d/summary.json": "0ef9c04cc5aad9f8b0dce2995326e8c4146957c653e15cf236b81d8658e2ef39",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/final.json": "aa5119d23435bdd97cabdd1cff9189a9a272f1476626b5bccb814c4d2705c189",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/options.json": "784c1a4669c4e268c6d161c557f0948cf34b64af99f6296c3809a223e5b0df3b",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/provenance/execution.json": "0520e4bc0b502a6a7af6768ec9cf3a83c51ffe618fd9e2b0d9ae9dfb1050e28a",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/provenance/host.json": "ccf9340deb345bec49c57eb7c95b0866e8b4fd153519b51d88731de167165098",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000000.json": "a489e600ea9493ebf478d4e9ce5652f5b242d658a5668262e45d98bc64926a75",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000001.json": "b14685ce7dd48320107321e2d87a6474c0fa654601f3f54e246ac3c91eb82b52",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000002.json": "6c4d4e96aec7286230ea25b78cf24efe7e4c181818b886546b30f8f472ee715a",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000004.json": "7402d3edeb7a91963c65953cee82d5c5a040dd6683facacfd768cb3c5b817216",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000008.json": "28b59c3b02065149d73339de326cf2d80a58926ea18ec5e45a8ff973fc4a8060",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000016.json": "2df20740ec244a78cdbacfd19becbdb4864c8b4a1a3afdf91697d864aff223ba",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000032.json": "49b2be6f69140da8a63dde3a063a0eb98d9e8439ca8ed5e8050ff60e8dad87cc",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000064.json": "50c9c796d96977a7aad1435cc8d8b4630c7f2dd371e0e391d931758cc049cab0",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000128.json": "612f120b4c45f964a3cb0e871166b8d541d1d077615bcabe30919ca948a68416",
+    "runs/f63a71531ee8bf6d/metrics/955461baba454f3e/step_0000256.json": "28853a20fb5fb27e5b537a387ad93e8ff814842b3354581b15814ae8764b593c",
+    "statuses/status-f63a71531ee8bf6d-35528413881-1.json": "72e004a8e5badcb573bc61e7db424a58e9e408481ab96dabd155301c09923105"
+  },
+  "scope": "JSON analysis mirror; not tensor validation or a full results freeze"
+}

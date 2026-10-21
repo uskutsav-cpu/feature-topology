@@ -49,11 +49,18 @@ that an exhaustive literature search proves the absence of every related result.
 ## Candidate contribution requiring evidence
 
 The most defensible research question is whether a **task-conditioned map of
-fiber survival**, measured at calibrated common-risk checkpoints, adds useful
+fiber survival**, measured at the first saved checkpoints meeting a common
+training-loss threshold, adds useful
 information about nuisance-shift behavior beyond conventional geometry,
 decodability, and variability-collapse measures. The relevance interventions,
 manifold controls, width/depth controls, and restricted exact certificates can
 make that question more specific and testable than a generic compression claim.
+
+Meeting the same threshold does not match achieved training risk. In the
+completed 210-model task-fiber component, selected logged losses range from
+approximately 0.03496 to 0.09968 under the threshold of 0.1. Final comparisons
+must retain the achieved losses; this study cannot claim an equal-risk
+intervention from the selection rule alone.
 
 The existing width result is a negative finite-width finding: its frozen gate
 returns crossover. It must not be relabeled a phase transition to strengthen

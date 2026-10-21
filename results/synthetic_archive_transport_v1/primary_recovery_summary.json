@@ -1,0 +1,9 @@
+{
+  "schema": "feature-topology.json-evidence-recovery-summary.v1",
+  "index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+  "collector_sha256": "c97e763c93ad3eb0880c3cda41b86e36bb248443099c25a7053f45f58384c44a",
+  "expected": 130,
+  "complete": 130,
+  "failures": [],
+  "scope": "Analysis mirror only; the full freeze gate is unchanged"
+}
