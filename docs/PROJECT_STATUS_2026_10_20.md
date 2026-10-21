@@ -85,6 +85,11 @@ files remain unchanged. The refreshed physical component audit passes for the
 305 noise models, 210 hosted task-fiber models and 845 archive receipts.
 The first restored full-readiness check passes every non-CIFAR check. Its four
 CIFAR gaps were recorded before installing the three newly completed cells.
+The restored fixed-fiber, classifier-decision and replication certificate
+components also pass their physical-checkpoint and existing replay-receipt
+checks. The successful local CIFAR replay now covers 66/70 runs: all three new
+cells match the saved correct counts exactly with loss deltas within 1e-4.
+The exact partial replay report and its cache snapshot are preserved separately.
 These component/readiness records are retained under
 `results/completion/neural_networks_preparation`; they are not full-study freezes.
 
@@ -109,8 +114,9 @@ certificates. The cohort and budgets remain fixed in
 
 1. Finish collection of the unchanged CIFAR continuations. Archived and installed
    production coverage is now 35/35 for CIFAR-10 and 31/35 for CIFAR-100. The original
-   63 held-out replay values are preserved; the three newly installed cells are
-   undergoing strict local replay. Four CIFAR-100 jobs remain live.
+   63 held-out replay values are preserved and the three newly installed cells
+   now pass strict local replay, giving 66/70 accepted validations. Four CIFAR-100
+   jobs remain live.
    All source-cohort ledgers and the final 70-run replay must be complete.
    The first unchanged seven-cell continuation wave timed out with resumable
    checkpoints. A second wave uses the same immutable source tags, cells,
