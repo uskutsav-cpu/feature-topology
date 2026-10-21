@@ -103,9 +103,9 @@ The three historical CIFAR source components have also been
 [reconstructed from authenticated public evidence](CIFAR_SOURCE_RECONSTRUCTION.md)
 and checked without the SSD. Their raw status/API files and failed attempts are
 retained. This restores provenance coverage, not production completion; the
-three remaining live source-06d5f68 continuations and the final 70-run replay
+three remaining source-06d5f68 continuations and the final 70-run replay
 remain pending. CIFAR-100 seed 3 also has a checked final archive, but its
-local installation and held-out replay are deferred to the batch finalizer.
+local installation is complete and its incremental held-out replay is running.
 
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
@@ -114,11 +114,11 @@ certificates. The cohort and budgets remain fixed in
 `configs/fiber_replication_v1.json`.
 
 1. Finish collection of the unchanged CIFAR continuations. Installed
-   production coverage is now 35/35 for CIFAR-10 and 31/35 for CIFAR-100;
+   production coverage is now 35/35 for CIFAR-10 and 32/35 for CIFAR-100;
    source-checked archived CIFAR-100 coverage is 32/35. The original
    63 held-out replay values are preserved and the three newly installed cells
-   now pass strict local replay, giving 66/70 accepted validations. Three CIFAR-100
-   jobs remain live. The additional completed seed-3 archive has not yet been
+   now pass strict local replay, giving 66/70 accepted validations. Those three CIFAR-100 cells timed out in wave two and resumed in
+   workflow 39696195884 after complete resume-archive member checks. The additional completed seed-3 archive has not yet been
    counted as a local held-out replay.
    All source-cohort ledgers and the final 70-run replay must be complete.
    The first unchanged seven-cell continuation wave timed out with resumable

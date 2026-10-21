@@ -51,14 +51,34 @@ def observed(workflow):
             time.sleep(10)
 
 
-def main(repo):
+def transient_collection_failure(report):
+    """Retry transport errors only; a content-validation error stays terminal."""
+    markers=('connection reset by peer','connection timed out','i/o timeout',
+             'tls handshake timeout','unexpected eof','http 502','http 503','http 504')
+    errors=report.get('invalid',[])
+    return bool(errors) and all(any(marker in str(row.get('error','')).lower()
+                                   for marker in markers) for row in errors)
+
+
+def main(repo, cifar100_workflow=None, output_root='results/completion/cloud_cifar_finalization_20261021'):
     repo=Path(repo).resolve();os.environ['GH_REPO']='uskutsav-cpu/feature-topology'
-    root=repo/'results/completion/cloud_cifar_finalization_20261021';root.mkdir(parents=True,exist_ok=True)
+    root=(repo/output_root).resolve()
+    if not root.is_relative_to(repo) or root==repo:raise ValueError('CIFAR execution output must be inside the repository')
+    root.mkdir(parents=True,exist_ok=True)
+    datasets={name:dict(spec) for name,spec in DATASETS.items()}
+    if cifar100_workflow is not None:
+        if not str(cifar100_workflow).isdigit():raise ValueError('Invalid CIFAR100 workflow identity')
+        datasets['CIFAR100']['workflow']=str(cifar100_workflow)
     def progress(**values):
         value=dict(scope='CIFAR component only; not the full original/combined research freeze',full_study_frozen=False,**values)
         atomic_json(root/'progress.json',value);print(json.dumps(value),flush=True)
     def checked_collection(name,dataset,tag,source,cells):
-        report=collect(repo,tag,cells,root/'transport'/name,SPECIFICATION,install=True,expected_commit=source,bounded_cache=True)
+        for attempt in range(1,4):
+            report=collect(repo,tag,cells,root/'transport'/name,SPECIFICATION,install=True,expected_commit=source,bounded_cache=True)
+            atomic_json(root/(name+f'.collection-attempt-{attempt}.json'),report)
+            if not transient_collection_failure(report) or attempt==3:break
+            progress(status='retrying_source_transport',component=name,attempt=attempt)
+            time.sleep(5)
         path=root/(name+'.json');atomic_json(path,report)
         if report['missing'] or report['invalid'] or len(report['complete'])!=len(cells):
             raise ValueError('Incomplete unchanged CIFAR component '+name+'; retain partial outputs and resume only the same missing cells after inspecting terminal evidence')
@@ -66,7 +86,7 @@ def main(repo):
     try:
         previous=None
         while True:
-            try:states={dataset:observed(spec['workflow']) for dataset,spec in DATASETS.items()}
+            try:states={dataset:observed(spec['workflow']) for dataset,spec in datasets.items()}
             except subprocess.CalledProcessError:
                 progress(status='observation_retry');time.sleep(60);continue
             if any(value['headSha']!=SOURCE for value in states.values()):raise ValueError('Different scientific source in recorded CIFAR continuation')
@@ -74,7 +94,7 @@ def main(repo):
             if all(value['status']=='completed' and value['conclusion'] for value in states.values()):break
             time.sleep(60)
         complete={}
-        for dataset,spec in DATASETS.items():
+        for dataset,spec in datasets.items():
             key=dataset.lower();progress(status='collecting_and_binding',dataset=dataset)
             frozen=json.loads((repo/'results'/key/'gamma_to_lr.json').read_text());cells=production_cells(dataset,frozen)
             original,correction,phase=component_cells(dataset,cells)
@@ -110,4 +130,6 @@ def main(repo):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--repo',default='.')
-    args=parser.parse_args();main(args.repo)
+    parser.add_argument('--cifar100-workflow',help='Recorded exact-source continuation; scientific configuration and source stay fixed')
+    parser.add_argument('--output-root',default='results/completion/cloud_cifar_finalization_20261021',help='In-repository execution namespace preserving earlier failed attempts')
+    args=parser.parse_args();main(args.repo,args.cifar100_workflow,args.output_root)

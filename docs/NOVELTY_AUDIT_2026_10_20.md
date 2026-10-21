@@ -85,7 +85,8 @@ the perceived novelty.
 
 All 845 synthetic profiles and the 140-cell predictive/baseline comparison are
 now recovered and checked. Four of the seven unchanged CIFAR continuations now
-have source-checked final archives; three CIFAR-100 jobs remain live as of the 2026-10-21 update. The
+have source-checked final archives; three CIFAR-100 cells are continuing from verified resume archives in
+workflow 39696195884 after the second wave timed out. The
 accepted held-out replay coverage is 66/70. The final physical-input freeze
 remains pending. Raw versus normalized quantities and
 amplification controls remain necessary for interpreting compression.

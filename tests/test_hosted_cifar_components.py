@@ -20,3 +20,12 @@ def test_hosted_finalization_reuses_exact_published_original_cohorts_and_frozen_
             assert len(correction)==5 and all(c['gamma']==128. for c in correction)
             assert {c['lr'].hex() for c in correction}=={'0x1.21a1851ff630bp+2'}
         else:assert correction==[]
+
+
+def test_transport_retry_never_hides_unfinished_training_or_corruption():
+    from scripts.finalize_cifar_hosted_20261021 import transient_collection_failure
+    assert transient_collection_failure({'invalid':[{'error':'read tcp: connection reset by peer'}]})
+    assert not transient_collection_failure({'invalid':[], 'missing':['unfinished-cell']})
+    assert not transient_collection_failure({'invalid':[{'error':'Hosted CIFAR archive checksum mismatch'}]})
+    assert not transient_collection_failure({'invalid':[
+        {'error':'connection reset by peer'}, {'error':'Hosted CIFAR source identity changed'}]})
