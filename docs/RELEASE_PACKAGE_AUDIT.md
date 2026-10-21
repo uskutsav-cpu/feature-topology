@@ -32,6 +32,11 @@ the complete member set and inclusion of every frozen input. It drains bytes
 after the tar end marker so the last part and compressed trailer are included.
 Paths outside the package root, duplicate members and links are rejected.
 
+The freeze also includes the Python test sources. The restored project's
+`pyproject.toml` points pytest at `tests`, and the packaged workflows invoke
+that suite; shipping workflows without their tests would leave those checks
+unusable after restoration. Bytecode caches remain excluded.
+
 The implementation has small multipart corruption/omission controls and a test
 that reads the actual packer's output. These tests establish the audit's
 behavior on fixtures. The full research package must still be built and audited

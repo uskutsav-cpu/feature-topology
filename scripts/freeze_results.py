@@ -552,7 +552,7 @@ def readiness(repo):
             if sha256(repo/'formal'/name)!=expected:
                 problems.append(dict(study='formal',error=f'Audited source changed: {name}'))
         paths.update([formal,formal.parent/'lean_build.log'])
-    for name in ['src','scripts','research_ext','formal','configs','docs','.github']:
+    for name in ['src','scripts','research_ext','formal','configs','docs','.github','tests']:
         paths.update(p for p in (repo/name).rglob('*') if p.is_file()
                      and not any(part in {'.lake','__pycache__'} for part in p.parts))
     paths.update(p for p in repo.glob('*') if p.is_file() and p.suffix in {'.txt','.toml','.md'})
