@@ -23,6 +23,21 @@ not establish novelty by themselves.
 | [Puthawala et al., ICML 2022](https://proceedings.mlr.press/v162/puthawala22a.html) | Studies manifold and density approximation with injective flows, including embedding-dependent topological obstructions. | Manifold embeddings and topology in injective network architectures are established; these are different from auditing ordinary trained representations. |
 | [Shaw et al., TAG-DS 2026](https://proceedings.mlr.press/v334/shaw26a.html) | Studies layer-wise persistent homology and a compression/reconstruction tradeoff in predictive-coding networks, with matched MLP comparisons. | Layer-wise PH and model-capacity comparisons are existing empirical approaches; the restricted continuum evidence must supply the more specific distinction here. |
 
+## Additional primary-source check, 2026-10-21
+
+| Primary source inspected | Established overlap | Consequence for this project |
+|---|---|---|
+| [Sevetlidis, arXiv:2606.01092v1, 2026](https://arxiv.org/html/2606.01092v1) | Gives a representation-identifiability criterion and predictor-preserving augmentation obstruction; nuisance information can change while the predictor stays fixed. | The general statement that prediction cannot establish nuisance removal is prior work. Its fibers are equivalence classes of representation-head factorizations, whereas this study measures input-coordinate fibers of particular saved maps. That distinction alone does not establish novelty. |
+| [Zavatone-Veth et al., NeurReps proceedings, PMLR 282, 2026](https://proceedings.mlr.press/v282/zavatone-veth26a.html) | Studies the input-space Riemannian metric induced by unconstrained feature maps and training-dependent expansion near decision boundaries. | Jacobian-induced representation geometry and its dependence on learning already have direct prior work. The more specific question here is the agreement or disagreement between sampled, scale-sensitive diagnostics and restricted retention certificates on the same checkpoints. |
+| [Huang et al., NeurIPS 2025](https://papers.nips.cc/paper_files/paper/2025/hash/979d5a0ecc2cc3653928c5b793fc416b-Abstract-Conference.html) | Compares behavioral, dynamical and weight-space degeneracy across task-trained RNNs while varying feature learning, capacity and regularization. | Learning-regime-dependent changes in internal solutions alongside behavioral comparisons are established. Between-network solution degeneracy differs from identification within an individual feedforward representation; this project does not introduce the broad multi-level comparison. |
+
+These are primary-source comparisons, not evidence of an exhaustive search.
+Sevetlidis is identified here as an arXiv preprint; the PMLR item is workshop
+proceedings, and the Huang item is the final NeurIPS proceedings version.
+The current study does not implement a predictor-preserving augmentation
+intervention and cannot claim that changing gamma holds the predictor fixed.
+Its stopping rule matches a loss threshold, with actual losses retained.
+
 Further primary sources directly constrain the paired classifier claim:
 
 - [Jacobsen, Smeulders and Oyallon, ICLR 2018](https://arxiv.org/abs/1802.07088)
@@ -69,8 +84,10 @@ the perceived novelty.
 ## Evidence checklist and present outcome
 
 All 845 synthetic profiles and the 140-cell predictive/baseline comparison are
-now recovered and checked. Seven unchanged CIFAR continuations and the final
-physical-input freeze remain pending. Raw versus normalized quantities and
+now recovered and checked. Four of the seven unchanged CIFAR continuations now
+have source-checked final archives; three CIFAR-100 jobs remain live as of the 2026-10-21 update. The
+accepted held-out replay coverage is 66/70. The final physical-input freeze
+remains pending. Raw versus normalized quantities and
 amplification controls remain necessary for interpreting compression.
 
 The additional comparison is specified in

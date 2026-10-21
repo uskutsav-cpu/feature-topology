@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "Recovered physical comparison inputs match stored source table; not a full-study freeze",
+  "cells": 140,
+  "input_files": 1159,
+  "evidence": "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/physical_comparison_evidence_v2_20261021",
+  "cohorts": [
+    "/Volumes/FeatureTopologyValidation/repo/results/main",
+    "/Volumes/FeatureTopologyValidation/repo/results/ood/b5376c42222ba2b1",
+    "/Volumes/FeatureTopologyValidation/repo/results/ood/3492e7c371ff7894",
+    "/Volumes/FeatureTopologyValidation/repo/results/ood/7f8287f5bfae269b"
+  ],
+  "all_input_hashes_match": true,
+  "all_rows_replay_equal": true
+}
