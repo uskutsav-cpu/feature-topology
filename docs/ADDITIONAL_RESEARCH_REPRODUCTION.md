@@ -193,6 +193,22 @@ Circle bounds are descriptive exploratory evidence; they do not increase the
 number of independent training seeds. The recorded negative predictive result
 and the limits in `CONTINUOUS_FIBER_CRITERION_AUDIT.md` remain part of the report.
 
+The combined gate also requires every one of the 305 recorded production
+noisy-decoding evaluations and its source-bound replay. The 130 main and 210
+relevance views share 35 models. Before freezing, use the recorded worker and
+protocol unchanged, then collect with:
+
+```sh
+python scripts/collect_production_noise.py --repo . --artifacts results/production_noise_completion_v1 --output results/production_noise_completion_v1 --source-commit 91b23d9d84e7fee8008534762b45c16ccf45936f
+```
+
+The final additional analysis writes the full `noise_metrics_long.csv`,
+`noise_seed_confidence_intervals.csv` and `noise_relevance_paired_contrasts.csv`,
+plus main and relevance figures. Intervals resample training seeds, never noise
+levels. The gate verifies actual source checkpoints and six original probe
+archives as well as the JSON collection. The release packer requires these
+tables alongside the complete replication tables.
+
 The original final image analysis also writes `images/image_run_accounting.csv`
 and `images/image_run_status_counts.csv`. These include every production run,
 even divergence and training-budget exhaustion. Finite nonconverged runs remain

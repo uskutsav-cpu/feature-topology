@@ -191,6 +191,49 @@ def replication_paths(repo, original_files):
     return paths,summary
 
 
+def production_noise_paths(repo,original_files):
+    """Bind the originally planned noisy decoding to all actual source members."""
+    from scripts.collect_production_noise import collect
+    from scripts.evaluate_production_noise import binding,plan,source_files
+
+    root=repo/'results/production_noise_completion_v1'
+    stored=load_json((root/'collection.json').read_bytes())
+    if collect(repo,root)!=stored:
+        raise ValueError('Production-noise collection differs from checked records/replays')
+    protocol=load_json((repo/'configs/production_noise_completion_v1.json').read_bytes())
+    sources={p.relative_to(repo).as_posix():digest(p) for p in source_files(repo)}
+    paths=set(root.rglob('*.json'))
+    for relative,expected in stored['analysis_data_sha256'].items():
+        path=repo/relative
+        if not path.resolve().is_relative_to(repo) or not path.is_file() or digest(path)!=expected:
+            raise ValueError('Physical production-noise probe input is missing or changed')
+        paths.add(path)
+    for row in plan(repo):
+        rid=row['record']['run_id']
+        result=load_json((root/(rid+'.json')).read_bytes())
+        actual,checkpoint,_=binding(repo,row,protocol,sources)
+        if result['binding']!=actual:
+            raise ValueError('Noise record differs from the actual first stored risk/source members')
+        directory=repo/actual['run_directory']
+        required=[(directory/'config.json',actual['config_sha256']),
+                  (directory/'summary.json',actual['training_summary_sha256'])]
+        if checkpoint is not None:required.append((checkpoint,actual['checkpoint_sha256']))
+        for path,expected in required:
+            if (not path.resolve().is_relative_to(repo)
+                    or original_files.get(path.relative_to(repo).as_posix())!=expected
+                    or digest(path)!=expected):
+                raise ValueError('Production-noise source member is outside the original full freeze')
+            paths.add(path)
+    paths.update(source_files(repo))
+    paths.update(repo/name for name in ['scripts/collect_production_noise.py','scripts/analyze_production_noise.py',
+        'scripts/evaluate_production_noise.py','configs/production_noise_completion_v1.json'])
+    summary={key:stored[key] for key in ['complete_unique_models','main_models','relevance_models','shared_models',
+        'evaluated_models','unreached_models','noise_levels','numeric_replays','selection_only_replays','source_commit','scope']}
+    summary['source_bound_same_host_replays_checked']=True
+    summary['method']='Legacy level-adapted ridge: noise on training and test features, separate per-level refit'
+    return paths,summary
+
+
 def close_replay(actual, expected, path='result'):
     """Compare all replay fields, allowing only cross-platform floating roundoff."""
     if isinstance(actual, dict) and isinstance(expected, dict):
@@ -280,6 +323,8 @@ def freeze(repo, original_manifest, evidence, output,
     paths.update(classifier_paths)
     replication_inputs, replication_summary = replication_paths(repo, original['files'])
     paths.update(replication_inputs)
+    noise_inputs,noise_summary=production_noise_paths(repo,original['files'])
+    paths.update(noise_inputs)
     files = dict(original['files'])
     for path in paths:
         if not path.resolve().is_relative_to(repo):
@@ -301,6 +346,7 @@ def freeze(repo, original_manifest, evidence, output,
                         fixed_continuous_fibers=fiber_summary,
                         nuisance_decisions=classifier_summary,
                         fiber_replication=replication_summary,
+                        production_noise=noise_summary,
                         scope='Complete additional evidence audit; no novelty/acceptance guarantee'))
     output = Path(output)
     if not output.resolve().is_relative_to(repo):

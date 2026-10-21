@@ -29,13 +29,17 @@ def fixture(tmp_path):
         frozen_manifest_sha256=sha(frozen),files={'main/summary.csv':sha(main/'summary.csv')})))
     extra=tmp_path/'additional';extra.mkdir()
     for name,payload in [('figure.svg','<svg/>'),('replication_models.csv','run_id\n'),
-                         ('replication_domains.csv','run_id,theta\n')]:
+                         ('replication_domains.csv','run_id,theta\n'),('noise_metrics_long.csv','run_id,noise_level\n'),
+                         ('noise_seed_confidence_intervals.csv','metric,n_seeds\n'),
+                         ('noise_relevance_paired_contrasts.csv','metric,paired_seeds\n')]:
         (extra/name).write_text(payload)
     additional=extra/'analysis.json'
     value=dict(schema='feature-topology.additional-research-summary.v1',combined_freeze_sha256=sha(frozen),
         replication={'complete_models':36,'complete_domains':144},input_sha256={'measurement.txt':sha(source)},
+        production_noise={'unique_models':305},
+        production_noise_freeze_audit={'source_bound_same_host_replays_checked':True},
         figure_sha256={'figure.svg':sha(extra/'figure.svg')},
-        table_sha256={name:sha(extra/name) for name in ['replication_models.csv','replication_domains.csv']})
+        table_sha256={p.name:sha(p) for p in extra.glob('*.csv')})
     additional.write_text(json.dumps(value))
     return frozen,analysis,additional
 
@@ -62,7 +66,8 @@ def test_package_restores_both_analyses_with_their_exact_common_freeze_anchor(tm
 
 @pytest.mark.parametrize('damage,match',[
     ('freeze','not bound'),('input','outside the frozen'),('figure','missing, changed'),
-    ('table','incomplete'),('escape','escapes'),('cohort','not bound')])
+    ('table','incomplete'),('noise_table','incomplete'),('noise_cohort','not bound'),
+    ('noise_replay','not bound'),('escape','escapes'),('cohort','not bound')])
 def test_unbound_or_incomplete_additional_outputs_cannot_enter_package(tmp_path,damage,match):
     frozen,main,additional=fixture(tmp_path)
     value=json.loads(additional.read_text())
@@ -70,6 +75,9 @@ def test_unbound_or_incomplete_additional_outputs_cannot_enter_package(tmp_path,
     elif damage=='input':value['input_sha256']['unfrozen.txt']='0'*64
     elif damage=='figure':(additional.parent/'figure.svg').write_text('changed')
     elif damage=='table':value['table_sha256'].pop('replication_domains.csv')
+    elif damage=='noise_table':value['table_sha256'].pop('noise_metrics_long.csv')
+    elif damage=='noise_cohort':value['production_noise']['unique_models']=304
+    elif damage=='noise_replay':value['production_noise_freeze_audit']['source_bound_same_host_replays_checked']=False
     elif damage=='escape':value['figure_sha256']={'../figure.svg':'0'*64}
     else:value['replication']['complete_domains']=143
     additional.write_text(json.dumps(value))

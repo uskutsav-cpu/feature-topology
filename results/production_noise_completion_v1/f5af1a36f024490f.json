@@ -1,0 +1,90 @@
+{
+  "schema": "feature-topology.production-noise-evaluation.v1",
+  "binding": {
+    "run_id": "f5af1a36f024490f",
+    "gamma": 0.125,
+    "seed": 1,
+    "relevance": 0.0,
+    "roles": [
+      "main",
+      "relevance"
+    ],
+    "run_directory": "results/main/runs/f5af1a36f024490f",
+    "input_index": "configs/completion/primary_inputs_v3.json",
+    "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+    "input_archive_sha256": "f3a4c699443487fe122d60815b6815127a9daf5237b1b5ab2b5b69ca323f7810",
+    "config_sha256": "5a222d22408b344bbe20e66b7d1d9b49614aa661128f6b9244989d16c6052df7",
+    "training_summary_sha256": "c31adb7e77668a63e73ba94a5cee042d9cf7eab3bd747d7101adaa166ed29dcf",
+    "analysis_data_path": "results/continuous_fiber_inputs/analysis_data.npz",
+    "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+    "checkpoint": "step_0000064.pt",
+    "checkpoint_sha256": "31bdfe2ca663ae700e3889cb3060733e5a453e399e5409c132b1c8627b92539e",
+    "selected_step": 64,
+    "actual_training_loss": 0.09057824249267578,
+    "protocol_sha256": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+    "source_sha256": {
+      "scripts/evaluate_production_noise.py": "ae0758ff601c8af2fe25aa7b027737926d65cdf76ff61b7f5df2045ca3574003",
+      "src/metrics/fibers.py": "cfbe86ff732b45010cf79eb9e2adce033c51c37d50cc4175da055712148477a8",
+      "scripts/compute_metrics.py": "4aa0418b3ec1dfba9e8184d4a8926f46d3089e8fd50a5265ae84920abc5231f6",
+      "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "configs/production_noise_completion_v1.json": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+      "configs/analysis_plan_v2.json": "a0c5e605f31bcbd5bded1823968d9a1d54a58103accffc54b34185bbe0d4ea4a",
+      "configs/completion/production_cohorts_v3.json": "71856aad43c10e9d65e9de81dd5d75f3c30434587ac02a8718caf73b399287d2",
+      "docs/PRODUCTION_NOISE_COMPLETION.md": "17e7f0592527530de23361cb5d5fc78d3b6a4e37d8f91425f41eb07296650c25"
+    }
+  },
+  "source_training_status": "converged",
+  "minimum_stored_training_loss": 0.09057824249267578,
+  "noise_levels": [
+    0.0,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "information_destruction_proved": false,
+  "scope": "Finite noisy phi-coordinate decoding by this level-adapted ridge probe. At positive lambda, phi is partly task relevant and is not a pure task-preserving nuisance direction. Failed decoding is not proof of information destruction; clean/continuous retention and finite-noise fragility are distinct. These values do not modify or retroactively rescue the negative frozen predictive comparison. No new theory, causal OOD claim or guaranteed high novelty.",
+  "status": "evaluated",
+  "constant_training_representation": false,
+  "noise_rows": [
+    {
+      "noise_level": 0.0,
+      "training_rms": 3.0877841192465754,
+      "coordinate_noise_sd": 0.0,
+      "angular_cosine": 0.9998831638863406,
+      "angular_mae": 0.012147528366717958
+    },
+    {
+      "noise_level": 0.001,
+      "training_rms": 3.0877841192465754,
+      "coordinate_noise_sd": 0.00019298650745291096,
+      "angular_cosine": 0.9998828616465192,
+      "angular_mae": 0.012152393004533543
+    },
+    {
+      "noise_level": 0.01,
+      "training_rms": 3.0877841192465754,
+      "coordinate_noise_sd": 0.0019298650745291097,
+      "angular_cosine": 0.999877512986182,
+      "angular_mae": 0.012464017909653553
+    },
+    {
+      "noise_level": 0.1,
+      "training_rms": 3.0877841192465754,
+      "coordinate_noise_sd": 0.019298650745291097,
+      "angular_cosine": 0.999630111003896,
+      "angular_mae": 0.021694022659788294
+    }
+  ],
+  "source_commit": "91b23d9d84e7fee8008534762b45c16ccf45936f",
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.13.5",
+    "torch": "2.14.0",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.0"
+  }
+}

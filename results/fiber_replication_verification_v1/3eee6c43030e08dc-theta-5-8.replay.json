@@ -1,0 +1,20 @@
+{
+  "schema": "feature-topology.fiber-replication-replay.v1",
+  "run_id": "3eee6c43030e08dc",
+  "gamma": 0.03125,
+  "seed": 7,
+  "theta_fraction": [
+    5,
+    8
+  ],
+  "result_sha256": "cf5719ae2082c0046d8681b3b30da12a1e91cd11b6b238dc61d681bcc350e521",
+  "retention_certificate": false,
+  "decision_certificate": true,
+  "counterexample_certificate": false,
+  "retention_replay_passed": false,
+  "decision_replay_passed": true,
+  "retention_status": "not_a_positive_certificate",
+  "decision_status": "passed",
+  "joint_retention_and_correct_decision": false,
+  "scope": "Separate-process execution of the same Arb verifiers; no independent verifier or Lean proof"
+}

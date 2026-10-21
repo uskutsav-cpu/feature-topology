@@ -55,25 +55,36 @@ status record, not a claim of complete research or established high novelty.
   are retained in `results/nuisance_decision_local_replays_v2`. They validate
   weaker positive margins, not the original hosted numerical margins.
   See the [incident record](NUISANCE_DECISION_LOCAL_REPLAY_INCIDENT.md).
+- The nine-seed replication is now collected and physically checked: all 144
+  domains have correct-class certificates, 27 have joint retention/decision
+  certificates, and six configurations have all four joint certificates.
+  All failed screens and the one rejected eligible witness are retained.
+- All 305 unique main/relevance saved models now have source-checked noisy
+  decoding evaluations and same-host numerical replay receipts. Their physical
+  input component audit passes; final seed summaries remain freeze-gated.
+  See [noise completion status](PRODUCTION_NOISE_STATUS.md).
 
 ## Required before the research completion gate can pass
 
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
-addresses the remaining seed-zero limitation. All 36 planned screens are
-complete (7 eligible fixed readouts, 29 failed screens); the 144 specified
-circle outcomes and required replays must be collected and integrated. Screen
-failures are not negative injectivity certificates. The cohort and budgets are
-fixed in `configs/fiber_replication_v1.json`.
+extends the seed-zero discovery cohort. All 36 screens and all 144 specified
+outcomes/replays are collected. Screen failures are not negative injectivity
+certificates. The cohort and budgets remain fixed in
+`configs/fiber_replication_v1.json`.
 
 1. Collect the seven unchanged CIFAR continuations. Current production coverage
    is 33/35 for CIFAR-10 and 30/35 for CIFAR-100, with 63/70 held-out replays checked.
    All source-cohort ledgers and the final 70-run replay must be complete.
+   The first unchanged seven-cell continuation wave timed out with resumable
+   checkpoints. A second wave uses the same immutable source tags, cells,
+   learning rates and budgets; timeout is not treated as completed training.
 2. Pass the original full physical-input freeze. The additional freeze cannot
    bypass it. Then regenerate final statistics and figures using only frozen
    inputs, and pass the combined evidence audit. That audit must retain every
    certificate/input/receipt binding and all previous failed/inconclusive attempts.
 3. Complete the scientific synthesis and update the comparison with closest
-   primary literature. The existing diagnostic novelty proposal failed its
+   primary literature. Complete the original task-preserving relevance-fiber
+   and adversarial-pair scope audit. The existing diagnostic novelty proposal failed its
    recorded comparison; a different positive claim must have its own evidence.
 
 ## Limits on claims
@@ -88,7 +99,8 @@ OOD robustness, or universally high-novelty claim follows.
 The matched certificates establish correct class decisions throughout the
 specified nuisance circles alongside injective retention in their current hidden
 branch. They do not certify constant logits, every-theta correctness, or the
-same behavior in independently trained seeds.
+same behavior outside these domains. The additional nine-seed findings are
+reported separately in the replication record.
 
 The new verified separation evidence can support a precise distinction between
 metric contraction and actual identification. The elementary separation lemma,

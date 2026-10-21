@@ -48,12 +48,15 @@ def summarize(repo, manifest):
     fiber_audit = additional.get('fixed_continuous_fibers', {})
     decision_audit = additional.get('nuisance_decisions', {})
     replication_audit = additional.get('fiber_replication', {})
+    noise_audit = additional.get('production_noise', {})
     if (not manifest.get('ready') or fiber_audit.get('attempts') != 16
             or fiber_audit.get('source_bound_standalone_replays_checked') is not True
             or decision_audit.get('attempts') != 16
             or decision_audit.get('source_bound_standalone_replays_checked') is not True
             or replication_audit.get('complete_domains') != 144
             or replication_audit.get('source_bound_standalone_replays_checked') is not True
+            or noise_audit.get('complete_unique_models') != 305
+            or noise_audit.get('source_bound_same_host_replays_checked') is not True
             or additional.get('analysis_replay_passed') is not True):
         raise ValueError('A complete combined additional-research freeze is required')
     index_path = repo/'configs/completion/primary_inputs_v3.json'
@@ -62,9 +65,11 @@ def summarize(repo, manifest):
     decision_root = repo/'results/nuisance_decision_verification_v1'
     comparison_path = repo/additional['comparison_path']/'comparison.json'
     replication_path = repo/'results/fiber_replication_verification_v1/collection.json'
+    noise_path = repo/'results/production_noise_completion_v1/collection.json'
     consumed = verify_frozen_paths(repo, manifest, [index_path, witness_root/'manifest.json',
         circle_root/'collection.json', decision_root/'collection.json',
-        comparison_path, replication_path, repo/'scripts/analyze_additional_research.py'])
+        comparison_path, replication_path, noise_path, repo/'scripts/analyze_production_noise.py',
+        repo/'research_ext/statistics.py', repo/'scripts/analyze_additional_research.py'])
     index = load_json(index_path.read_bytes())
     witnesses = load_json((witness_root/'manifest.json').read_bytes())['runs']
     collection = load_json((circle_root/'collection.json').read_bytes())
@@ -116,6 +121,8 @@ def summarize(repo, manifest):
         rows.append(row)
     comparison = load_json(comparison_path.read_bytes())
     replication = load_json(replication_path.read_bytes())
+    from scripts.analyze_production_noise import summarize_noise
+    noise = summarize_noise(load_json(noise_path.read_bytes()))
     return dict(schema='feature-topology.additional-research-summary.v1', models=rows,
         predictive_contrasts=comparison['contrasts'], independent_prediction_seeds=5,
         screening_models=13, eligible_models=sum(row['empirical_screen_passed'] for row in rows),
@@ -127,6 +134,7 @@ def summarize(repo, manifest):
         joint_retention_and_correct_decision=decisions['joint_retention_and_correct_decision'],
         decision_replay_audit=decision_audit,
         replication=replication, replication_freeze_audit=replication_audit,
+        production_noise=noise, production_noise_freeze_audit=noise_audit,
         scope='Exploratory seed-zero discovery, separately recorded nine-seed verification replication, and a distinct five-seed predictive comparison; no universal-theta, full-torus, independent-verifier or high-novelty claim')
 
 
@@ -224,6 +232,8 @@ def figures(result, output):
     fig.supxlabel('Negative values favor conventional predictors; dots are five held-out seeds.\nIntervals: seed bootstrap with Bonferroni adjustment for three outcomes.', fontsize=9)
     save_figure(fig,output,'additional_prediction_comparison')
     plt.close(fig)
+    from scripts.analyze_production_noise import noise_figures
+    noise_figures(result['production_noise'],output,save_figure)
 
 
 def main(repo, manifest_path, output):
@@ -235,6 +245,8 @@ def main(repo, manifest_path, output):
     output.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(result['replication']['models']).to_csv(output/'replication_models.csv',index=False)
     pd.DataFrame(result['replication']['records']).to_csv(output/'replication_domains.csv',index=False)
+    from scripts.analyze_production_noise import write_tables
+    write_tables(result['production_noise'],output)
     figures(result, output)
     result['combined_freeze_sha256'] = digest(manifest_path)
     result['figure_sha256'] = {path.name: digest(path) for path in sorted(output.iterdir()) if path.suffix in {'.png','.svg'}}

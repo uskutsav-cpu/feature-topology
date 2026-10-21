@@ -117,10 +117,13 @@ The separately recorded remaining-seed replication retains 36 planned model
 configurations across nine shared seed identifiers. Seven fixed readouts pass
 their sampled screen and 29 fail. This narrows the coverage of the particular
 witness procedure; it is not evidence that the other models lose information.
-All 144 classifier domains and the eligible retention attempts are being checked.
+All 144 classifier domains now have accepted correct-class certificates; 27
+domains have accepted retention certificates as well, spanning six configurations
+with all four joint certificates. All failures are retained. This supports a
+scoped replication of the phenomenon, not universal witness coverage.
 The seed-zero successes were selected using the discovery screen, so they cannot
 be compared with this new screen proportion as two unselected random cohorts.
-Replication outcomes and the full-study freeze remain pending.
+The full-study freeze remains pending.
 
 These sources narrow the defensible claim to the particular calibrated empirical
 study, its negative diagnostic comparison, and any successfully checked
