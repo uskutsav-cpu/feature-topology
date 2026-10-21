@@ -70,12 +70,23 @@ status record, not a claim of complete research or established high novelty.
 
 ## Required before the research completion gate can pass
 
-Execution update: the external validation volume is unavailable. At the user's
-request, work continues through a [separate hosted execution campaign](TASK_FIBER_HOSTED_EXECUTION.md).
+Execution history: the external validation volume became unavailable. At the user's
+request, work continued through a [separate hosted execution campaign](TASK_FIBER_HOSTED_EXECUTION.md).
 All 210 initial Mac task-fiber evaluations completed, but none is claimed
 successfully replayed after the metadata failure. The hosted campaign uses the
 same pinned mathematical sources, all original inputs and unchanged budgets.
 Original attempts and the original negative predictive result remain preserved.
+
+The user remounted the SSD on 2026-10-21. The original 35 dSprites checkpoints,
+their configs and summaries match the restored validation copy; all tensors
+are finite and their existing held-out replay bindings pass. All five MPS
+handoff files match the historical manifest. The 18 protected task-fiber source
+files remain unchanged. The refreshed physical component audit passes for the
+305 noise models, 210 hosted task-fiber models and 845 archive receipts.
+The first restored full-readiness check passes every non-CIFAR check. Its four
+CIFAR gaps were recorded before installing the three newly completed cells.
+These component/readiness records are retained under
+`results/completion/neural_networks_preparation`; they are not full-study freezes.
 
 The hosted task-fiber campaign and its strict collector have now completed:
 all 210 models are source checked and numerically replayed. The 420 family views
@@ -87,8 +98,8 @@ The three historical CIFAR source components have also been
 [reconstructed from authenticated public evidence](CIFAR_SOURCE_RECONSTRUCTION.md)
 and checked without the SSD. Their raw status/API files and failed attempts are
 retained. This restores provenance coverage, not production completion; the
-seven unchanged source-06d5f68 continuations and the final 70-run replay remain
-pending.
+four remaining unchanged source-06d5f68 continuations and the final 70-run replay
+remain pending.
 
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
@@ -96,8 +107,10 @@ outcomes/replays are collected. Screen failures are not negative injectivity
 certificates. The cohort and budgets remain fixed in
 `configs/fiber_replication_v1.json`.
 
-1. Collect the seven unchanged CIFAR continuations. Current production coverage
-   is 33/35 for CIFAR-10 and 30/35 for CIFAR-100, with 63/70 held-out replays checked.
+1. Finish collection of the unchanged CIFAR continuations. Archived and installed
+   production coverage is now 35/35 for CIFAR-10 and 31/35 for CIFAR-100. The original
+   63 held-out replay values are preserved; the three newly installed cells are
+   undergoing strict local replay. Four CIFAR-100 jobs remain live.
    All source-cohort ledgers and the final 70-run replay must be complete.
    The first unchanged seven-cell continuation wave timed out with resumable
    checkpoints. A second wave uses the same immutable source tags, cells,
@@ -107,8 +120,9 @@ certificates. The cohort and budgets remain fixed in
    inputs, and pass the combined evidence audit. That audit must retain every
    certificate/input/receipt binding and all previous failed/inconclusive attempts.
 3. Complete the scientific synthesis and update the comparison with closest
-   primary literature. Complete the original task-preserving relevance-fiber
-   and adversarial-pair scope audit. The existing diagnostic novelty proposal failed its
+   primary literature. The task-preserving relevance-fiber and adversarial-pair
+   component audit now passes; its final statistics remain freeze-gated.
+   The existing diagnostic novelty proposal failed its
    recorded comparison; a different positive claim must have its own evidence.
 
 ## Limits on claims

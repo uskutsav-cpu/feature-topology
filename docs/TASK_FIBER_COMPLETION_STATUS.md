@@ -60,6 +60,11 @@ freeze-gated final analysis. This completion does not change the negative
 five-seed predictive comparison, establish causal OOD effects or guarantee
 high novelty.
 
-The original and combined full physical-input freezes, remaining CIFAR work,
-historical archive recovery and final analyses remain required. Manuscript
-preparation is still deferred.
+After the SSD was remounted on 2026-10-21, the physical-source component audit
+also passed: the 210 hosted records and replay/execution receipts match the
+actual selected checkpoints, configs, summaries and original probe archives.
+All 18 protected mathematical source files remain unchanged. This check does
+not claim a fresh Mac numerical replay or cross-platform numerical agreement.
+
+The original and combined full physical-input freezes, remaining CIFAR work
+and final analyses remain required. Manuscript preparation is still deferred.
