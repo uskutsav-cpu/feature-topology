@@ -1,0 +1,42 @@
+{
+  "archive_sha256": "293acde6c48505c935b262d5bfab426f8f070ae8e465554588be04249eb31d8b",
+  "cell": {
+    "dataset": "CIFAR10",
+    "gamma": 16.0,
+    "lr": 1.6,
+    "seed": 1,
+    "stage": "production"
+  },
+  "cell_id": "0d13dc927bd69a52",
+  "complete": true,
+  "config": {
+    "batch_size": 128,
+    "classes": 10,
+    "dataset": "CIFAR10",
+    "eval_every": 500,
+    "gamma": 16.0,
+    "lr": 1.6,
+    "max_steps": 35200,
+    "seed": 1,
+    "target_loss": 0.2
+  },
+  "dataset_sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+  "files": {
+    "cifar10/runs/8487cdf3fcf6c57d/config.json": "803e2b1449aa33bfadf97ea17d5abc38a836252f4a39dd379dc07e3621a57e25",
+    "cifar10/runs/8487cdf3fcf6c57d/final.pt": "7af0f9b5fc6ef8f86f2f44f222b1c82b62965232c76e4659c0477b51b20f3c0a",
+    "cifar10/runs/8487cdf3fcf6c57d/metrics.json": "dba48b5f015a9364983c49b4f7f107d85feb9cff6cc07ce1bdb94c4ec199acae",
+    "cifar10/runs/8487cdf3fcf6c57d/representations.npz": "6bd5bfa0e7b5271702b66d0e33a6324f0f27f3fcbc7994bde3bb4a182ed4bca8",
+    "cifar10/runs/8487cdf3fcf6c57d/resume.pt": "f2d54c193a1b79e29aed833cd3b91569f27e437121ffec995fd3baa23a6976b6",
+    "cifar10/runs/8487cdf3fcf6c57d/summary.json": "7fa3e3c2e9f5e3318139d7006467313f73f3068135cf0bbfacf3fd5e8eb5875c"
+  },
+  "host": {
+    "commit": "d06123ebdc4a23e8d4bec976e2fe92793b9795a0",
+    "machine": "x86_64",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "workflow_run": "35562419981"
+  },
+  "run_id": "8487cdf3fcf6c57d",
+  "schema": "feature-topology.remote-cifar.v1",
+  "source_specification_sha256": "d97d23cbba86d05b60d4c82cb82690b65f93bdc5aa47f137f5680b0c8742a533"
+}

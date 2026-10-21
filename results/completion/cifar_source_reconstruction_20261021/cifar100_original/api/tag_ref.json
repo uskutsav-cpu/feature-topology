@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/cifar100-v3-hosted-b20f3c7",
+  "node_id": "REF_kwDOUSlfQtoAJHJlZnMvdGFncy9jaWZhcjEwMC12My1ob3N0ZWQtYjIwZjNjNw",
+  "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/refs/tags/cifar100-v3-hosted-b20f3c7",
+  "object": {
+    "sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+    "type": "commit",
+    "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/commits/b20f3c77bd620389dbeb542f0b48789f754a2a8e"
+  }
+}

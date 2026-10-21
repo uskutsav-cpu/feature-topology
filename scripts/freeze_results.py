@@ -142,6 +142,11 @@ def production_queue_paths(repo):
     return paths
 
 
+def reconstructed_source_paths(repo,state,dataset):
+    from scripts.reconstruct_cifar_provenance import validate_reconstruction
+    return validate_reconstruction(repo,state,dataset)
+
+
 def cifar_hosted_paths(repo):
     """Require complete source-bound hosted ledgers for both CIFAR studies."""
     repo=Path(repo)
@@ -215,6 +220,7 @@ def cifar_hosted_paths(repo):
                     workflow_runs.append(str(attempt['workflow_run']))
                 if workflow_runs!=source_row.get('workflow_runs'):
                     raise ValueError(f'Hosted CIFAR workflow provenance mismatch: {dataset}')
+                paths.extend(reconstructed_source_paths(repo,source_state,dataset))
                 bound_commits.add(commit)
                 paths.append(source_path)
             used_commits=set()

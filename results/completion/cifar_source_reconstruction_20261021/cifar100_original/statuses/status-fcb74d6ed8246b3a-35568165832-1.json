@@ -1,0 +1,38 @@
+{
+  "archive_sha256": "e01cf79c678129fe059d7301d879514e1e92a5c55a2654511f920186446d9190",
+  "cell": {
+    "dataset": "CIFAR100",
+    "gamma": 4.0,
+    "lr": 1.6,
+    "seed": 0,
+    "stage": "production"
+  },
+  "cell_id": "fcb74d6ed8246b3a",
+  "complete": false,
+  "config": {
+    "batch_size": 128,
+    "classes": 100,
+    "dataset": "CIFAR100",
+    "eval_every": 500,
+    "gamma": 4.0,
+    "lr": 1.6,
+    "max_steps": 35200,
+    "seed": 0,
+    "target_loss": 0.2
+  },
+  "dataset_sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+  "files": {
+    "cifar100/runs/3173ca3665425492/config.json": "e7eff7fa55587bef5dad7069d49705e998a993a0bf25a19c0bdeb511a1f23f26",
+    "cifar100/runs/3173ca3665425492/resume.pt": "cfb52658b378ea88717577eec6b574f8707e127eddb5c83a64da31e3e90c557d"
+  },
+  "host": {
+    "commit": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+    "machine": "x86_64",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "workflow_run": "35568165832"
+  },
+  "run_id": "3173ca3665425492",
+  "schema": "feature-topology.remote-cifar.v1",
+  "source_specification_sha256": "d97d23cbba86d05b60d4c82cb82690b65f93bdc5aa47f137f5680b0c8742a533"
+}

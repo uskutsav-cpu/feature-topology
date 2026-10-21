@@ -1,0 +1,24 @@
+{
+  "node_id": "TA_kwDOUSlfQtoAKDRmYzNmNjMwNTdlYjRjZGU1M2M2NTUzMTg1YWZmMzY2Y2MxNjNmYjM",
+  "sha": "4fc3f63057eb4cde53c6553185aff366cc163fb3",
+  "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/tags/4fc3f63057eb4cde53c6553185aff366cc163fb3",
+  "tagger": {
+    "name": "Utsav Sunil Kumar",
+    "email": "288397480+uskutsav-cpu@users.noreply.github.com",
+    "date": "2026-09-22T00:30:28Z"
+  },
+  "object": {
+    "sha": "8816fc099e3d5135f191597ff50764ad87d80af0",
+    "type": "commit",
+    "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/commits/8816fc099e3d5135f191597ff50764ad87d80af0"
+  },
+  "tag": "cifar10-v3-exact-lr-8816fc0",
+  "message": "Exact-rate transport for frozen CIFAR10 gamma=128 cells\n",
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

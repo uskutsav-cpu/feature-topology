@@ -1,0 +1,1001 @@
+{
+  "total_count": 9,
+  "jobs": [
+    {
+      "id": 106941900887,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5jvoVw",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106941900887",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106941900887",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-22T21:17:27Z",
+      "started_at": "2026-09-22T21:17:29Z",
+      "completed_at": "2026-09-22T21:17:51Z",
+      "name": "plan",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:30Z",
+          "completed_at": "2026-09-22T21:17:31Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:31Z",
+          "completed_at": "2026-09-22T21:17:49Z"
+        },
+        {
+          "name": "Run python scripts/remote_cifar.py plan --cells \"$REQUESTED_CELLS\"",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:17:49Z",
+          "completed_at": "2026-09-22T21:17:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-22T21:17:50Z",
+          "completed_at": "2026-09-22T21:17:50Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-22T21:17:50Z",
+          "completed_at": "2026-09-22T21:17:50Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106941900887",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002332,
+      "runner_name": "GitHub Actions 1000002332",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038570,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4CKg",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038570",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038570",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-22T21:17:51Z",
+      "started_at": "2026-09-22T21:17:54Z",
+      "completed_at": "2026-09-22T23:28:41Z",
+      "name": "cell (production, CIFAR100, 128, 0, 9.05096679918781)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:55Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:18:14Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:14Z",
+          "completed_at": "2026-09-22T21:18:58Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:18:58Z",
+          "completed_at": "2026-09-22T21:20:06Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:20:06Z",
+          "completed_at": "2026-09-22T21:20:07Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-22T21:20:07Z",
+          "completed_at": "2026-09-22T23:28:34Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-22T23:28:34Z",
+          "completed_at": "2026-09-22T23:28:36Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-22T23:28:36Z",
+          "completed_at": "2026-09-22T23:28:39Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-22T23:28:39Z",
+          "completed_at": "2026-09-22T23:28:39Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-22T23:28:39Z",
+          "completed_at": "2026-09-22T23:28:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-22T23:28:39Z",
+          "completed_at": "2026-09-22T23:28:39Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038570",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002333,
+      "runner_name": "GitHub Actions 1000002333",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038607,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4CTw",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038607",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038607",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-22T21:17:51Z",
+      "started_at": "2026-09-22T21:17:54Z",
+      "completed_at": "2026-09-23T02:36:48Z",
+      "name": "cell (production, CIFAR100, 0.125, 2, 0.00625)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:18:14Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:14Z",
+          "completed_at": "2026-09-22T21:18:55Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:18:55Z",
+          "completed_at": "2026-09-22T21:19:57Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:19:57Z",
+          "completed_at": "2026-09-22T21:20:00Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-09-22T21:20:00Z",
+          "completed_at": "2026-09-23T02:36:40Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:36:40Z",
+          "completed_at": "2026-09-23T02:36:41Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:36:41Z",
+          "completed_at": "2026-09-23T02:36:44Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-09-23T02:36:44Z",
+          "completed_at": "2026-09-23T02:36:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:36:44Z",
+          "completed_at": "2026-09-23T02:36:45Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:36:45Z",
+          "completed_at": "2026-09-23T02:36:45Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038607",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002335,
+      "runner_name": "GitHub Actions 1000002335",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038634,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4Cag",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038634",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038634",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:55Z",
+      "completed_at": "2026-09-23T01:32:28Z",
+      "name": "cell (production, CIFAR100, 128, 4, 9.05096679918781)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:21:39Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:21:39Z",
+          "completed_at": "2026-09-22T21:22:09Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:22:09Z",
+          "completed_at": "2026-09-22T21:23:18Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:23:18Z",
+          "completed_at": "2026-09-22T21:23:19Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-22T21:23:19Z",
+          "completed_at": "2026-09-23T01:32:22Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T01:32:22Z",
+          "completed_at": "2026-09-23T01:32:24Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T01:32:24Z",
+          "completed_at": "2026-09-23T01:32:26Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T01:32:26Z",
+          "completed_at": "2026-09-23T01:32:26Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T01:32:26Z",
+          "completed_at": "2026-09-23T01:32:27Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T01:32:27Z",
+          "completed_at": "2026-09-23T01:32:27Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038634",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002336,
+      "runner_name": "GitHub Actions 1000002336",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038643,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4Ccw",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038643",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038643",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:54Z",
+      "completed_at": "2026-09-23T02:14:13Z",
+      "name": "cell (production, CIFAR100, 128, 3, 9.05096679918781)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:21:06Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:21:06Z",
+          "completed_at": "2026-09-22T21:21:45Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:21:45Z",
+          "completed_at": "2026-09-22T21:22:53Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:22:53Z",
+          "completed_at": "2026-09-22T21:22:55Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-22T21:22:55Z",
+          "completed_at": "2026-09-23T02:14:05Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:14:05Z",
+          "completed_at": "2026-09-23T02:14:07Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:14:07Z",
+          "completed_at": "2026-09-23T02:14:10Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T02:14:10Z",
+          "completed_at": "2026-09-23T02:14:10Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:14:10Z",
+          "completed_at": "2026-09-23T02:14:10Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:14:10Z",
+          "completed_at": "2026-09-23T02:14:11Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038643",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002334,
+      "runner_name": "GitHub Actions 1000002334",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038662,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4Chg",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038662",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038662",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:56Z",
+      "completed_at": "2026-09-23T02:37:02Z",
+      "name": "cell (production, CIFAR100, 0.125, 4, 0.00625)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:57Z",
+          "completed_at": "2026-09-22T21:17:57Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:57Z",
+          "completed_at": "2026-09-22T21:18:17Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:17Z",
+          "completed_at": "2026-09-22T21:19:04Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:19:04Z",
+          "completed_at": "2026-09-22T21:20:12Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:20:12Z",
+          "completed_at": "2026-09-22T21:20:15Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-09-22T21:20:15Z",
+          "completed_at": "2026-09-23T02:36:55Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:36:55Z",
+          "completed_at": "2026-09-23T02:36:56Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:36:56Z",
+          "completed_at": "2026-09-23T02:36:59Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-09-23T02:36:59Z",
+          "completed_at": "2026-09-23T02:36:59Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:36:59Z",
+          "completed_at": "2026-09-23T02:37:00Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:37:00Z",
+          "completed_at": "2026-09-23T02:37:00Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038662",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002338,
+      "runner_name": "GitHub Actions 1000002338",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038673,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4CkQ",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038673",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038673",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:54Z",
+      "completed_at": "2026-09-23T02:36:51Z",
+      "name": "cell (production, CIFAR100, 0.125, 0, 0.00625)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:18:15Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:15Z",
+          "completed_at": "2026-09-22T21:18:53Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:18:53Z",
+          "completed_at": "2026-09-22T21:20:03Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:20:03Z",
+          "completed_at": "2026-09-22T21:20:04Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-09-22T21:20:04Z",
+          "completed_at": "2026-09-23T02:36:44Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:36:44Z",
+          "completed_at": "2026-09-23T02:36:46Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:36:46Z",
+          "completed_at": "2026-09-23T02:36:49Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-09-23T02:36:49Z",
+          "completed_at": "2026-09-23T02:36:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:36:49Z",
+          "completed_at": "2026-09-23T02:36:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:36:49Z",
+          "completed_at": "2026-09-23T02:36:49Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038673",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002337,
+      "runner_name": "GitHub Actions 1000002337",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038752,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4C4A",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038752",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038752",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:55Z",
+      "completed_at": "2026-09-23T02:36:36Z",
+      "name": "cell (production, CIFAR100, 0.125, 1, 0.00625)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:18:13Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:13Z",
+          "completed_at": "2026-09-22T21:18:45Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:18:45Z",
+          "completed_at": "2026-09-22T21:19:48Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:19:48Z",
+          "completed_at": "2026-09-22T21:19:50Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-09-22T21:19:50Z",
+          "completed_at": "2026-09-23T02:36:30Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:36:30Z",
+          "completed_at": "2026-09-23T02:36:32Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:36:32Z",
+          "completed_at": "2026-09-23T02:36:34Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-09-23T02:36:34Z",
+          "completed_at": "2026-09-23T02:36:34Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:36:34Z",
+          "completed_at": "2026-09-23T02:36:34Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:36:34Z",
+          "completed_at": "2026-09-23T02:36:34Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038752",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002339,
+      "runner_name": "GitHub Actions 1000002339",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 106942038819,
+      "run_id": 35785714979,
+      "workflow_name": "Frozen v3 CIFAR cells",
+      "head_branch": "cifar100-v3-hosted-b20f3c7",
+      "run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/runs/35785714979",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUSlfQs8AAAAY5j4DIw",
+      "head_sha": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+      "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/actions/jobs/106942038819",
+      "html_url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35785714979/job/106942038819",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-22T21:17:52Z",
+      "started_at": "2026-09-22T21:17:54Z",
+      "completed_at": "2026-09-23T02:36:32Z",
+      "name": "cell (production, CIFAR100, 0.125, 3, 0.00625)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-22T21:17:55Z",
+          "completed_at": "2026-09-22T21:17:56Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-22T21:17:56Z",
+          "completed_at": "2026-09-22T21:18:12Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-22T21:18:12Z",
+          "completed_at": "2026-09-22T21:18:40Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-22T21:18:40Z",
+          "completed_at": "2026-09-22T21:19:44Z"
+        },
+        {
+          "name": "Restore compatible cell checkpoints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-22T21:19:44Z",
+          "completed_at": "2026-09-22T21:19:46Z"
+        },
+        {
+          "name": "Execute frozen cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-09-22T21:19:46Z",
+          "completed_at": "2026-09-23T02:36:26Z"
+        },
+        {
+          "name": "Preserve completed output or latest resume checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T02:36:26Z",
+          "completed_at": "2026-09-23T02:36:28Z"
+        },
+        {
+          "name": "Upload immutable cell assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T02:36:28Z",
+          "completed_at": "2026-09-23T02:36:30Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-09-23T02:36:30Z",
+          "completed_at": "2026-09-23T02:36:30Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T02:36:30Z",
+          "completed_at": "2026-09-23T02:36:30Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T02:36:30Z",
+          "completed_at": "2026-09-23T02:36:30Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/check-runs/106942038819",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000002340,
+      "runner_name": "GitHub Actions 1000002340",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

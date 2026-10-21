@@ -79,6 +79,13 @@ contain 385 distinct calculations, with exact lambda-zero reuse. Their complete
 execution audit and all results are retained. See the
 [component findings and remaining gates](TASK_FIBER_COMPLETION_STATUS.md).
 
+The three historical CIFAR source components have also been
+[reconstructed from authenticated public evidence](CIFAR_SOURCE_RECONSTRUCTION.md)
+and checked without the SSD. Their raw status/API files and failed attempts are
+retained. This restores provenance coverage, not production completion; the
+seven unchanged source-06d5f68 continuations and the final 70-run replay remain
+pending.
+
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
 outcomes/replays are collected. Screen failures are not negative injectivity
