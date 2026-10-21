@@ -34,3 +34,10 @@ the available JSON mirrors. The 845 receipts, workflow observations and audit
 summary are retained separately in `results/synthetic_archive_transport_v1`.
 Earlier attempts and receipts remain untouched. The physical-input freeze and
 original-file requirements above are still pending.
+
+The full results-freeze gate now validates this collection against the current
+cohort indices and exact collector archive names, and binds all 845 receipts
+and their source observations into the freeze. Missing receipts, rewritten
+archive identities, changed observation bytes and paths outside the repository
+are rejected. This ensures the transport evidence survives into the final
+research package while preserving the separate physical-input checks.

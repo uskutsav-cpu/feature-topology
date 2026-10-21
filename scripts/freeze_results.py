@@ -459,6 +459,11 @@ def readiness(repo):
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_metrics',error=str(exc)))
     try:
+        from scripts.validate_synthetic_transport import validate as validate_synthetic_transport
+        paths.update(validate_synthetic_transport(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='synthetic_archive_transport',error=str(exc)))
+    try:
         paths.update(cifar_hosted_paths(repo))
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_cifar',error=str(exc)))
