@@ -66,6 +66,13 @@ status record, not a claim of complete research or established high novelty.
 
 ## Required before the research completion gate can pass
 
+Execution update: the external validation volume is unavailable. At the user's
+request, work continues through a [separate hosted execution campaign](TASK_FIBER_HOSTED_EXECUTION.md).
+All 210 initial Mac task-fiber evaluations completed, but none is claimed
+successfully replayed after the metadata failure. The hosted campaign uses the
+same pinned mathematical sources, all original inputs and unchanged budgets.
+Original attempts and the original negative predictive result remain preserved.
+
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
 outcomes/replays are collected. Screen failures are not negative injectivity

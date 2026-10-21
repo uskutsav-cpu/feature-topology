@@ -24,3 +24,9 @@ This corrects a metadata serialization bug in the replay integration. It does
 not strengthen mathematical bounds, accept a changed numerical result, or
 provide independent-verifier agreement. All 210 V2 numerical replays must
 still pass before the component can be collected or frozen.
+
+The external validation volume subsequently became unavailable before V2 replay
+could start. The user requested continued work without it. A
+[separately tracked hosted campaign](TASK_FIBER_HOSTED_EXECUTION.md) regenerates
+the unchanged calculations and repeats each one on the same Linux host. That
+campaign does not retroactively replay or replace the original Mac records.

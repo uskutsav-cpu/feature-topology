@@ -134,6 +134,8 @@ def additional_analysis_files(repo,files,path,frozen,freeze_sha):
             or analysis.get('replication',{}).get('complete_domains')!=144
             or analysis.get('production_noise',{}).get('unique_models')!=305
             or analysis.get('production_noise_freeze_audit',{}).get('source_bound_same_host_replays_checked') is not True
+            or analysis.get('task_preserving_fibers',{}).get('models')!=210
+            or analysis.get('task_preserving_freeze_audit',{}).get('source_bound_same_host_replays_checked') is not True
             or not analysis.get('input_sha256')):
         raise ValueError('Additional analysis is not bound to this complete combined freeze')
     original_path=frozen.get('original_freeze_path')
@@ -152,7 +154,9 @@ def additional_analysis_files(repo,files,path,frozen,freeze_sha):
             raise ValueError('Additional analysis consumed an input outside the frozen manifest')
     figures,tables=analysis.get('figure_sha256',{}),analysis.get('table_sha256',{})
     if (not figures or not {'replication_models.csv','replication_domains.csv','noise_metrics_long.csv',
-                            'noise_seed_confidence_intervals.csv','noise_relevance_paired_contrasts.csv'}<=set(tables)
+                            'noise_seed_confidence_intervals.csv','noise_relevance_paired_contrasts.csv',
+                            'task_fiber_metrics_long.csv','task_fiber_seed_confidence_intervals.csv',
+                            'task_fiber_family_paired_contrasts.csv','task_fiber_relevance_paired_contrasts.csv'}<=set(tables)
             or set(figures)&set(tables)):
         raise ValueError('Additional analysis figure/table index is incomplete or conflicting')
     for name,expected in {**figures,**tables}.items():

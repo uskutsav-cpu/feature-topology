@@ -234,6 +234,47 @@ def production_noise_paths(repo,original_files):
     return paths,summary
 
 
+def task_preserving_paths(repo,original_files):
+    from scripts.collect_task_preserving_fibers import collect
+    from scripts.evaluate_task_preserving_fibers import source_files,task_binding,task_plan
+
+    root=repo/'results/task_preserving_fiber_completion_hosted_v1'
+    stored=load_json((root/'collection.json').read_bytes())
+    if collect(repo,root)!=stored:raise ValueError('Task-preserving collection differs from checked records/replays')
+    sources={p.relative_to(repo).as_posix():digest(p) for p in source_files(repo)}
+    paths=set(root.rglob('*.json'))|set(source_files(repo))
+    for relative,expected in stored['analysis_data_sha256'].items():
+        path=repo/relative
+        if not path.resolve().is_relative_to(repo) or not path.is_file() or digest(path)!=expected:
+            raise ValueError('Physical task-preserving input is missing or changed')
+        paths.add(path)
+    for row in task_plan(repo)[0]:
+        rid=row['record']['run_id'];actual,checkpoint,_=task_binding(repo,row,sources)
+        if load_json((root/(rid+'.json')).read_bytes())['binding']!=actual:
+            raise ValueError('Task-preserving record differs from actual first stored risk/source members')
+        directory=repo/actual['run_directory']
+        required=[(directory/'config.json',actual['config_sha256']),(directory/'summary.json',actual['training_summary_sha256'])]
+        if checkpoint is not None:required.append((checkpoint,actual['checkpoint_sha256']))
+        for path,expected in required:
+            if (not path.resolve().is_relative_to(repo)
+                    or original_files.get(path.relative_to(repo).as_posix())!=expected or digest(path)!=expected):
+                raise ValueError('Task-preserving source member is outside the original full freeze')
+            paths.add(path)
+    incident=repo/'results/task_preserving_replay_attempts_v1'
+    if (not (incident/'attempt.json').is_file() or not (incident/'initial_failure.log').is_file()):
+        raise ValueError('Original failed task-fiber replay attempt is missing')
+    paths.update(incident.rglob('*'))
+    paths={path for path in paths if path.is_file()}
+    paths.update(repo/name for name in ['scripts/collect_task_preserving_fibers.py','scripts/analyze_task_preserving_fibers.py',
+        'scripts/replay_task_preserving_fibers_v2.py','docs/TASK_FIBER_REPLAY_METADATA_INCIDENT.md'])
+    summary={key:stored[key] for key in ['complete_models','evaluated_models','unreached_models',
+        'numeric_replays','selection_only_replays','training_seeds','source_commit','scope',
+        'paired_family_views','distinct_family_evaluations','lambda_zero_family_reuse','replay_source_commit','replay_policy']}
+    summary.update(source_bound_same_host_replays_checked=True,grid_side=100,
+        grid_pairs_per_family=495000,search_candidates_per_evaluated_family=1040)
+    return paths,summary
+
+
 def close_replay(actual, expected, path='result'):
     """Compare all replay fields, allowing only cross-platform floating roundoff."""
     if isinstance(actual, dict) and isinstance(expected, dict):
@@ -325,6 +366,8 @@ def freeze(repo, original_manifest, evidence, output,
     paths.update(replication_inputs)
     noise_inputs,noise_summary=production_noise_paths(repo,original['files'])
     paths.update(noise_inputs)
+    task_inputs,task_summary=task_preserving_paths(repo,original['files'])
+    paths.update(task_inputs)
     files = dict(original['files'])
     for path in paths:
         if not path.resolve().is_relative_to(repo):
@@ -347,6 +390,7 @@ def freeze(repo, original_manifest, evidence, output,
                         nuisance_decisions=classifier_summary,
                         fiber_replication=replication_summary,
                         production_noise=noise_summary,
+                        task_preserving_fibers=task_summary,
                         scope='Complete additional evidence audit; no novelty/acceptance guarantee'))
     output = Path(output)
     if not output.resolve().is_relative_to(repo):
