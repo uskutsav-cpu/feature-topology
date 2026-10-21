@@ -1,0 +1,15 @@
+{
+  "schema": "feature-topology.task-fiber-hosted-execution-receipt.v1",
+  "run_id": "72c9e1e387e424c1",
+  "source_commit": "7df70ce8422964953cfedebe18d44f916a6bfe40",
+  "workflow_run": "39535434835",
+  "shard": 1,
+  "shards": 8,
+  "result_sha256": "e274a63fb9af9f1cc2ea6ada5412b0c2992001bd5012fd5d1cefa9f54142c354",
+  "replay_sha256": "c4cc0babc4bc8099e857e66f166a9cfb091f57f0dc3eba88c199541bd13192f9",
+  "input_archive_sha256": "8dc0ddca523b5b657d553eddcdea35e172a20d753de1aae620de383ea8d20707",
+  "canonical_directory": "results/relevance/d0ee7efad6c44b5a/runs/72c9e1e387e424c1",
+  "execution_plan_sha256": "89ea22c2a14adbfd75bb81a8dbc955839a99b63e12e6c0529dfdb94f71da0c70",
+  "orchestration_sha256": "2452f60d1756e4031dd669886ce9ee1a1e4cb4db2b378b5fdcb18426eeceb838",
+  "scope": "Same models/settings and separate-process numerical replay on each new Linux host. Not cross-platform agreement with the unavailable Mac outputs or additional independent training seeds."
+}

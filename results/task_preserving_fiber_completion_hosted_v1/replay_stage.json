@@ -1,0 +1,1063 @@
+{
+  "schema": "feature-topology.task-preserving-fiber-stage.v1",
+  "expected_models": 210,
+  "complete_models": 210,
+  "stage": "replay",
+  "source_commit": "7df70ce8422964953cfedebe18d44f916a6bfe40",
+  "protocol_sha256": "7a6ca2215aea057f4759be73a4ba1854452f64cae550dff2fa75b25359de5dbc",
+  "records": [
+    {
+      "run_id": "cb6e463ae41e1f43",
+      "status": "evaluated",
+      "result_sha256": "48b6af80063b31ae58b0e1633912ab8fef4d3c9d45fe8d6257b400af09d4d77a"
+    },
+    {
+      "run_id": "f5af1a36f024490f",
+      "status": "evaluated",
+      "result_sha256": "fc56da7cbb0519aae9c5fe64f32476ffc8caf2f5745a69cd288adbbfcaff30be"
+    },
+    {
+      "run_id": "08cf20ff7ed501ca",
+      "status": "evaluated",
+      "result_sha256": "87c50df8edbf335f6b7624bcf33964d822656f7d0c335792cbbd287fab08ce44"
+    },
+    {
+      "run_id": "b0a0c357600c19ef",
+      "status": "evaluated",
+      "result_sha256": "5b01d37487a7c1d489d239073e678eb6b21df71d7c1cfbff7a29c1704839e794"
+    },
+    {
+      "run_id": "1930842ce1d7aef5",
+      "status": "evaluated",
+      "result_sha256": "0c22eb07becce5ed3621452ca2b2040b4d9d30b910d026e151ec5887a2113614"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "status": "evaluated",
+      "result_sha256": "c31e1594a5b64a36e4829d64873be2d352ba1c8205c64d52395020699f18f199"
+    },
+    {
+      "run_id": "8a6750bf26cfcb5c",
+      "status": "evaluated",
+      "result_sha256": "252c183142421190ddc8fb3da240edf9b6af555c5aa7db75d87f162b99da9ea5"
+    },
+    {
+      "run_id": "4af1ea473ba49a67",
+      "status": "evaluated",
+      "result_sha256": "0e9a3e046e279a011a555f64f73dd4543a69bc127ca6c54f15628b29dc99b066"
+    },
+    {
+      "run_id": "d098a51a4bdade0c",
+      "status": "evaluated",
+      "result_sha256": "300c4aa093cc165c819080017de09b44a0c3891dbe11a6223f967d42f7f84928"
+    },
+    {
+      "run_id": "aee06fabc0e9d2c9",
+      "status": "evaluated",
+      "result_sha256": "6cc7786c5890315e639fd2cd0c9b48791380e3fe078ca0507f06114484344e31"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "status": "evaluated",
+      "result_sha256": "2f144ee064aa60353337cb0d3e99584c56879a9280287da0d3c89296511620af"
+    },
+    {
+      "run_id": "a1dbfdb26a4eaf3b",
+      "status": "evaluated",
+      "result_sha256": "c2629b14b9bcaa471be63655eb9a0b218a4bb70a4b99e6dfb39ac30558168dc4"
+    },
+    {
+      "run_id": "d07a7cddba9045c4",
+      "status": "evaluated",
+      "result_sha256": "52799485e8f130ca0f7a3ce1b8616ac50ee7a56152d87b6170a83d95aa5615d8"
+    },
+    {
+      "run_id": "28a69ac3e2ca83a8",
+      "status": "evaluated",
+      "result_sha256": "0be00832bc1187891432f0af4e936ccbb88ad03a3270e076ac0bd91050bd8f12"
+    },
+    {
+      "run_id": "67dabb55d01c3084",
+      "status": "evaluated",
+      "result_sha256": "6dc8a822328a536c081e344e988960872cee0cd58cd1364e8a09369da45bf790"
+    },
+    {
+      "run_id": "8db890b3a150730c",
+      "status": "evaluated",
+      "result_sha256": "7c542b0833e9f3446097b4d08663ea7c9cbe1f731a96566949eea56cc09fc6be"
+    },
+    {
+      "run_id": "17472a0395d76077",
+      "status": "evaluated",
+      "result_sha256": "1f40c116c10fa472fb31ea6fb5863e6202be7f864f413aed1755fdcc2f5dd0b1"
+    },
+    {
+      "run_id": "732ab5f0b339c9b3",
+      "status": "evaluated",
+      "result_sha256": "31fb723d79cf94385e48e1e923728639663767fb9e6799f9830b98330538c090"
+    },
+    {
+      "run_id": "6b0fe1d63750b480",
+      "status": "evaluated",
+      "result_sha256": "806f53ea62c46ca0cc77993278393e2f349dab078b99022b35a94d34843150f7"
+    },
+    {
+      "run_id": "9a05a977c7812e06",
+      "status": "evaluated",
+      "result_sha256": "c3dd14755c4cfe14716deed9542ac187a0210ea950b6ecd05282b3102bbf8b35"
+    },
+    {
+      "run_id": "192b10da1b3cc56f",
+      "status": "evaluated",
+      "result_sha256": "a530211c27a4becc9b6699580373fa93f66a95b0e1cb921ca98714b10000d48c"
+    },
+    {
+      "run_id": "d70493ac41c9495a",
+      "status": "evaluated",
+      "result_sha256": "0cdf48b7f21184d9ce8b26d4f5fb401b41a708a565d1ad4ef7fe1c212685b782"
+    },
+    {
+      "run_id": "6ee367a979aa16dd",
+      "status": "evaluated",
+      "result_sha256": "cf1253ae2da867e955a795abad9ae7f6493cb7b3e1510af7917f8463584c7724"
+    },
+    {
+      "run_id": "dc29a75f298a7f8d",
+      "status": "evaluated",
+      "result_sha256": "da5c1db4d1075dd8068465c76199edea0d3f1644beea3e6c11d983c81df5edee"
+    },
+    {
+      "run_id": "67ab326c1b776833",
+      "status": "evaluated",
+      "result_sha256": "1c5683e6641a72a08ed35423465904864b4d38e3ffb9541bf67f2bea712d7160"
+    },
+    {
+      "run_id": "e674c5ebae8b5153",
+      "status": "evaluated",
+      "result_sha256": "f65f5a6f11ea2b7bd8284db7dc376b61baa449bc41e975bfbb330d0028337fff"
+    },
+    {
+      "run_id": "f63a71531ee8bf6d",
+      "status": "evaluated",
+      "result_sha256": "2e054b4ed575df611a8cc1440fe0c57efb9399fb3faf53ee2c5ac12c0b663376"
+    },
+    {
+      "run_id": "3c18312acedccace",
+      "status": "evaluated",
+      "result_sha256": "64ae51e08248ee36cf626a4e6b1c93b99546e05978097bdbde75050fd21eeb74"
+    },
+    {
+      "run_id": "c846d58c02e8986f",
+      "status": "evaluated",
+      "result_sha256": "219885d02e008d36719a1b51615972af01e6336258cb3e8af59d59b5e131df10"
+    },
+    {
+      "run_id": "5ba7581f9308c30e",
+      "status": "evaluated",
+      "result_sha256": "bdd9b2ae0d0b261d75664bcf231cefd3dc0b745ab732ff4c3ff97a9ac2566969"
+    },
+    {
+      "run_id": "76cc1d0eb774858e",
+      "status": "evaluated",
+      "result_sha256": "0b9889a87f34431c83e5f0546a3f0056959a1b49a8f2e1fa78a41b2f46b59172"
+    },
+    {
+      "run_id": "d225c2cecd893785",
+      "status": "evaluated",
+      "result_sha256": "d25f40720bab7c99b0c3ac3ca7701db5a7ce4b7c6e503a785702ee1a9c4b3f7a"
+    },
+    {
+      "run_id": "a0f1d488e49d1856",
+      "status": "evaluated",
+      "result_sha256": "09f27e2fac1d00d1ddb26d42c17c599f67cb036e8580044af53bf26cd7ee2352"
+    },
+    {
+      "run_id": "ab206361fde289e4",
+      "status": "evaluated",
+      "result_sha256": "a2a982c8a801effa1d0df0c5041da42da9882235803ed42af808905cec46e5d0"
+    },
+    {
+      "run_id": "2f7f04280e95d3f0",
+      "status": "evaluated",
+      "result_sha256": "b146a27d3c349830adedd445023946f9ee3714d0f78f2522118089a98d492184"
+    },
+    {
+      "run_id": "ac5e5f32eda65163",
+      "status": "evaluated",
+      "result_sha256": "64df191685f168966f6a18d7a8ac317ed7c46804fd59def4205d9740a083029e"
+    },
+    {
+      "run_id": "e151c62ff3667e1a",
+      "status": "evaluated",
+      "result_sha256": "2a703ce3fd57ae3557f190642bc75a5d0183592388bf89e69ef49bb012d650cc"
+    },
+    {
+      "run_id": "5b06fdbabba6d2ea",
+      "status": "evaluated",
+      "result_sha256": "a4661dd32ecff79b605d3a0fd00e651863694f5fdea6e58fbaf5fc1f727b0efe"
+    },
+    {
+      "run_id": "e348bdf533a57434",
+      "status": "evaluated",
+      "result_sha256": "87ccd3fc49f62f507a7ce0cf6199ca5aeab16544a8dc0c6db198f83665bcd84a"
+    },
+    {
+      "run_id": "9a07a188c08ab5f5",
+      "status": "evaluated",
+      "result_sha256": "b21bc37e26192da49196c8295cf0c03b1d3ad124a873e182161614c5681fa777"
+    },
+    {
+      "run_id": "d14fa66e7c5272b5",
+      "status": "evaluated",
+      "result_sha256": "ed2ccc68b0d9f88592905e865313c2e361c46cab9ec5ecfdd00a67276311a61d"
+    },
+    {
+      "run_id": "15f1ed3c32669409",
+      "status": "evaluated",
+      "result_sha256": "ff590962c1ff1dee81686e03cd61e0000091ac77b5ba83f65a94cc15f61010f6"
+    },
+    {
+      "run_id": "c11124afb7d4203b",
+      "status": "evaluated",
+      "result_sha256": "0d7c6769101f2bad94bdfa7aff2c3dc8da7fb3e49402ab84dc19fb5ad840bd01"
+    },
+    {
+      "run_id": "c25773f5e4e836f7",
+      "status": "evaluated",
+      "result_sha256": "876ab545e422969afcc80a0d792178c8344c212ab55cc1dca0da70a1e7642e7f"
+    },
+    {
+      "run_id": "6994989da78f2a23",
+      "status": "evaluated",
+      "result_sha256": "46c2b06c11d20991bd1d9c561d3a0f59ffe2351b7461a867a9139cad49280a08"
+    },
+    {
+      "run_id": "590ee13a1e6ae0d4",
+      "status": "evaluated",
+      "result_sha256": "4dce6043adb530946a097aad6cb6e4982f0b1bf6254425dc426e829f6704fc49"
+    },
+    {
+      "run_id": "7f7793a3b4504c80",
+      "status": "evaluated",
+      "result_sha256": "5c6c221e433b8edb001f677d047ad4649f4b60bd6e23744330605d817d3d4345"
+    },
+    {
+      "run_id": "1673856697f40ecc",
+      "status": "evaluated",
+      "result_sha256": "7de0c8d3c18597d3f800de3575a716b36087975032a7e1f7791e09d24a1af496"
+    },
+    {
+      "run_id": "3dd6cf61650d1216",
+      "status": "evaluated",
+      "result_sha256": "c647ce812c02341ff7b8a37b31c47e5ba63a3b792eb2327019eadf8d5a0a64fe"
+    },
+    {
+      "run_id": "b863a0e486530f74",
+      "status": "evaluated",
+      "result_sha256": "7b95b5371930535a6407ad69b364e3c524cc8d02c25261210e974e3876215b0d"
+    },
+    {
+      "run_id": "47ffb1ee0e66a3eb",
+      "status": "evaluated",
+      "result_sha256": "4d8444d7a02dc28bb99dbacb23e90de7b9b61728d0b2ba99539d2bddf5b1360c"
+    },
+    {
+      "run_id": "8f966ba77aaf043f",
+      "status": "evaluated",
+      "result_sha256": "6adb7197015b0f6bcdfa74c681f7f72f386138646c2f9e6df9aae6c1c1b482a2"
+    },
+    {
+      "run_id": "aba88718545fd53a",
+      "status": "evaluated",
+      "result_sha256": "e9dbe4d32cfd0cd14bbbf7b406bb50903e92c497c1f35acb0ac6dbaa9babcdec"
+    },
+    {
+      "run_id": "87f8366609a6d3f0",
+      "status": "evaluated",
+      "result_sha256": "95bc918cad83fb699bbec058feca24c89ce04d787cb1a192e22cb7ff8228d323"
+    },
+    {
+      "run_id": "053519e2392c1e0b",
+      "status": "evaluated",
+      "result_sha256": "67c8adfe45029ba390541588df31cde54195b400d4ff85051dd3f47ba121b67e"
+    },
+    {
+      "run_id": "d35286316eef338b",
+      "status": "evaluated",
+      "result_sha256": "0d2fee3d8c6c46000e34d8db09c7e87db8c6e0a552a6f57e3b18db615ab970cd"
+    },
+    {
+      "run_id": "a279ba38a1637f30",
+      "status": "evaluated",
+      "result_sha256": "1124924b31b972eb3a33930886d4ee055de2dbc9e305fbf35c0c7e34fed5b509"
+    },
+    {
+      "run_id": "bfeedde0782cc5ff",
+      "status": "evaluated",
+      "result_sha256": "047a343dfb9cb430963c252effc84963f6c337285f363ca7e1c521fc65c41e00"
+    },
+    {
+      "run_id": "24cdedf42a7af799",
+      "status": "evaluated",
+      "result_sha256": "4fe2009e36023b32ed8be2795db3194d7c2a9651a964bd1c82854d957878ed6b"
+    },
+    {
+      "run_id": "87671899a8827a33",
+      "status": "evaluated",
+      "result_sha256": "e1c98d39019a5388390007c98db1bd1d9287eea44db6deab2de9ff7862baa4cf"
+    },
+    {
+      "run_id": "6885915ca6a44725",
+      "status": "evaluated",
+      "result_sha256": "d874dd16e8db9da45b3bb719a2d44df89d7c427e932b895e588a079bf33512ca"
+    },
+    {
+      "run_id": "149bb8eab62dd2e4",
+      "status": "evaluated",
+      "result_sha256": "181203292fa1f21c5ba38c38af0c1c8f4fe9f7969d64da560bed40e103646829"
+    },
+    {
+      "run_id": "ace5fbbc63134111",
+      "status": "evaluated",
+      "result_sha256": "00eb84bb4dc4d6f2638b5dbbdd78129326623067c3903735b6c3d9ad2c75f6d9"
+    },
+    {
+      "run_id": "44856715bae7245f",
+      "status": "evaluated",
+      "result_sha256": "bb585444517f091f0bb73250dde94838bb1e824a9d755aa21be47225cc910bd5"
+    },
+    {
+      "run_id": "2b996ceacc82fe63",
+      "status": "evaluated",
+      "result_sha256": "a37880ea0fc95ec5fe2af22ab563d7fb97b8f2f6a4fd998f4f0175c19981eabb"
+    },
+    {
+      "run_id": "a2a9b9a970789335",
+      "status": "evaluated",
+      "result_sha256": "d8469830db09afd86998a040070ca5825fe82ae390eff79c2157c4954fc47946"
+    },
+    {
+      "run_id": "f8fc15d30fa49a22",
+      "status": "evaluated",
+      "result_sha256": "309096c9644faa7d665a8b0ec1df4f39e2b7b11ea90cd76b0d83003074a54089"
+    },
+    {
+      "run_id": "93a028ed74c4126a",
+      "status": "evaluated",
+      "result_sha256": "e3b5958a394bde1337e643ed1705ba7e5761df62ce8b33e6fa9b0e27a9d9fe59"
+    },
+    {
+      "run_id": "234c55c6142f79d9",
+      "status": "evaluated",
+      "result_sha256": "2963aa754f0229adf1488e23ee4ee1c3475f3b73e1820d1f60eec0882169fb26"
+    },
+    {
+      "run_id": "42120f97e5a78cce",
+      "status": "evaluated",
+      "result_sha256": "b38a62146ac2519ad2ae9fe1929034c4ebd8cd0d05e04adf79ff8c0b21579fd4"
+    },
+    {
+      "run_id": "97a0cbb42951b5d7",
+      "status": "evaluated",
+      "result_sha256": "7028f48f10915f5884a2a5631937f652ddc5fe3fba8b0fa5a247323f9e057f6e"
+    },
+    {
+      "run_id": "47725bf151273c11",
+      "status": "evaluated",
+      "result_sha256": "ed93172f96db0242bf2b62184822a1044d9fa3ff7cb5ee2d48563321ee3b1730"
+    },
+    {
+      "run_id": "986f8fff427ce07f",
+      "status": "evaluated",
+      "result_sha256": "e95cfb4dc1f362630b8114e0679b1f47753bf84225f59bce75811073e7aca375"
+    },
+    {
+      "run_id": "e98c415d935329d7",
+      "status": "evaluated",
+      "result_sha256": "d277af0f738f58f131e3733ab5c2926b81210e6ddc094dcb03f84f13109d6f5a"
+    },
+    {
+      "run_id": "36a77691f53e163e",
+      "status": "evaluated",
+      "result_sha256": "e2ee8f10ab40300ab351c43c5e27be5d425cb30804b878752e6d97010e0777ee"
+    },
+    {
+      "run_id": "2a066776b9077cd1",
+      "status": "evaluated",
+      "result_sha256": "b125a15c2dd1d14718af67f5bebc2b10d54d282f78415278057677c135ba2974"
+    },
+    {
+      "run_id": "6423422345e9d175",
+      "status": "evaluated",
+      "result_sha256": "21b22b58abbe0cb2c3e83decc36e0679aa0324ddbc43cf13432a31fd7a37f199"
+    },
+    {
+      "run_id": "0c7aef56c48c0c52",
+      "status": "evaluated",
+      "result_sha256": "40542adc9d893ec88630aaeba8afd66c1209681923f56aa723222ee818fb8dfb"
+    },
+    {
+      "run_id": "7514fc2fbb831d71",
+      "status": "evaluated",
+      "result_sha256": "53542d800ed24c4d546154bc699f696c3e12026eceb94b92a08b10cf5c2aa47f"
+    },
+    {
+      "run_id": "ec8b0fb3c7d1f5fc",
+      "status": "evaluated",
+      "result_sha256": "383ebede5d890fe628936755d59b85eecee19a7cbbf22db0edf41cf8d15feac5"
+    },
+    {
+      "run_id": "d8be653cb09eecfd",
+      "status": "evaluated",
+      "result_sha256": "7d2626a95853ec20adfbf7b39988083c607e53f3ed92be6cfb04d78c33d0b63e"
+    },
+    {
+      "run_id": "8b24c99a1c610edb",
+      "status": "evaluated",
+      "result_sha256": "78c2dfc62d7d323ea71f4edcb9d1e1728036cb14d9c7f437ffd62b12ce712d2e"
+    },
+    {
+      "run_id": "5c8a9f94dce411c3",
+      "status": "evaluated",
+      "result_sha256": "f6f62e8d699e803102d7e6bd769d2dd6577658f6350bcbf42fb23f2ca7090d3b"
+    },
+    {
+      "run_id": "43f9a5e19b2ab559",
+      "status": "evaluated",
+      "result_sha256": "a56a65560bd2f6bb103292403e38d8d7098855b686f84efb0be31f8cc658f619"
+    },
+    {
+      "run_id": "984ab78793e4f062",
+      "status": "evaluated",
+      "result_sha256": "be055910d3d3ffac24586d45d891b58d2f4dc476c7fd24abc3e07dfc562cc838"
+    },
+    {
+      "run_id": "776a9d67e8cfd70b",
+      "status": "evaluated",
+      "result_sha256": "a1d3370c04ac764e68cedaa7ea72735ce72f786adb799e4fa5e18c67b241b3d0"
+    },
+    {
+      "run_id": "957e038c2f0fd6a0",
+      "status": "evaluated",
+      "result_sha256": "e44673bf58785106a1124d97be7d85f9f61e862081f382f6a2208ad477396104"
+    },
+    {
+      "run_id": "f86137b4e3355003",
+      "status": "evaluated",
+      "result_sha256": "9773c8d064435b49f2ff2ce373a4d2771eec10431ad8bc55ec1050d236a001b9"
+    },
+    {
+      "run_id": "16740c02f1d3dc5a",
+      "status": "evaluated",
+      "result_sha256": "3dc813be9365258bdd5ad614481de312b1623794a90eaafa8474ab91b9519d1c"
+    },
+    {
+      "run_id": "5fd89c584867da93",
+      "status": "evaluated",
+      "result_sha256": "0cd6f720f3f262a62f5e77d7889828bc330a0d536f2833523de7f119f1da1dd2"
+    },
+    {
+      "run_id": "550e4ef8ce3d203b",
+      "status": "evaluated",
+      "result_sha256": "fed40c55a5b1789761b8659cdcc532c2575eb6c321b69b4fe02c1bbb614fa979"
+    },
+    {
+      "run_id": "71391a0092236b91",
+      "status": "evaluated",
+      "result_sha256": "827bc4512f4b3a238dd6ac7e1ead0ba5eb0fac5cab9d8504b1603e595d51a8a9"
+    },
+    {
+      "run_id": "ba9cba75fdf7e56d",
+      "status": "evaluated",
+      "result_sha256": "e570fd25be0d78a030a1d50309148c28a0b8dc9b1d752497b90b133ae958c7b9"
+    },
+    {
+      "run_id": "9f16448ac040b800",
+      "status": "evaluated",
+      "result_sha256": "119eea8c8b55a2af63862e4a13d4829025d1f560a831d7bc3d94ca1cbd450a12"
+    },
+    {
+      "run_id": "2b16d0eeb133b67d",
+      "status": "evaluated",
+      "result_sha256": "bccba3b46367b79d0918c9e6901eab49acdf192c3854c9d52ba09fa3c1dd7aab"
+    },
+    {
+      "run_id": "1480ac590af225ce",
+      "status": "evaluated",
+      "result_sha256": "a905083e7a4a2d3bc4bdaa110c9cb305c5177d2424afb7ff9c4e42b3e45fc3d7"
+    },
+    {
+      "run_id": "fc9a404bfe3bda02",
+      "status": "evaluated",
+      "result_sha256": "598ecce3230a172e883838710848b9d901478ad71cfc56d8e6e148abe52fb2b3"
+    },
+    {
+      "run_id": "7161bcae3de7a986",
+      "status": "evaluated",
+      "result_sha256": "0c34504b0697b37404368897621e79241f50f10ea778c79c539baffd6bf033a3"
+    },
+    {
+      "run_id": "d5b16c1d0a52c6a3",
+      "status": "evaluated",
+      "result_sha256": "6791ba4d76bcc5dfe1dd859f1a74e31769a7e0ab66b129648b83f6f0f01e3b42"
+    },
+    {
+      "run_id": "e4d6e856d36458c8",
+      "status": "evaluated",
+      "result_sha256": "0201ca002e6cfc5f5ea3b8942e8b1bb86892526f1cc7a9b22d8e5202ef56a87e"
+    },
+    {
+      "run_id": "7809284639f71551",
+      "status": "evaluated",
+      "result_sha256": "df0ca42217e33602e92e91ab9052ac0c52efb7d38d0a0524d86d0caf99780c66"
+    },
+    {
+      "run_id": "a3c23b76d898a622",
+      "status": "evaluated",
+      "result_sha256": "cf56fc398de44ed967844b4c6f24911dfaed3a0e83733b1f493f5cb2cebf0b4c"
+    },
+    {
+      "run_id": "ab14654784713aaa",
+      "status": "evaluated",
+      "result_sha256": "0a199d7a68006d4d44bd0d70d39ed5da2b4ebd48c81d3829e93e20bfa31b92d8"
+    },
+    {
+      "run_id": "337543e119624db4",
+      "status": "evaluated",
+      "result_sha256": "92f715bb628b6b4ff6c945838e718b53a8b6c0cd1e87835eb5dce91746182643"
+    },
+    {
+      "run_id": "e164954127a84177",
+      "status": "evaluated",
+      "result_sha256": "f9ffa9d8cbc4ef115cdf673cd15d958bb283a150bcdd0c7f1cbeb3a584ba84ed"
+    },
+    {
+      "run_id": "4f2837fc4b77cb2d",
+      "status": "evaluated",
+      "result_sha256": "26d31b7532e3b3f5538eddbf905ef75fd0859970d251afcc7c65c2d7a29e3b66"
+    },
+    {
+      "run_id": "34c73103e89d0658",
+      "status": "evaluated",
+      "result_sha256": "234df215b3aab834520a8d3a6933493f48dd7fb288bbf9e2bfad78fca15db4a7"
+    },
+    {
+      "run_id": "e2fe2e7c5fd62c04",
+      "status": "evaluated",
+      "result_sha256": "475c1e691956a405b51dcc544c88c63f3567bc81d895d06d9ac12b8a6fde6a68"
+    },
+    {
+      "run_id": "0046e96aa1c998c1",
+      "status": "evaluated",
+      "result_sha256": "67f5d9271160b4f13407f69083dbb9afecf4d41562060196f92460c784d15564"
+    },
+    {
+      "run_id": "1c0eb1c80b0c652c",
+      "status": "evaluated",
+      "result_sha256": "702a11704cd88329ad3e218798f78946ee197bbbc91a9bb489fdd3a0165671ff"
+    },
+    {
+      "run_id": "58e86ebdf6b99628",
+      "status": "evaluated",
+      "result_sha256": "fc0447bc8755460d70532cc2bd5aeef16c172d8450f807191fed34250775b0b7"
+    },
+    {
+      "run_id": "65d82f91dae50851",
+      "status": "evaluated",
+      "result_sha256": "399e2029033e3597ce3b874ba52f01819bba42c8eb58ff6605858e658b465e94"
+    },
+    {
+      "run_id": "4d24aa8c6dc0de5c",
+      "status": "evaluated",
+      "result_sha256": "5cccd820bfea799d17b798ede5c5cb816a44c85bd3c59c68df7639328a7f2276"
+    },
+    {
+      "run_id": "dc767acc85e447a5",
+      "status": "evaluated",
+      "result_sha256": "2bf61a31e287b927aab37759611a1e1deda4c51bdc9c7e8ee67f26283f90cb9b"
+    },
+    {
+      "run_id": "c2640d72e9a9ff3d",
+      "status": "evaluated",
+      "result_sha256": "81218b0906a187a03452e6d3aaa19d5a7a6ecb044c07cad552f3d2efe2785ba3"
+    },
+    {
+      "run_id": "5d85acd45a6c9440",
+      "status": "evaluated",
+      "result_sha256": "82a9651c019cdb73e0fa0ac33a64e1b7403f974ef0c885c4147770e6671f68b8"
+    },
+    {
+      "run_id": "f0d8ad987ac09118",
+      "status": "evaluated",
+      "result_sha256": "0943c1e2314d5be8d14925238fdd2d031d5bbc15337fdd125042717bd0e9236e"
+    },
+    {
+      "run_id": "e418b869667b66f4",
+      "status": "evaluated",
+      "result_sha256": "d78ab9f5c7bbb6dbd97dee44b06f1316baa0f7363c7cb9986229a84cdb1d2128"
+    },
+    {
+      "run_id": "e364d5f825daeeb2",
+      "status": "evaluated",
+      "result_sha256": "9c8e70f5bb4f8bafbb1ba46dbbe952baa6a70762f821938ec79c1b0066009d6f"
+    },
+    {
+      "run_id": "35fba03008b89e30",
+      "status": "evaluated",
+      "result_sha256": "a37a11e8780b2d5f22f92da332ff79fc740a550d9759302c66677af614c22df3"
+    },
+    {
+      "run_id": "e4a85a1ef1f32872",
+      "status": "evaluated",
+      "result_sha256": "c401c63218779ec59db10a800249003aef78a86857949b381abb9231c83af246"
+    },
+    {
+      "run_id": "4f48cfe9992ca9b6",
+      "status": "evaluated",
+      "result_sha256": "3310abb9bf8bd9df907d2cdc0243208f7a1e80dcad10da888e38ba5a7da46820"
+    },
+    {
+      "run_id": "09e827090ca6fbc8",
+      "status": "evaluated",
+      "result_sha256": "cd72896643e9fb4a78e0de9dca8f121f1d051ab15b241a995d369f2e85c1dd22"
+    },
+    {
+      "run_id": "0153aab5fbb55f30",
+      "status": "evaluated",
+      "result_sha256": "a129205b360ee55ad8c5395e01500d36a4ed3dfc7c4ba3fa03bc4132e3f22442"
+    },
+    {
+      "run_id": "915c71ab4889efee",
+      "status": "evaluated",
+      "result_sha256": "f43f5f5dcff22045529471e8547b9be0a4ee541605daf0d8b65eb47c633b1a77"
+    },
+    {
+      "run_id": "689264f493c91007",
+      "status": "evaluated",
+      "result_sha256": "5d7b6b49c20f08252796c8108fcd170941e2e4695494bff4f15ed1d828c35cd7"
+    },
+    {
+      "run_id": "6b80839946a9e05b",
+      "status": "evaluated",
+      "result_sha256": "b112e706645a2ac94c319533f7bd68441769f071d5fe68ed66d09ec2710b0520"
+    },
+    {
+      "run_id": "1786ccd5432378ca",
+      "status": "evaluated",
+      "result_sha256": "a3e84176c74932f582f14304c3293624c004c7b9f435f31da76d08224d348d0f"
+    },
+    {
+      "run_id": "82bbacd889d25284",
+      "status": "evaluated",
+      "result_sha256": "2c2d4ac8dc95a03ff740de003d7a2c7b280e0d461eb0db1f2e75bcd05cbf73b9"
+    },
+    {
+      "run_id": "93327b67ea1a8f1a",
+      "status": "evaluated",
+      "result_sha256": "e153e740ebf07ef38a92edee64dce4521d7f02986390e26625f5c710c3e4a7e3"
+    },
+    {
+      "run_id": "5daf1a6b7dd2bd04",
+      "status": "evaluated",
+      "result_sha256": "868e42359537803a403e7c7662642d117c532af42eee0b69d2a81997e6192c4c"
+    },
+    {
+      "run_id": "d482c4af0d06b4cb",
+      "status": "evaluated",
+      "result_sha256": "63370f411312022b46f264d080d340caaff7df3fcfd3dc7052340506f921465d"
+    },
+    {
+      "run_id": "1b38b4ae65685a77",
+      "status": "evaluated",
+      "result_sha256": "d774b9fdb3a9a8cda8b9292956a843e849eab8c9f479b6a0a0fc193cb0722fbb"
+    },
+    {
+      "run_id": "b59b0e7c80a0c73f",
+      "status": "evaluated",
+      "result_sha256": "d356292a9a9da65aedabadf9010919641d291c76511c0dcc463026cabe68c78c"
+    },
+    {
+      "run_id": "fa42a8aef61fb982",
+      "status": "evaluated",
+      "result_sha256": "7af4c366773cadb5137f8f0481feb2e49669ac7005e8ef1cadd426afe56680ee"
+    },
+    {
+      "run_id": "a9962705c8115bf6",
+      "status": "evaluated",
+      "result_sha256": "7da5ecb66aca89a696e6ee03818ea41f676a19fb2cdbb6c8d417ef493bcdc155"
+    },
+    {
+      "run_id": "8ff3394ceb0c2a01",
+      "status": "evaluated",
+      "result_sha256": "4f03d3ead1f6f71a68459270eb7a588d3e1fdb5c8b937a1a4b9b678d63662270"
+    },
+    {
+      "run_id": "8635ee3f283cc713",
+      "status": "evaluated",
+      "result_sha256": "e4cd5e951ae53ecdc89d0bd52415c76a7c2eb5752d078ab1411908f21567c659"
+    },
+    {
+      "run_id": "2fe9f76fdef143e4",
+      "status": "evaluated",
+      "result_sha256": "244be18045c862dbb3d70c532e6a8dcadd34176fe5b4bc0cf984c532c86d19c0"
+    },
+    {
+      "run_id": "2623f213da572bf8",
+      "status": "evaluated",
+      "result_sha256": "d08c7760c10d0cd93cdf0f5465fc5e6261182dd9bb96fc989b50c1d0f74d1fd7"
+    },
+    {
+      "run_id": "76ebec46751bd7b8",
+      "status": "evaluated",
+      "result_sha256": "efd83b33de0dbf86f7df9c073bb094665b20d46b69e86010e6ece68331b145cf"
+    },
+    {
+      "run_id": "5a230ce374694c0f",
+      "status": "evaluated",
+      "result_sha256": "d49e8eb4b90c720ca2b1ea7b1d78bc97ac93741c49d67cbe6076b99a2af3fdb6"
+    },
+    {
+      "run_id": "ee3db578c380ebe8",
+      "status": "evaluated",
+      "result_sha256": "cee1383939d664892fa87b9519d822b3bf8b16ea4f58911b644defc1c4c3f166"
+    },
+    {
+      "run_id": "c00abe424e6de392",
+      "status": "evaluated",
+      "result_sha256": "581715570df0ba4b319aa50df9b49ebdac37d67486b885ef12343a4367f0a55c"
+    },
+    {
+      "run_id": "36b70a81c641c372",
+      "status": "evaluated",
+      "result_sha256": "0d5abb2abd19e8f512b4cfbedbbb732823341a91177e4596ad0c980d70670728"
+    },
+    {
+      "run_id": "23c5c809568e776c",
+      "status": "evaluated",
+      "result_sha256": "f7328d6be10bf9bcf2c84e42a9f68466471e2dc30549d02ef0a11d0196656a85"
+    },
+    {
+      "run_id": "f8eb302e5ba8c50b",
+      "status": "evaluated",
+      "result_sha256": "bd41c8ac2c4cfa076c50053fa24669a459f4ee9191195094a89587b18b05409a"
+    },
+    {
+      "run_id": "e9cdc1098562669d",
+      "status": "evaluated",
+      "result_sha256": "e15ce43f1440eebcbdfbe67e5a3fddc53f5074bb8c4600a2829a9920a40729c1"
+    },
+    {
+      "run_id": "5aa87573ad1d5750",
+      "status": "evaluated",
+      "result_sha256": "01f8b13c61609d50841e34dc677eb7f3f418e465d35b3712148439f9ff6394ec"
+    },
+    {
+      "run_id": "f4c4babe8b1e5c4b",
+      "status": "evaluated",
+      "result_sha256": "12a56e425144f176f1fb1c772a5c0f26265f9cebde8efe22343e71bc2c716d0c"
+    },
+    {
+      "run_id": "095ff925ab818d0d",
+      "status": "evaluated",
+      "result_sha256": "8842dc6a32d77a6f466c5c2a5325cb3262ef04fed8a935da764a1ad00d9d0e1e"
+    },
+    {
+      "run_id": "342c4e3ee3d63be2",
+      "status": "evaluated",
+      "result_sha256": "ed5b4d70c8e040d0fd5d970a612e60947431c73b711bd81612c467156edd9b5f"
+    },
+    {
+      "run_id": "46b3abb64fa53648",
+      "status": "evaluated",
+      "result_sha256": "a339bea46023dd5284057646b46d194ce112f0fbafc815adec941940c3af7252"
+    },
+    {
+      "run_id": "0c8c7b58c35be917",
+      "status": "evaluated",
+      "result_sha256": "db9553b93181e64cd3e7d5be2d8dec59151d742ce546fd8f8733ea32386f4f6a"
+    },
+    {
+      "run_id": "826be3c743243bd0",
+      "status": "evaluated",
+      "result_sha256": "56df3897d0c98951caa2c4ca8458ac74e7e25038f595a7893618c907f049a45c"
+    },
+    {
+      "run_id": "d9064bea1755cc5c",
+      "status": "evaluated",
+      "result_sha256": "dc35c921fcca68db1e798c8c6192bf02f7e9ad7af9c6e40b5f20cae6bd89e1ea"
+    },
+    {
+      "run_id": "27aa501bbe712bda",
+      "status": "evaluated",
+      "result_sha256": "ac11d4f82c820eca60aaa7da0e569cab7048bd6f47b4c2bad15830aa073c683d"
+    },
+    {
+      "run_id": "397f9782393c667b",
+      "status": "evaluated",
+      "result_sha256": "6fd4fb7b0704ac71986ce7bc19fa4aca3332b67fe03b778dc1c0b1a0b3d3004f"
+    },
+    {
+      "run_id": "068d6880e17798e8",
+      "status": "evaluated",
+      "result_sha256": "e61300ce2f52f4df254f4fb899535ea94e8ac318c7fa94eb9fb5ba00456e8129"
+    },
+    {
+      "run_id": "182e150e6daa43c0",
+      "status": "evaluated",
+      "result_sha256": "b8b6206816db220a2f4048822ecb578f3f06b03b2e89bb3e687a78d13ff9d136"
+    },
+    {
+      "run_id": "1bdcfe63993bc1d8",
+      "status": "evaluated",
+      "result_sha256": "6768a59f8553dea01cf081555297f74ed6f7c97c40edd732e393de8282665f4f"
+    },
+    {
+      "run_id": "1d3ea91f9de72fdc",
+      "status": "evaluated",
+      "result_sha256": "9df5a94cede4c7fca28f95e6a606cbac89a406a7e64ee694fa1faae572c43185"
+    },
+    {
+      "run_id": "ed4bd8134a8896d0",
+      "status": "evaluated",
+      "result_sha256": "833324a8a513f35781a4f3bedd7b5b9daf40c10150c579309e79da795fb5fd73"
+    },
+    {
+      "run_id": "30b647e85a677485",
+      "status": "evaluated",
+      "result_sha256": "ce84062fa610ab29fe67ef8081bfd021f629ad2f8c25de4308c72c5737395563"
+    },
+    {
+      "run_id": "a712ef8c0bf930ae",
+      "status": "evaluated",
+      "result_sha256": "97f9ebea9f7d760f37ee0586d6898c723a99e23183dc0902806dd6664bbb8ebf"
+    },
+    {
+      "run_id": "96c6aa74612c5698",
+      "status": "evaluated",
+      "result_sha256": "1ad8cf4b8e2d04adacbef7ecb6392faeaa042f5d54399beb7370ec87f1da32d0"
+    },
+    {
+      "run_id": "90b962ac77b461fa",
+      "status": "evaluated",
+      "result_sha256": "cad7b19036714fdca6eba192161bb2b1a495ff5d4c73759f717d4e001792301b"
+    },
+    {
+      "run_id": "4b710bc8fec59e13",
+      "status": "evaluated",
+      "result_sha256": "8006e873a20dde26d0dddd4de13b3cd838e5bacd56f1a018262a4fa4bb8ed8df"
+    },
+    {
+      "run_id": "f2ceece87694c292",
+      "status": "evaluated",
+      "result_sha256": "61120414b807bec4444643c10857c46a8622d4c07d42a94fb896c2022b3b7c33"
+    },
+    {
+      "run_id": "396a08cf17c078dc",
+      "status": "evaluated",
+      "result_sha256": "6469e86e4dd098ae2bcfdebdcc48384034541167a521466dc704e2e5824407ea"
+    },
+    {
+      "run_id": "0d61d04a08759fde",
+      "status": "evaluated",
+      "result_sha256": "6e3b1afdabeabc00c1be012b018c7b2ce1f1fce0867dbc5f69c6b3d02f747858"
+    },
+    {
+      "run_id": "ed7aad168d2330e1",
+      "status": "evaluated",
+      "result_sha256": "aa81579ad91574ccd308d48083701f9a6db1c5e06e8120295ec5232789283198"
+    },
+    {
+      "run_id": "a2ccddb364214372",
+      "status": "evaluated",
+      "result_sha256": "12600eaf5f9f45ae0306f0cc89a934eaf47fd9a7ff4a3852902bd3becbff5f1e"
+    },
+    {
+      "run_id": "de2d874e97117364",
+      "status": "evaluated",
+      "result_sha256": "e17e5b46cf7d10331fb89f6a85805769f920c9c0668405a8e85b109e71a9b78f"
+    },
+    {
+      "run_id": "3fdaa3894be6b4a6",
+      "status": "evaluated",
+      "result_sha256": "5a480b02cf6cd4159c99289ae6497c02e199dae9e0222b53b34555e4f847649e"
+    },
+    {
+      "run_id": "3e8679ed9675a861",
+      "status": "evaluated",
+      "result_sha256": "5610cd94c6015b2059dcc8adc5eef851cc659ae5d1c654278043f595de4c196d"
+    },
+    {
+      "run_id": "c50c7a654edfc8a5",
+      "status": "evaluated",
+      "result_sha256": "072ab493b0e299c4f92ad154c7e5d93c06da63abec8e863e9d85624a97b85cdf"
+    },
+    {
+      "run_id": "3cdcbb96e8b988cd",
+      "status": "evaluated",
+      "result_sha256": "c156dc096943906b45f4cd8d404ed64703db31799f7efb1fc62234e9434c6d53"
+    },
+    {
+      "run_id": "6d8ce764be5992df",
+      "status": "evaluated",
+      "result_sha256": "5baed1eb02e28fb010bac47c096d2c3656d62adca3f74ceaac229768f37389a4"
+    },
+    {
+      "run_id": "53b0f916c5ccda23",
+      "status": "evaluated",
+      "result_sha256": "ebf4553cd7f924f4eccaac9fb743f903a8951c1730358c6bcdf8c3949e41541d"
+    },
+    {
+      "run_id": "1ce4addd2d9bc8e0",
+      "status": "evaluated",
+      "result_sha256": "b5f7a2610d3ee111192f61f0fa542c3fabbcddf68ce622c96a0c10d436596984"
+    },
+    {
+      "run_id": "2c91e21796fa73ec",
+      "status": "evaluated",
+      "result_sha256": "ec54f1505942ab755a19654260a4a360ccf1d58f81db3064e7cfbceba86d0b5b"
+    },
+    {
+      "run_id": "55748a0c6034d3aa",
+      "status": "evaluated",
+      "result_sha256": "63c97dbef5601b56313a0ef84d106d1174ac303c16d25488126e84cd4631cd48"
+    },
+    {
+      "run_id": "06dda25ed0e8d2ad",
+      "status": "evaluated",
+      "result_sha256": "220bf9cc72176b0a363e0cdd448301a102d6af21c0e830f50d39e3c4bd1118ec"
+    },
+    {
+      "run_id": "6c212f64b6b4cbfd",
+      "status": "evaluated",
+      "result_sha256": "2b70dfdcd9f0a4efff60a13ba4de7b8a67f5f02714315561368623ca1a49f703"
+    },
+    {
+      "run_id": "e34a48c18f2832d1",
+      "status": "evaluated",
+      "result_sha256": "9b4a3d09a9b86b8aadf093186fe2f49cdd28666ff20b2ca149a08f006e935790"
+    },
+    {
+      "run_id": "b15d44a8bf769b43",
+      "status": "evaluated",
+      "result_sha256": "1c0cf4aa6f60ddbf2599da7c018f4d74a9fd68497e1cb50ceea0d368be99d6c7"
+    },
+    {
+      "run_id": "17974e17241c28cd",
+      "status": "evaluated",
+      "result_sha256": "df0d1799e7993a320b068080e1d4158e4920a6ad8cd4d78801bfe7533351b4cb"
+    },
+    {
+      "run_id": "7a6b94b5a4c7bb33",
+      "status": "evaluated",
+      "result_sha256": "51e98dbc42cdbe65a5f6b034551ffe4740ad79c90e8b1c095def6caa830152cf"
+    },
+    {
+      "run_id": "72c9e1e387e424c1",
+      "status": "evaluated",
+      "result_sha256": "e274a63fb9af9f1cc2ea6ada5412b0c2992001bd5012fd5d1cefa9f54142c354"
+    },
+    {
+      "run_id": "6538029dceff5f91",
+      "status": "evaluated",
+      "result_sha256": "3c7950b144d945e5d142f18ae866b1b4d977bf61389b0ef7f07bc86d4b547578"
+    },
+    {
+      "run_id": "ad14ec8942eaece1",
+      "status": "evaluated",
+      "result_sha256": "3b7461956216afa67b6e2095b334c78521609ebe3f376c8ddc9d7743896dbb77"
+    },
+    {
+      "run_id": "d1f387e010da22b2",
+      "status": "evaluated",
+      "result_sha256": "78febf983ea5632950ffaeded81c7bee8d1dcc68c6322c6406e5fa45e263c630"
+    },
+    {
+      "run_id": "5ded5191f2d67853",
+      "status": "evaluated",
+      "result_sha256": "bc389fc88ef5f54c18ee21aa119a84255abad20c0634269f9060a68de7cda304"
+    },
+    {
+      "run_id": "8d2e5a3da3503825",
+      "status": "evaluated",
+      "result_sha256": "afe8866ae56cedac0ba34606da24667ab84e90cc4968041bc6c97fcd31f4d10a"
+    },
+    {
+      "run_id": "3cbc93140ff3aade",
+      "status": "evaluated",
+      "result_sha256": "74746789e2ef3593b0f2769c944f80c7eb1ff412452c299e9d009db98ff8a66b"
+    },
+    {
+      "run_id": "415f1b172f50fc08",
+      "status": "evaluated",
+      "result_sha256": "59eeedea568a7450d4b9ef3340ea0dbc94af47e120b8bfdb63ba581d023b1413"
+    },
+    {
+      "run_id": "ae67d7ced887f7ba",
+      "status": "evaluated",
+      "result_sha256": "75e0ba4800a2a48fada7976d235cfe786d8a9d186b3e847ca84a32bcfbcd6a1e"
+    },
+    {
+      "run_id": "16fc0b312658bbd6",
+      "status": "evaluated",
+      "result_sha256": "0a4a9247ea3c42c4d2ba50bde682402888726499fb36bca2c8773edd0f60555c"
+    },
+    {
+      "run_id": "9c652b996a21e351",
+      "status": "evaluated",
+      "result_sha256": "ff5448e63bdea8fb95b082615bda304a7a5d79f4c7318419ff8ff8b7ef781af3"
+    },
+    {
+      "run_id": "365ff72626461c20",
+      "status": "evaluated",
+      "result_sha256": "09e6ac31087af134053af3854bd81050b575d49336fa44e7adf8d36a14073d67"
+    },
+    {
+      "run_id": "ee4cdd6b39a28224",
+      "status": "evaluated",
+      "result_sha256": "f677666d0611b6faa489b8e0d2ca67f7486bb5c198fddf103bb15f832c690841"
+    },
+    {
+      "run_id": "84614d600a6872d6",
+      "status": "evaluated",
+      "result_sha256": "89c714eccf88a0822e7343189177f8255a11558aacca52332dc9dc72b0e11eb5"
+    },
+    {
+      "run_id": "b1bbf200f1ebc3ed",
+      "status": "evaluated",
+      "result_sha256": "9847562d6eec600bed2f337af0e74f08bc5bf7342909508a49763dc676c9007f"
+    },
+    {
+      "run_id": "d38ccd1b2bd6edd9",
+      "status": "evaluated",
+      "result_sha256": "8f30c78d2a947ebca88bcd4b0a382eb28edd564193cdc93a418838bc9206b02f"
+    },
+    {
+      "run_id": "bc182d52303824c1",
+      "status": "evaluated",
+      "result_sha256": "3629b367b13ff49f2b69ac35e1ef6be92633704aa8e8f04758057bb2d9057629"
+    },
+    {
+      "run_id": "ee98bac0815d5e71",
+      "status": "evaluated",
+      "result_sha256": "8793e652a0db62ef2614db8d92784223ee1a3b2d9c6feb36fef9dd2dd8f59f5d"
+    },
+    {
+      "run_id": "553312dc7b34ada6",
+      "status": "evaluated",
+      "result_sha256": "5d52fad88cc8573951ac7b68d90eb9d210ab5ab59e5a9e975eb476a2f29eb912"
+    },
+    {
+      "run_id": "0accbc30a8ce3a6f",
+      "status": "evaluated",
+      "result_sha256": "bdba49bbc14b0e9772af87c6676a4ef9f3f01ef2c46d76eca1a681037a73776e"
+    },
+    {
+      "run_id": "c388fa4aad545bbe",
+      "status": "evaluated",
+      "result_sha256": "b0b0a004fba29a173d240eecc612ead30a6d7cb433291e0a7ebd760d3b9e3011"
+    }
+  ],
+  "replay_source_commit": "7df70ce8422964953cfedebe18d44f916a6bfe40",
+  "replay_worker_sha256": "38a8c9f3fcdde507acb0ffe1b20a779f0dd0bed5656e8f43f90655cf2888d4be",
+  "replay_policy": "Compare canonical JSON runtime identity separately; unchanged mathematical fields and original numeric tolerances"
+}

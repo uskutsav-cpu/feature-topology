@@ -73,6 +73,12 @@ successfully replayed after the metadata failure. The hosted campaign uses the
 same pinned mathematical sources, all original inputs and unchanged budgets.
 Original attempts and the original negative predictive result remain preserved.
 
+The hosted task-fiber campaign and its strict collector have now completed:
+all 210 models are source checked and numerically replayed. The 420 family views
+contain 385 distinct calculations, with exact lambda-zero reuse. Their complete
+execution audit and all results are retained. See the
+[component findings and remaining gates](TASK_FIBER_COMPLETION_STATUS.md).
+
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
 outcomes/replays are collected. Screen failures are not negative injectivity
