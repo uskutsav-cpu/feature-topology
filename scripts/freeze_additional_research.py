@@ -236,11 +236,15 @@ def production_noise_paths(repo,original_files):
 
 def task_preserving_paths(repo,original_files):
     from scripts.collect_task_preserving_fibers import collect
+    from scripts.collect_hosted_task_fibers import validate_execution
     from scripts.evaluate_task_preserving_fibers import source_files,task_binding,task_plan
 
     root=repo/'results/task_preserving_fiber_completion_hosted_v1'
     stored=load_json((root/'collection.json').read_bytes())
     if collect(repo,root)!=stored:raise ValueError('Task-preserving collection differs from checked records/replays')
+    execution=validate_execution(repo,root)
+    if load_json((root/'execution/audit.json').read_bytes())!=execution:
+        raise ValueError('Hosted task-preserving execution audit differs from source-bound shard evidence')
     sources={p.relative_to(repo).as_posix():digest(p) for p in source_files(repo)}
     paths=set(root.rglob('*.json'))|set(source_files(repo))
     for relative,expected in stored['analysis_data_sha256'].items():
@@ -266,12 +270,15 @@ def task_preserving_paths(repo,original_files):
     paths.update(incident.rglob('*'))
     paths={path for path in paths if path.is_file()}
     paths.update(repo/name for name in ['scripts/collect_task_preserving_fibers.py','scripts/analyze_task_preserving_fibers.py',
-        'scripts/replay_task_preserving_fibers_v2.py','docs/TASK_FIBER_REPLAY_METADATA_INCIDENT.md'])
+        'scripts/replay_task_preserving_fibers_v2.py','docs/TASK_FIBER_REPLAY_METADATA_INCIDENT.md',
+        'scripts/collect_hosted_task_fibers.py','scripts/remote_task_preserving_completion.py',
+        'configs/task_fiber_hosted_execution_v1.json','.github/workflows/task_fiber_hosted_completion_v1.yml'])
     summary={key:stored[key] for key in ['complete_models','evaluated_models','unreached_models',
         'numeric_replays','selection_only_replays','training_seeds','source_commit','scope',
         'paired_family_views','distinct_family_evaluations','lambda_zero_family_reuse','replay_source_commit','replay_policy']}
     summary.update(source_bound_same_host_replays_checked=True,grid_side=100,
-        grid_pairs_per_family=495000,search_candidates_per_evaluated_family=1040)
+        grid_pairs_per_family=495000,search_candidates_per_evaluated_family=1040,
+        hosted_execution={key:execution[key] for key in ['workflow_run','source_commit','complete_models','complete_shards','scope']})
     return paths,summary
 
 
