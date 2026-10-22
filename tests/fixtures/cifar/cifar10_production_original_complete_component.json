@@ -1,0 +1,67 @@
+{
+  "schema": "feature-topology.remote-cifar-collection.v1",
+  "result_tag": "cifar10-v3-hosted-d06123e",
+  "source_commit": "d06123ebdc4a23e8d4bec976e2fe92793b9795a0",
+  "source_specification": "configs/completion/cifar_sources_v3.json",
+  "source_specification_sha256": "d97d23cbba86d05b60d4c82cb82690b65f93bdc5aa47f137f5680b0c8742a533",
+  "expected": 27,
+  "complete": {
+    "9ea3c0cbc4c18405": "cifar-9ea3c0cbc4c18405-35811156103-1.tar.gz",
+    "968f2b0a2db80b6d": "cifar-968f2b0a2db80b6d-35785517042-1.tar.gz",
+    "92431fc5a4f7e65d": "cifar-92431fc5a4f7e65d-35562419981-1.tar.gz",
+    "a449e215b8abff47": "cifar-a449e215b8abff47-35681747297-1.tar.gz",
+    "0037dc843032f26e": "cifar-0037dc843032f26e-35681747297-1.tar.gz",
+    "325cbec85105cade": "cifar-325cbec85105cade-35562419981-1.tar.gz",
+    "32f3e5dfa9bcf01e": "cifar-32f3e5dfa9bcf01e-35562419981-1.tar.gz",
+    "dcaa885b4bcd7a72": "cifar-dcaa885b4bcd7a72-35681747297-1.tar.gz",
+    "62574029c5b488b4": "cifar-62574029c5b488b4-35562419981-1.tar.gz",
+    "979f556211f87684": "cifar-979f556211f87684-35562419981-1.tar.gz",
+    "40d823566c630796": "cifar-40d823566c630796-35681747297-1.tar.gz",
+    "d0ba11d7801dbcec": "cifar-d0ba11d7801dbcec-35681747297-1.tar.gz",
+    "a4f3f1e6584a6d40": "cifar-a4f3f1e6584a6d40-35562419981-1.tar.gz",
+    "9cc10ce139aefb93": "cifar-9cc10ce139aefb93-35562419981-1.tar.gz",
+    "1605b3ab3a01ef39": "cifar-1605b3ab3a01ef39-35562419981-1.tar.gz",
+    "4c002cae7511dda4": "cifar-4c002cae7511dda4-35562419981-1.tar.gz",
+    "9fc808e83dbd2b08": "cifar-9fc808e83dbd2b08-35562419981-1.tar.gz",
+    "60a036402e7e2c15": "cifar-60a036402e7e2c15-35562419981-1.tar.gz",
+    "0d13dc927bd69a52": "cifar-0d13dc927bd69a52-35562419981-1.tar.gz",
+    "4cd672b17a03a069": "cifar-4cd672b17a03a069-35562419981-1.tar.gz",
+    "dbf48448c0801fcb": "cifar-dbf48448c0801fcb-35562419981-1.tar.gz",
+    "64ab01470f8a3934": "cifar-64ab01470f8a3934-35562419981-1.tar.gz",
+    "5eaa237fc5141dc2": "cifar-5eaa237fc5141dc2-35562419981-1.tar.gz",
+    "849036710d7530c3": "cifar-849036710d7530c3-35562419981-1.tar.gz",
+    "30437828abcba292": "cifar-30437828abcba292-35562419981-1.tar.gz",
+    "6985357a148fecbf": "cifar-6985357a148fecbf-35562419981-1.tar.gz",
+    "e53bccf757da168a": "cifar-e53bccf757da168a-35562419981-1.tar.gz"
+  },
+  "partial": {
+    "9ea3c0cbc4c18405": [
+      "status-9ea3c0cbc4c18405-35562419981-1.json",
+      "status-9ea3c0cbc4c18405-35681747297-1.json",
+      "status-9ea3c0cbc4c18405-35785517042-1.json"
+    ],
+    "968f2b0a2db80b6d": [
+      "status-968f2b0a2db80b6d-35562419981-1.json",
+      "status-968f2b0a2db80b6d-35681747297-1.json"
+    ],
+    "a449e215b8abff47": [
+      "status-a449e215b8abff47-35562419981-1.json"
+    ],
+    "0037dc843032f26e": [
+      "status-0037dc843032f26e-35562419981-1.json"
+    ],
+    "dcaa885b4bcd7a72": [
+      "status-dcaa885b4bcd7a72-35562419981-1.json"
+    ],
+    "40d823566c630796": [
+      "status-40d823566c630796-35562419981-1.json"
+    ],
+    "d0ba11d7801dbcec": [
+      "status-d0ba11d7801dbcec-35562419981-1.json"
+    ]
+  },
+  "missing": [],
+  "invalid": [],
+  "unavailable_partial": [],
+  "installed_files": {}
+}

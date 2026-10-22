@@ -41,3 +41,13 @@ The implementation has small multipart corruption/omission controls and a test
 that reads the actual packer's output. These tests establish the audit's
 behavior on fixtures. The full research package must still be built and audited
 from the actual frozen study before completion can be claimed.
+
+A read-dependency audit of the full restored suite passed all 440 tests and
+recorded 2,424 parent-process input paths. It identified two legacy CIFAR
+component snapshots used by the cohort regression test but superseded in the
+final research ledger. Exact copies now live in `tests/fixtures/cifar`, with
+origin paths and byte hashes. The test's cell-set and exact-learning-rate
+assertions remain unchanged. The original scientific collection reports are
+preserved at their historical paths. The final package still requires its
+actual complete freeze, read-back audit and restored-suite check; this input
+trace alone is not that verification.

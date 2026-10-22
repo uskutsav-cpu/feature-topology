@@ -11,7 +11,7 @@ def test_hosted_finalization_reuses_exact_published_original_cohorts_and_frozen_
     for dataset in ['CIFAR10','CIFAR100']:
         key=dataset.lower();frozen=json.loads((repo/'results'/key/'gamma_to_lr.json').read_text())
         original,correction,phase=component_cells(dataset,production_cells(dataset,frozen))
-        published=json.loads((repo/'results/completion/remote_collections'/
+        published=json.loads((Path(__file__).parent/'fixtures/cifar'/
             (key+'_production_original_complete_component.json')).read_text())
         assert {cell_id(c) for c in original}==set(published['complete'])
         assert {c['seed'] for c in phase}==({0,2,4} if dataset=='CIFAR10' else set(range(5)))
