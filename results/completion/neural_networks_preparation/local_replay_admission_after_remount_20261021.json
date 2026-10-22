@@ -1,0 +1,18 @@
+{
+  "status": "accepted_partial_replay",
+  "full_study_frozen": false,
+  "complete": false,
+  "validated_runs": 66,
+  "expected_runs": 70,
+  "datasets": {
+    "CIFAR10": 35,
+    "CIFAR100": 31
+  },
+  "report_path": "results/completion/neural_networks_preparation/local_validation_66_after_remount_20261021.json",
+  "report_sha256": "a505e3c3e2ce81b6d07f569968e8ce12b37cdd87d1eccf78db4c97e177fab977",
+  "cache_snapshot_path": "results/completion/neural_networks_preparation/cifar_replay_cache_66_after_remount_20261021.json",
+  "cache_sha256": "c54746d8ab4fe80d1ab6374d76eb9909253d169366a224ca9e970a7e4180d6b4",
+  "verifier_sha256": "597d5154b9989fe4641ecb4b16526007d057af5a05f39e8ce260e087d220956d",
+  "new_cells_with_exact_correct_count_replays": 3,
+  "scope": "Preserved exact partial report and cache bytes; canonical validation workspace holds the resumable cache. Missing four production cells still prevent complete CIFAR and full-study readiness."
+}

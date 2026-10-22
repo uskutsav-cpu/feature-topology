@@ -1,0 +1,13 @@
+{
+  "scope": "Exact immutable historical collection snapshots used by the cohort regression test; scientific source reports remain unchanged",
+  "snapshots": {
+    "cifar10_production_original_complete_component.json": {
+      "original_path": "results/completion/remote_collections/cifar10_production_original_complete_component.json",
+      "sha256": "05d85a8589198682e4d7a4b24e8c383694bcd19b9efa209dfd17f484a282b1f3"
+    },
+    "cifar100_production_original_complete_component.json": {
+      "original_path": "results/completion/remote_collections/cifar100_production_original_complete_component.json",
+      "sha256": "b1842614b2cb7adeb4b2075b48834027b4f3205a88f5267a7fcd944987b396b0"
+    }
+  }
+}

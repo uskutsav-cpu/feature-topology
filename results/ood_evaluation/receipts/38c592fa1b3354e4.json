@@ -1,0 +1,30 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "38c592fa1b3354e4",
+  "input_tag": "ood-553ac91d740aab4e-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/553ac91d740aab4e.json",
+  "input_index_sha256": "e9b96f90f643225dff8df602af292df8020403e5629e894250a294f118a1d13c",
+  "input_archive_sha256": "9945ffd2a985558aaacff2f2cff6667735cb08c3e889106d6ebd41246588c940",
+  "source_member_sha256": {
+    "config.json": "ac3ee2ab635d23e9c378244ff10089c08ea1a74270dd9ec39dcc865a81e3d244",
+    "final.pt": "e405e10e2cd7ad1512c249907d21a8ac09233cb8b4b4c91cd2abb2a450768e2f",
+    "step_0000000.pt": "a56e2fbcc5f148866aa69bf3568041d6605a9a66e3152312e34fef306d2f60f0",
+    "step_0000001.pt": "668bd424a5f08466f4ef496b5a616d035b637f927911ce1f6d4202f5f8bfc6a9",
+    "step_0000002.pt": "c7609b0a27e148b53a8582fa572b9438f4f8da172323377e98f7f16419684524",
+    "step_0000004.pt": "8cb35f29c15f8ef323452935483976ea5f741d94409115c5ab142694519ce021",
+    "step_0000008.pt": "833a3347e8bdbf9054ef2b2b3d6dc14cbebdfa950c33d6f6acf44f7db3831d8a",
+    "step_0000016.pt": "c180fb4ea5759d68fd5d722eee879716cbd4df221bee322635c4fd900f585957",
+    "step_0000032.pt": "e5ac03a86b41e710eea4e57fd9047377c308012f8d8203741ce506e1364ebc98",
+    "summary.json": "8f6ca08876d086e6d68d203983513636c8a40c8d2270774bce33be707573a6de"
+  },
+  "evaluation_sha256": "bdb4b26a68ffec55eaaee4eb30ac6cc4ce96df0c283dad6cd1c737cd8d23d947",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

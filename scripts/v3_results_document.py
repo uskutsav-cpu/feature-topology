@@ -24,9 +24,9 @@ PRIMARY_LABELS = {
 }
 
 RELEVANCE_LABELS = {
-    "fiber_global_normalized_minimum": "sampled global fiber margin M",
+    "fiber_global_normalized_minimum": "sampled global phi-coordinate margin",
     "fiber_collision_pairs": "sampled collision-pair count Q",
-    "mlp_nuisance_cosine": "nonlinear nuisance decodability D_F",
+    "mlp_nuisance_cosine": "nonlinear phi-coordinate decodability",
     "test_accuracy": "test accuracy R",
 }
 
@@ -223,6 +223,19 @@ def _image_table(frame: pd.DataFrame) -> str:
     return "\n".join(rows)
 
 
+def image_accounting_table(frame: pd.DataFrame) -> str:
+    rows=[
+        '| Study | runs | converged | budget exhausted | diverged | gamma-level mean test accuracy range |',
+        '|---|---:|---:|---:|---:|---:|']
+    for study,part in frame.groupby('study',sort=True):
+        counts=part.status.value_counts()
+        means=part[part.status!='diverged'].groupby('gamma').test_accuracy.mean().dropna()
+        accuracy=f'{means.min():.4g} to {means.max():.4g}' if len(means) else 'not estimable'
+        rows.append(f'| {study} | {len(part)} | {counts.get("converged",0)} | '
+                    f'{counts.get("budget_exhausted",0)} | {counts.get("diverged",0)} | {accuracy} |')
+    return '\n'.join(rows)
+
+
 def render(repo: Path, output: Path, frozen_manifest_sha256: str, reports: list[dict],
            relevance_statistics: dict, ood_statistics: dict,
            certification: dict, width_scaling: dict) -> dict:
@@ -241,6 +254,7 @@ def render(repo: Path, output: Path, frozen_manifest_sha256: str, reports: list[
                             thresholds["near_singular_normalized_margin"])
     atomic_json(output / "claim_audit.json", audit)
     relevance_headline, ood_headline, image_headline = _write_headline_tables(output)
+    image_accounting=pd.read_csv(output/'images/image_run_accounting.csv')
 
     effect_rows = effects[effects.metric.isin(PRIMARY_LABELS)].copy()
     effect_rows["order"] = effect_rows.metric.map(
@@ -341,6 +355,10 @@ All frozen relevance levels ({relevance_levels}) are reported with training-seed
 and fixed-gamma paired contrasts in `relevance_dependence/`. The fixed headline rule below
 uses maximal frozen γ and compares maximal λ with the λ=0 baseline; all frozen metrics,
 including those not displayed, are retained in `headline_relevance_effects.csv`.
+These measurements follow the original phi coordinate at fixed theta. At positive
+lambda, phi enters the target rule and is no longer a pure nuisance. They are not
+measurements on task-preserving level sets of theta + lambda*sin(phi). The
+continuous-circle certificates apply only to the separate lambda=0 primary study.
 
 {_relevance_table(relevance_headline)}
 
@@ -354,6 +372,19 @@ not establish representation causality. Major figures are
 {_ood_table(ood_headline)}
 
 ## Controlled image validation
+
+Every production outcome is counted below, including runs that exhausted the
+frozen training budget or diverged. Accuracy ranges describe the minimum and
+maximum gamma-level seed means; they are not simultaneous intervals or new
+hypothesis tests. Nonconverged finite outcomes remain in all metric summaries.
+
+{image_accounting_table(image_accounting)}
+
+`images/image_run_accounting.csv` retains each configured target, last recorded
+training loss and step, status, absolute held-out accuracy/loss, and the accuracy
+of uniform random class prediction. A divergent run has no imputed test score;
+its last finite training log is not its loss at divergence. These are recorded
+optimization outcomes, not additional independent seed replicates.
 
 The same fixed endpoint rule is applied separately to each frozen image-study schema. The
 table reports the three measures selected for the pre-existing overview figures at output

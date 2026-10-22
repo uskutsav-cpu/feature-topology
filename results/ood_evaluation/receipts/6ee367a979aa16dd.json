@@ -1,0 +1,32 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "6ee367a979aa16dd",
+  "input_tag": "primary-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/primary_inputs_v3.json",
+  "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+  "input_archive_sha256": "7fa2888f9689cf9a179033930a0a3d2ad4cb80d6d144e01d01d605e1da2d31d4",
+  "source_member_sha256": {
+    "config.json": "d6df0a7493758e60b97de4b683e22c2875fa614a8130613b5ed1efd12aed8b07",
+    "final.pt": "75f69b3ce134f467fb78b5b117f02198aa52c25553e29f8d230d453da8ddea15",
+    "step_0000000.pt": "04abf6466d8af4da76e7c5acaa65b83acc539436c4b8e92c9832f02a29887d47",
+    "step_0000001.pt": "f4730c1acfd313b0abac954ce8fb5a9c15da622d8f86a4261f079a8d1fabf189",
+    "step_0000002.pt": "a7979025399b2345396ff9e8c8036938664b4ae12e6c3384aad6e8ef670f0d76",
+    "step_0000004.pt": "9ce0c78d79a89f92a40bfe3ba6d9a0a2caeb134f555050a7db9e7967acb51fd4",
+    "step_0000008.pt": "8748216b76fbc6c7398097034267d169ccd2d4b04661e975b8227cb2cae8d973",
+    "step_0000016.pt": "9274928d567d9d2095127f151516e3ff7ea53a3f1a768a4ac355e3a561a6521c",
+    "step_0000032.pt": "636b2ce6ce4fc1cab59a6881afd94ac19b990d47b6748233dafafd36a9de5c70",
+    "step_0000064.pt": "980016d6c02f2c4f397f277896b0558504a248f0e069606c25d04e7c5267adb4",
+    "step_0000128.pt": "4b0b3e74807cfbf1a60b5cc3255de9ed39e6771506146e436bdd853dce67fd8b",
+    "summary.json": "9385e4346654e4dd4f7ee12d64764caf3bcba76e21058297139416f32ae61dcb"
+  },
+  "evaluation_sha256": "3de806cdfa935d490b6b98ccb09d50ac9ad18d787dbbe27abe1d16586f77eb41",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

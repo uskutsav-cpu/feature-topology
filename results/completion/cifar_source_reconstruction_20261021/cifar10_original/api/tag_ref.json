@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/cifar10-v3-hosted-d06123e",
+  "node_id": "REF_kwDOUSlfQtoAI3JlZnMvdGFncy9jaWZhcjEwLXYzLWhvc3RlZC1kMDYxMjNl",
+  "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/refs/tags/cifar10-v3-hosted-d06123e",
+  "object": {
+    "sha": "d06123ebdc4a23e8d4bec976e2fe92793b9795a0",
+    "type": "commit",
+    "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/commits/d06123ebdc4a23e8d4bec976e2fe92793b9795a0"
+  }
+}

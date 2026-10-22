@@ -1,0 +1,20 @@
+{
+  "scope": "Additional Mac replay of the hosted numerical margin, not new training or domain selection",
+  "run_id": "25b579b2abddc0f9",
+  "theta_fraction": [
+    1,
+    8
+  ],
+  "hosted_margin": "[0.024136904291782770458265477975245971720 +/- 1.42e-40]",
+  "local_minimum": "[0.024136904291782418865007359147280741183 +/- 9.4e-43]",
+  "failed_leaf_bounds": [
+    {
+      "code": "011000111",
+      "competitor": 3,
+      "value": "[+/- 12.9]",
+      "local_lower": "[0.024136904291782418865007359147280741183 +/- 9.4e-43]",
+      "gap_approx": 3.5159325811882797e-16
+    }
+  ],
+  "all_local_leaf_margins_positive": true
+}

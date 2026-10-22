@@ -1,9 +1,10 @@
 import json
 import shutil
+from pathlib import Path
 import pytest
 import pandas as pd
 from research_ext.io import atomic_json,read_json
-from research_ext.catalog import load_catalog,matched_risk,coverage,production_profile,PRODUCTION,condition_id
+from research_ext.catalog import Catalog,load_catalog,matched_risk,coverage,production_profile,PRODUCTION,condition_id
 from research_ext.report import analyze
 
 def test_alias_step_not_pseudoreplicated(make_run):
@@ -94,3 +95,54 @@ def test_report_filters_explicit_manifest_run_ids(make_run,tmp_path):
     assert result['runs_read']==1
     frame=pd.read_csv(out/'metrics_long.csv')
     assert set(frame.run_id)=={first.name}
+
+
+def test_filtered_report_tracks_pilot_options_but_not_unread_pilot_metrics(make_run,tmp_path):
+    from scripts.final_analysis import verify_consumed_inputs
+    from scripts.freeze_results import freeze_file_hashes
+
+    root,run,production=make_run()
+    pilot=run/'metrics/legacy_pilot'
+    options=read_json(production/'options.json');options['jacobian_points']=1
+    atomic_json(pilot/'options.json',options)
+    record=read_json(production/'final.json');record['test_accuracy']=.01
+    atomic_json(pilot/'final.json',record)
+    catalog=load_catalog([root],profile=production.name);catalog.require_clean()
+    assert str(pilot/'options.json') in catalog.input_hashes
+    assert str(pilot/'final.json') not in catalog.input_hashes
+    assert {row['test_accuracy'] for row in catalog.rows}=={.98}
+
+    output=tmp_path/'report'
+    analyze([root],output,profile=production.name,gammas=[.5],seeds=[0],
+            repeats=10,transition_repeats=2)
+    consumed=read_json(output/'input_hashes.json')
+    assert consumed==catalog.input_hashes
+    manifest={'files':freeze_file_hashes(tmp_path,list(catalog.input_hashes))}
+    assert verify_consumed_inputs(tmp_path,manifest,output/'input_hashes.json')==consumed
+
+
+def test_catalog_rejects_changed_bytes_between_reads(tmp_path):
+    path=tmp_path/'source.json';path.write_text('{"value":1}')
+    catalog=Catalog();assert catalog.read(path)=={'value':1}
+    path.write_text('{"value":2}')
+    with pytest.raises(ValueError,match='changed during reading'):
+        catalog.read(path)
+
+
+def test_readiness_binds_all_discovered_catalog_inputs(make_run,tmp_path,monkeypatch):
+    import scripts.freeze_results as freezer
+
+    root,run,production=make_run()
+    pilot=run/'metrics/legacy_pilot'
+    options=read_json(production/'options.json');options['jacobian_points']=1
+    atomic_json(pilot/'options.json',options)
+    atomic_json(pilot/'final.json',read_json(production/'final.json'))
+    catalog=load_catalog([root]);catalog.require_clean()
+    inventory={'failures':[],
+        'studies':{'main':{'expected':130,'accounted':1,'runs':[{'run_id':run.name}]}},
+        'validated_runs':[{'run_id':run.name,'path':str(run),'status':'converged'}]}
+    monkeypatch.setattr(freezer,'inventory',lambda *args,**kwargs:inventory)
+    report,paths=freezer.readiness(tmp_path)
+    assert report['ready'] is False
+    assert {Path(name) for name in catalog.input_hashes}.issubset(paths)
+    assert pilot/'final.json' in paths and pilot/'options.json' in paths

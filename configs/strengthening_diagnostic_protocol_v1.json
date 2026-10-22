@@ -1,0 +1,34 @@
+{
+  "schema": "feature-topology.strengthening-diagnostic-protocol.v1",
+  "recorded_date": "2026-10-20",
+  "status": "Additional research comparison specified before inspecting its newly generated nuisance-shift outcome tables; original pilot/continuation/width findings were already known. Not an original-study preregistration.",
+  "question": "Do task-fiber survival diagnostics improve held-out prediction of nuisance-shift degradation beyond gamma, achieved risk, conventional geometry, decoding, and variability-collapse baselines?",
+  "source_design": "The existing 140 frozen OOD cells: four training conditions, seven gamma values, five paired training seeds.",
+  "checkpoint_rule": "Reuse the first stored checkpoint at training loss <= 0.1; never retune learning rate or select using OOD outcomes.",
+  "outcomes": ["concentrated_minus_iid_accuracy", "spurious_minus_iid_accuracy", "unseen_minus_iid_accuracy"],
+  "independent_unit": "Training seed; gamma and condition observations from a seed remain grouped.",
+  "comparison_models": {
+    "design": "Fixed condition-by-gamma cell indicators and actual achieved training loss.",
+    "conventional": ["cka_drift", "effective_rank", "ntk_drift", "local_normalized_q01", "global_normalized_q01", "linear_nuisance_cosine", "mlp_nuisance_cosine", "ph_h1_top2", "ph_h2_top1", "vci", "within_to_between_covariance_trace_ratio"],
+    "fiber_added": ["fiber_local_minimum", "fiber_local_normalized_minimum", "fiber_global_minimum", "fiber_global_normalized_minimum", "fiber_collision_pairs"]
+  },
+  "representation_baselines": {
+    "domain": "The existing 100-by-100 IID latent grid for the same pure-nuisance task, with no OOD outcome used in feature construction.",
+    "layer": "Last hidden layer of the trainable branch; the centered model's complete predictor is still used for predictive evaluations.",
+    "vci_reference": "Xu and Liu, ICML 2023, Definition 5.3, https://proceedings.mlr.press/v202/xu23k/xu23k.pdf",
+    "vci_definition": "1 - trace(pinv(Sigma_total) @ Sigma_between) / rank(Sigma_between)",
+    "precision": "float64 covariance calculations; relative eigenvalue cutoff 1e-10; rank-zero denominators are explicitly undefined and never imputed as collapse.",
+    "trace_ratio": "trace(Sigma_within)/trace(Sigma_between), reported under this descriptive name rather than mislabeled as a different neural-collapse statistic."
+  },
+  "estimation": {
+    "outer_validation": "Leave one entire training seed out, five folds.",
+    "inner_validation": "For each outer training set, choose ridge regularization by leave-one-training-seed-out validation using only the other four seeds.",
+    "ridge_grid": [0.0001, 0.01, 1.0, 100.0, 10000.0],
+    "standardization": "Fit numeric centering/scaling on each training fold only. The design-cell encoding is fixed from the declared grid.",
+    "primary_score": "Held-out mean squared error for each outcome; paired conventional-minus-fiber-added MSE per held-out seed.",
+    "uncertainty": "Paired training-seed bootstrap, 2000 draws; report pointwise 95% and Bonferroni family-adjusted intervals for the three outcomes, together with every seed-level score.",
+    "missingness": "Do not silently drop runs, change endpoints, or impute structurally undefined metrics. Report coverage and any consequent nonestimability.",
+    "interpretation": "Prediction of held-out seed variation is an association result, not evidence that the diagnostic causes generalization. Five independent seeds limit precision. Null or negative added value is retained."
+  },
+  "immutability": "Any change requires a new version and an explicit reason; no revision is made to force incremental predictive benefit or novelty."
+}

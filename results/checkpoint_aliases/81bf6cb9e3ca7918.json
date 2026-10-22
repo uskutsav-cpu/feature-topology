@@ -1,0 +1,20 @@
+{
+  "schema": "feature-topology.checkpoint-alias-equivalence.v1",
+  "run_id": "81bf6cb9e3ca7918",
+  "selected_step": 8,
+  "selected_checkpoint": "step_0000008.pt",
+  "selected_checkpoint_sha256": "9cf52051fa9511d0935321156581dc8b4c6bc381157909ded7d527523aa91f29",
+  "final_checkpoint_sha256": "4ab7ed46e0c93164cb211fc4858c4aac9e16b31ec1e7c7ccab24ce17190872c9",
+  "exact_model_state_equality": true,
+  "inference_state_sha256": "50dc7ffc3c70e4b78a70a003cc037b16f04db776bb229b72e74cb481234cfbf5",
+  "tensor_count": 20,
+  "frozen_reference_included": true,
+  "input_index": "configs/completion/ablation_inputs_v3/ood/475bfb0e8e0812fa.json",
+  "input_index_sha256": "0fa1e0e447cecb444f227191e0a078a9e3a7930bc1d5f290ab465526abeb3213",
+  "input_archive_sha256": "08a86319ec95664dd7e939150d93bb6619afcd8616e02901e233b2ef91b3ae60",
+  "source_commit": "14846f085ec9cf23092843c5eb309deafac1964d",
+  "workflow_run": "39484915374",
+  "auditor_sha256": "d5c91692993759d737c9a14b778b736931a9cfb54108417de9873498bb99910e",
+  "torch": "2.14.0+cu130",
+  "scope": "Exact inference tensors only; optimizer/serialization metadata are not equated"
+}

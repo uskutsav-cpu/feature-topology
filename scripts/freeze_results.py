@@ -142,6 +142,11 @@ def production_queue_paths(repo):
     return paths
 
 
+def reconstructed_source_paths(repo,state,dataset):
+    from scripts.reconstruct_cifar_provenance import validate_reconstruction
+    return validate_reconstruction(repo,state,dataset)
+
+
 def cifar_hosted_paths(repo):
     """Require complete source-bound hosted ledgers for both CIFAR studies."""
     repo=Path(repo)
@@ -215,6 +220,7 @@ def cifar_hosted_paths(repo):
                     workflow_runs.append(str(attempt['workflow_run']))
                 if workflow_runs!=source_row.get('workflow_runs'):
                     raise ValueError(f'Hosted CIFAR workflow provenance mismatch: {dataset}')
+                paths.extend(reconstructed_source_paths(repo,source_state,dataset))
                 bound_commits.add(commit)
                 paths.append(source_path)
             used_commits=set()
@@ -360,6 +366,10 @@ def readiness(repo):
     catalog=load_catalog(roots) if roots else None
     if catalog:
         problems.extend(i for i in catalog.issues if i['severity']=='error')
+        # The catalog audits every discovered profile's options and, in this
+        # unfiltered readiness pass, its JSON records. Bind those actual reads
+        # as well as the required production arrays/checkpoints below.
+        paths.update(Path(name) for name in catalog.input_hashes)
         info={r['run_id']:r for r in catalog.runs}
     else:
         info={}
@@ -449,6 +459,11 @@ def readiness(repo):
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_metrics',error=str(exc)))
     try:
+        from scripts.validate_synthetic_transport import validate as validate_synthetic_transport
+        paths.update(validate_synthetic_transport(repo))
+    except (ValueError,KeyError,OSError) as exc:
+        problems.append(dict(study='synthetic_archive_transport',error=str(exc)))
+    try:
         paths.update(cifar_hosted_paths(repo))
     except (ValueError,KeyError,OSError) as exc:
         problems.append(dict(study='hosted_cifar',error=str(exc)))
@@ -537,7 +552,7 @@ def readiness(repo):
             if sha256(repo/'formal'/name)!=expected:
                 problems.append(dict(study='formal',error=f'Audited source changed: {name}'))
         paths.update([formal,formal.parent/'lean_build.log'])
-    for name in ['src','scripts','research_ext','formal','configs','docs','.github']:
+    for name in ['src','scripts','research_ext','formal','configs','docs','.github','tests']:
         paths.update(p for p in (repo/name).rglob('*') if p.is_file()
                      and not any(part in {'.lake','__pycache__'} for part in p.parts))
     paths.update(p for p in repo.glob('*') if p.is_file() and p.suffix in {'.txt','.toml','.md'})
@@ -549,6 +564,32 @@ def readiness(repo):
     if design.exists(): paths.add(design)
     return dict(ready=not problems,problems=problems,
                 studies={name:dict(expected=v['expected'],accounted=v['accounted']) for name,v in result['studies'].items()}),paths
+
+
+def freeze_file_hashes(repo,paths):
+    """Bind logical paths and their in-repository canonical targets.
+
+    Shared primary runs include symlinks into the pilot directory. Analyses
+    resolve consumed paths before checking the freeze, so both names must be
+    bound to identical bytes. An external symlink is never accepted.
+    """
+    repo=Path(repo).resolve()
+    files={}
+    for supplied in sorted(map(Path,paths)):
+        logical=supplied if supplied.is_absolute() else repo/supplied
+        canonical=logical.resolve(strict=True)
+        if (not logical.is_relative_to(repo) or not canonical.is_relative_to(repo)
+                or not canonical.is_file()):
+            raise ValueError(f'Frozen path escapes repository or is not a file: {supplied}')
+        observed=sha256(logical)
+        if canonical!=logical and sha256(canonical)!=observed:
+            raise ValueError(f'Frozen alias changed while hashing: {supplied}')
+        for path in {logical,canonical}:
+            relative=path.relative_to(repo).as_posix()
+            if relative in files and files[relative]!=observed:
+                raise ValueError(f'Conflicting frozen aliases: {relative}')
+            files[relative]=observed
+    return dict(sorted(files.items()))
 
 
 def verify_manifest(repo,path):
@@ -720,7 +761,7 @@ if __name__=='__main__':
     report,paths=readiness(repo)
     if report['ready'] and not args.check_only:
         report.update(schema='feature-topology.frozen-results.v1',
-                      files={str(p.relative_to(repo)):sha256(p) for p in sorted(paths)})
+                      files=freeze_file_hashes(repo,paths))
     atomic_json(Path(args.output),report)
     print(json.dumps(dict(ready=report['ready'],problem_count=len(report['problems']),studies=report['studies']),indent=2))
     sys.exit(0 if report['ready'] else 2)

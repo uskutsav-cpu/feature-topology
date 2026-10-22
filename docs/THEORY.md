@@ -56,9 +56,16 @@ H(Y\mid Z)-H(Y\mid X)=I(Y;X\mid Z)\ge0.
 \(H(Y\mid X,Z)=H(Y\mid X)\).  Substitute this into
 \(I(Y;X\mid Z)=H(Y\mid Z)-H(Y\mid X,Z)\). \(\square\)
 
-Merging a pure nuisance orbit can therefore have zero information cost, while
-merging points with different target conditionals makes the right side positive.
+Merging a pure nuisance orbit can therefore have zero information cost.  Strict
+positivity requires that the representation lose target-relevant information on
+a set of positive probability; an isolated collision between two zero-mass
+points does not establish positive conditional mutual information.
 This identity does not imply that finite probes recover all retained information.
+
+For the sector-classification experiment, the quotient that removes only the
+nuisance circle retains the continuous task coordinate.  It is not the minimal
+target-law quotient, which also identifies theta values within each label
+sector.  The manuscript distinguishes these two equivalence relations.
 
 ## Theorem 4: feature change need not destroy nuisance information
 
@@ -92,6 +99,50 @@ can strongly reorganize task directions without any mathematical necessity to
 erase an unused factor.  Whether coupled nonlinear networks preserve, compress,
 or identify their nuisance fibers is therefore an empirical question, not a
 consequence of "strong feature learning" alone.
+
+## Interpretation check: exact almost-sure nuisance erasure
+
+These elementary continuity observations support interpretation; they are not
+claimed as new theory or included in the seventeen-lemma Lean audit.
+
+Let h be jointly continuous on the primary torus, with independent uniform
+latent angles Theta and Phi. Suppose one rigorously checked fixed-theta circle
+contains two angles phi_1, phi_2 with different hidden representations. Then
+there is no measurable g for which h(Theta,Phi)=g(Theta) almost surely.
+
+**Proof.** Define the continuous nonnegative function
+
+    D(theta,phi,phi') = ||h(theta,phi)-h(theta,phi')||.
+
+If h=g(Theta) almost surely, Fubini's theorem implies D=0 almost everywhere under
+the product law of (Theta,Phi,Phi'). That product measure has full support.
+A continuous nonnegative function that is zero almost everywhere under a
+full-support measure is zero everywhere: any positive value would have an open
+positive-measure neighborhood. This contradicts the checked pair. Equivalently,
+a positive D at that pair persists on an open set of triples, so a positive
+measure of theta values has nonconstant conditional hidden representations.
+
+This excludes **complete exact** removal of phi from that hidden representation
+under the specified product law. It does not prove fiberwise injectivity for
+almost every theta, unconditional recoverability of phi without theta, a
+quantitative information/noise bound, or predictor robustness. The sixteen
+circle certificates still have their declared point-theta injectivity scope.
+
+## Interpretation check: finite class centers on a connected continuum
+
+Let M be connected, h:M->R^d continuous, and the data law have full support.
+If h takes values in a finite set almost surely, it takes values in that set
+everywhere: the preimage of the complement is open and must be empty. But a
+continuous image of a connected space is connected, and a finite subset of
+Euclidean space is connected only when it has one point. Thus h is constant.
+
+Consequently, an exact finite-valued label-only hidden representation cannot
+also be sufficient for multiple positive-probability classes under these
+continuum assumptions. This is a structural observation, not an empirical
+discovery. It does not rule out an S1 nuisance-orbit quotient, approximate class
+clustering, or classification by a discontinuous decision rule applied to
+continuous logits. A finite training point cloud is not a connected continuum,
+so the same obstruction does not apply to exact collapse of its sampled classes.
 
 ## Exact control family
 

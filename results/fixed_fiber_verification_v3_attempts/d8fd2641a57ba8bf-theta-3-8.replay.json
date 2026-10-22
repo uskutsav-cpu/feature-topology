@@ -1,0 +1,13 @@
+{
+  "schema": "feature-topology.fixed-fiber-replay.v3",
+  "run_id": "d8fd2641a57ba8bf",
+  "result_sha256": "80bef1a1bca4b9ca1411e4dcb0f5d36702bf96f207cb251b35b39b880f2e2282",
+  "theta_fraction": [
+    3,
+    8
+  ],
+  "positive_certificate": true,
+  "standalone_replay_passed": true,
+  "status": "passed",
+  "scope": "Same Arb implementation in a separate process; no independent implementation or Lean claim"
+}

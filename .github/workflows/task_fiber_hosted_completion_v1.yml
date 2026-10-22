@@ -1,0 +1,63 @@
+name: Task-preserving fiber hosted completion
+on:
+  push:
+    branches: [codex/neural-networks-preparation]
+    paths:
+      - .github/workflows/task_fiber_hosted_completion_v1.yml
+      - scripts/remote_task_preserving_completion.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    env:
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout: |
+            scripts
+            src
+            configs
+            docs
+            tests
+            .github
+            research_ext
+            requirements.lock.txt
+            requirements.certification.txt
+            results/production_noise_completion_v1
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+          cache: pip
+          cache-dependency-path: |
+            requirements.lock.txt
+            requirements.certification.txt
+      - run: python -m pip install -r requirements.lock.txt -r requirements.certification.txt
+      - name: Check unchanged mathematical sources and controls
+        run: |
+          python -c "from pathlib import Path; from scripts.remote_task_preserving_completion import verify_pins; verify_pins(Path('.'))"
+          python -m pytest -q tests/test_task_preserving_fibers.py tests/test_task_fiber_replay_metadata.py
+      - name: Record hosted capacity for the full validation stage
+        run: |
+          df -h
+          python -c "import shutil,json; print(json.dumps(dict(zip(['total','used','free'],shutil.disk_usage('.')))))"
+      - name: Evaluate and separately replay the fixed shard without training
+        run: python scripts/remote_task_preserving_completion.py --output task-fiber-hosted --shard ${{ matrix.shard }}
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: task-fiber-hosted-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: task-fiber-hosted/
+          if-no-files-found: error
+          retention-days: 30

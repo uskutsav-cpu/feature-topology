@@ -1,0 +1,23 @@
+{
+  "schema": "feature-topology.fiber-replication-protocol.v1",
+  "date": "2026-10-20",
+  "status": "Recorded before constructing the new-seed readouts or evaluating their continuum/decision certificates. Exploratory replication of seed-zero findings, not an original-study preregistration; original sampled metrics across seeds and the negative diagnostic comparison were already known.",
+  "question": "Does paired hidden nuisance retention and correct complete-classifier decision repeat in the other existing training seeds at the four gamma values identified in seed zero?",
+  "gammas": [0.03125, 0.5, 1.0, 8.0],
+  "training_seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "theta_numerators": [1, 3, 5, 7],
+  "theta_denominator": 8,
+  "models": 36,
+  "planned_domains": 144,
+  "selection": "Exactly the primary lambda=0, swap=false models in primary_inputs_v3.json on this Cartesian grid. First stored checkpoint with training loss <=0.1, current branch last hidden representation. No new training, checkpoint retuning, gamma reselection, or seed exclusions.",
+  "witness_fit": "Same fixed method as the seed-zero screen: class-independent affine readout to (cos(phi),sin(phi)), original frozen 100-by-100 grid, relative ridge 1e-10 times Gram trace/width, float64 coefficients stored as exact hexadecimal dyadics.",
+  "screen": "Same separate 64-by-64 half-cell-offset torus grid and chain-rule phi derivative. Empirical maximum residual <2/pi gates only the retention-witness verification. All 36 screens are retained. A failed screen is not evidence of noninjectivity. Decision verification runs on all 144 domains regardless of the retention screen.",
+  "retention": "Unchanged rational_fixed_fiber_verifier.py V4 criterion and joint-mask bound, at most six uncertain masks. Exact dyadic epsilon upper at 2^-20 and chord lower factor at 2^-64. Full periodic phi circle at each specified theta only.",
+  "decision": "Unchanged nuisance_decision_verifier.py complete centered current/reference MLPs and both heads. Strict positive target-minus-each-competitor scaled-logit margin for every phi. Before publishing a positive replication result, deterministically halve its outward-rounded numerator by integer floor at denominator 2^64, requiring strict positivity. This prospective buffer follows the documented seed-zero Mac enclosure difference; no adaptive margin search. Negative point bounds are unchanged.",
+  "budget": {"maximum_boxes": 20000, "maximum_depth": 18, "seconds_per_property_per_domain": 3300},
+  "arithmetic": {"python_flint": "0.9.0", "precision_bits": 128},
+  "replay": "Every positive retention proof and every certified positive or negative decision claim is recomputed in a separate process, bound to checkpoint, embedding, witness, protocol, complete source identities and workflow. Same-implementation replay is not independent semantic soundness verification.",
+  "reporting": "Account for every one of the 36 planned models and 144 domains. Retention screen failures, witness rejections, inconclusive attempts, negative decision points, and replay failures remain explicit. Report paired success per domain and all-four-domain success per model, grouped by gamma and actual training seed. Seed-zero results stay separate; circles are not additional training-seed replicates. Descriptive proportions across nine replication seeds are not a population-wide guarantee or a new hypothesis test.",
+  "completion": "All planned records, source bindings and required successful replays must be present. Failed numerical verification attempts are completed outcomes, not positive certificates. Transport/input/replay errors require explicit resolution or retained failure and cannot be silently omitted.",
+  "scope": "Four gamma values selected from the prior seed-zero audit and nine existing additional training seeds. Specified fixed-theta real-valued saved-weight circles only. No every-theta/full-torus, native floating-point, causal OOD, new invariant architecture, independent-verifier, Lean network-soundness or guaranteed high-novelty claim. The original predictive comparison remains negative."
+}

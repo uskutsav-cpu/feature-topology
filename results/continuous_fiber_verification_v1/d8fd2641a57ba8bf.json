@@ -1,0 +1,38 @@
+{
+  "status": "inconclusive",
+  "continuous_certificate": false,
+  "checked_boxes": 17,
+  "certified_leaves": 0,
+  "unresolved_boxes": 49,
+  "maximum_certified_depth": null,
+  "elapsed_seconds": 0.30121530900001403,
+  "scope": "Budget/depth/enclosure limit; no continuum injectivity claim",
+  "schema": "feature-topology.continuous-fiber-verification.v1",
+  "binding": {
+    "run_id": "d8fd2641a57ba8bf",
+    "gamma": 8.0,
+    "seed": 0,
+    "checkpoint_sha256": "ef29a935c1c16e2983f503dec815baf7d36c2a0cb3956025c2fc70b24760e0f3",
+    "input_archive_sha256": "7899564e126376d4b2f672804c3d5f460747f3768180c5696abaac65db5191b1",
+    "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+    "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+    "witness_sha256": "987992adf10d3ad60df537d09941081dfdfca4646655ef03ff63dbdede7f581c",
+    "protocol_sha256": "d389f6eeb6970549fa2d9a9ea1cde6670294e45654bf5c8ab44f562c9961f359",
+    "source_sha256": {
+      "scripts/remote_continuous_fiber_verifier.py": "6df12e91983104b6ac4964b4eff704f215716561a519bb98ac3cdc7e5833d392",
+      "src/metrics/continuous_fiber_verifier.py": "8017df0541801db95720870db1a81530e43911ab37ba45795edb3d6221284afa",
+      "docs/CONTINUOUS_FIBER_CRITERION.md": "8fec36b34c23308182098346f4a7f332531371f001bbb3d3363db74566ec3ae3",
+      "configs/continuous_fiber_verifier_v1.json": "d389f6eeb6970549fa2d9a9ea1cde6670294e45654bf5c8ab44f562c9961f359"
+    }
+  },
+  "arithmetic": {
+    "python_flint": "0.9.0",
+    "precision_bits": 128
+  },
+  "host": {
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "source_commit": "eb39020edd0677b2687b99eef199e1c3a30766ee",
+    "workflow_run": "39489012796"
+  }
+}

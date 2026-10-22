@@ -1,0 +1,247 @@
+# Reproducing the additional research
+
+Run from the repository root, using the locked environment. The optional
+continuous-circle verifier also needs `requirements.certification.txt`.
+Checkpoints and arrays come from the immutable GitHub release indices; workers
+verify their SHA-256 identities. A network connection is required to recover
+uncached release inputs.
+
+## One specified continuous nuisance circle
+
+```sh
+python scripts/remote_rational_fiber_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/circle-gamma8-theta1
+python scripts/remote_rational_fiber_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/circle-gamma8-theta1 --replay
+```
+
+The second invocation is a separate process that reloads the source inputs and
+recomputes every leaf of a positive result. A candidate JSON alone is not an
+accepted certificate. Inconclusive or rejected witnesses retain their status.
+The recorded sixteen-case matrix is in
+`.github/workflows/fixed_fiber_verifier_v4.yml`; the fixed domain, witnesses,
+budgets, and exact-bound encoding are in `configs/fixed_fiber_verifier_v4.json`.
+
+After downloading all matrix artifacts to a new directory, collect all outcomes:
+
+```sh
+python scripts/collect_fixed_fiber_results.py --repo . --artifacts work/downloaded-fiber-artifacts --output results/fixed_fiber_verification_v4
+```
+
+The collector requires all sixteen attempts, source and checkpoint bindings,
+complete circle covers, valid exact positive margins, and successful source-bound
+replay receipts for every positive candidate. It cannot silently exclude failed
+cases. Existing result directories are immutable; use new paths for separate
+campaigns and explicitly update a protocol before changing the scientific design.
+
+## Recorded independent-seed replication
+
+The second cohort uses the same four gamma values and every remaining original
+primary training seed, 1 through 9. The prospectively recorded design is
+`configs/fiber_replication_v1.json`. All 36 fixed-readout screens are retained
+in `results/fiber_replication_screens_v1`, including 29 failed screens. Fixed
+hexadecimal witnesses are inputs to the certificate replay; rebuilding them on
+another platform may yield different floating-point fitting coefficients and
+must not overwrite the recorded witnesses.
+
+The recorded worker checks one domain and replays it in a new process:
+
+```sh
+python scripts/remote_fiber_replication.py --repo . --output work/replication-gamma1-seed2-theta1 --gamma 1 --seed 2 --theta-numerator 1
+python scripts/remote_fiber_replication.py --repo . --output work/replication-gamma1-seed2-theta1 --gamma 1 --seed 2 --theta-numerator 1 --replay
+```
+
+All 144 planned circles receive a classifier decision check, including models
+with failed retention screens. Retention proofs are attempted only for the seven
+eligible fixed readouts. A failed screen or inconclusive bound is not a proof of
+noninjectivity. Collect the complete recorded workflow without dropping cases:
+
+```sh
+python scripts/collect_fiber_replication.py --repo . --artifacts work/downloaded-replication-artifacts --output results/fiber_replication_verification_v1 --workflow-run 39512823384 --source-commit 1531aa945dfa85eaf23d16d0d86c6a37a6a3fc10
+```
+
+The combined gate requires all 36 physical source checkpoints and all 144
+source-bound outcomes/receipts. Final additional analysis writes per-model and
+per-domain CSV tables and a seed-by-gamma figure. Certification counts describe
+the fixed witness/verification procedure, not the prevalence of true information
+retention. The nine seed identifiers are the replication units; four circles and
+four gamma configurations per seed do not increase that count. The seed-zero
+discovery cohort and the separate five-seed predictive comparison stay distinct.
+
+## Full study and additional evidence freeze
+
+The separate complete-classifier check uses exactly the same sixteen declared
+domains. Its recorded design is `configs/nuisance_decision_verifier_v1.json`.
+It checks both complete MLP branches, both heads and positive output scaling:
+
+```sh
+python scripts/remote_nuisance_decision_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/decision-gamma8-theta1
+python scripts/remote_nuisance_decision_verifier.py --repo . --gamma 8 --theta-numerator 1 --output work/decision-gamma8-theta1 --replay
+```
+
+Download every artifact from the recorded workflow, then collect all outcomes.
+Supply the exact workflow run and source commit obtained from the GitHub run
+metadata; the collector rejects different or mixed source runs:
+
+```sh
+python scripts/collect_nuisance_decision_results.py --repo . --artifacts work/downloaded-decision-artifacts --output results/nuisance_decision_verification_v1 --workflow-run 39509448706 --source-commit 8dac5ed77de82ea7fa43a0745579402028935031
+```
+
+Positive correct-class certificates, negative target-class point certificates,
+and inconclusive attempts remain distinct. A negative claim can pass its replay
+without becoming a correct-class certificate. Every joint hidden-retention and
+correct-decision statement requires both positive results to bind the same
+checkpoint, embedding and fixed theta. The initial source-format failure before
+any mathematical evaluation is retained in `results/nuisance_decision_preflight_v1`.
+
+The original physical inputs must first pass the existing full gate:
+
+```sh
+python scripts/freeze_results.py --repo . --output results/completion/frozen_results_20261020.json
+```
+
+This command fails while CIFAR coverage, source ledgers, held-out replays, or
+other required artifacts are incomplete. A partially populated checkout is not
+enough. Required physical files include the source-bound checkpoints and official
+image datasets. The additional gate also requires the unchanged embedding asset
+from `primary-inputs-v3-2026-09-20` at
+`results/continuous_fiber_inputs/analysis_data.npz`; its identity is the SHA-256
+in `configs/completion/primary_inputs_v3.json`.
+
+Replay the collected results against those already recovered physical inputs:
+
+```sh
+python scripts/replay_fixed_fiber_collection.py --repo . --collection results/fixed_fiber_verification_v4 --output results/fixed_fiber_local_replays_v4
+python scripts/replay_nuisance_decision_collection_v2.py --repo . --collection results/nuisance_decision_verification_v1 --output results/nuisance_decision_local_replays_v2
+```
+
+This recomputes every positive leaf and records the current host, exact source
+binding, result digest, and verifier digest. `--gamma` may select one of the four
+eligible models for disjoint parallel workers. These are additional executions
+of the same verifier, not independent implementations. All sixteen local receipts
+are required by the combined gate for each of the retention and classifier
+collections. No claim is made that replaying the same implementation proves its
+semantic soundness independently.
+
+The classifier's additional Mac replay uses an explicitly derived weaker
+numerical margin: floor the original positive numerator divided by two, with
+the same denominator 2^64. This deterministic rule was recorded after the first
+Mac replay could not reproduce one hosted lower enclosure to approximately
+3.5e-16. It leaves the original artifacts, models, domains, covers, and strict
+correct-class property unchanged. Local derived claims are stored separately
+and linked by digest; they do not validate the original hosted numerical margin.
+The original replay source and failure are retained in
+`results/nuisance_decision_local_attempts_v1`. See
+`NUISANCE_DECISION_LOCAL_REPLAY_INCIDENT.md` for the trust boundary.
+
+The validation workspace uses internal aliases under
+`results/additional_source_map` to locate the original primary and OOD run JSONs.
+The portable comparison directory contains the unchanged 140-cell comparison
+recomputed from those internal paths. It must have been produced by the current
+`scripts/diagnostic_comparison.py`, including analysis-source hashes.
+
+After recovering the original run JSONs in their canonical study directories,
+create that map without copying data or changing existing aliases:
+
+```sh
+python - <<'PY'
+import json, os
+from pathlib import Path
+repo = Path('.').resolve()
+root = repo/'results/additional_source_map'
+root.mkdir(exist_ok=True)
+groups = json.loads((repo/'results/ood/manifest.json').read_text())
+targets = {'primary': repo/'results/main'}
+for group in groups:
+    condition = group['condition'].get('nuisance_condition', 'iid')
+    if condition == 'iid':
+        continue
+    assert condition in {'spurious', 'concentrated', 'unseen'}
+    name = 'ood-'+condition
+    assert name not in targets, 'Ambiguous OOD study condition'
+    targets[name] = repo/'results/ood'/Path(group['path']).name
+assert set(targets)=={'primary','ood-spurious','ood-concentrated','ood-unseen'}
+for name, target in targets.items():
+    assert target.is_dir() and target.resolve().is_relative_to(repo)
+    alias = root/name
+    relative = os.path.relpath(target, root)
+    if alias.is_symlink():
+        assert os.readlink(alias)==relative, 'Different existing source alias'
+    elif alias.exists():
+        raise ValueError('Source alias path already contains another object')
+    else:
+        alias.symlink_to(relative, target_is_directory=True)
+PY
+python scripts/diagnostic_comparison.py --repo . --evidence results/additional_source_map --ood results/ood_evaluation --variability results/additional_variability --aliases results/checkpoint_aliases --output results/additional_diagnostic_comparison_portable_v2
+```
+
+```sh
+python scripts/freeze_additional_research.py --repo . --original-manifest results/completion/frozen_results_20261020.json --evidence results/additional_source_map --comparison results/additional_diagnostic_comparison_portable_v2 --output results/completion/combined_research_freeze_20261020.json
+python scripts/final_analysis.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --output results/final_analysis_20261020
+python scripts/analyze_additional_research.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --output results/additional_final_analysis_20261020
+```
+
+Use a new empty analysis output directory. The combined gate cannot bypass a
+failed original freeze. It replays the predictive comparison, checks circle
+collection and complete-classifier bindings and hosted/additional-local receipts,
+and binds the original failed/inconclusive
+attempts as well as the physical embedding input. The final analyses reject
+consumed files absent from the freeze or changed after it.
+
+The additional figures explicitly separate sampled grid metrics, whole-circle
+bounds on four seed-zero models, complete-classifier decisions on those same
+declared circles, and the five-seed predictive comparison.
+Circle bounds are descriptive exploratory evidence; they do not increase the
+number of independent training seeds. The recorded negative predictive result
+and the limits in `CONTINUOUS_FIBER_CRITERION_AUDIT.md` remain part of the report.
+
+The combined gate also requires every one of the 305 recorded production
+noisy-decoding evaluations and its source-bound replay. The 130 main and 210
+relevance views share 35 models. Before freezing, use the recorded worker and
+protocol unchanged, then collect with:
+
+```sh
+python scripts/collect_production_noise.py --repo . --artifacts results/production_noise_completion_v1 --output results/production_noise_completion_v1 --source-commit 91b23d9d84e7fee8008534762b45c16ccf45936f
+```
+
+The final additional analysis writes the full `noise_metrics_long.csv`,
+`noise_seed_confidence_intervals.csv` and `noise_relevance_paired_contrasts.csv`,
+plus main and relevance figures. Intervals resample training seeds, never noise
+levels. The gate verifies actual source checkpoints and six original probe
+archives as well as the JSON collection. The release packer requires these
+tables alongside the complete replication tables.
+
+The original final image analysis also writes `images/image_run_accounting.csv`
+and `images/image_run_status_counts.csv`. These include every production run,
+even divergence and training-budget exhaustion. Finite nonconverged runs remain
+in numerical metric summaries; missing divergent test scores are never imputed.
+Per-run targets and last recorded losses make the actual achieved optimization
+risks visible. A last finite log from a divergent run is not its loss at divergence.
+The scientific result record displays counts and absolute gamma-level mean
+accuracies alongside endpoint contrasts, including the weak dSprites control.
+
+## Complete research release
+
+After both final analyses and their visual checks pass, include both output sets
+in the size-bounded release. The additional analysis manifest is its `analysis.json`:
+
+```sh
+python scripts/pack_release.py --repo . --manifest results/completion/combined_research_freeze_20261020.json --analysis-manifest results/final_analysis_20261020/analysis_manifest.json --additional-analysis-manifest results/additional_final_analysis_20261020/analysis.json --output /path/to/adequate-storage/release-parts
+```
+
+The package preserves the exact combined manifest bytes as `frozen_manifest.json`
+and includes its referenced original-study manifest. Thus both final analyses'
+freeze checksums remain valid after restoration. Every source member is hashed
+while it is added to the archive, and both analysis output maps are checked.
+`release_parts.json` records the part sizes, SHA-256 identities and member hashes.
+Check those part identities before concatenating parts in the recorded order and
+extracting to a new empty directory. The restored source/data tree can then be
+checked using `scripts.freeze_results.verify_manifest` and its exact packaged
+`frozen_manifest.json`.
+
+Use sufficient storage for the complete frozen input set. The existing
+`--upload-release EXISTING_TAG` mode can stream one bounded part at a time to an
+existing draft release, verify GitHub's returned size/digest, and remove that
+generated local part only after upload verification. It does not remove source
+data. No full-study package is created from an incomplete freeze. The new PNG/SVG
+exports omit changing timestamps and fix SVG identifiers for reproducibility
+within the locked plotting environment; this is not a promise of identical font
+rendering across arbitrary platforms.

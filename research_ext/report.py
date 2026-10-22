@@ -6,7 +6,7 @@ import math
 import numpy as np
 import pandas as pd
 from .catalog import load_catalog, matched_risk, coverage
-from .io import atomic_json, atomic_text, digest, environment, file_digest
+from .io import atomic_json, atomic_text, digest, environment
 from .statistics import bootstrap_mean, paired_contrast, model_comparison, crossing_interval, event_order
 
 METRICS = ["test_accuracy", "ntk_drift", "cka_drift", "effective_rank", "local_q01",
@@ -122,19 +122,20 @@ events. High probe performance supports decodability; low probe performance does
 not prove information-theoretic destruction. Rational small-network certificates
 have a separate scope and are not substituted for empirical measurements.
 
+Legacy metric names containing "nuisance" or "fiber" follow the original
+secondary coordinate of the experiment. At positive relevance lambda, that
+coordinate enters the target rule: varying it at fixed original base coordinate
+is not a task-preserving nuisance intervention. Those measurements describe
+retention of the original factor, rather than the changed task-preserving
+direction. Fixed-coordinate orbits are also distinct from complete target-label
+fibers. See `docs/RELEVANCE_FIBER_SCOPE.md` in the source repository.
+
 See `audit.json`, `exclusions.json`, and `complete_case_accounting.json` before
 interpreting `seed_bootstrap_ci.csv` or `model_comparisons.json`.
 """
     atomic_text(output/"REPORT.md", text)
     atomic_json(output/"analysis_result.json", result)
-    inputs = {}
-    for run in catalog.runs:
-        directory = Path(run["directory"])
-        paths = [directory/"config.json", directory/"summary.json", *directory.glob("metrics/*/*.json")]
-        for path in paths:
-            if path.is_file():
-                inputs[str(path)] = file_digest(path)
-    atomic_json(output/"input_hashes.json", inputs)
+    atomic_json(output/"input_hashes.json", catalog.input_hashes)
     return result
 
 

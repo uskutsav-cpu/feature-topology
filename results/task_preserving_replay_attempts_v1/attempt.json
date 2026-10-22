@@ -1,0 +1,17 @@
+{
+  "schema": "feature-topology.task-fiber-replay-metadata-incident.v1",
+  "source_commit": "b3208174c08468a4aac65b8459684f5a70fb79d9",
+  "status": "initial_replay_failed",
+  "accepted_receipts": 0,
+  "run_id": "cb6e463ae41e1f43",
+  "result_sha256": "4df1caf8d1fbe184e0a7e37fb086572f230d24adfb1ec8442bf9833e8fa3c5a2",
+  "generation_stage_sha256": "9ef4b9f793ebf0ac17e1eee66d8acfb8175246f6658076c2c1c905373f2f7da8",
+  "failure_path": "result.host.torch",
+  "in_memory_type": "TorchVersion",
+  "serialized_type": "str",
+  "same_version_string": true,
+  "first_model_mathematical_fields_recomputed_and_compared": true,
+  "numeric_tolerance_unchanged": true,
+  "generation_outputs_changed": false,
+  "scope": "Diagnosed the first-model metadata failure only; not all-model replay or full-study completion"
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "feature-topology.continuous-verification-collection.v1",
+  "workflow_run": "39489012796",
+  "complete_attempts": 4,
+  "positive_certificates": 0,
+  "records": [
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "status": "inconclusive",
+      "continuous_certificate": false,
+      "result_sha256": "914268f8b2ee8f513f3da9f8efd3933493c686f7cdacd94a1e9ba442d082e6c6"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "status": "inconclusive",
+      "continuous_certificate": false,
+      "result_sha256": "1103c81807c3882ec2d7da93fce9ddd1ea2a57b7f3c4188919ef051154d70dd1"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "status": "inconclusive",
+      "continuous_certificate": false,
+      "result_sha256": "0f88157317710c2e55cc9bb312e81601f3b478cc067f571a69f340170d0dbc38"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "status": "inconclusive",
+      "continuous_certificate": false,
+      "result_sha256": "58bd567ecd2cb914a26c1f76add75048a97685a6c82648b59ff77e20ed5da34d"
+    }
+  ],
+  "scope": "All four attempts are inconclusive; no trained continuum injectivity claim"
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "feature-topology.fixed-fiber-verifier-protocol.v4",
+  "date": "2026-10-20",
+  "reason_for_new_version": "V3 produced sixteen candidates, but separate-process replay rejected three printed separation enclosures (gamma .03125 theta numerator 3; gamma .5 numerator 5; gamma 1 numerator 7). V4 encodes conservative exact dyadic inequalities rather than requiring decimal round trips of nearly exact Arb enclosures to contain a recomputation. All v3 attempts and failures remain retained; no witness is refitted.",
+  "source_witnesses": "Unchanged: four fixed seed-zero readouts at gamma 0.03125, 0.5, 1.0, 8.0, with their original checkpoints and hexadecimal coefficients. No refitting or training.",
+  "domains": "Unchanged from v2: sixteen specified smooth nuisance circles at theta=2*pi*n/8, n in {1,3,5,7}, with every phi in the closed periodic interval [0,2*pi].",
+  "scope": "Only the specified theta circle is certified. No universal-theta, full-torus, floating-point-machine injectivity, prediction or high-novelty claim follows.",
+  "arithmetic": "python-flint 0.9.0 Arb balls, 128-bit midpoint precision; saved network/embedding/readout coefficients are exact dyadics in the real-valued network continuation.",
+  "new_bound": "Unchanged v3 joint-mask activation bound and at most six uncertain masks. Only the global proof-bound encoding and comparison change.",
+  "maximum_uncertain_masks_to_enumerate": 6,
+  "criterion": "Every leaf bounds the derivative residual below 2/pi - 4*2^-20. Round its global maximum strictly upwards to a multiple of 2^-20; require that exact epsilon < 2/pi. Round the positive resulting separation factor strictly downwards to a multiple of 2^-64. Replay every leaf <= the exact epsilon and verify the declared positive factor <= the recomputed rigorous factor. The stricter leaf buffer preserves the original separation criterion.",
+  "cover": "Unchanged: complete prefix-free binary phi cover with exact Kraft sum one and standalone replay of every leaf.",
+  "budget": {
+    "maximum_boxes": 20000,
+    "maximum_depth": 18,
+    "seconds_per_witness": 3300
+  },
+  "failure_policy": "Unresolved intervals, exhausted budget, rejected fixed witnesses, source mismatches and failed replays prevent certification. All sixteen outcomes are retained.",
+  "trust_boundary": "Mathematical criterion, encoding/cover/enclosure implementation, Python and FLINT/Arb. Same-implementation standalone replay is not an independently implemented verifier or a Lean proof. Vertex branching and affine ReLU relaxation are established verification principles; their use alone is not claimed as new theory.",
+  "proof_bound_encoding": {
+    "epsilon_denominator": "1048576",
+    "factor_denominator": "18446744073709551616",
+    "rounding": "Integer mantissa/exponent of exact Arb endpoints; outward ceil/floor plus one additional dyadic unit. JSON integers stored as canonical decimal strings. Printed approximate balls play no role in proof checks."
+  }
+}

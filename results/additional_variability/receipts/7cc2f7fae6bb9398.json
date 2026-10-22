@@ -1,0 +1,33 @@
+{
+  "schema": "feature-topology.additional-variability-receipt.v1",
+  "run_id": "7cc2f7fae6bb9398",
+  "input_tag": "ood-475bfb0e8e0812fa-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/475bfb0e8e0812fa.json",
+  "input_index_sha256": "0fa1e0e447cecb444f227191e0a078a9e3a7930bc1d5f290ab465526abeb3213",
+  "input_archive_sha256": "7f4591d9bf0d5a3a3d0a0c530313df4aa675b5383141c2bcf4092a7d140bd10d",
+  "source_member_sha256": {
+    "config.json": "a95d791199dec6eba333accf1f29656d1c24f24c8488762a7560f52f3eacb558",
+    "final.pt": "7bb76f24b616246dcff7cac17c07546fc8888131db5c4cc68766c761f0c0b85d",
+    "step_0000000.pt": "957ddd6da695a313cb1732065bbeaa86c11893be0ebb1f53c05af119b9877196",
+    "step_0000001.pt": "f54f599ab78b05d2c14906e7a921054197f1fc675cc017cd527d012f2c72702a",
+    "step_0000002.pt": "88ed99e189adc4bb09d9d40d3b9d54a1cd4546f1953748002c9b425b32ea5bc4",
+    "step_0000004.pt": "10482bfec9d0ccb66e656d15174c4bf2a12e941f9e3802112007c785f5d4f048",
+    "summary.json": "a68824e837845b3abf1b3e6dc8dded80ead7931f186eaf25dbc76b5a0e84f807"
+  },
+  "analysis_data_sha256": "29d87f16c1f80d237f31a464e8fabe8f6330af5edc8419c6e8307ddb7e69fcd2",
+  "protocol_sha256": "454659db781509d54e55e333eb503144e9781a2c4b1c352bf0369cfd1a8c8467",
+  "evaluation_sha256": "c78b8c63e8035638ef2474a76925ce010e8fa3f5b10f228948cbffa44aa102c1",
+  "source_commit": "6e295d542ffe6a66ae17f06eec848ab3e8dde330",
+  "workflow_run": "39484210356",
+  "source_sha256": {
+    "scripts/remote_variability_baselines.py": "14a3082132edb20f1c76f155325415aec97e190bf4735b0dd6000a7c04b74f94",
+    "src/metrics/variability.py": "4f0637cea0bc1b135dfca3549ea88dbc54dd95f6b2605a232eea3ccd3d291620",
+    "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82"
+  },
+  "host": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.5.3"
+  }
+}

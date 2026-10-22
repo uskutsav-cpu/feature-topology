@@ -1,0 +1,23 @@
+{
+  "schema": "feature-topology.production-noise-completion-protocol.v1",
+  "date": "2026-10-20",
+  "reason": "configs/analysis_plan_v2.json defines D_F to include clean decoding and relative representation noise. Original production profiles retain clean probes; the archived 39-run reduced continuation has noise curves but does not replace the requested main/relevance production checkpoints. Complete this existing component without editing the frozen v2 plan or any training/metric profile.",
+  "timing": "Recorded before evaluating new production noise outcomes. Earlier continuation noise results, clean production metrics, and the negative five-seed diagnostic comparison were already known. This completion is not an original-study preregistration or an independent discovery claim.",
+  "main_models": 130,
+  "main_gammas": [0.03125, 0.0625, 0.125, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0],
+  "main_training_seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "relevance_models": 210,
+  "relevance_gammas": [0.125, 0.5, 1.0, 4.0, 16.0, 64.0, 128.0],
+  "relevance_levels": [0.0, 0.05, 0.1, 0.25, 0.5, 1.0],
+  "relevance_training_seeds": [0, 1, 2, 3, 4],
+  "shared_models": 35,
+  "unique_models": 305,
+  "selection": "All records in the original primary cohort and the five positive-lambda relevance cohorts, from production_cohorts_v3.json. Reuse the shared lambda-zero records for the relevance view. First stored checkpoint with training loss <=0.1; last current hidden representation. Retain unreached risks explicitly rather than substituting final checkpoints.",
+  "noise_levels": [0.0, 0.001, 0.01, 0.1],
+  "method": "Use the unchanged src.metrics.fibers.noise_decodability method and its pre-existing four default levels. Refit StandardScaler plus Ridge(alpha=1) separately at every level, with noise added to both independent training and held-out test features before fitting/scaling. This differs from the optional research_ext.noise clean-trained diagnostic; do not conflate them.",
+  "noise_scaling": "Coordinate SD = level * centered clean training representation RMS / sqrt(width). Reuse independent standard-normal training and test directions across levels. Seed the existing method with the model's training seed, giving paired directions across gamma. Noise draws are not additional training replicates.",
+  "source_draws": "Each cohort's immutable analysis_data.npz: 5000 independent probe-training inputs/phi values and 2000 probe-test inputs/phi values, with the source embedding and task condition checked. No new test draws or level selection.",
+  "replay": "Repeat every evaluable record in a separate invocation on the same host/runtime. Structural/source fields match exactly; finite numeric values require relative tolerance 1e-10 and absolute tolerance 1e-12. Unreached-risk records receive a source/selection verification receipt, not a numeric-decoder replay claim.",
+  "statistics": "Preserve all model/level outcomes. Main summaries use ten training seeds; relevance summaries use five paired training seeds at fixed gamma. Pointwise percentile bootstrap intervals use 2000 seed resamples. Clean/relative-noise levels remain separate; no new threshold or hypothesis test is selected after outcomes. Report actual losses, failed selections and sample counts.",
+  "scope": "Finite noisy phi-coordinate decoding by this level-adapted ridge probe. At positive lambda, phi is partly task relevant and is not a pure task-preserving nuisance direction. Failed decoding is not proof of information destruction; clean/continuous retention and finite-noise fragility are distinct. These values do not modify or retroactively rescue the negative frozen predictive comparison. No new theory, causal OOD claim or guaranteed high novelty."
+}

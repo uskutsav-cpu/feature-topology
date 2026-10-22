@@ -11,7 +11,17 @@ See [the completion record](docs/COMPLETION_2026_09_13.md) for recovered primary
 run accounting, trained-network rational certificates, the compiled Lean audit,
 and the remaining production/image computations. The dated
 [GitHub-main audit](docs/AUDIT_2026_09_19.md) supersedes stale recovery counts for
-the current checkout. The final results freeze and paper are still pending.
+the current checkout. The final results freeze is pending; manuscript work is
+deferred until the research audit passes. The dated
+[project status](docs/PROJECT_STATUS_2026_10_20.md) tracks the current work and
+separates completed experiments from supported scientific claims.
+
+The additional research includes [paired hidden-retention and correct-decision
+certificates](docs/NUISANCE_DECISION_FINDINGS.md), a [recorded replication across
+the remaining training seeds](docs/FIBER_REPLICATION_STATUS.md), and a retained
+negative diagnostic comparison. [Reproduction instructions](docs/ADDITIONAL_RESEARCH_REPRODUCTION.md)
+describe their distinct source and proof scopes. The final evidence gate requires
+all planned outcomes, including failed screens and inconclusive attempts.
 
 The current scientific contract is in [SCIENTIFIC_CLAIMS.md](docs/SCIENTIFIC_CLAIMS.md),
 with complete assumptions and proofs in [THEORY.md](docs/THEORY.md) and the
@@ -19,9 +29,7 @@ source-backed novelty audit in [RELATED_WORK_MATRIX.md](docs/RELATED_WORK_MATRIX
 
 ## Environment
 
-Python 3.11+ and the dependencies in `requirements.lock.txt`. On this workspace,
-the installed interpreter is `../../work/venv/bin/python` relative to this repository.
-For a portable setup:
+Python 3.11+ and the dependencies in `requirements.lock.txt`. For a portable setup:
 
 ```sh
 python3 -m venv .venv
@@ -31,6 +39,9 @@ python3 -m venv .venv
 
 The lock captures the actual macOS ARM environment; other platforms may need
 platform-appropriate PyTorch wheels. All computation uses actual PyTorch models.
+The optional continuous-circle verifier additionally requires
+`python -m pip install -r requirements.certification.txt`; its recorded arithmetic
+is python-flint 0.9.0 with 128-bit Arb precision.
 
 ## Staged execution
 
@@ -94,7 +105,7 @@ checkpoint by checkpoint without retaining this entire activation collection in 
 - `configs/sweeps`: requested main, width, depth, relevance, and control designs.
 - `tests`: analytic invariants, known quotient controls, leakage checks, and resume behavior.
 
-The real-image validation uses handwritten digits available offline through
-scikit-learn. It is a small realistic controlled-rotation experiment, not a claim
-to have run dSprites or CIFAR. The dSprites loader and CIFAR model/configurations
-alone do not constitute completed image experiments.
+Image studies include controlled rotations of handwritten digits, dSprites,
+CIFAR-10, and CIFAR-100. The current source-bound completion counts and limitations
+are in the project status. A loader or configuration alone does not count as a
+completed experiment; final held-out replays and the full results gate are required.

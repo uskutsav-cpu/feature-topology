@@ -1,0 +1,59 @@
+{
+  "schema": "feature-topology.nuisance-decision-local-replay.v2",
+  "run_id": "3c7c28f731ba2310",
+  "theta_fraction": [
+    5,
+    8
+  ],
+  "target_class": 2,
+  "result_sha256": "acd254513dbd54d4e0bac90ae77328f7bd466f2b5cb3a4a2d23b3909c3c543b2",
+  "binding": {
+    "run_id": "3c7c28f731ba2310",
+    "gamma": 1.0,
+    "seed": 0,
+    "selected_step": 128,
+    "checkpoint_sha256": "5a4845208681acbf506042540e735c7e0e10b56da701d71eebd07e32eea3d0d9",
+    "input_archive_sha256": "0e736a09773a3c85a98225ea37d74d3b7f6edb67a14b5b3bc8b982cd7488d5cc",
+    "input_index_sha256": "4e58201b6e96a56e53ba5cb60cd667859e7333b1cae2d7af40bc5ec0cb4e313d",
+    "analysis_data_sha256": "38c911f46b6e1e79ddab11d294795f97b5d578466f5db51c345610dc8100ad51",
+    "retention_certificate_sha256": "397eec97a0819b079955f71840155d1441eeae77a4ffa711517a78ccd03271e0",
+    "retention_replay_sha256": "56bef81351994e609b3172b3f6e9eb177887ddad605232e827679dd85ead0b5f",
+    "protocol_sha256": "74e694c5345e877b20be54ce7cb5788dec0ce75ff69e9e8d731e8487d169d733",
+    "theta_fraction": [
+      5,
+      8
+    ],
+    "target_class": 2,
+    "source_sha256": {
+      "scripts/remote_nuisance_decision_verifier.py": "9f2322294e04d97dcd01522e9161d90846cc92b7cc3bab3eef9eee5718aa16ae",
+      "src/metrics/nuisance_decision_verifier.py": "83e61669e982d048dc3d18c15f08d8b26f434b92e3d64a8e8c1cb88a8830b4b4",
+      "src/metrics/continuous_fiber_verifier.py": "8017df0541801db95720870db1a81530e43911ab37ba45795edb3d6221284afa",
+      "src/metrics/fixed_fiber_verifier.py": "17e16f402acc6f79d4936013d665a8b6462df52e916549bd43bccf7432d87c71",
+      "src/metrics/rational_fixed_fiber_verifier.py": "28ad40ace61196c7947e24943bcc49f7c1dab78c3383e84af0a1390c3c18eaf8",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c",
+      "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+      "configs/nuisance_decision_verifier_v1.json": "74e694c5345e877b20be54ce7cb5788dec0ce75ff69e9e8d731e8487d169d733",
+      "docs/NUISANCE_DECISION_CERTIFICATION.md": "918019144f81a15713001144f73d00bd727edcf2bc97b2d7e6e50f63a2e63230",
+      ".github/workflows/nuisance_decision_verifier_v1.yml": "1f8d07614635a4908cecb72c0d25006d5859cb28e1a4a4b405bf9a33735f7bfb"
+    }
+  },
+  "local_claim_sha256": "c5e941ab8789e7ced4206de31f3aeaf230e900b492ec1d3202a4508f95c4c20e",
+  "hosted_numerical_margin_replay_claimed": false,
+  "decision_certificate": true,
+  "counterexample_certificate": false,
+  "replay_passed": true,
+  "status": "passed",
+  "verifier_sha256": "81b5be93116a7abf716acb2f83e4b1cd7e60dbe6c8205965cf18193567ff507d",
+  "arithmetic": {
+    "python_flint": "0.9.0",
+    "precision_bits": 128
+  },
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.13.5"
+  },
+  "scope": "Additional local replay of a fixed weaker derived margin using the same Arb verifier; not an independent implementation, validation of the hosted numerical margin, or Lean proof"
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "feature-topology.fixed-fiber-collection.v2",
+  "workflow_run": "39490607190",
+  "complete_attempts": 16,
+  "positive_certificates": 0,
+  "records": [
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "e3bc92b6c610ee1351b7868f011db3afa418b113df96a8140c2249dfe0f9adbf"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "c526570ccd17ca0b81ab59408bee4de8c5162878c9297042c4fb53239f3a4b67"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "6d3a590b8549d508f45481a640facf427514a0096ed27136646bda6a7cb78c77"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "268cd7f7999b71787b1a8b47a4c869ff9e106850a1a36c2b9de264a6ba0ef7d8"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "06d7b33cf3720bdf09833cba1e196a8eb6829a2423dd84fe8186189be216444f"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "c820fb817277314befecd2550bc3e4e7eb98bb6eb8824979d5ac46ac52caea5a"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        1,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "69bb60587fc1d157dfac5a595ac5696b74bb3f6337b0c5d5e89fbe5afeaf0088"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        7,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "4c429df30155faf4613880409e640c93648599aacf66aaa2e9d5570db5f15474"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "bc6d7f2a6ec1f40d7ccb9b1efc4cc3ea2708b4131357d4261dff90d1c1deccff"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "e1052f6cb62d0f8c63fecfe791dd47978d718b3000351841c2d1df1bde91c672"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "400d3dd1ae43e02610aba938ef8890adf164f6bc6a1919d5c52f7e533ebcef88"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "4ee0793f9c86bba03830a378ba43f392f5344751cae4e9ff8dfbbd12b343e547"
+    },
+    {
+      "run_id": "25b579b2abddc0f9",
+      "gamma": 0.03125,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "c9d34a52050f134338b2859961ceb32857bc2608ac32ef4474373c9294cafb28"
+    },
+    {
+      "run_id": "8212b25d1f355922",
+      "gamma": 0.5,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "9211de3f9b8653a93aad8029ae0386ca0e7fa5f17fdf84719bac1cc11efd6048"
+    },
+    {
+      "run_id": "d8fd2641a57ba8bf",
+      "gamma": 8.0,
+      "theta_fraction": [
+        5,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "ce53b85ab6079aba682b40efd3a41ed9bb44802ee305c672ad4a85f22169aa4f"
+    },
+    {
+      "run_id": "3c7c28f731ba2310",
+      "gamma": 1.0,
+      "theta_fraction": [
+        3,
+        8
+      ],
+      "status": "inconclusive",
+      "result_sha256": "a6cfa32727ea846df41087ed3c3daf2954158daf23bd6317cd19522398623846"
+    }
+  ],
+  "scope": "All sixteen v2 attempts inconclusive; no trained-circle certificate"
+}

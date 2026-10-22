@@ -1,0 +1,38 @@
+{
+  "archive_sha256": "e3c3fb08eb818fe8fe1de5c3521a1ac182778e934169c4fe54083b91cd42e5d7",
+  "cell": {
+    "dataset": "CIFAR100",
+    "gamma": 128.0,
+    "multiplier": 2.0,
+    "stage": "calibration"
+  },
+  "cell_id": "dc7310dd9d2bf89b",
+  "complete": true,
+  "config": {
+    "batch_size": 128,
+    "classes": 100,
+    "dataset": "CIFAR100",
+    "eval_every": 500,
+    "gamma": 128.0,
+    "lr": 2.2627416997969525,
+    "max_steps": 2000,
+    "seed": 900,
+    "target_loss": 0.2
+  },
+  "dataset_sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+  "files": {
+    "cifar100/calibration/964d1ca6a3e00f68/config.json": "9c413806996de69c27a33a0f7a9559ea2d88cfef1c2ef9c318c487a5d707e188",
+    "cifar100/calibration/964d1ca6a3e00f68/final.pt": "a1cd6e16e3390ed8e22b30505d9c71c40ea9c94b70994cce8ebec00487029356",
+    "cifar100/calibration/964d1ca6a3e00f68/summary.json": "19e008f75d2e933b85a7197ba6c756cd04d4946022f7f6f11693fee4475d784e"
+  },
+  "host": {
+    "commit": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+    "machine": "x86_64",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "workflow_run": "35501211434"
+  },
+  "run_id": "964d1ca6a3e00f68",
+  "schema": "feature-topology.remote-cifar.v1",
+  "source_specification_sha256": "d97d23cbba86d05b60d4c82cb82690b65f93bdc5aa47f137f5680b0c8742a533"
+}

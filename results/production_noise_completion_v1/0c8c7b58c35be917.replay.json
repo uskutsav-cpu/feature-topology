@@ -1,0 +1,52 @@
+{
+  "schema": "feature-topology.production-noise-replay.v1",
+  "run_id": "0c8c7b58c35be917",
+  "result_sha256": "d8aeb713cf9c5c10878622f4dbf2c8b3bd40e63d61d6f9c1ab398a818a2ca7e7",
+  "binding": {
+    "run_id": "0c8c7b58c35be917",
+    "gamma": 1.0,
+    "seed": 3,
+    "relevance": 0.5,
+    "roles": [
+      "relevance"
+    ],
+    "run_directory": "results/relevance/c8d6b89223239b73/runs/0c8c7b58c35be917",
+    "input_index": "configs/completion/ablation_inputs_v3/relevance/95eddf02ab1216cc.json",
+    "input_index_sha256": "a5e7c35c33e1cdf003f7b3ddd4db44468b898afd845918b319fc7f9e5db16010",
+    "input_archive_sha256": "9f48a81519e2382f36240ee54e9b3b7c5615b0de88786f69d67e431574e92e29",
+    "config_sha256": "79bbf03229e5f864fc9ee163c14c3605917c58320e495e5d197a7783ab4b5323",
+    "training_summary_sha256": "0636be49b88f49883eaa92bc22dd661088004d3090c0ad89109142b099c5bc72",
+    "analysis_data_path": "results/production_noise_inputs/95eddf02ab1216cc.npz",
+    "analysis_data_sha256": "833401bdfa75a13f550f3c3448b911326664dbd966c29e4f2a1717a1bb01aad6",
+    "checkpoint": "step_0000064.pt",
+    "checkpoint_sha256": "e387e44c7533ffdf0d0f46588c53a1ff9239ac8e7bb3e63c7520838865626c5f",
+    "selected_step": 64,
+    "actual_training_loss": 0.06731625022888184,
+    "protocol_sha256": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+    "source_sha256": {
+      "scripts/evaluate_production_noise.py": "ae0758ff601c8af2fe25aa7b027737926d65cdf76ff61b7f5df2045ca3574003",
+      "src/metrics/fibers.py": "cfbe86ff732b45010cf79eb9e2adce033c51c37d50cc4175da055712148477a8",
+      "scripts/compute_metrics.py": "4aa0418b3ec1dfba9e8184d4a8926f46d3089e8fd50a5265ae84920abc5231f6",
+      "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "configs/production_noise_completion_v1.json": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+      "configs/analysis_plan_v2.json": "a0c5e605f31bcbd5bded1823968d9a1d54a58103accffc54b34185bbe0d4ea4a",
+      "configs/completion/production_cohorts_v3.json": "71856aad43c10e9d65e9de81dd5d75f3c30434587ac02a8718caf73b399287d2",
+      "docs/PRODUCTION_NOISE_COMPLETION.md": "17e7f0592527530de23361cb5d5fc78d3b6a4e37d8f91425f41eb07296650c25"
+    }
+  },
+  "replay_verified": true,
+  "numeric_decoder_replay": true,
+  "status": "numeric_replay_passed",
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.13.5",
+    "torch": "2.14.0",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.0"
+  },
+  "scope": "Same-host repeated numerical evaluation of the same implementation; not an independent verifier or new training replicate"
+}

@@ -1,0 +1,266 @@
+{
+  "schema": "feature-topology.task-preserving-fiber-evaluation.v1",
+  "binding": {
+    "run_id": "5aa87573ad1d5750",
+    "gamma": 0.5,
+    "seed": 3,
+    "relevance": 0.5,
+    "roles": [
+      "relevance"
+    ],
+    "run_directory": "results/relevance/c8d6b89223239b73/runs/5aa87573ad1d5750",
+    "input_index": "configs/completion/ablation_inputs_v3/relevance/95eddf02ab1216cc.json",
+    "input_index_sha256": "a5e7c35c33e1cdf003f7b3ddd4db44468b898afd845918b319fc7f9e5db16010",
+    "input_archive_sha256": "8708f9aadfb992b734f62faf7f81fccf72c0624c2287fee2feb688eeb0859443",
+    "config_sha256": "f26f745feacc7b456aadccb58b86432a33a14567e4eebeae5991309946d0e815",
+    "training_summary_sha256": "e9101320af44fc64a43904ed56bd2495492c51cf06e8ea22cb103157a4b0b1d8",
+    "analysis_data_path": "results/production_noise_inputs/95eddf02ab1216cc.npz",
+    "analysis_data_sha256": "833401bdfa75a13f550f3c3448b911326664dbd966c29e4f2a1717a1bb01aad6",
+    "checkpoint": "step_0000064.pt",
+    "checkpoint_sha256": "6cb6d2867c2b039643b2ee4f59df9271fb4415ee7ff49566df23f9af002abc65",
+    "selected_step": 64,
+    "actual_training_loss": 0.09717220611572265,
+    "protocol_sha256": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+    "source_sha256": {
+      "configs/analysis_plan_v2.json": "a0c5e605f31bcbd5bded1823968d9a1d54a58103accffc54b34185bbe0d4ea4a",
+      "configs/completion/production_cohorts_v3.json": "71856aad43c10e9d65e9de81dd5d75f3c30434587ac02a8718caf73b399287d2",
+      "configs/production_noise_completion_v1.json": "6a5375f26a204c0155847ce89d9f157df9047a4a4a4fee2be82bd4c35cf88e76",
+      "configs/task_preserving_fiber_completion_v1.json": "7a6ca2215aea057f4759be73a4ba1854452f64cae550dff2fa75b25359de5dbc",
+      "docs/PRODUCTION_NOISE_COMPLETION.md": "17e7f0592527530de23361cb5d5fc78d3b6a4e37d8f91425f41eb07296650c25",
+      "docs/TASK_PRESERVING_FIBER_PROTOCOL.md": "c2a41394ddffce9524bd49afdf5d8ff7938b72d34ca2f3b7ef677009f52c36cf",
+      "scripts/compute_metrics.py": "4aa0418b3ec1dfba9e8184d4a8926f46d3089e8fd50a5265ae84920abc5231f6",
+      "scripts/evaluate_nuisance_shift.py": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+      "scripts/evaluate_production_noise.py": "ae0758ff601c8af2fe25aa7b027737926d65cdf76ff61b7f5df2045ca3574003",
+      "scripts/evaluate_task_preserving_fibers.py": "4b3f4a216fcf910b70c64d07a6b233bc08184d24112b08090c0962adc415498d",
+      "scripts/recover_release_evidence.py": "76c384c9cc03becb293bc7284c9779a955cc7d61df9f52d3e28bfba72e32fdeb",
+      "scripts/remote_variability_baselines.py": "14a3082132edb20f1c76f155325415aec97e190bf4735b0dd6000a7c04b74f94",
+      "src/data/torus.py": "ad25f701f4c9cba8b48c6f3293c93ffed0aecf5e679b108a6008d50eccd8c194",
+      "src/metrics/fibers.py": "cfbe86ff732b45010cf79eb9e2adce033c51c37d50cc4175da055712148477a8",
+      "src/metrics/task_preserving_fibers.py": "1bd63e4e3b8859c3cb58d4c3b5e3a7da3d9e2bd6bf44c3c886142e7baa74879c",
+      "src/models/mlp.py": "902b7b402721e9012220dafab630fbb11ade65812ed81a49ff0904938bf68766",
+      "src/training/checkpoints.py": "360c3453f71c545d7a2a7ddae2d201a1c2af89893fda7ecd6ebb8f40a3c94563",
+      "src/training/train.py": "20cf28f1b68bc0694182acdc6538a1b82849b463d65254e582b61eea8eac983c"
+    },
+    "task_preserving_protocol_sha256": "7a6ca2215aea057f4759be73a4ba1854452f64cae550dff2fa75b25359de5dbc"
+  },
+  "source_training_status": "converged",
+  "continuum_certificate": false,
+  "scope": "Finite evidence for retention along exact task-coordinate-preserving circles versus original-factor controls in saved ordinary MLPs. No all-theta or full-torus injectivity, causal OOD effect, full target-law quotient, information destruction, new general verifier/theorem, or guaranteed high novelty. The original negative predictive comparison remains unchanged.",
+  "status": "evaluated",
+  "families": [
+    {
+      "family": "fixed_u_task_preserving",
+      "grid_side": 100,
+      "grid_points": 10000,
+      "centered_representation_rms": 5.100718953560068,
+      "local_per_phi": {
+        "minimum": 2.717110293012465,
+        "q01": 3.1165785528780248,
+        "median": 4.467779818772163,
+        "normalized_minimum": 0.53269162989583,
+        "normalized_q01": 0.6110076993563419
+      },
+      "local_per_unit_flat_torus_tangent": {
+        "minimum": 2.5804032396929237,
+        "q01": 2.957244514688425,
+        "median": 4.213962573544436,
+        "normalized_minimum": 0.5058901035690117,
+        "normalized_q01": 0.5797701346835438
+      },
+      "local_per_unit_embedded_input_tangent": {
+        "minimum": 2.580403221237516,
+        "q01": 2.957244520678378,
+        "median": 4.213962574809549,
+        "normalized_minimum": 0.5058900999508144,
+        "normalized_q01": 0.5797701358578788
+      },
+      "exact_zero_preactivations": 0,
+      "task_coordinate_maximum_error": 8.881784197001252e-16,
+      "classifier_grid_accuracy": 0.9802,
+      "dense_pairs": {
+        "phi_arc": {
+          "minimum": 1.277595691578547,
+          "q01": 1.5437775107344673,
+          "median": 2.781146268097581,
+          "normalized_minimum": 0.2504736495404915,
+          "normalized_q01": 0.30265880649177535
+        },
+        "flat_torus_ambient": {
+          "minimum": 1.223375320743185,
+          "q01": 1.4954986048571073,
+          "median": 2.662312920251783,
+          "normalized_minimum": 0.23984370279592157,
+          "normalized_q01": 0.29319368866879403
+        },
+        "pairs": 495000,
+        "minimum_representation_distance": 0.16833233215160204,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 0,
+        "collision_tolerance": 1e-10,
+        "minimum_phi_ratio_witness": {
+          "base_index": 85,
+          "pair_indices": [
+            31,
+            81
+          ],
+          "latent_pair": [
+            [
+              4.913246124796556,
+              1.9792033717615698
+            ],
+            [
+              5.831000750480538,
+              5.120796025351363
+            ]
+          ],
+          "phi_arc_ratio": 1.277595691578547,
+          "representation_distance": 4.013685238921134
+        },
+        "qualification": "Finite grid only; no continuum lower bound or real-valued collision certificate"
+      },
+      "adversarial_search": {
+        "status": "fixed_budget_complete",
+        "evaluated_candidates": 1040,
+        "best_candidate": {
+          "update": 64,
+          "start": 5,
+          "base": 5.355236319141002,
+          "latent_pair": [
+            [
+              5.813471570748479,
+              5.1240174016308
+            ],
+            [
+              4.89609319820197,
+              8.261048016833731
+            ]
+          ],
+          "phi_arc": 3.137030615202932,
+          "representation_distance": 4.010101568543628,
+          "phi_arc_ratio": 1.278311263240323,
+          "normalized_phi_arc_ratio": 0.2506139379328321,
+          "flat_torus_ambient_ratio": 1.2269250239129397,
+          "normalized_flat_torus_ambient_ratio": 0.24053962492024825,
+          "task_coordinate_pair": [
+            5.355236319141002,
+            5.355236319141002
+          ],
+          "task_coordinate_wrapped_difference": 0.0
+        },
+        "qualification": "Smallest evaluated separated-pair ratio; upper bound on an infimum, not a certificate"
+      }
+    },
+    {
+      "family": "fixed_theta_original_factor_control",
+      "grid_side": 100,
+      "grid_points": 10000,
+      "centered_representation_rms": 5.100720227214413,
+      "local_per_phi": {
+        "minimum": 2.773413451510805,
+        "q01": 3.103477894993928,
+        "median": 4.384438218338673,
+        "normalized_minimum": 0.5437297730452884,
+        "normalized_q01": 0.6084391530505071
+      },
+      "local_per_unit_flat_torus_tangent": {
+        "minimum": 2.773413451510805,
+        "q01": 3.103477894993928,
+        "median": 4.384438218338673,
+        "normalized_minimum": 0.5437297730452884,
+        "normalized_q01": 0.6084391530505071
+      },
+      "local_per_unit_embedded_input_tangent": {
+        "minimum": 2.7734134786790587,
+        "q01": 3.1034779139344684,
+        "median": 4.384438216051905,
+        "normalized_minimum": 0.5437297783716448,
+        "normalized_q01": 0.6084391567638142
+      },
+      "exact_zero_preactivations": 0,
+      "task_coordinate_maximum_error": null,
+      "classifier_grid_accuracy": 0.9785,
+      "dense_pairs": {
+        "phi_arc": {
+          "minimum": 1.4196346248812246,
+          "q01": 1.6267557789587193,
+          "median": 2.8715074528821614,
+          "normalized_minimum": 0.2783204256737897,
+          "normalized_q01": 0.31892668221231124
+        },
+        "flat_torus_ambient": {
+          "minimum": 1.4196346248812246,
+          "q01": 1.6267557789587193,
+          "median": 2.8715074528821614,
+          "normalized_minimum": 0.2783204256737897,
+          "normalized_q01": 0.31892668221231124
+        },
+        "pairs": 495000,
+        "minimum_representation_distance": 0.1693111364684506,
+        "exact_float_collision_pairs": 0,
+        "tolerance_collision_pairs": 0,
+        "collision_tolerance": 1e-10,
+        "minimum_phi_ratio_witness": {
+          "base_index": 85,
+          "pair_indices": [
+            9,
+            59
+          ],
+          "latent_pair": [
+            [
+              5.372123437638547,
+              0.5969026041820608
+            ],
+            [
+              5.372123437638547,
+              3.738495257771854
+            ]
+          ],
+          "phi_arc_ratio": 1.4196346248812246,
+          "representation_distance": 4.459913708308557
+        },
+        "qualification": "Finite grid only; no continuum lower bound or real-valued collision certificate"
+      },
+      "adversarial_search": {
+        "status": "fixed_budget_complete",
+        "evaluated_candidates": 1040,
+        "best_candidate": {
+          "update": 30,
+          "start": 5,
+          "base": 5.303675957225316,
+          "latent_pair": [
+            [
+              5.303675957225316,
+              3.6971224428521894
+            ],
+            [
+              5.303675957225316,
+              6.831200653690004
+            ]
+          ],
+          "phi_arc": 3.134078210837815,
+          "representation_distance": 4.455699864011023,
+          "phi_arc_ratio": 1.4216938966624915,
+          "normalized_phi_arc_ratio": 0.27872414744042956,
+          "flat_torus_ambient_ratio": 1.4216938966624915,
+          "normalized_flat_torus_ambient_ratio": 0.27872414744042956,
+          "task_coordinate_pair": [
+            5.039979210045687,
+            5.564173074665772
+          ],
+          "task_coordinate_wrapped_difference": 0.5241938646200843
+        },
+        "qualification": "Smallest evaluated separated-pair ratio; upper bound on an infimum, not a certificate"
+      }
+    }
+  ],
+  "source_commit": "7df70ce8422964953cfedebe18d44f916a6bfe40",
+  "host": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.5.3",
+    "threads": 2,
+    "dtype": "float64"
+  }
+}

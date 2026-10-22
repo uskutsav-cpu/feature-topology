@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/cifar10-v3-exact-lr-8816fc0",
+  "node_id": "REF_kwDOUSlfQtoAJXJlZnMvdGFncy9jaWZhcjEwLXYzLWV4YWN0LWxyLTg4MTZmYzA",
+  "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/refs/tags/cifar10-v3-exact-lr-8816fc0",
+  "object": {
+    "sha": "4fc3f63057eb4cde53c6553185aff366cc163fb3",
+    "type": "tag",
+    "url": "https://api.github.com/repos/uskutsav-cpu/feature-topology/git/tags/4fc3f63057eb4cde53c6553185aff366cc163fb3"
+  }
+}

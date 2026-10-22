@@ -1,0 +1,14 @@
+{
+  "schema": "feature-topology.continuous-fiber-feasibility.v1",
+  "date": "2026-10-20",
+  "status": "Exploratory strengthening protocol recorded after the original study and the negative diagnostic comparison; not an original-study preregistration.",
+  "question": "Can a fixed linear readout of a trained nuisance fiber support a rigorous continuous-circle noncollision certificate, beyond the existing rational polygon certificates?",
+  "cells": "All 13 primary gamma values at seed 0, first stored checkpoint with training loss <= 0.1; last trainable hidden representation only.",
+  "witness_fit": "Class-independent affine least squares from the original frozen 100-by-100 IID grid representation to (cos(phi),sin(phi)); ridge = 1e-10 times trace(centered H.T H)/width. No OOD outcomes or retraining.",
+  "screen": "Float64 evaluation of the exact chain-rule derivative on a separate 64-by-64 half-cell-offset torus grid. A sampled supremum below 2/pi is a feasibility screen only, never a certificate.",
+  "candidate_sufficient_condition": "For fixed A, if sup over all theta and phi of norm(d_phi[A h(theta,phi) - (cos(phi),sin(phi))]) <= epsilon < 2/pi, then every nuisance circle is injectively mapped with lower separation (1-epsilon*pi/2)/norm(A) times its nuisance-circle chord distance.",
+  "proof_scope": "The criterion is an elementary Lipschitz perturbation argument. Its novelty is not presumed. A continuous certificate would additionally require rigorous interval enclosure of the derivative on the entire torus, complete domain coverage, source binding, and independent replay.",
+  "exact_interpretation": "Stored float32 network/embedding coefficients interpreted as exact real dyadic numbers; a float64 readout witness would also be fixed as exact dyadic coefficients. Floating-point feasibility calculations do not certify this continuation.",
+  "followup_gate": "Only witnesses passing the empirical necessary screen are eligible for a separate rigorously bounded verification attempt. A screen failure invalidates this witness, not the underlying fiber injectivity hypothesis. All 13 results, including failures, are retained.",
+  "no_claims": "No continuum certificate, new theorem of high novelty, practical scalability, OOD improvement, or complete research project is asserted by passing the screen. Any verifier needs controls and a documented arithmetic trust boundary."
+}

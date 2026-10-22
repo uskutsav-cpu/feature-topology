@@ -1,0 +1,31 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "b0dd44081975ba3e",
+  "input_tag": "ood-553ac91d740aab4e-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/553ac91d740aab4e.json",
+  "input_index_sha256": "e9b96f90f643225dff8df602af292df8020403e5629e894250a294f118a1d13c",
+  "input_archive_sha256": "064935f74b3219ed734eb77347d0dd9b35bc527508ceb3491533312044851f13",
+  "source_member_sha256": {
+    "config.json": "c09c22a4f071000f8c94c7dc9a1e2a6e09389c1730acc6a98a06a8b06062a971",
+    "final.pt": "22755e4bcc6ab3176c645c55147758579375e6409e9dee1a90cff14fd5853ab1",
+    "step_0000000.pt": "cf60eb1fc2bbe7fc005d7d46db5d88d11b50a27bd6c9d83f6821523f9ee37fa5",
+    "step_0000001.pt": "a23470d24e43ff87dfdea161a6763a7b1136418716b80b99fbda4be6b30f6e3e",
+    "step_0000002.pt": "bdeecf3e14928763b9b4dcd7772017d33ddf1c85fe2c3a4fa914d5d93c6ef2f0",
+    "step_0000004.pt": "c7ba95f8367e01e92a73a9b1310d92e8ffbc378ffd83d2df31f4132b47ddfd9d",
+    "step_0000008.pt": "c4b35372496f5e970e3f7d785be99d7d15666cc021bcd89f8c63c240a13ae3ca",
+    "step_0000016.pt": "d8d4422b9ebc817e7df67df20fa190a0ed4947b84b6de5f8eeca240e130ac6b8",
+    "step_0000032.pt": "58aa4d2810f4dc322ea6c6e572903bd80be2153d71d25d482779d24266b25158",
+    "step_0000064.pt": "f9707ac9e32bdf9e97981236df2f2720ae3473ae4c79ac7adfd2bb6ec69f13e0",
+    "summary.json": "11cfb6e246b7b7e6f4fd17f74582961c430533254c39dca0dee46d33bd91a5c1"
+  },
+  "evaluation_sha256": "7810d8797fa85be7b130a2d1a981de1bc2dc9e51480af23680d6c45df8e8a6c9",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}

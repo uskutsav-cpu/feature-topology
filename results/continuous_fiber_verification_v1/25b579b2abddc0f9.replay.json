@@ -1,0 +1,9 @@
+{
+  "schema": "feature-topology.continuous-fiber-replay.v1",
+  "run_id": "25b579b2abddc0f9",
+  "result_sha256": "914268f8b2ee8f513f3da9f8efd3933493c686f7cdacd94a1e9ba442d082e6c6",
+  "positive_certificate": false,
+  "standalone_replay_passed": false,
+  "status": "not_a_positive_certificate",
+  "scope": "Same Arb implementation in a separate process; no independent implementation or Lean claim"
+}

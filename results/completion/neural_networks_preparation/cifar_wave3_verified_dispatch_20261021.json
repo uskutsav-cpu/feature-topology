@@ -1,0 +1,84 @@
+{
+  "source_commit": "06d5f685538e31542bbbd23a2c32cfde3c239aaf",
+  "dataset": "CIFAR100",
+  "tag": "cifar100-v3-phcache-06d5f68",
+  "old_workflow": "39530446041",
+  "requested_cells": [
+    {
+      "stage": "production",
+      "dataset": "CIFAR100",
+      "gamma": 0.125,
+      "seed": 0,
+      "lr_hex": "0x1.999999999999ap-8"
+    },
+    {
+      "stage": "production",
+      "dataset": "CIFAR100",
+      "gamma": 0.125,
+      "seed": 1,
+      "lr_hex": "0x1.999999999999ap-8"
+    },
+    {
+      "stage": "production",
+      "dataset": "CIFAR100",
+      "gamma": 0.125,
+      "seed": 4,
+      "lr_hex": "0x1.999999999999ap-8"
+    }
+  ],
+  "verified_resumes": [
+    {
+      "cell": {
+        "stage": "production",
+        "dataset": "CIFAR100",
+        "gamma": 0.125,
+        "seed": 0,
+        "lr_hex": "0x1.999999999999ap-8"
+      },
+      "cell_id": "807400fb3375bcff",
+      "run_id": "174d9d6d0dd0e0ac",
+      "status_sha256": "aaac25c5e3e35912b8a0c51544cbe7bcacb58d3d0866d52ce7e75383e03f7764",
+      "archive": "cifar-807400fb3375bcff-39530446041-1.tar.gz",
+      "archive_sha256": "2e4c981275c1f0fb535ca1ae4852716a9ce350ffff79dcb2e2b633f32930e072",
+      "server_digest": "sha256:2e4c981275c1f0fb535ca1ae4852716a9ce350ffff79dcb2e2b633f32930e072",
+      "all_archive_members_verified": true
+    },
+    {
+      "cell": {
+        "stage": "production",
+        "dataset": "CIFAR100",
+        "gamma": 0.125,
+        "seed": 1,
+        "lr_hex": "0x1.999999999999ap-8"
+      },
+      "cell_id": "718f92f3dae05dc5",
+      "run_id": "0114dd26b726ea7f",
+      "status_sha256": "ea3909a18cf26356f94ae61d7093ff60fa2e83d6ce9316257fd9b8f5fc824a2a",
+      "archive": "cifar-718f92f3dae05dc5-39530446041-1.tar.gz",
+      "archive_sha256": "cb0a3115e27e717d7ef5294c197c8cda131a39b0b0275dfc4af8a358555c09ea",
+      "server_digest": "sha256:cb0a3115e27e717d7ef5294c197c8cda131a39b0b0275dfc4af8a358555c09ea",
+      "all_archive_members_verified": true
+    },
+    {
+      "cell": {
+        "stage": "production",
+        "dataset": "CIFAR100",
+        "gamma": 0.125,
+        "seed": 4,
+        "lr_hex": "0x1.999999999999ap-8"
+      },
+      "cell_id": "d2d1f68c0a24ed51",
+      "run_id": "d5fe5dd1c8222a89",
+      "status_sha256": "931e3648312660b5b5283527b14ff87b7e1a68c7ac9815346578015a62d5b724",
+      "archive": "cifar-d2d1f68c0a24ed51-39530446041-1.tar.gz",
+      "archive_sha256": "01b07f676426cf79bd8733008fe6766aca26077c6d81810f0a0ab74bdee680af",
+      "server_digest": "sha256:01b07f676426cf79bd8733008fe6766aca26077c6d81810f0a0ab74bdee680af",
+      "all_archive_members_verified": true
+    }
+  ],
+  "dispatch_intent_utc": "2026-10-21T23:52:29.592921+00:00",
+  "scientific_settings_changed": false,
+  "workflow_run": "39696195884",
+  "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/39696195884",
+  "observed_status": "queued"
+}

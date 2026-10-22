@@ -1,0 +1,14 @@
+{
+  "schema": "feature-topology.fixed-fiber-verifier-protocol.v2",
+  "date": "2026-10-20",
+  "reason_for_new_version": "All four full-torus v1 attempts were inconclusive because their interval enclosures remained too loose. Affine-input/remainder propagation improves local bounds, but full two-dimensional coverage may still be expensive. This experiment has a deliberately narrower domain and does not replace or relabel v1.",
+  "source_witnesses": "The same four fixed seed-zero global readouts passing the recorded feasibility screen: gamma 0.03125, 0.5, 1.0, 8.0. No new fit, checkpoint selection, training, or OOD outcome is used.",
+  "domains": "Sixteen specified smooth circles: four eligible gamma values times the four class-sector midpoint task coordinates theta = 2*pi*n/8 for n in {1,3,5,7}; phi spans the entire closed periodic interval [0,2*pi].",
+  "scope": "A certificate applies only to its specified theta circle. Sixteen successful circles would not imply injectivity for every theta, full-torus injectivity, or robust prediction.",
+  "arithmetic": "python-flint 0.9.0 Arb balls at 128 bits; stored network, embedding and readout coefficients are exact dyadics; theta midpoints are exact rational multiples of mathematical pi.",
+  "bounds": "Preserve the four ambient input coordinates as affine symbols and propagate interval remainders with the standard centered ReLU relaxation. Use conservative derivative masks and the same residual criterion epsilon < 2/pi. This is an adaptation of established abstract interpretation, not a claimed new abstract domain.",
+  "cover": "Binary depth-first subdivision of phi. A prefix-free complete binary cover with exact Kraft sum one is mandatory; every leaf is recomputed in standalone replay.",
+  "budget": {"maximum_boxes": 20000, "maximum_depth": 18, "seconds_per_witness": 3300},
+  "failure_policy": "Any unresolved interval, exhausted budget, rejected fixed witness, source mismatch or failed replay prevents certification. All sixteen attempts are retained regardless of outcome.",
+  "trust_boundary": "Mathematical perturbation argument, source/domain encoding and implementation, Python, and FLINT/Arb. This is not a Lean network-to-graph proof or an independently implemented verifier."
+}

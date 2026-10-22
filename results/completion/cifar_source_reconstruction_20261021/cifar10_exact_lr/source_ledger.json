@@ -1,0 +1,56 @@
+{
+  "schema": "feature-topology.remote-cifar-queue.v1",
+  "source_commit": "8816fc099e3d5135f191597ff50764ad87d80af0",
+  "attempts": [
+    {
+      "dataset": "CIFAR10",
+      "stage": "production",
+      "workflow_run": "35692337074",
+      "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35692337074",
+      "cell_ids": [
+        "54054066c6815642"
+      ],
+      "started": "2026-09-22T05:51:14Z",
+      "finished": "2026-09-22T07:31:51Z",
+      "conclusion": "success"
+    },
+    {
+      "dataset": "CIFAR10",
+      "stage": "production",
+      "workflow_run": "35672289571",
+      "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/35672289571",
+      "cell_ids": [
+        "54054066c6815642",
+        "6d4d9d938a84d1b4",
+        "7fdb41fbb8423d2a",
+        "8ff922a62ffb2382",
+        "b54684eb24600ca9"
+      ],
+      "started": "2026-09-22T00:31:07Z",
+      "finished": "2026-09-22T05:50:17Z",
+      "conclusion": "failure"
+    }
+  ],
+  "reconstruction": {
+    "method": "feature-topology.cifar-provenance-reconstruction.v1",
+    "result_tag": "cifar10-v3-exact-lr-8816fc0",
+    "evidence_sha256": {
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/tag_ref.json": "906348e4ce03a0b039a6e121a3b6c5f5253d58d860004dbb6bd3bb96bba851d8",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/annotated-4fc3f63057eb4cde53c6553185aff366cc163fb3.json": "beb6c812c86818ff44572f822e7605801a841f28f01c0f853f4fbfe21c5f86ea",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/release.json": "88b91b4b63fdd369c18860dc55445c1c2b4b6ff8cf580fd2ccd33ef74029d375",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-54054066c6815642-35672289571-1.json": "fb66f412a9a5011841894233dac9b1647b565981fb04820bdea762e75d6e6397",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-54054066c6815642-35692337074-1.json": "085577fc5b1b55623844f4ea0b32e9ae640d50acb5d1e0419d54f2477666ed0a",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-6d4d9d938a84d1b4-35672289571-1.json": "3fa5c8fb4d8a7b4eda0e8e69cdfdba00f90775d5ebbb14f4e41095d8c667154e",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-7fdb41fbb8423d2a-35672289571-1.json": "e3370e2322311141a1a7d842edd57c5e72cbc25a6f9e607db2ac6cd461a46b09",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-8ff922a62ffb2382-35672289571-1.json": "96c25e51cdd61d59eb86f334d65837ae674c763f74a2c0fa1672eb60927031d3",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/statuses/status-b54684eb24600ca9-35672289571-1.json": "a01d8f9c0f338fc6ec2aa4d2bbd6b5dd98661dd080e3d94bc3f7b9cb9ad2f296",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/runs.json": "eda577295bc61a899e810f544ca092c873eec485a3cd05f4a41da08b4542b7a5",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/35692337074-jobs.json": "35ddcee80b49df7107fa83f2eabf5c10c75a06c0e5e6086b627ffc9e0904e52c",
+      "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/api/35672289571-jobs.json": "27ab5c8d8cb8aedcdc1461f9e3eaded8c4f4896ce65084f4d73bdb7d72ce6692"
+    },
+    "observation_path": "results/completion/cifar_source_reconstruction_20261021/cifar10_exact_lr/observation.json",
+    "observation_sha256": "2bbf75d78861b89593c66c8be38a45db27bc6257995964cb71a476dd44aaa78f",
+    "scope": "Authenticated API/status reconstruction only; no original-controller byte identity, tensor verification, training completion or full-study freeze claim",
+    "excluded_runs": []
+  }
+}

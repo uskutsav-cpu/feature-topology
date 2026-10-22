@@ -99,6 +99,11 @@ def test_render_writes_bound_scientific_report_without_upgrading_claims(tmp_path
         for metric, layer in (("test_accuracy", 0), ("cka_drift", 4),
                               ("effective_rank", 4), ("test_loss", 0))
     ]).to_csv(image_dir / "image_paired_contrasts.csv", index=False)
+    pd.DataFrame([
+        dict(study='cifar10',gamma=1.,seed=0,status='converged',test_accuracy=.8),
+        dict(study='dsprites',gamma=1.,seed=0,status='budget_exhausted',test_accuracy=.34),
+        dict(study='dsprites',gamma=1.,seed=1,status='diverged',test_accuracy=None),
+    ]).to_csv(image_dir/'image_run_accounting.csv',index=False)
     certification = {
         "analytic_exact_controls": 7, "rational_trained_layer_certificates": 40,
         "exact_scope": "finite polygon", "numerical_scope": "sampled polygon",
@@ -118,6 +123,8 @@ def test_render_writes_bound_scientific_report_without_upgrading_claims(tmp_path
     assert "**crossover**" in text
     assert "broadened rather than sharpened" in text
     assert "Controlled image validation" in text
+    assert '| dsprites | 2 | 0 | 1 | 1 | 0.34 to 0.34 |' in text
+    assert 'last finite training log is not its loss at divergence' in text
     assert (output / "headline_endpoint_effects.csv").is_file()
     assert (output / "headline_relevance_effects.csv").is_file()
     assert (output / "headline_ood_effects.csv").is_file()

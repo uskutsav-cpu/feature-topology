@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/feature-topology/scripts/evaluate_task_preserving_fibers.py", line 120, in <module>
+    run(args.repo,args.output,args.source_commit,args.replay)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/feature-topology/scripts/evaluate_task_preserving_fibers.py", line 97, in run
+    close_numeric(actual,existing)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/feature-topology/scripts/evaluate_production_noise.py", line 176, in close_numeric
+    for key in actual:close_numeric(actual[key],expected[key])
+                      ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/feature-topology/scripts/evaluate_production_noise.py", line 176, in close_numeric
+    for key in actual:close_numeric(actual[key],expected[key])
+                      ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swethasunilkumar/Documents/Codex/2026-10-20/feature-topology-ready-for-jmlr-or/work/feature-topology/scripts/evaluate_production_noise.py", line 185, in close_numeric
+    raise ValueError('Noise replay value changed')
+ValueError: Noise replay value changed

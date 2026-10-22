@@ -1,0 +1,113 @@
+{
+  "schema": "feature-topology.nuisance-decision-preflight-incident.v1",
+  "workflow_run": "39508359403",
+  "source_commit": "3ccaf21ba9c830096e887434a8b5aa936f03eebd",
+  "url": "https://github.com/uskutsav-cpu/feature-topology/actions/runs/39508359403",
+  "status": "cancelled_after_source_format_failure",
+  "jobs": [
+    {
+      "name": "verify (0.5, 3)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (1, 3)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (8, 1)",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "verify (1, 5)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (1, 7)",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "verify (0.03125, 3)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (0.5, 1)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (8, 3)",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "verify (0.03125, 7)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (0.5, 7)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (0.03125, 1)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (1, 1)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (0.5, 5)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (0.03125, 5)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "verify (8, 5)",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "verify (8, 7)",
+      "conclusion": "cancelled"
+    }
+  ],
+  "scientific_verifications_executed": 0,
+  "classification_result_artifacts": 0,
+  "cause": "KeyError dimension: original source configs omit this field and the original builder supplies 16",
+  "correction": "Use the same dimension=16, width=256, depth=4 defaults as src/training/train.py and validate every saved tensor shape. Add a builder-default regression control and preflight all four actual source states.",
+  "protocol_unchanged": true,
+  "verification_core_unchanged": true,
+  "protocol_sha256": "74e694c5345e877b20be54ce7cb5788dec0ce75ff69e9e8d731e8487d169d733",
+  "full_job_log_sha256": "82cab9727a229e57e9c36e339d6d632fa251ff880176dae23e1c8079d105c9ce",
+  "corrected_source_preflight": {
+    "status": "source_format_preflight_passed",
+    "models": [
+      {
+        "run_id": "25b579b2abddc0f9",
+        "gamma": 0.03125,
+        "encoded": true,
+        "dimension_default_used": true
+      },
+      {
+        "run_id": "8212b25d1f355922",
+        "gamma": 0.5,
+        "encoded": true,
+        "dimension_default_used": true
+      },
+      {
+        "run_id": "3c7c28f731ba2310",
+        "gamma": 1.0,
+        "encoded": true,
+        "dimension_default_used": true
+      },
+      {
+        "run_id": "d8fd2641a57ba8bf",
+        "gamma": 8.0,
+        "encoded": true,
+        "dimension_default_used": true
+      }
+    ],
+    "classifier_outcomes_evaluated": false,
+    "verifier_sha256": "9f2322294e04d97dcd01522e9161d90846cc92b7cc3bab3eef9eee5718aa16ae"
+  },
+  "scope": "Input-format failure before mathematical verification; these are not negative classifier-invariance outcomes. The same sixteen scientific checks will run under the corrected source loader."
+}

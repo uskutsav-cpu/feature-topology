@@ -36,7 +36,7 @@ def file_digest(path: str | Path) -> str:
     return h.hexdigest()
 
 
-def read_json(path: str | Path) -> Any:
+def _decode_json(text: str, path: str | Path) -> Any:
     def invalid(value: str) -> None:
         raise ValueError(f"Non-JSON number {value} in {path}")
     def pairs(items):
@@ -46,8 +46,17 @@ def read_json(path: str | Path) -> Any:
                 raise ValueError(f"Duplicate JSON key {key!r} in {path}")
             out[key] = value
         return out
-    return json.loads(Path(path).read_text(encoding="utf-8"),
-                      parse_constant=invalid, object_pairs_hook=pairs)
+    return json.loads(text, parse_constant=invalid, object_pairs_hook=pairs)
+
+
+def read_json(path: str | Path) -> Any:
+    return _decode_json(Path(path).read_text(encoding="utf-8"), path)
+
+
+def read_json_with_hash(path: str | Path) -> tuple[Any, str]:
+    """Parse and hash exactly the same bytes, with the normal strict JSON rules."""
+    raw = Path(path).read_bytes()
+    return _decode_json(raw.decode("utf-8"), path), hashlib.sha256(raw).hexdigest()
 
 
 def atomic_json(path: str | Path, value: Any) -> None:

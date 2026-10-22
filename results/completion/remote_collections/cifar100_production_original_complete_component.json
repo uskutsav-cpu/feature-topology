@@ -1,0 +1,107 @@
+{
+  "schema": "feature-topology.remote-cifar-collection.v1",
+  "result_tag": "cifar100-v3-hosted-b20f3c7",
+  "source_commit": "b20f3c77bd620389dbeb542f0b48789f754a2a8e",
+  "source_specification": "configs/completion/cifar_sources_v3.json",
+  "source_specification_sha256": "d97d23cbba86d05b60d4c82cb82690b65f93bdc5aa47f137f5680b0c8742a533",
+  "expected": 30,
+  "complete": {
+    "97bef2e52b06bb1b": "cifar-97bef2e52b06bb1b-35685882131-1.tar.gz",
+    "7e8d2c99626f085f": "cifar-7e8d2c99626f085f-35568165832-1.tar.gz",
+    "90d0d4b278ae4e51": "cifar-90d0d4b278ae4e51-35685882131-1.tar.gz",
+    "a938c79767994bdd": "cifar-a938c79767994bdd-35685882131-1.tar.gz",
+    "c8675a9d28e7c6f5": "cifar-c8675a9d28e7c6f5-35568165832-1.tar.gz",
+    "23577a51cb966d38": "cifar-23577a51cb966d38-35568165832-1.tar.gz",
+    "ebe9adbaa4a33702": "cifar-ebe9adbaa4a33702-35568165832-1.tar.gz",
+    "c901833678ab965f": "cifar-c901833678ab965f-35685882131-1.tar.gz",
+    "9cbfd721e00d62cd": "cifar-9cbfd721e00d62cd-35685882131-1.tar.gz",
+    "890a8e23a6b8fbd1": "cifar-890a8e23a6b8fbd1-35568165832-1.tar.gz",
+    "fcb74d6ed8246b3a": "cifar-fcb74d6ed8246b3a-35685882131-1.tar.gz",
+    "54bb1f2423bc8ae5": "cifar-54bb1f2423bc8ae5-35685882131-1.tar.gz",
+    "9d415bbb31a28b98": "cifar-9d415bbb31a28b98-35568165832-1.tar.gz",
+    "6a46f0ac46326b0d": "cifar-6a46f0ac46326b0d-35685882131-1.tar.gz",
+    "03308bf67bc20769": "cifar-03308bf67bc20769-35568165832-1.tar.gz",
+    "a7acd522b9a9ee14": "cifar-a7acd522b9a9ee14-35568165832-1.tar.gz",
+    "79cb9409933cc2ee": "cifar-79cb9409933cc2ee-35568165832-1.tar.gz",
+    "f8cb6411c321e586": "cifar-f8cb6411c321e586-35685882131-1.tar.gz",
+    "a90e27b220b1e0a0": "cifar-a90e27b220b1e0a0-35568165832-1.tar.gz",
+    "e42ba45aba2075de": "cifar-e42ba45aba2075de-35568165832-1.tar.gz",
+    "b1940c7c8549b005": "cifar-b1940c7c8549b005-35685882131-1.tar.gz",
+    "aeaac2e7fdf8faa6": "cifar-aeaac2e7fdf8faa6-35685882131-1.tar.gz",
+    "f8f30d64b13350fc": "cifar-f8f30d64b13350fc-35568165832-1.tar.gz",
+    "1023605e66953186": "cifar-1023605e66953186-35685882131-1.tar.gz",
+    "65f0efad8e958644": "cifar-65f0efad8e958644-35685882131-1.tar.gz",
+    "57818f84688c3d33": "cifar-57818f84688c3d33-35785714979-1.tar.gz",
+    "be7cf2feab56ebf0": "cifar-be7cf2feab56ebf0-35685882131-1.tar.gz",
+    "38b8eb1b7fe1f4cf": "cifar-38b8eb1b7fe1f4cf-35685882131-1.tar.gz",
+    "3e4448bca228eb5b": "cifar-3e4448bca228eb5b-35785714979-1.tar.gz",
+    "71c7fc85ff77e7eb": "cifar-71c7fc85ff77e7eb-35785714979-1.tar.gz"
+  },
+  "partial": {
+    "97bef2e52b06bb1b": [
+      "status-97bef2e52b06bb1b-35568165832-1.json"
+    ],
+    "90d0d4b278ae4e51": [
+      "status-90d0d4b278ae4e51-35568165832-1.json"
+    ],
+    "a938c79767994bdd": [
+      "status-a938c79767994bdd-35568165832-1.json"
+    ],
+    "c901833678ab965f": [
+      "status-c901833678ab965f-35568165832-1.json"
+    ],
+    "9cbfd721e00d62cd": [
+      "status-9cbfd721e00d62cd-35568165832-1.json"
+    ],
+    "fcb74d6ed8246b3a": [
+      "status-fcb74d6ed8246b3a-35568165832-1.json"
+    ],
+    "54bb1f2423bc8ae5": [
+      "status-54bb1f2423bc8ae5-35568165832-1.json"
+    ],
+    "6a46f0ac46326b0d": [
+      "status-6a46f0ac46326b0d-35568165832-1.json"
+    ],
+    "f8cb6411c321e586": [
+      "status-f8cb6411c321e586-35568165832-1.json"
+    ],
+    "b1940c7c8549b005": [
+      "status-b1940c7c8549b005-35568165832-1.json"
+    ],
+    "aeaac2e7fdf8faa6": [
+      "status-aeaac2e7fdf8faa6-35568165832-1.json"
+    ],
+    "1023605e66953186": [
+      "status-1023605e66953186-35568165832-1.json"
+    ],
+    "65f0efad8e958644": [
+      "status-65f0efad8e958644-35568165832-1.json"
+    ],
+    "57818f84688c3d33": [
+      "status-57818f84688c3d33-35568165832-1.json",
+      "status-57818f84688c3d33-35685882131-1.json"
+    ],
+    "be7cf2feab56ebf0": [
+      "status-be7cf2feab56ebf0-35568165832-1.json"
+    ],
+    "38b8eb1b7fe1f4cf": [
+      "status-38b8eb1b7fe1f4cf-35568165832-1.json"
+    ],
+    "3e4448bca228eb5b": [
+      "status-3e4448bca228eb5b-35568165832-1.json"
+    ],
+    "71c7fc85ff77e7eb": [
+      "status-71c7fc85ff77e7eb-35568165832-1.json"
+    ]
+  },
+  "missing": [],
+  "invalid": [],
+  "unavailable_partial": [
+    {
+      "status": "status-57818f84688c3d33-35568165832-1.json",
+      "archive": "cifar-57818f84688c3d33-35568165832-1.tar.gz",
+      "error": "no assets match the file pattern"
+    }
+  ],
+  "installed_files": {}
+}

@@ -1,0 +1,5053 @@
+{
+  "schema": "feature-topology.nuisance-shift-manifest.v1",
+  "target_loss": 0.1,
+  "samples_per_environment": 5000,
+  "evaluation_environments": [
+    "iid",
+    "concentrated",
+    "spurious",
+    "unseen"
+  ],
+  "runs": [
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "059289a46a65cc98",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 4.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.07616026420593262,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "567651d18a62889cdf3729abdc976103e51de79a42a9c7f11dad3d4cb2f7611f",
+      "environments": {
+        "iid": {
+          "loss": 0.13609586029052734,
+          "accuracy": 0.9404,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2523582977294922,
+          "accuracy": 0.8838,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.12037860412597656,
+          "accuracy": 0.942,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08950851440429687,
+          "accuracy": 0.9544,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "08cf20ff7ed501ca",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.125,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09066497116088867,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "5d06fff2af927de346845eeb6211d5eff36bb90323728e5e84cf91aeb670984e",
+      "environments": {
+        "iid": {
+          "loss": 0.08827594604492188,
+          "accuracy": 0.9884,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0981094497680664,
+          "accuracy": 0.9878,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08407204284667968,
+          "accuracy": 0.9898,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08527739868164062,
+          "accuracy": 0.9876,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "0b74db1b54609b99",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.125,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.053213391494750975,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "3b2b076e49b16cbb49d24a90393fef27267375efdf84d14eee88c11d7ef5f257",
+      "environments": {
+        "iid": {
+          "loss": 1.194738623046875,
+          "accuracy": 0.445,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2857162353515625,
+          "accuracy": 0.4112,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.037457275390625,
+          "accuracy": 0.006,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.1152465209960938,
+          "accuracy": 0.4492,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "0c066d90d4d88177",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 16.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.05959184799194336,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "168be17f214fcb9c61f64307ddd7b5c0c34a938761db0b50b960538b3791dca0",
+      "environments": {
+        "iid": {
+          "loss": 1.2377775634765624,
+          "accuracy": 0.431,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2195832763671874,
+          "accuracy": 0.4368,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.1971624755859374,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.2667631591796875,
+          "accuracy": 0.3988,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "0d256fe1ed375742",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.125,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.05563878059387207,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "407fd113e06a9f023c31e1428bef68f10371dc2c0245dde7e9751391c570cd0e",
+      "environments": {
+        "iid": {
+          "loss": 0.8999536865234375,
+          "accuracy": 0.6024,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.9716850219726563,
+          "accuracy": 0.6028,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.4646216796875,
+          "accuracy": 0.2892,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.8930500610351563,
+          "accuracy": 0.5436,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "10346adfdbf86aae",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 64.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.03655106792449951,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "31ba6d61b342da939c69f0d6a45f7cf3e27aa37f40187b713c0f8e2f07b3ae08",
+      "environments": {
+        "iid": {
+          "loss": 1.2662130859375,
+          "accuracy": 0.432,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.35138994140625,
+          "accuracy": 0.4324,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.435552099609375,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.384547412109375,
+          "accuracy": 0.3938,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "110425d541e5c153",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.125,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08917006454467774,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "7b181b641973701af723f95d91ecf24301e0d26a66da234119684ebcea45d02f",
+      "environments": {
+        "iid": {
+          "loss": 0.10406117095947266,
+          "accuracy": 0.9776,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08936142120361328,
+          "accuracy": 0.9704,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08713685913085938,
+          "accuracy": 0.9834,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.15342325439453125,
+          "accuracy": 0.9634,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "13985b80c63c8d13",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 64.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08285646057128906,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "a76b3fab635a7f5305e698888ddf64a2d08908a6a5f224867e31f88bc2446fbd",
+      "environments": {
+        "iid": {
+          "loss": 0.13039649505615233,
+          "accuracy": 0.9588,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.20233432922363281,
+          "accuracy": 0.941,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.14210535736083985,
+          "accuracy": 0.9506,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08916627960205079,
+          "accuracy": 0.9662,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "166a8cd4c352eb61",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 128.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.009032616901397705,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "046da02d3435b659102233199e318f86033e982476152f4b54765426e687adb6",
+      "environments": {
+        "iid": {
+          "loss": 1.7292245361328125,
+          "accuracy": 0.4256,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.9089254638671875,
+          "accuracy": 0.4276,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 3.3078466796875,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.8640304931640626,
+          "accuracy": 0.3948,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "16be6e715431fe11",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 1.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.0793182071685791,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "5707cd3f0e329c43d5196f6bb31cabc1314d9957081eb4ab5661b76c9bfc9cca",
+      "environments": {
+        "iid": {
+          "loss": 0.21863330688476562,
+          "accuracy": 0.9262,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.4068731201171875,
+          "accuracy": 0.8656,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.17400502624511718,
+          "accuracy": 0.9488,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09790474395751952,
+          "accuracy": 0.9774,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "17472a0395d76077",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 4.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08532216873168945,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "9a8ba1352ff6ff9ec673c003234b8148d19f40a512bede81950c47a33298d23c",
+      "environments": {
+        "iid": {
+          "loss": 0.08784004516601562,
+          "accuracy": 0.9706,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08989977569580078,
+          "accuracy": 0.9732,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08566737060546875,
+          "accuracy": 0.9798,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08443130493164062,
+          "accuracy": 0.978,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "17690df0748d7173",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 16.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09743623428344726,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "3e992e92d0b140314ffdb47390f38d1f8efb9635083c19a3571b94e9845f5ac0",
+      "environments": {
+        "iid": {
+          "loss": 0.20424413452148438,
+          "accuracy": 0.916,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.3627388610839844,
+          "accuracy": 0.8636,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.15767795867919923,
+          "accuracy": 0.9386,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.13352539520263673,
+          "accuracy": 0.9396,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "192b10da1b3cc56f",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 16.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08312783889770507,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "0d07daa8e3b814909e25993b6d836376cd8c048a13c6ad234e7f53dc961fa637",
+      "environments": {
+        "iid": {
+          "loss": 0.07781865463256836,
+          "accuracy": 0.9644,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08709925079345703,
+          "accuracy": 0.9602,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.07138027038574218,
+          "accuracy": 0.968,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06786167755126953,
+          "accuracy": 0.971,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "1930842ce1d7aef5",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.125,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09246843795776367,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "8cf2f5366917581a69bb940833b79dd41d2daee7536491abd380b6079e4e0c6d",
+      "environments": {
+        "iid": {
+          "loss": 0.09236944427490235,
+          "accuracy": 0.9808,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08894129486083985,
+          "accuracy": 0.9854,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08327675323486328,
+          "accuracy": 0.9868,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09325718994140625,
+          "accuracy": 0.9824,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "195c4535c3aa175a",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.5,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.09770315017700196,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "92aee02c99031562b4fc4087da275eda46724e536846b15a457a060941fa04d8",
+      "environments": {
+        "iid": {
+          "loss": 0.2676529602050781,
+          "accuracy": 0.9416,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.4805891296386719,
+          "accuracy": 0.91,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.24260978393554689,
+          "accuracy": 0.9694,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.13324076538085938,
+          "accuracy": 0.9706,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "1a9df6665e219727",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 64.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.0856296989440918,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "9c5c16f5fe8ee263d346bbe4f848e58bc980d8f95a4a9e2a80b5539aef4e0c58",
+      "environments": {
+        "iid": {
+          "loss": 0.09770969696044922,
+          "accuracy": 0.9608,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0801310043334961,
+          "accuracy": 0.9664,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0750151107788086,
+          "accuracy": 0.9682,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.1010703628540039,
+          "accuracy": 0.9602,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "1df07b713b386d46",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 64.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.07882280807495118,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "18b62448e85582f67d97251575db780b5cb78cab4c99dfeead6801f623a5323a",
+      "environments": {
+        "iid": {
+          "loss": 0.16718191223144532,
+          "accuracy": 0.931,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.28861983947753905,
+          "accuracy": 0.8746,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.14575663299560546,
+          "accuracy": 0.9314,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10075292358398437,
+          "accuracy": 0.9542,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "2035bda9e6f3d4ae",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 64.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.05601655807495117,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "a096d62fb6e5771f772c882f3b2a62ba9667bea946a9d93116527ae38a0fa988",
+      "environments": {
+        "iid": {
+          "loss": 0.09138024139404297,
+          "accuracy": 0.9676,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.16737462768554687,
+          "accuracy": 0.9422,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11291736297607421,
+          "accuracy": 0.9556,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06429812393188476,
+          "accuracy": 0.9728,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "20d1787954b0c5af",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.5,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08597403411865234,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "22634f65322b546d1ee731fdf3538f87ee08d41031d8675abdb4e8bd9c3e2594",
+      "environments": {
+        "iid": {
+          "loss": 0.09308909912109375,
+          "accuracy": 0.977,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09203800964355469,
+          "accuracy": 0.9758,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11847233428955078,
+          "accuracy": 0.957,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.12163703308105468,
+          "accuracy": 0.9618,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "268d80229cf45b26",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 16.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.04659508972167969,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "70c82402624b772e589b06f97e372549d40eec00bd02fe322172328fee30a070",
+      "environments": {
+        "iid": {
+          "loss": 1.024991943359375,
+          "accuracy": 0.5184,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.1195717163085936,
+          "accuracy": 0.505,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.8548113037109375,
+          "accuracy": 0.0804,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.9759237060546875,
+          "accuracy": 0.5126,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "273c24162dfc4a89",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 1.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.07753029670715332,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "77ad54165cd85835427d8ff2eb8113eb2417111481bb736232f5210ed67ff02a",
+      "environments": {
+        "iid": {
+          "loss": 0.08787960357666015,
+          "accuracy": 0.9688,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.07294420928955078,
+          "accuracy": 0.9742,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0928287094116211,
+          "accuracy": 0.9696,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09582666625976563,
+          "accuracy": 0.9678,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "28a69ac3e2ca83a8",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 1.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.09737369003295898,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "2bab7ca13c83ee37168dd0877fd6a089c98b4dc2723d43bc64963cda6c668f05",
+      "environments": {
+        "iid": {
+          "loss": 0.10051882629394532,
+          "accuracy": 0.962,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10075405120849609,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0963126220703125,
+          "accuracy": 0.9692,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09720789947509766,
+          "accuracy": 0.962,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "2d855edd25df1c6e",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.5,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08853227157592773,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "c6564bb8324764b6d897a8bc6180dec220bb478f0d2ae447462f51db9c4a2319",
+      "environments": {
+        "iid": {
+          "loss": 0.10137541809082032,
+          "accuracy": 0.9738,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0832319366455078,
+          "accuracy": 0.978,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09882283020019532,
+          "accuracy": 0.9716,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.13388868865966796,
+          "accuracy": 0.968,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "2f7f04280e95d3f0",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 128.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.06711247291564941,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "2634b94599d9cb3506534a8c2323eaf99c28eae8bdcb49b3dc4c1418787efdf9",
+      "environments": {
+        "iid": {
+          "loss": 0.0675121223449707,
+          "accuracy": 0.9764,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.060487881469726563,
+          "accuracy": 0.9784,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.05877533645629883,
+          "accuracy": 0.981,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.061311268615722656,
+          "accuracy": 0.9772,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "319dbd03ee9b4a47",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 4.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.04263786220550537,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "c438e7f653133c6d50c299ba14379c53716a39582d8707050079a48e254a1983",
+      "environments": {
+        "iid": {
+          "loss": 0.12683636627197264,
+          "accuracy": 0.9424,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.24342919006347657,
+          "accuracy": 0.8816,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09749210357666016,
+          "accuracy": 0.9538,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.054596556854248045,
+          "accuracy": 0.979,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "36585d81eeddd658",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 4.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.04445634803771973,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "2394a59ddd030339740481e413ff92db66be1b67e564e14fc15e3c1372d9b253",
+      "environments": {
+        "iid": {
+          "loss": 0.9673452026367187,
+          "accuracy": 0.5582,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.0859579956054688,
+          "accuracy": 0.5526,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.69341416015625,
+          "accuracy": 0.1628,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.9036593505859375,
+          "accuracy": 0.5374,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "36d48ba0b52a42b9",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 1.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08899857864379883,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "5a3a6d32ce541941479d5a94ef7c94bc0e61ddf8559bee66ce25318b9dd2a089",
+      "environments": {
+        "iid": {
+          "loss": 0.18861041564941405,
+          "accuracy": 0.936,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.35016749267578123,
+          "accuracy": 0.8768,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.1945942138671875,
+          "accuracy": 0.9292,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10839573669433594,
+          "accuracy": 0.955,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3779a11a873123bf",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 128.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.09651871337890625,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "6bb3c8f4532bf381239068d4e166b974af1434719120a8222886673328cf74ed",
+      "environments": {
+        "iid": {
+          "loss": 0.0929618408203125,
+          "accuracy": 0.962,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10274312744140625,
+          "accuracy": 0.9562,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10383899688720703,
+          "accuracy": 0.9534,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09085835418701171,
+          "accuracy": 0.9642,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "38c592fa1b3354e4",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.125,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.096815625,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "e5ac03a86b41e710eea4e57fd9047377c308012f8d8203741ce506e1364ebc98",
+      "environments": {
+        "iid": {
+          "loss": 0.3268395812988281,
+          "accuracy": 0.9138,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.6109903930664062,
+          "accuracy": 0.8232,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.3495496459960937,
+          "accuracy": 0.9058,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.14373648681640624,
+          "accuracy": 0.9676,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3a88c556de60e48c",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.5,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.09720646896362305,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "902a29764429a110deb12648deb6fcbe32a079e2b4546d7c1744966d925903d3",
+      "environments": {
+        "iid": {
+          "loss": 0.3197594909667969,
+          "accuracy": 0.8938,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.60882783203125,
+          "accuracy": 0.7626,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.4064636901855469,
+          "accuracy": 0.8476,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.14153824005126953,
+          "accuracy": 0.9736,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3ab5529523ef759b",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.5,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.09617229995727539,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "edda9b5f3655b6a34a78636f64d1c94942c55aff70d0dbd62d9deadb7769788f",
+      "environments": {
+        "iid": {
+          "loss": 1.269151904296875,
+          "accuracy": 0.534,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.3532064453125,
+          "accuracy": 0.4762,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.0395962890625,
+          "accuracy": 0.1296,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.885455517578125,
+          "accuracy": 0.6268,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3c18312acedccace",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 64.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.049338878631591795,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "39cbec521abe4ab628a15afb9ab2fb6a76db546fd3bf24b0c50a99e1a515249c",
+      "environments": {
+        "iid": {
+          "loss": 0.05063096923828125,
+          "accuracy": 0.9862,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.05068716430664062,
+          "accuracy": 0.9876,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04902170639038086,
+          "accuracy": 0.9884,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.048460643768310545,
+          "accuracy": 0.9882,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3c7c28f731ba2310",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 1.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.07975946617126464,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "5a4845208681acbf506042540e735c7e0e10b56da701d71eebd07e32eea3d0d9",
+      "environments": {
+        "iid": {
+          "loss": 0.07183170623779297,
+          "accuracy": 0.9666,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08760452423095703,
+          "accuracy": 0.9566,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0595755485534668,
+          "accuracy": 0.9726,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.060449365234375,
+          "accuracy": 0.9708,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "3f8aaca8dc161427",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 16.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.04669260368347168,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "71e1b592c07b86d07958bce8a8597c243fb760445ccdf5e90436d1e8b911b2f2",
+      "environments": {
+        "iid": {
+          "loss": 1.0072423217773439,
+          "accuracy": 0.5126,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.168961279296875,
+          "accuracy": 0.45,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.822089501953125,
+          "accuracy": 0.0862,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.057453759765625,
+          "accuracy": 0.4648,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "41b30a057018d956",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 128.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.08050003089904785,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "2e3fb7f7387e1e7f75b6b341b6bb5af9e483a5e96702ecd6b7fed36c2bd729ce",
+      "environments": {
+        "iid": {
+          "loss": 0.07092940979003906,
+          "accuracy": 0.9708,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0728142593383789,
+          "accuracy": 0.9698,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06011515884399414,
+          "accuracy": 0.9738,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07358717727661133,
+          "accuracy": 0.9714,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "45642083466c2b12",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 64.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.0295809419631958,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "485baf67f167f28085ba08a21d7044d0b961c4a79e811fb272b726d886dec89a",
+      "environments": {
+        "iid": {
+          "loss": 0.031306123733520506,
+          "accuracy": 0.9904,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0318880859375,
+          "accuracy": 0.99,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.036231874465942386,
+          "accuracy": 0.9886,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.03381233367919922,
+          "accuracy": 0.991,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "45729dd191edc164",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.5,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.0924843132019043,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "a2a97b2dd5a7a63599a2c19c3d68e36dfd1c543714d97fd08705effe23d56c64",
+      "environments": {
+        "iid": {
+          "loss": 0.24960486450195313,
+          "accuracy": 0.943,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.45712744140625,
+          "accuracy": 0.9164,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.18851693420410157,
+          "accuracy": 0.9934,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.1273941665649414,
+          "accuracy": 0.9594,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "45e3e428b82756c4",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 4.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.04843761978149414,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "99f02bca848124b86c7891f09fd9f312163be52996da68062518ffff492e40ce",
+      "environments": {
+        "iid": {
+          "loss": 1.2483077880859375,
+          "accuracy": 0.4358,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2666563232421875,
+          "accuracy": 0.4234,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.1387513916015624,
+          "accuracy": 0.004,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.266400927734375,
+          "accuracy": 0.4008,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "465761318adea6c5",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 16.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.03489054660797119,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "9e567e76139cd45ec7fb4eb0387797af1391a86ee50a90e8531bdd3bf04eb9fa",
+      "environments": {
+        "iid": {
+          "loss": 0.03988525924682617,
+          "accuracy": 0.9836,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.03201928062438965,
+          "accuracy": 0.9904,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04814472579956055,
+          "accuracy": 0.9782,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.048749307250976565,
+          "accuracy": 0.9792,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "486e8bf789d4c583",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 64.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.03924379444122315,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "381a4103b5ef1ee3e713618cd7684c4f751bb292d1ac4d50576bb8671547ac14",
+      "environments": {
+        "iid": {
+          "loss": 1.1206035400390626,
+          "accuracy": 0.4702,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.194098046875,
+          "accuracy": 0.4652,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.1685262451171874,
+          "accuracy": 0.0002,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.1806135986328126,
+          "accuracy": 0.441,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "4af1ea473ba49a67",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.5,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08220590591430664,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "eb9fe28ae02e1e9e54e177b990c74e5d3c76dbacca4056067c484d5d8e7532d1",
+      "environments": {
+        "iid": {
+          "loss": 0.08249634246826172,
+          "accuracy": 0.9774,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08425201568603516,
+          "accuracy": 0.9794,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.07081036758422851,
+          "accuracy": 0.986,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08371752166748046,
+          "accuracy": 0.977,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "4f2e30ca65d2ccf3",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.125,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.06148671875,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "cedaf0f38fa167958822d9adc96ad22d63da39e5780e033f7034624cc870ddb2",
+      "environments": {
+        "iid": {
+          "loss": 0.971683984375,
+          "accuracy": 0.5488,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.0904443603515626,
+          "accuracy": 0.5128,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.582248876953125,
+          "accuracy": 0.2096,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0235242431640625,
+          "accuracy": 0.5018,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "538855fbb7130c72",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 16.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.05059389686584473,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "1357c0e865f36ef9629cb186e76993a9ad5545c2ca76f513e3a5cdac551a54d3",
+      "environments": {
+        "iid": {
+          "loss": 0.08730349426269532,
+          "accuracy": 0.9656,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.16544112854003906,
+          "accuracy": 0.937,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11017648315429687,
+          "accuracy": 0.954,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.060562623596191405,
+          "accuracy": 0.9736,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "54814185b6608fdb",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 16.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.045684482955932616,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "1807d6e6c9de0815b32bb5f1c15ff81a6aee16061b1575e51c0b81c7a58fc7d3",
+      "environments": {
+        "iid": {
+          "loss": 0.04607452850341797,
+          "accuracy": 0.9808,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.05481678237915039,
+          "accuracy": 0.9726,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04404743576049805,
+          "accuracy": 0.984,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.04615386352539062,
+          "accuracy": 0.986,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "55584483dfba1634",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 1.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.0493450252532959,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "fc0f88b81b618b6c04dc293ed525d59d1584075c25051c54f6e4c1c0ca6640bc",
+      "environments": {
+        "iid": {
+          "loss": 0.04988052062988281,
+          "accuracy": 0.9762,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.06055599822998047,
+          "accuracy": 0.9684,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.05153000030517578,
+          "accuracy": 0.9782,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.04785536041259766,
+          "accuracy": 0.981,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "55b0e7cb18274af7",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 128.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.09203551864624024,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "f6741ccdcc403718d2f766de71ddb1d126e27526e6bf9999e1f4c6e31a82a242",
+      "environments": {
+        "iid": {
+          "loss": 0.10268641510009766,
+          "accuracy": 0.9602,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08894392242431641,
+          "accuracy": 0.9654,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08120983963012696,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09987691192626953,
+          "accuracy": 0.9602,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "565c343ce69676f1",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 128.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.051265846252441405,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "50cd8442b51341acbe66f1ef7298a9bdfef3e3efd53e33dc2dd081eedd1c8d4f",
+      "environments": {
+        "iid": {
+          "loss": 0.08806006317138672,
+          "accuracy": 0.9774,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.16040886840820312,
+          "accuracy": 0.9538,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10327598876953124,
+          "accuracy": 0.9662,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.05698092041015625,
+          "accuracy": 0.9806,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "57317d51c0a06c5d",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 64.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.03476629676818847,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "b7f29f5f5663d908096deb2bae7c16e17226c53bb0c758fcd9373eb6fcd52189",
+      "environments": {
+        "iid": {
+          "loss": 0.03899108390808106,
+          "accuracy": 0.9856,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.032961762237548826,
+          "accuracy": 0.989,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04769829864501953,
+          "accuracy": 0.9802,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.046633534240722654,
+          "accuracy": 0.9812,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "5ba7581f9308c30e",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 64.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.0519061695098877,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "55e4e407d54ec343f47f2898ca6bbbb660b01c70f0bd3a5b74e03a905e66ce9b",
+      "environments": {
+        "iid": {
+          "loss": 0.05559115142822266,
+          "accuracy": 0.981,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.05429413375854492,
+          "accuracy": 0.9786,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04739833145141602,
+          "accuracy": 0.9854,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.04419887924194336,
+          "accuracy": 0.9886,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "5beed5392fefb51f",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 128.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08474649200439453,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "c8938ef4cf36565ffa1ec84926b36a572b1b4f844af3b0fac1546489e4ea7bc2",
+      "environments": {
+        "iid": {
+          "loss": 0.08397124938964844,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10202633361816406,
+          "accuracy": 0.9558,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06817223587036132,
+          "accuracy": 0.9694,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08646137390136718,
+          "accuracy": 0.9686,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "5bfcc3a0ad7aef56",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 1.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.03593006591796875,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "870eabc72a6bf4e4aef87df2e5f699634e713004ca91288ecb70e1b76a4a5214",
+      "environments": {
+        "iid": {
+          "loss": 1.271947998046875,
+          "accuracy": 0.4482,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2662669921875,
+          "accuracy": 0.4268,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.1440887451171875,
+          "accuracy": 0.0078,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.2725312255859376,
+          "accuracy": 0.435,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "61deb74f7cc5bf42",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 4.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.06511739578247071,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "2c47f5bfc284b822083348c8ce29558aff1ee5328f4dcd47784e2971ff4139f0",
+      "environments": {
+        "iid": {
+          "loss": 0.17883236999511717,
+          "accuracy": 0.9296,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.36624842529296875,
+          "accuracy": 0.8642,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.15072825317382813,
+          "accuracy": 0.947,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08965070648193359,
+          "accuracy": 0.9602,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6507e635aee977a7",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 128.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.008698277759552002,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "c485a6f8eb597978f15f45d99031ed64a5863ddbd05fc0ca2b13c0b77c8c9cd6",
+      "environments": {
+        "iid": {
+          "loss": 1.517307763671875,
+          "accuracy": 0.468,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.69781337890625,
+          "accuracy": 0.4318,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.946769384765625,
+          "accuracy": 0.0176,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.4405644775390625,
+          "accuracy": 0.4676,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "67ab326c1b776833",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 16.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.07770954704284667,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "765d0437edc81fbb0ff170f3c65ebfff80a842343312be4e88d01521bd196645",
+      "environments": {
+        "iid": {
+          "loss": 0.07147934722900391,
+          "accuracy": 0.9724,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.07793705291748047,
+          "accuracy": 0.966,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08442484588623046,
+          "accuracy": 0.9608,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07338672180175781,
+          "accuracy": 0.9682,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "67dabb55d01c3084",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 1.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.06199593315124512,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "aefdadf71d8b014203c680d62a97c955928e8ce58cd0ada567e3e54392a87342",
+      "environments": {
+        "iid": {
+          "loss": 0.06118000793457031,
+          "accuracy": 0.98,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.06450431671142579,
+          "accuracy": 0.9754,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06117920761108398,
+          "accuracy": 0.9764,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06086234359741211,
+          "accuracy": 0.9778,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "691a38c571afed1f",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 4.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.0540639102935791,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "50ffa2d33ef4b2a5ed3364792c5c801cfcfcfca661edee9b502d63c53c891e0e",
+      "environments": {
+        "iid": {
+          "loss": 0.05968270111083984,
+          "accuracy": 0.9774,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.03998177871704101,
+          "accuracy": 0.9876,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.05964839324951172,
+          "accuracy": 0.9776,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06712803115844726,
+          "accuracy": 0.973,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6a451b3f4fa78bf8",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 4.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.045014629364013674,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "8da1eebf796c32519a368b6cff7dd4c181a4672ae12a853dc363cfd2bbfdb87b",
+      "environments": {
+        "iid": {
+          "loss": 0.04555114822387695,
+          "accuracy": 0.9808,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.053968907165527345,
+          "accuracy": 0.9724,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04845970230102539,
+          "accuracy": 0.9804,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0467497787475586,
+          "accuracy": 0.9844,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6a784603a11b07a6",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 4.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.07724446640014648,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "e03f7cd4f1963e4743a6870e2ba0ecca8c7321657c8a919cafe288258610049b",
+      "environments": {
+        "iid": {
+          "loss": 0.1395401580810547,
+          "accuracy": 0.9454,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.24313377380371093,
+          "accuracy": 0.9074,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.15221212768554687,
+          "accuracy": 0.9328,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09332994079589843,
+          "accuracy": 0.9588,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6b0eef70783db256",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.125,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0862007209777832,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "0306b7485b1d3f36641e8a5c980876e1aa1db578a662daefa6ca07d45129536a",
+      "environments": {
+        "iid": {
+          "loss": 0.10048642425537109,
+          "accuracy": 0.9784,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08617433776855468,
+          "accuracy": 0.9838,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11836004638671875,
+          "accuracy": 0.9662,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.14377562561035157,
+          "accuracy": 0.9608,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6b0fe1d63750b480",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 4.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.0953558609008789,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "b1597cbff880319b85446be2878d9921008602dfe4a34bef20ade652c3fddb7f",
+      "environments": {
+        "iid": {
+          "loss": 0.09665555877685547,
+          "accuracy": 0.9714,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09177723541259766,
+          "accuracy": 0.9806,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09673228302001953,
+          "accuracy": 0.9744,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10239088592529297,
+          "accuracy": 0.9598,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6beb9ae9d1cdb493",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.125,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.09906619338989257,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "8609abaa25fad7c1716d339a0149dcdeb802f71437a61897dc5722a015c22dbf",
+      "environments": {
+        "iid": {
+          "loss": 0.3708172607421875,
+          "accuracy": 0.8884,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.6854448974609375,
+          "accuracy": 0.7504,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.4459476196289063,
+          "accuracy": 0.828,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.16951092834472656,
+          "accuracy": 0.9628,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6d9bfddfc276fa03",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 16.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.07986436805725097,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "fc01126209cce1afbf1ca80eaf3b15d5f287721ad47dbd1ff3922c2ca42ef58b",
+      "environments": {
+        "iid": {
+          "loss": 0.09379426879882813,
+          "accuracy": 0.9622,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0745183120727539,
+          "accuracy": 0.968,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.07235673065185547,
+          "accuracy": 0.969,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10236663055419921,
+          "accuracy": 0.9574,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6e0946198cbd9ebc",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 128.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.05726333847045898,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "cc9e91b1ea11f9ebc79695b89f0fb5c60c7f351303b9f7636ae660e0317d5f6e",
+      "environments": {
+        "iid": {
+          "loss": 0.12140997924804688,
+          "accuracy": 0.9558,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2188261016845703,
+          "accuracy": 0.91,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09230741882324218,
+          "accuracy": 0.971,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06910021057128907,
+          "accuracy": 0.9774,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "6ee367a979aa16dd",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 16.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.04399038944244385,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "4b0b3e74807cfbf1a60b5cc3255de9ed39e6771506146e436bdd853dce67fd8b",
+      "environments": {
+        "iid": {
+          "loss": 0.04580968322753906,
+          "accuracy": 0.986,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.045869195556640624,
+          "accuracy": 0.9876,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.04252600784301758,
+          "accuracy": 0.989,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.043830931854248044,
+          "accuracy": 0.9874,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "717c02df7ba2cda3",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.5,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.045933148956298825,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "9c53960113ff624c06da50266b312b492d3cafdd3b43b691b06f21eade705c70",
+      "environments": {
+        "iid": {
+          "loss": 1.2194677001953125,
+          "accuracy": 0.4516,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2956513671875,
+          "accuracy": 0.419,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.090704833984375,
+          "accuracy": 0.0034,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.14879580078125,
+          "accuracy": 0.4604,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "732ab5f0b339c9b3",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 4.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0785370174407959,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "95eddc62d407df043de14bac181a5451390f7369566d4f80b60e9a42ccc7cce8",
+      "environments": {
+        "iid": {
+          "loss": 0.08057885589599609,
+          "accuracy": 0.9648,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08836172180175782,
+          "accuracy": 0.96,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06875867156982422,
+          "accuracy": 0.9692,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07976481018066406,
+          "accuracy": 0.9668,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "76cc1d0eb774858e",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 128.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.09957181854248047,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "6047687816810e31eb8fc93d38f37204a42edc8261fbfc4d0f100160e5d431ae",
+      "environments": {
+        "iid": {
+          "loss": 0.09605064544677734,
+          "accuracy": 0.9556,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10096333465576172,
+          "accuracy": 0.9514,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08096848602294922,
+          "accuracy": 0.9624,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0848232666015625,
+          "accuracy": 0.9608,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "77a468bc0b0d52ac",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 1.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0801146369934082,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "f1c8f66baba1c774b3733efe3e7eec34bc55a8f8b42700398b72465255dae764",
+      "environments": {
+        "iid": {
+          "loss": 0.15769339599609375,
+          "accuracy": 0.9414,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2931442810058594,
+          "accuracy": 0.8996,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.15578577117919923,
+          "accuracy": 0.9442,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08911937255859376,
+          "accuracy": 0.966,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "7b46ae59e4e5dff5",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 64.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.06553055000305176,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "3189736116726c4e7d84522ae7fb21c0bb3b505a456ef80cad10a97780b3d9ba",
+      "environments": {
+        "iid": {
+          "loss": 0.06855471954345703,
+          "accuracy": 0.9776,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08332226715087891,
+          "accuracy": 0.9668,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.050902066040039065,
+          "accuracy": 0.9834,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07581259307861328,
+          "accuracy": 0.9768,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "7cc2f7fae6bb9398",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.125,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.051428088760375974,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "10482bfec9d0ccb66e656d15174c4bf2a12e941f9e3802112007c785f5d4f048",
+      "environments": {
+        "iid": {
+          "loss": 1.0026113403320311,
+          "accuracy": 0.4984,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.148085888671875,
+          "accuracy": 0.451,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.735877978515625,
+          "accuracy": 0.0202,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0098372680664063,
+          "accuracy": 0.4618,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "7e27dada93207d14",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 1.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.06256675834655762,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "c9863631fc7d1f511af11cc6aab54ae5964839e6dbd444c17e590468215f58f7",
+      "environments": {
+        "iid": {
+          "loss": 0.06746590042114257,
+          "accuracy": 0.9722,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0689405303955078,
+          "accuracy": 0.9698,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.056721144104003904,
+          "accuracy": 0.9822,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.079310107421875,
+          "accuracy": 0.9692,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "7f3581609724abea",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 64.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.06846578216552734,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "2b7663cd85d9450151a37c0c18fb2572e4705f5d1da5db3f2b5e911704470053",
+      "environments": {
+        "iid": {
+          "loss": 0.1305231719970703,
+          "accuracy": 0.9668,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.23390347595214844,
+          "accuracy": 0.9354,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.12805145874023438,
+          "accuracy": 0.9792,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08954034118652343,
+          "accuracy": 0.9676,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "800cc2f87af35429",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 128.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08812081909179688,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "c2def4107fe6a2685318cfa18be238974b7bd6f4e0f96f95b964f590d39dfef9",
+      "environments": {
+        "iid": {
+          "loss": 0.15377822265625,
+          "accuracy": 0.9468,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.25767981567382814,
+          "accuracy": 0.9022,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.15244460754394532,
+          "accuracy": 0.945,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10013578186035156,
+          "accuracy": 0.9604,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "812278ae2237fda2",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 1.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.08898176727294922,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "5249ee0422d55220361c6d18d91493c52b36c3e6fbc948e811ce454a93f28d2f",
+      "environments": {
+        "iid": {
+          "loss": 1.0592510986328125,
+          "accuracy": 0.439,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.170358447265625,
+          "accuracy": 0.4288,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.769091064453125,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.02035390625,
+          "accuracy": 0.4484,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "814c97191f72122e",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 1.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.07540193901062012,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "59338535121202d87649457163b323b93f1191e8063efa604fbddb37f466a381",
+      "environments": {
+        "iid": {
+          "loss": 0.07668651580810547,
+          "accuracy": 0.9702,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.07123458251953126,
+          "accuracy": 0.9736,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06515242080688477,
+          "accuracy": 0.9776,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07580462799072266,
+          "accuracy": 0.9772,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "81bf6cb9e3ca7918",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 4.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.04742979965209961,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "9cf52051fa9511d0935321156581dc8b4c6bc381157909ded7d527523aa91f29",
+      "environments": {
+        "iid": {
+          "loss": 0.9574742797851562,
+          "accuracy": 0.5284,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.1223444946289063,
+          "accuracy": 0.45,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.646875048828125,
+          "accuracy": 0.1336,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.082194775390625,
+          "accuracy": 0.4624,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "8212b25d1f355922",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.5,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.0883557403564453,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "1635d4db5f12e25dd7084b1b93f1a34ad276df74e8e3d3aa1273b894dc3c7808",
+      "environments": {
+        "iid": {
+          "loss": 0.08800961151123046,
+          "accuracy": 0.977,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08676822967529296,
+          "accuracy": 0.9822,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.07574563293457032,
+          "accuracy": 0.9878,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08134177551269531,
+          "accuracy": 0.98,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "840fcba4034a58f2",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 128.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.008683606624603272,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "55d197faf49bb46a511a34a6ccbcee6018af9d1181d11b7ba7c173f831fd693a",
+      "environments": {
+        "iid": {
+          "loss": 1.4602680908203125,
+          "accuracy": 0.4628,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.7145692626953124,
+          "accuracy": 0.4434,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.840927734375,
+          "accuracy": 0.0346,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.5040912841796874,
+          "accuracy": 0.4406,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "8483687e623ee85d",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 1.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.06863166961669921,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "287ba5eeec7cde5e9b1aa080d14d019338fa2cc8cd3078d66905a433c6a8098a",
+      "environments": {
+        "iid": {
+          "loss": 0.06726351394653321,
+          "accuracy": 0.9734,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.058298513793945315,
+          "accuracy": 0.9752,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08597717742919922,
+          "accuracy": 0.9664,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.05504894561767578,
+          "accuracy": 0.9832,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "84ba3c72b925e89e",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 4.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.04341112060546875,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "53aeb4adc4125e65cdf23723919e702ad2a0e5a3caddd97304b00f20eb700ac3",
+      "environments": {
+        "iid": {
+          "loss": 1.1875011474609376,
+          "accuracy": 0.4394,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2941205810546874,
+          "accuracy": 0.433,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.09107236328125,
+          "accuracy": 0.0016,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.307443115234375,
+          "accuracy": 0.3612,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "872bb8caeac0159c",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 4.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08865596389770508,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "4cb47343c6783befe6b9aef6d875f006763d0246f050e8d1b2ebd197a9cfa9e5",
+      "environments": {
+        "iid": {
+          "loss": 0.08205069122314453,
+          "accuracy": 0.963,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10349424591064453,
+          "accuracy": 0.9534,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11276894836425781,
+          "accuracy": 0.9492,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06896745758056641,
+          "accuracy": 0.973,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "89f610fc7b58e113",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 1.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.0754715560913086,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "a419f9586ab1f80ae1fbbc7dc978b2a716d142e1d6f34dea431df474dda72c80",
+      "environments": {
+        "iid": {
+          "loss": 0.21653917236328124,
+          "accuracy": 0.9596,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.44211962890625,
+          "accuracy": 0.9156,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.26043851928710937,
+          "accuracy": 0.9442,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09820559997558594,
+          "accuracy": 0.9786,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "8a6750bf26cfcb5c",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.5,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.09904208908081055,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "35bc3db13913383fbebcc510d07f299bfbe4b85b0d6cbba5d4354d80663a88d2",
+      "environments": {
+        "iid": {
+          "loss": 0.10168028564453124,
+          "accuracy": 0.964,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10692623443603516,
+          "accuracy": 0.9638,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10346354217529297,
+          "accuracy": 0.9658,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09540814361572265,
+          "accuracy": 0.9678,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "8bfa5ef26cc6a0f0",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 16.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.0713931568145752,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "ea0b9d5a453666ce36ef976fb0eb2b307423d2e8b95daf3f54c4744e41426b15",
+      "environments": {
+        "iid": {
+          "loss": 0.07416879119873047,
+          "accuracy": 0.9746,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09476552276611327,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.055270674896240234,
+          "accuracy": 0.9784,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0779757553100586,
+          "accuracy": 0.974,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "8db890b3a150730c",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 4.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.07419088592529297,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "0ee934fe3e6d63e0dd0f474988a9b79a5c5cee58330fd2c4c6d6eb50d4982e33",
+      "environments": {
+        "iid": {
+          "loss": 0.06882251968383789,
+          "accuracy": 0.9738,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08987947235107421,
+          "accuracy": 0.9632,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06482379913330077,
+          "accuracy": 0.979,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06606752624511719,
+          "accuracy": 0.976,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "90ba5238ba340b46",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 1.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.03850177841186524,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "d95bfd75a728393114169229c30a98fb4deb2f1ee59204fc4144d197c957ea32",
+      "environments": {
+        "iid": {
+          "loss": 0.9616809204101563,
+          "accuracy": 0.539,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.0858636352539062,
+          "accuracy": 0.4578,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.5781114501953124,
+          "accuracy": 0.1714,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0803886474609374,
+          "accuracy": 0.4808,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "935f141766bb8ce8",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 4.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.07014922752380372,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "cd7728baedbf58caf97e218b93c0bb85caf9a555e15fa41cfbbcd55020df48fb",
+      "environments": {
+        "iid": {
+          "loss": 0.08131378631591797,
+          "accuracy": 0.9642,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0634689682006836,
+          "accuracy": 0.973,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06658099975585938,
+          "accuracy": 0.9696,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0870716278076172,
+          "accuracy": 0.9598,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "93a267d459650b77",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.125,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.09900906524658203,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "8e94a4300f15ece01fac69f3f46e4375d5ec2eb3f25c27655ee3b03034e5c6fd",
+      "environments": {
+        "iid": {
+          "loss": 0.3196371887207031,
+          "accuracy": 0.9566,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.5875334106445312,
+          "accuracy": 0.9394,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.3178344970703125,
+          "accuracy": 0.9754,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.14627913818359375,
+          "accuracy": 0.9814,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "949ddc68d161e9ec",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 16.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09974335708618164,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "2020a502fb80908cf99ba8d4bf9b37cc9cceea501d6f73391ba8df209a37572e",
+      "environments": {
+        "iid": {
+          "loss": 0.20070167846679687,
+          "accuracy": 0.9132,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.34102760009765626,
+          "accuracy": 0.8492,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.1621134002685547,
+          "accuracy": 0.9248,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.1265731689453125,
+          "accuracy": 0.9388,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "9939f0a8d5bb890a",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 4.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08598206787109375,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "4e621e08d4388affca1377d6b5c8753369b421a1d165c9edb3485ac5baba7d67",
+      "environments": {
+        "iid": {
+          "loss": 0.08872504425048829,
+          "accuracy": 0.9674,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08007176361083984,
+          "accuracy": 0.9722,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08060774612426758,
+          "accuracy": 0.9744,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09237636260986327,
+          "accuracy": 0.967,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "9a05a977c7812e06",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 4.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.07652511253356933,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "bd1dcb030dcd76c594118c278f3261d78d6f460f505798354ffa1915e60aadd4",
+      "environments": {
+        "iid": {
+          "loss": 0.07067878036499023,
+          "accuracy": 0.972,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.07543781127929687,
+          "accuracy": 0.9692,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08949268798828125,
+          "accuracy": 0.9588,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06764172592163085,
+          "accuracy": 0.9734,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "9cc41904ddf7e0dc",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 128.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08123026161193847,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "c089a7a5c09dc74cbde52f8a27ec294316f4d2061f58e4c415518c79ffb85f1a",
+      "environments": {
+        "iid": {
+          "loss": 0.1305822479248047,
+          "accuracy": 0.9606,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2120136199951172,
+          "accuracy": 0.9462,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.14173809661865233,
+          "accuracy": 0.9546,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08869722595214843,
+          "accuracy": 0.9654,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "9d6e838a1f94cda8",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.5,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08575205078125,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "c5f29f851965adce75924f5a8ea6b501b3b79ec556d50286509176bc28833800",
+      "environments": {
+        "iid": {
+          "loss": 0.0897757080078125,
+          "accuracy": 0.9634,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09206974029541015,
+          "accuracy": 0.958,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10144949188232422,
+          "accuracy": 0.9496,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10274064178466796,
+          "accuracy": 0.9606,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "9f54e6646ee84df3",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 64.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.05515912322998047,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "47339fcc7dadd2f1e6bb4d86679ba28f5cc5e49ad03ffd6e9a2e1d3f114b4960",
+      "environments": {
+        "iid": {
+          "loss": 1.29003701171875,
+          "accuracy": 0.4246,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2959371337890624,
+          "accuracy": 0.4292,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.374214697265625,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.3156759033203125,
+          "accuracy": 0.4008,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "a0f1d488e49d1856",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 128.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.05350928573608398,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "02b69ca7bd94b9c9baf6ef8a8023e8c37aa822f1f7ef4817b492b214d0309ffc",
+      "environments": {
+        "iid": {
+          "loss": 0.05443381423950195,
+          "accuracy": 0.9892,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.05909036636352539,
+          "accuracy": 0.9882,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.05265446014404297,
+          "accuracy": 0.9918,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0528760856628418,
+          "accuracy": 0.9904,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "a1dbfdb26a4eaf3b",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 1.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0756195198059082,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "49304b07cfeb01e27dea1d658c0648c8a26cbcd14cd723856d865c0511e10c40",
+      "environments": {
+        "iid": {
+          "loss": 0.07656683654785157,
+          "accuracy": 0.9744,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09403774719238281,
+          "accuracy": 0.9608,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06435675582885743,
+          "accuracy": 0.9806,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06395519638061524,
+          "accuracy": 0.9824,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "a34fd60deaeb78f0",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 16.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.041690345764160155,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "277065445a025eecc1a9f1e08f968c8adc695885fc9f64245248df76df257234",
+      "environments": {
+        "iid": {
+          "loss": 1.20439609375,
+          "accuracy": 0.438,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.32766298828125,
+          "accuracy": 0.4354,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.220830615234375,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.2794138916015625,
+          "accuracy": 0.3894,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "a8bab477dbbd7b80",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.5,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.06597514038085937,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "32a09b55e8eb2c3dd8f26667380c3e868c88253b17ad0bbab08a565bb41d26bb",
+      "environments": {
+        "iid": {
+          "loss": 0.2232477783203125,
+          "accuracy": 0.9482,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.4855126220703125,
+          "accuracy": 0.8696,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.2715001007080078,
+          "accuracy": 0.93,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08811324157714844,
+          "accuracy": 0.9834,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "ab206361fde289e4",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 128.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.06830697441101075,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "800a438ced01ffd61ccc6b7d06153a91dff26c9372b49abb1921c56a346b916f",
+      "environments": {
+        "iid": {
+          "loss": 0.0677703369140625,
+          "accuracy": 0.9788,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.0683373634338379,
+          "accuracy": 0.9772,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.06716782836914062,
+          "accuracy": 0.9762,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06566945648193359,
+          "accuracy": 0.9758,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "aee06fabc0e9d2c9",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.5,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.06110900726318359,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "74f22f09489420a0c2b19d62797b80cd25f08b4557c6eaee63345e8efae1f579",
+      "environments": {
+        "iid": {
+          "loss": 0.060654835510253906,
+          "accuracy": 0.9868,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.06039542007446289,
+          "accuracy": 0.987,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.05756678237915039,
+          "accuracy": 0.9852,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.059830936431884765,
+          "accuracy": 0.9862,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "aef2dd47def48ee6",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 1.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.09668231353759765,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "b57a98f3b40634b70b94cd4598b3d5cc16340b2a90963b9c04886daaf238a716",
+      "environments": {
+        "iid": {
+          "loss": 0.8898556396484375,
+          "accuracy": 0.6068,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.9377652954101563,
+          "accuracy": 0.6228,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.4600302978515625,
+          "accuracy": 0.3144,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.8949425659179687,
+          "accuracy": 0.5316,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b0a0c357600c19ef",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.125,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08850400009155274,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "e64557c2ea657771121d0bed42df573870c7112272e4efe0b6b4da04ec7dab59",
+      "environments": {
+        "iid": {
+          "loss": 0.08843898468017578,
+          "accuracy": 0.987,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08953507995605468,
+          "accuracy": 0.9872,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08692858276367188,
+          "accuracy": 0.9876,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08628237152099609,
+          "accuracy": 0.9854,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b0aceab7541738c2",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.5,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.04632357711791992,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "19190ab2cae4589d93980e5794e90f18b23d243a1e4e00aae6491798a25520a1",
+      "environments": {
+        "iid": {
+          "loss": 1.0912620239257813,
+          "accuracy": 0.4402,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.17993447265625,
+          "accuracy": 0.4276,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.8290830810546874,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0173082275390626,
+          "accuracy": 0.4614,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b0dd44081975ba3e",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 16.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0853576400756836,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "f9707ac9e32bdf9e97981236df2f2720ae3473ae4c79ac7adfd2bb6ec69f13e0",
+      "environments": {
+        "iid": {
+          "loss": 0.13365227966308593,
+          "accuracy": 0.9592,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2072169921875,
+          "accuracy": 0.9434,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.14603594818115234,
+          "accuracy": 0.957,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09802463073730469,
+          "accuracy": 0.9684,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b216227f3f4f321b",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 64.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.04395767440795898,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "6a7329575759d3ccdb9d5db9ae382c4374a4a03d55ec39c1f564b4f233c4abad",
+      "environments": {
+        "iid": {
+          "loss": 1.1052295043945313,
+          "accuracy": 0.4974,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2133266845703126,
+          "accuracy": 0.4568,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.086001025390625,
+          "accuracy": 0.058,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0999262084960937,
+          "accuracy": 0.4812,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b2bcafa7e299e58f",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 64.0,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.051762332916259764,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "130deb2acf3ef7ebf4e3f660b22b15e16826b764bdfc6e1a3cb35588a045a65c",
+      "environments": {
+        "iid": {
+          "loss": 0.12380295562744141,
+          "accuracy": 0.952,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.2316298583984375,
+          "accuracy": 0.8972,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08920431518554688,
+          "accuracy": 0.9692,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.06376216049194336,
+          "accuracy": 0.9802,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "b3c2ed6ef1ab1bfa",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.125,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08015256729125976,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "de0e99e5b8ccbb7c0292ccf7fbc6425169709ddcef41035fe811a852e6916411",
+      "environments": {
+        "iid": {
+          "loss": 0.32480453491210937,
+          "accuracy": 0.941,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.6599304565429688,
+          "accuracy": 0.8742,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.3476925842285156,
+          "accuracy": 0.9154,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.12446560516357422,
+          "accuracy": 0.9858,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "c23a26475d2ffdd4",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 16.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.044643151473999027,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "07fe6d5867739742a14bd2ac8b14daf90ac66df4db383af8791160673c0ba182",
+      "environments": {
+        "iid": {
+          "loss": 1.0678593994140626,
+          "accuracy": 0.488,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.1040805908203124,
+          "accuracy": 0.4784,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.0084659423828124,
+          "accuracy": 0.0022,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.1556551513671875,
+          "accuracy": 0.4418,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "c3657261ff67ba86",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.125,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.05923006591796875,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "4e5a67893c67646ff7db14848a6d3d905a15d9bd2acc094f19670fef56436e09",
+      "environments": {
+        "iid": {
+          "loss": 1.0389108642578124,
+          "accuracy": 0.4478,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.0956881225585937,
+          "accuracy": 0.4274,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.727524951171875,
+          "accuracy": 0.0382,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0198905151367188,
+          "accuracy": 0.4326,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "c709c3654f6b8f2d",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 64.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.0968999771118164,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "7ccf91f2838c26558dce579685e6745eb0a1e2697b9285545a3a2743c87f192f",
+      "environments": {
+        "iid": {
+          "loss": 0.10672791748046875,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09267082824707032,
+          "accuracy": 0.9736,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10912742004394531,
+          "accuracy": 0.9686,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.11934400177001953,
+          "accuracy": 0.9748,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "c7d4f18c1bf306e2",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.125,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 16,
+      "actual_training_loss": 0.09990445251464844,
+      "checkpoint": "step_0000016.pt",
+      "checkpoint_sha256": "e5157ab1b871ef1c2738093458c4c4c59a0767e39ff9c74dbc387516ab96a49e",
+      "environments": {
+        "iid": {
+          "loss": 0.36599578247070313,
+          "accuracy": 0.9282,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.6629658081054688,
+          "accuracy": 0.8994,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.3468561401367187,
+          "accuracy": 0.9514,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.17166994018554688,
+          "accuracy": 0.9632,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "c846d58c02e8986f",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 64.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.050890312957763674,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "6d9ab14b856708b6b1158fbdd87866d162a5087e3716bd4f6c7ac93ecae73510",
+      "environments": {
+        "iid": {
+          "loss": 0.050753816986083986,
+          "accuracy": 0.989,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.051442831420898436,
+          "accuracy": 0.9916,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.049949725341796876,
+          "accuracy": 0.9896,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.049015491485595704,
+          "accuracy": 0.9884,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "ca51df81687c6c8e",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.125,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09062811431884765,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "d91f1c51c30099a0bafcb8d9166e47b9a56cbb83433c6fd8753856675c11a3f2",
+      "environments": {
+        "iid": {
+          "loss": 0.09910905151367187,
+          "accuracy": 0.98,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09080443115234375,
+          "accuracy": 0.983,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.1121445556640625,
+          "accuracy": 0.9706,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.13683105316162109,
+          "accuracy": 0.9718,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "cb4848095a1b4781",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 16.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08054789085388184,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "eab51a3545a43f6da29e270d5f5b47c3f7d01e9aff931c177c66c22af9468ce7",
+      "environments": {
+        "iid": {
+          "loss": 0.13123577270507814,
+          "accuracy": 0.9438,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.22791953735351564,
+          "accuracy": 0.9014,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.1165587173461914,
+          "accuracy": 0.9448,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09243663482666016,
+          "accuracy": 0.9536,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "cb6e463ae41e1f43",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.125,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09255622787475586,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "5aac8018404dbe0d2b1255a17aa2c7aa2f193bac14ad67699119dc6f96629bd5",
+      "environments": {
+        "iid": {
+          "loss": 0.09086585693359375,
+          "accuracy": 0.9862,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10089894104003906,
+          "accuracy": 0.978,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09035872955322266,
+          "accuracy": 0.9872,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.08330661315917968,
+          "accuracy": 0.9918,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "cee109ebd3c904c2",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 16.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.09581867294311523,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "802313be9cae651449948f3df022849c6532a705da1d7b34740210f642bf9dfa",
+      "environments": {
+        "iid": {
+          "loss": 0.08859229278564452,
+          "accuracy": 0.9644,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10300889587402344,
+          "accuracy": 0.9556,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.10784690551757813,
+          "accuracy": 0.9518,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07292925872802734,
+          "accuracy": 0.9708,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d07a7cddba9045c4",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 1.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.09491087493896484,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "6a6d6b901bac66864e0aecbb9dcbafe5e3752fea7f17012597dec7cf296f8954",
+      "environments": {
+        "iid": {
+          "loss": 0.0998942855834961,
+          "accuracy": 0.9672,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10231618194580078,
+          "accuracy": 0.968,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0835407829284668,
+          "accuracy": 0.9784,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09307122955322265,
+          "accuracy": 0.9668,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d098a51a4bdade0c",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.5,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.09967776107788086,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "0ecf56a10753277a66b6bc6267c36e05cb360fc7aec2b5b8c5709b7cfaa9c877",
+      "environments": {
+        "iid": {
+          "loss": 0.10198251190185546,
+          "accuracy": 0.9616,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10170668182373047,
+          "accuracy": 0.9688,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09995097351074218,
+          "accuracy": 0.9686,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.10027373962402343,
+          "accuracy": 0.9608,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d225c2cecd893785",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 128.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.04394989814758301,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "4cbafa564df6743b59dfe39ebae257933a936935e4457e2e37849e45f7cc3ce4",
+      "environments": {
+        "iid": {
+          "loss": 0.046757383728027346,
+          "accuracy": 0.9796,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.05514827575683594,
+          "accuracy": 0.974,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.025189096069335937,
+          "accuracy": 0.993,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.035415023803710935,
+          "accuracy": 0.987,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d581b7838c293300",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 128.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.07926175270080567,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "c02384cb69909cc07390fbb41a615e0d15f186f774de768b112cecf92ff69a48",
+      "environments": {
+        "iid": {
+          "loss": 0.13537719116210936,
+          "accuracy": 0.9686,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.23016705932617187,
+          "accuracy": 0.946,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.13556318054199218,
+          "accuracy": 0.974,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09757658996582032,
+          "accuracy": 0.9662,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d6bfdd8b5c492667",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 4.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.04077687759399414,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "a21e6bde590261a5fed9b90a400330ddee826716bb54e7c1a901075866214533",
+      "environments": {
+        "iid": {
+          "loss": 0.07646673431396485,
+          "accuracy": 0.9734,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.13643256683349608,
+          "accuracy": 0.9536,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0993862808227539,
+          "accuracy": 0.955,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.04973416137695313,
+          "accuracy": 0.9784,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d70493ac41c9495a",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 16.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.04773618278503418,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "2ee4d8d375f7c5f57e701e35010c23568f76a539bc4e20c756d5f27b6a1d9ac9",
+      "environments": {
+        "iid": {
+          "loss": 0.05010992736816406,
+          "accuracy": 0.977,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.06042738037109375,
+          "accuracy": 0.9712,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.024262640380859374,
+          "accuracy": 0.9932,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.03603078651428222,
+          "accuracy": 0.9882,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "d7d7401f627163d2",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.125,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08895681381225586,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "4ccb1ed45a5d8a19de3431613fa5cbe2bc4d51141db7844396fa8ddee891c3b6",
+      "environments": {
+        "iid": {
+          "loss": 0.1021795654296875,
+          "accuracy": 0.9812,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09056412658691407,
+          "accuracy": 0.9816,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11219900817871094,
+          "accuracy": 0.9766,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.1444621337890625,
+          "accuracy": 0.9648,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "dc29a75f298a7f8d",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 16.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09514025421142579,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "660b833308e6ebe8e6bac8cf732069ff9bfce89482d90ee8605e7d412180745f",
+      "environments": {
+        "iid": {
+          "loss": 0.0935732406616211,
+          "accuracy": 0.9624,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08910095672607422,
+          "accuracy": 0.967,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.09937740783691407,
+          "accuracy": 0.9624,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0985936996459961,
+          "accuracy": 0.9608,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "df7d1f3023e524fe",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 128.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.03667370700836182,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "c76ed6838c27bf4aa8effb2f50dd5d93bd397dcd275d2118d7973dc114e0fd89",
+      "environments": {
+        "iid": {
+          "loss": 0.040450243377685546,
+          "accuracy": 0.9848,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.03562263488769531,
+          "accuracy": 0.9876,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.050190846252441405,
+          "accuracy": 0.9804,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.047117130279541015,
+          "accuracy": 0.9826,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "df8ff6359fa25b9a",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 64.0,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.04036923141479492,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "c10225f95af010bd49f9d47668e75475d4590721388ae0ba3ac19b853e054686",
+      "environments": {
+        "iid": {
+          "loss": 1.071757373046875,
+          "accuracy": 0.4896,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2551408935546875,
+          "accuracy": 0.4494,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 2.0371582763671876,
+          "accuracy": 0.0562,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.1198125122070313,
+          "accuracy": 0.4464,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "e674c5ebae8b5153",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 64.0,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 128,
+      "actual_training_loss": 0.08995817794799804,
+      "checkpoint": "step_0000128.pt",
+      "checkpoint_sha256": "58e512d15f767573ce3b7df0100dcfeefdd9e6f39b9bdaa361d612f18bd25287",
+      "environments": {
+        "iid": {
+          "loss": 0.08609034423828126,
+          "accuracy": 0.9598,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.09473589935302734,
+          "accuracy": 0.9536,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0707209228515625,
+          "accuracy": 0.967,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.07904745025634766,
+          "accuracy": 0.9634,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "e9b1a20a9cab2b67",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 128.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.008458536863327027,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "0b067bf7b624999318f7a1a54881685521468ff29070ff6c02175e8c4391fa8a",
+      "environments": {
+        "iid": {
+          "loss": 1.677121044921875,
+          "accuracy": 0.429,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.829806005859375,
+          "accuracy": 0.428,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 3.2947095703125,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.7411983154296875,
+          "accuracy": 0.4176,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "ea3ee64a15994f46",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.5,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08225918769836425,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "9bb7563aea41a80b5143bf8aa3e4b5895fa10df7d494eb8a6238f9488f773beb",
+      "environments": {
+        "iid": {
+          "loss": 0.089492529296875,
+          "accuracy": 0.9804,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.07879094848632813,
+          "accuracy": 0.9854,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.08323451538085938,
+          "accuracy": 0.9862,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.12113575897216797,
+          "accuracy": 0.9706,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "eb8b6c1ccd56a0b8",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.125,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.08581539344787598,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "718fa6a857dbf883da94ca2acd51f92b1e8d3429bd8d371efe4858318f04a8aa",
+      "environments": {
+        "iid": {
+          "loss": 0.0986848617553711,
+          "accuracy": 0.9856,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08711380004882813,
+          "accuracy": 0.9846,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.11789829406738281,
+          "accuracy": 0.971,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.1344947036743164,
+          "accuracy": 0.9784,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "ec663bddf8207dcc",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 1.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.06127917594909668,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "454811d2ed29aecb044196ad5f6ce14a79c999e07840557eccab14b9b775185f",
+      "environments": {
+        "iid": {
+          "loss": 0.18962326965332033,
+          "accuracy": 0.9454,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.38432637939453124,
+          "accuracy": 0.8986,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.1808216766357422,
+          "accuracy": 0.9718,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.0949756607055664,
+          "accuracy": 0.9598,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f02893c8d57aa3e1",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 4.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.044319652557373045,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "676bdbd5d0a88cc22af1d5d5fbb39e01ad50af467c05bf7232b5f71715f062ac",
+      "environments": {
+        "iid": {
+          "loss": 1.0698046752929689,
+          "accuracy": 0.4992,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.1772533447265625,
+          "accuracy": 0.4578,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.94497138671875,
+          "accuracy": 0.016,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0104345581054688,
+          "accuracy": 0.5142,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f06fa0bfabcda2c4",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.5,
+      "seed": 0,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.04427034912109375,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "4df1bba1b394545b57729f78c09e058a6e1820a2609a2cb245ddea325e6342da",
+      "environments": {
+        "iid": {
+          "loss": 0.903178515625,
+          "accuracy": 0.6036,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.93380556640625,
+          "accuracy": 0.6162,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.4842501708984375,
+          "accuracy": 0.278,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.9637371215820313,
+          "accuracy": 0.5136,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f1963450f407f674",
+      "status": "evaluated",
+      "training_nuisance_condition": "unseen",
+      "gamma": 0.5,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 32,
+      "actual_training_loss": 0.08422743453979492,
+      "checkpoint": "step_0000032.pt",
+      "checkpoint_sha256": "d32cee6b7dd15a2a514cea23ec8369269aa1a40f8a218de5a38d85d806cff1c3",
+      "environments": {
+        "iid": {
+          "loss": 0.09424423065185547,
+          "accuracy": 0.9758,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.08296203918457032,
+          "accuracy": 0.982,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0989484634399414,
+          "accuracy": 0.9766,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.12062308197021485,
+          "accuracy": 0.9756,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f5af1a36f024490f",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 0.125,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09057824249267578,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "31bdfe2ca663ae700e3889cb3060733e5a453e399e5409c132b1c8627b92539e",
+      "environments": {
+        "iid": {
+          "loss": 0.09126276397705078,
+          "accuracy": 0.9834,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.10093121643066406,
+          "accuracy": 0.9726,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.0867040512084961,
+          "accuracy": 0.9872,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.09010377349853516,
+          "accuracy": 0.9894,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f6353616c563b01e",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 0.5,
+      "seed": 2,
+      "target_loss": 0.1,
+      "selected_step": 4,
+      "actual_training_loss": 0.055842716979980465,
+      "checkpoint": "step_0000004.pt",
+      "checkpoint_sha256": "a7071a3a7d092aa3b0aca024331b97a4eb1ab73ec1a402fe2db940c0c15e3fa4",
+      "environments": {
+        "iid": {
+          "loss": 1.00955703125,
+          "accuracy": 0.5616,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.0736758056640625,
+          "accuracy": 0.5362,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.63394794921875,
+          "accuracy": 0.3196,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0732990234375,
+          "accuracy": 0.5298,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "f63a71531ee8bf6d",
+      "status": "evaluated",
+      "training_nuisance_condition": "iid",
+      "gamma": 64.0,
+      "seed": 1,
+      "target_loss": 0.1,
+      "selected_step": 256,
+      "actual_training_loss": 0.045615949249267575,
+      "checkpoint": "step_0000256.pt",
+      "checkpoint_sha256": "57bc11dd47a0252dad7a92f3fa4382bc3043b1544283e6ab9f04be34e9dd7d05",
+      "environments": {
+        "iid": {
+          "loss": 0.049121761322021486,
+          "accuracy": 0.9778,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.06002825164794922,
+          "accuracy": 0.9714,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.024507524871826173,
+          "accuracy": 0.9928,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.03540728721618652,
+          "accuracy": 0.9856,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "faadccbbb0236cab",
+      "status": "evaluated",
+      "training_nuisance_condition": "concentrated",
+      "gamma": 0.5,
+      "seed": 4,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.09001366043090821,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "8090b283ba27a8c58f09828a720410ec975f40599f0a5dc573fcf86d70adc55f",
+      "environments": {
+        "iid": {
+          "loss": 0.23225845031738282,
+          "accuracy": 0.9032,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 0.436046923828125,
+          "accuracy": 0.8136,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 0.2117803497314453,
+          "accuracy": 0.9158,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 0.13413356323242187,
+          "accuracy": 0.9422,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "fabf44389db6c9f5",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 1.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 8,
+      "actual_training_loss": 0.03230354385375977,
+      "checkpoint": "step_0000008.pt",
+      "checkpoint_sha256": "16f5a7e1e9c485e70561052544cc369a400653bc1929d5d9b7605d1941394653",
+      "environments": {
+        "iid": {
+          "loss": 1.105225927734375,
+          "accuracy": 0.4896,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.2403439208984375,
+          "accuracy": 0.4452,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 1.9529801025390625,
+          "accuracy": 0.006,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.0986442016601563,
+          "accuracy": 0.4728,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    },
+    {
+      "schema": "feature-topology.nuisance-shift-evaluation.v1",
+      "run_id": "fe03793b05ee7b4e",
+      "status": "evaluated",
+      "training_nuisance_condition": "spurious",
+      "gamma": 128.0,
+      "seed": 3,
+      "target_loss": 0.1,
+      "selected_step": 64,
+      "actual_training_loss": 0.007917178106307984,
+      "checkpoint": "step_0000064.pt",
+      "checkpoint_sha256": "e92f246083efa9102666d53722347450050e5fb7de246c0473a325233757ac7a",
+      "environments": {
+        "iid": {
+          "loss": 1.54228095703125,
+          "accuracy": 0.4524,
+          "samples": 5000
+        },
+        "concentrated": {
+          "loss": 1.5051911376953124,
+          "accuracy": 0.4532,
+          "samples": 5000
+        },
+        "spurious": {
+          "loss": 3.032683154296875,
+          "accuracy": 0.0,
+          "samples": 5000
+        },
+        "unseen": {
+          "loss": 1.64756357421875,
+          "accuracy": 0.4252,
+          "samples": 5000
+        }
+      },
+      "scope": "Predictive OOD evaluation; no injectivity or quotient claim."
+    }
+  ]
+}

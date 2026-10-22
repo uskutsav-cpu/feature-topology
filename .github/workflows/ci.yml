@@ -20,8 +20,10 @@ jobs:
         with:
           python-version: '3.13'
           cache: pip
-          cache-dependency-path: requirements.lock.txt
-      - run: python -m pip install -r requirements.lock.txt
+          cache-dependency-path: |
+            requirements.lock.txt
+            requirements.certification.txt
+      - run: python -m pip install -r requirements.lock.txt -r requirements.certification.txt
       - run: python -m pytest -q
       - run: python -m compileall -q src scripts research_ext
   lean:

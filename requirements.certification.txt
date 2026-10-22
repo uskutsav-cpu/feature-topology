@@ -1,0 +1,2 @@
+# Separate optional runtime; original production requirements remain unchanged.
+python-flint==0.9.0

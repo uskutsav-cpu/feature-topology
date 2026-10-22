@@ -123,6 +123,46 @@ def test_pack_partial_checkpoint_is_resumable(tmp_path):
     assert not report["complete"] and any(name.endswith("resume.pt") for name in report["files"])
 
 
+def test_production_ph_cache_survives_pack_restore_and_collection(tmp_path,monkeypatch):
+    cell={"stage":"production","dataset":"CIFAR10","gamma":.125,
+          "seed":0,"lr":.0015625}
+    work=tmp_path/"work"; data=tmp_path/"data"; outgoing=tmp_path/"outgoing"
+    repo=tmp_path/"repo"; source=repo/"configs/completion/sources.json"
+    source.parent.mkdir(parents=True)
+    archive=data/"fixture"; archive.parent.mkdir(); archive.write_bytes(b"dataset")
+    atomic_json(source,{"schema":"feature-topology.cifar-sources.v1","datasets":{
+        "CIFAR10":{"archive":archive.name,"bytes":len(b"dataset"),
+                   "sha256":remote_cifar.sha256(archive)}}})
+    directory=remote_cifar.run_directory(work,cell); directory.mkdir(parents=True)
+    config=remote_cifar.config_for(cell)
+    atomic_json(directory/"config.json",config)
+    atomic_json(directory/"summary.json",{
+        "config":config,"run_id":directory.name,"status":"budget_exhausted","history":[]})
+    (directory/"final.pt").write_bytes(b"checkpoint")
+    (directory/"metrics.json").write_bytes(b"{}")
+    (directory/"representations.npz").write_bytes(b"representations")
+    cache_member=work/"ph_cache"/("a"*64)/"repeat_000.npz"
+    cache_member.parent.mkdir(parents=True); cache_member.write_bytes(b"completed PH repeat")
+
+    report=remote_cifar.pack(work,data,outgoing,cell,"job-ph",source)
+    cache_name=cache_member.relative_to(work).as_posix()
+    assert report["complete"] and cache_name in report["files"]
+    artifact=next(outgoing.glob("cifar-*.tar.gz"))
+    resume=tmp_path/"resume"; resume.mkdir(); shutil.copy2(artifact,resume/artifact.name)
+    restored=tmp_path/"restored"
+    assert remote_cifar.restore_archives(resume,restored,cell,remote_cifar.sha256(archive))==6
+    assert (restored/cache_name).read_bytes()==b"completed PH repeat"
+
+    transport=tmp_path/"transport"; transport.mkdir()
+    for path in outgoing.iterdir():
+        shutil.copy2(path,transport/path.name)
+    monkeypatch.setattr(collect_remote_cifar,"download",lambda tag,path:None)
+    collection=collect_remote_cifar.collect(repo,"test-tag",[cell],transport,source,install=True)
+    assert not collection["invalid"] and len(collection["complete"])==1
+    installed=repo/"results"/cache_name
+    assert installed.read_bytes()==b"completed PH repeat"
+
+
 def test_restore_uses_newest_cumulative_attempt(tmp_path):
     cell=calibration_cell(); work=tmp_path/"work"; data=tmp_path/"data"; out=tmp_path/"out"
     source=tmp_path/"sources.json"; archive=data/"fixture"; archive.parent.mkdir(); archive.write_bytes(b"x")

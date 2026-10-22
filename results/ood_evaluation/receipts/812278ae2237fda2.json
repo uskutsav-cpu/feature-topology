@@ -1,0 +1,27 @@
+{
+  "schema": "feature-topology.hosted-nuisance-evaluation.v1",
+  "run_id": "812278ae2237fda2",
+  "input_tag": "ood-475bfb0e8e0812fa-inputs-v3-2026-09-20",
+  "input_index": "configs/completion/ablation_inputs_v3/ood/475bfb0e8e0812fa.json",
+  "input_index_sha256": "0fa1e0e447cecb444f227191e0a078a9e3a7930bc1d5f290ab465526abeb3213",
+  "input_archive_sha256": "d18e7d5ce61bf6bb2a7ff93b34107af954ccaa9917a13f28e0fbe9445dda7a6c",
+  "source_member_sha256": {
+    "config.json": "2ca60fc465f2adc8d9918c502fe652ca189c8f508100ebb53072f104411f3235",
+    "final.pt": "4f2d84da5e2a9155cc613f8f4c05ef6b3386e4927c84c63713addc515e6f16d5",
+    "step_0000000.pt": "910aceaca150d9e38d2dfe0afca6bdab59c67c1fe1c258245b027bb6ec41bd52",
+    "step_0000001.pt": "59b2ae6a33c16b6dde70528b98d7c0945d51708b13210a079320cf131f8edee0",
+    "step_0000002.pt": "acc676687dcd025caf1455d5f9bab88c24273a9beabd13a95830b1cf61a48b7a",
+    "step_0000004.pt": "5249ee0422d55220361c6d18d91493c52b36c3e6fbc948e811ce454a93f28d2f",
+    "summary.json": "068603c2ee48f5e281a8f53f2d32d5caf49a6bffac06fe67d7367171508758c7"
+  },
+  "evaluation_sha256": "56ffb0250eb548ad4b9641118f8b5d01b85e7d2a18b2dc1e4dbb06abd8a6969c",
+  "source_commit": "5cf274be8a40921c082b89af3f0a34ab499857df",
+  "workflow_run": "39482734328",
+  "host": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.13.5",
+    "torch": "2.14.0+cu130"
+  },
+  "evaluator_sha256": "7ab6651af3a9247fe7073cb3e82944ace81c793e69aeb89bae9a14d360ebbb82",
+  "scope": "Same frozen checkpoint selection, data seeds, samples, and evaluator; no training"
+}
