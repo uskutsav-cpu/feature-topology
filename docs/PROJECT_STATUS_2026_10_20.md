@@ -87,7 +87,7 @@ The first restored full-readiness check passes every non-CIFAR check. Its four
 CIFAR gaps were recorded before installing the three newly completed cells.
 The restored fixed-fiber, classifier-decision and replication certificate
 components also pass their physical-checkpoint and existing replay-receipt
-checks. The successful local CIFAR replay now covers 66/70 runs: all three new
+checks. The first restored local CIFAR replay covered 66/70 runs: all three new
 cells match the saved correct counts exactly with loss deltas within 1e-4.
 The exact partial replay report and its cache snapshot are preserved separately.
 These component/readiness records are retained under
@@ -105,7 +105,10 @@ and checked without the SSD. Their raw status/API files and failed attempts are
 retained. This restores provenance coverage, not production completion; the
 three remaining source-06d5f68 continuations and the final 70-run replay
 remain pending. CIFAR-100 seed 3 also has a checked final archive, but its
-local installation is complete and its incremental held-out replay is running.
+local installation and strict incremental held-out replay now pass. The
+accepted coverage is 67/70, with all 66 previous cache records preserved.
+Both calibration transport retries now pass all 49 cells per dataset; the
+original network-failure report remains preserved.
 
 The separately recorded [independent-seed replication](FIBER_REPLICATION_STATUS.md)
 extends the seed-zero discovery cohort. All 36 screens and all 144 specified
@@ -115,11 +118,10 @@ certificates. The cohort and budgets remain fixed in
 
 1. Finish collection of the unchanged CIFAR continuations. Installed
    production coverage is now 35/35 for CIFAR-10 and 32/35 for CIFAR-100;
-   source-checked archived CIFAR-100 coverage is 32/35. The original
-   63 held-out replay values are preserved and the three newly installed cells
-   now pass strict local replay, giving 66/70 accepted validations. Those three CIFAR-100 cells timed out in wave two and resumed in
-   workflow 39696195884 after complete resume-archive member checks. The additional completed seed-3 archive has not yet been
-   counted as a local held-out replay.
+   source-checked archived CIFAR-100 coverage is 32/35. All 67 installed cells
+   pass held-out validation, with all previous cache records preserved. Those three CIFAR-100 cells timed out in wave two and resumed in
+   workflow 39696195884 after complete resume-archive member checks. The newly installed seed-3 cell matches the saved correct count exactly
+   with loss delta -1.196e-5, within the unchanged 1e-4 tolerance.
    All source-cohort ledgers and the final 70-run replay must be complete.
    The first unchanged seven-cell continuation wave timed out with resumable
    checkpoints. A second wave uses the same immutable source tags, cells,

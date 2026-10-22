@@ -1,0 +1,36 @@
+{
+  "scope": "Incremental held-out source audit, not a complete CIFAR study or research freeze",
+  "accepted": 67,
+  "expected": 70,
+  "original_cache_records_preserved": 66,
+  "validation_report": "results/completion/neural_networks_preparation/local_validation_67_wave3_20261021.json",
+  "validation_report_sha256": "87308835951b5682c4ee14ce1eadf1c39448a4ad2edfea9461056b1ae8e16f23",
+  "exact_cache_snapshot": "results/completion/neural_networks_preparation/cifar_replay_cache_67_wave3_20261021.json",
+  "cache_sha256": "f296a6c04e3a39e71ac51c01dfdd5ace150b60d36f668e478b3f1b50e53722ce",
+  "new_record": {
+    "run_id": "a1f2d129982bd10d",
+    "gamma": 0.125,
+    "seed": 3,
+    "status": "budget_exhausted",
+    "checkpoint_sha256": "93ea29141cfdc2cd95cf78671db43095f94b84bc36b2e47c443022cb016b6ca1",
+    "metrics_sha256": "2814b35a57a894853fbb3b512d420366b2a587c38f8318bab9624db39a2a9d1b",
+    "representations_sha256": "97e76a75cdb93f35a0cb4e33beb4760341d3bb49f0821fc0fc0cf23b354df32f",
+    "saved_test": {
+      "loss": 6.9634266876220705,
+      "accuracy": 0.1992
+    },
+    "replayed_test": {
+      "loss": 6.963414728546143,
+      "accuracy": 0.1992
+    },
+    "local_comparison": {
+      "loss_delta": -1.1959075927769902e-05,
+      "correct_count_delta": 0,
+      "loss_within_1e-4": true,
+      "accuracy_exact": true
+    },
+    "validation_basis": "local_exact_replay",
+    "hosted_replay": null
+  },
+  "verifier_sha256": "597d5154b9989fe4641ecb4b16526007d057af5a05f39e8ce260e087d220956d"
+}
